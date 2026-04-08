@@ -13,7 +13,6 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "PostgreSQL", "OpenAI", "Tailwind CSS"],
     featured: true,
     githubUrl: "https://github.com/Peippo1/CampaignForge-AI",
-    demoUrl: "https://campaignforge-ai.example.com",
     problem:
       "Marketing teams often move between separate tools for planning, drafting, and adaptation, which makes campaign reasoning difficult to preserve and hard to reuse.",
     solution:
@@ -38,7 +37,6 @@ export const projects: Project[] = [
     stack: ["TypeScript", "Node.js", "Kafka", "ClickHouse", "React"],
     featured: true,
     githubUrl: "https://github.com/timfinch/streamsense",
-    demoUrl: "https://streamsense.example.com",
     problem:
       "Teams collecting high-volume operational events often end up with data in motion but very little usable visibility, especially when metrics and debugging views evolve separately.",
     solution:
@@ -111,7 +109,6 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "OpenAI", "Supabase", "Tailwind CSS"],
     featured: true,
     githubUrl: "https://github.com/timfinch/briefly",
-    demoUrl: "https://briefly.example.com",
     problem:
       "Summarization tools are usually either too generic or too verbose, which makes them weak fits for recurring briefing workflows used by small teams.",
     solution:
