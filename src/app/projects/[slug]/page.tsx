@@ -148,6 +148,8 @@ export default async function ProjectDetailPage({
               <div className="flex flex-col gap-2.5 text-[var(--color-text)]">
                 <a
                   href={project.githubUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
                   className="inline-flex w-fit items-center gap-2 rounded-full px-1 py-0.5 transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-muted)] focus-visible:bg-black/[0.03] focus-visible:outline-none"
                 >
                   GitHub <span aria-hidden="true">↗</span>
@@ -155,6 +157,8 @@ export default async function ProjectDetailPage({
                 {project.demoUrl ? (
                   <a
                     href={project.demoUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
                     className="inline-flex w-fit items-center gap-2 rounded-full px-1 py-0.5 transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-muted)] focus-visible:bg-black/[0.03] focus-visible:outline-none"
                   >
                     Demo <span aria-hidden="true">↗</span>

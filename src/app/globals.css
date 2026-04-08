@@ -81,3 +81,16 @@ a:hover {
     opacity: 0.24;
   }
 }
+
+@keyframes telemetry-node {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateX(0);
+  }
+
+  50% {
+    opacity: 0.75;
+    transform: translateX(6px);
+  }
+}

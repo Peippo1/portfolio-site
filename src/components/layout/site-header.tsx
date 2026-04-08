@@ -48,7 +48,7 @@ export function SiteHeader() {
                 aria-current={active ? "page" : undefined}
                 className={`rounded-full px-2.5 py-1.5 text-sm tracking-[0.01em] focus-visible:bg-black/[0.03] ${
                   active
-                    ? "bg-[var(--color-text)] text-[var(--color-bg)] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black/5"
+                    ? "bg-black/[0.04] text-[var(--color-text)] ring-1 ring-black/5"
                     : "text-[var(--color-muted)] hover:bg-black/[0.03] hover:text-[var(--color-text)]"
                 }`}
               >

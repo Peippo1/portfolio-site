@@ -23,12 +23,17 @@ export default function WritingPage() {
           {writingEntries.map((entry) => (
             <article
               key={entry.slug}
-              className="grid gap-4 border-b border-[var(--color-border)] py-6 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-6 sm:py-7"
+              className="grid gap-3 border-b border-[var(--color-border)] py-6 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-6 sm:py-7"
             >
-              <p className="text-sm tracking-[0.14em] text-[var(--color-muted)] uppercase">
-                {entry.date}
-              </p>
-              <div>
+              <div className="space-y-2">
+                <p className="text-sm tracking-[0.14em] text-[var(--color-muted)] uppercase">
+                  {entry.date}
+                </p>
+                <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
+                  {entry.category}
+                </p>
+              </div>
+              <div className="min-w-0">
                 <h2 className="font-editorial text-[1.5rem] leading-tight sm:text-[1.75rem]">
                   {entry.title}
                 </h2>
