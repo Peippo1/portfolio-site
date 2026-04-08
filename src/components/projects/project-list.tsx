@@ -12,11 +12,11 @@ export function ProjectList({ projects }: ProjectListProps) {
         <article key={project.slug} className="group">
           <Link
             href={`/projects/${project.slug}`}
-            className="grid gap-4 py-5 sm:py-6 md:grid-cols-[minmax(0,1fr)_auto]"
+            className="grid gap-4 rounded-[1rem] px-1 py-5 transition-colors duration-150 hover:bg-black/[0.015] sm:py-6 sm:px-2 md:grid-cols-[minmax(0,1fr)_auto]"
           >
             <div className="min-w-0">
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h3 className="font-editorial text-[1.55rem] leading-tight sm:text-[1.75rem]">
+                <h3 className="font-editorial text-[1.55rem] leading-tight transition-colors duration-150 group-hover:text-[var(--color-text)] sm:text-[1.75rem]">
                   {project.title}
                 </h3>
                 <span className="text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">
@@ -35,7 +35,7 @@ export function ProjectList({ projects }: ProjectListProps) {
 
             <div className="flex items-start md:justify-end">
               <span className="inline-flex items-center gap-2 text-sm text-[var(--color-muted)] transition-transform duration-150 group-hover:translate-x-0.5 group-hover:text-[var(--color-text)]">
-                View
+                Open
                 <span aria-hidden="true">↗</span>
               </span>
             </div>

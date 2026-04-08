@@ -16,19 +16,18 @@ export default function HomePage() {
     <main>
       <Container className="max-w-4xl py-16 sm:py-20 lg:py-24">
         <header className="max-w-3xl">
-          <p className="text-sm font-medium tracking-[0.2em] text-[var(--color-muted)] uppercase">
-            {profile.name} / {profile.role}
+          <p className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
+            {profile.name} / London / {profile.role}
           </p>
 
-          <h1 className="font-editorial mt-5 text-4xl leading-tight sm:text-5xl">
-            AI engineer building practical systems, APIs, data products, and
-            experiments.
+          <h1 className="font-editorial mt-5 max-w-2xl text-4xl leading-tight sm:text-5xl">
+            Practical AI systems for products, data, APIs, and experiments.
           </h1>
 
-          <p className="mt-5 max-w-2xl text-[1.04rem] leading-8 text-[var(--color-muted)] sm:text-lg">
+          <p className="mt-5 max-w-2xl text-[1.02rem] leading-8 text-[var(--color-muted)] sm:text-[1.08rem]">
             I design and ship focused software that helps teams work with
-            models, move data cleanly, and keep the edge between research and
-            production understandable.
+            models, move data cleanly, and keep complex systems easy to reason
+            about in production.
           </p>
         </header>
 
@@ -56,11 +55,11 @@ export default function HomePage() {
               <article key={project.slug} className="group py-5 sm:py-6">
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-6"
+                  className="grid gap-3 rounded-[1rem] px-1 py-1 transition-colors duration-150 hover:bg-black/[0.015] sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-6 sm:px-2 sm:py-2"
                 >
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                      <h3 className="font-editorial text-[1.7rem] leading-tight sm:text-[1.9rem]">
+                      <h3 className="font-editorial text-[1.72rem] leading-tight transition-colors duration-150 group-hover:text-[var(--color-text)] sm:text-[1.95rem]">
                         {project.title}
                       </h3>
                       <span className="text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">
@@ -77,7 +76,7 @@ export default function HomePage() {
 
                   <div className="flex items-start sm:justify-end">
                     <span className="inline-flex items-center gap-2 text-sm text-[var(--color-muted)] transition-transform duration-150 group-hover:translate-x-0.5 group-hover:text-[var(--color-text)]">
-                      Case study <span aria-hidden="true">↗</span>
+                      Open case study <span aria-hidden="true">↗</span>
                     </span>
                   </div>
                 </Link>
