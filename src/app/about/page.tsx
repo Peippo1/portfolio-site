@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { PageIntro } from "@/components/ui/page-intro";
 import { profile } from "@/data/profile";
@@ -65,13 +64,15 @@ export default function AboutPage() {
               </h2>
               <div className="mt-4 flex flex-wrap gap-3">
                 {socialLinks.map((link) => (
-                  <Link
+                  <a
                     key={link.label}
                     href={link.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
                     className="inline-flex rounded-full border border-[var(--color-border)] px-3 py-1.5 text-sm text-[var(--color-muted)] transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-text)] focus-visible:bg-black/[0.03] focus-visible:text-[var(--color-text)] focus-visible:outline-none"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>
