@@ -12,7 +12,7 @@ export const projects: Project[] = [
     year: "2026",
     stack: ["Next.js", "TypeScript", "PostgreSQL", "OpenAI", "Tailwind CSS"],
     featured: true,
-    githubUrl: "https://github.com/timfinch/campaignforge-ai",
+    githubUrl: "https://github.com/Peippo1/CampaignForge-AI",
     demoUrl: "https://campaignforge-ai.example.com",
     problem:
       "Marketing teams often move between separate tools for planning, drafting, and adaptation, which makes campaign reasoning difficult to preserve and hard to reuse.",

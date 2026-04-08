@@ -10,7 +10,7 @@ export interface GitHubMetadataProvider {
 
 const localGitHubMetadata: Record<string, GitHubRepositoryMetadata> = {
   "campaignforge-ai": {
-    repoName: "campaignforge-ai",
+    repoName: "CampaignForge-AI",
     lastUpdated: "2026-04-01",
     primaryLanguage: "TypeScript",
   },
