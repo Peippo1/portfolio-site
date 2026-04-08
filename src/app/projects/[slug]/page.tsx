@@ -3,6 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/container";
 import { getProjectBySlug, projects } from "@/data/projects";
+import {
+  formatRepositoryDate,
+  getProjectGitHubMetadata,
+} from "@/lib/github-metadata";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -56,6 +60,7 @@ export default async function ProjectDetailPage({
 }: ProjectPageProps) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
+  const repositoryMetadata = getProjectGitHubMetadata(slug);
 
   if (!project) {
     notFound();
@@ -157,6 +162,43 @@ export default async function ProjectDetailPage({
                 ) : null}
               </div>
             </Section>
+
+            {repositoryMetadata ? (
+              <Section title="Repository freshness">
+                <dl className="grid gap-4 text-sm sm:grid-cols-3">
+                  {repositoryMetadata.repoName ? (
+                    <div>
+                      <dt className="tracking-[0.16em] text-[var(--color-muted)] uppercase">
+                        Repo
+                      </dt>
+                      <dd className="mt-2 text-[var(--color-text)]">
+                        {repositoryMetadata.repoName}
+                      </dd>
+                    </div>
+                  ) : null}
+                  {repositoryMetadata.primaryLanguage ? (
+                    <div>
+                      <dt className="tracking-[0.16em] text-[var(--color-muted)] uppercase">
+                        Language
+                      </dt>
+                      <dd className="mt-2 text-[var(--color-text)]">
+                        {repositoryMetadata.primaryLanguage}
+                      </dd>
+                    </div>
+                  ) : null}
+                  {repositoryMetadata.lastUpdated ? (
+                    <div>
+                      <dt className="tracking-[0.16em] text-[var(--color-muted)] uppercase">
+                        Updated
+                      </dt>
+                      <dd className="mt-2 text-[var(--color-text)]">
+                        {formatRepositoryDate(repositoryMetadata.lastUpdated)}
+                      </dd>
+                    </div>
+                  ) : null}
+                </dl>
+              </Section>
+            ) : null}
           </div>
         </article>
       </Container>
