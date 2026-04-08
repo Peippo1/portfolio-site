@@ -177,8 +177,14 @@ export function LiveTelemetry() {
               {state.status === "loading"
                 ? "Reading the latest telemetry sweep."
                 : state.status === "success"
-                  ? "The panel is reading normalized telemetry from the local route."
+                  ? `The panel is reading normalized telemetry from ${state.feed.source}.`
                   : state.note}
+            </p>
+
+            <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
+              {state.status === "loading"
+                ? "Source pending"
+                : `${state.feed.isLive ? "Live" : "Cached"} source · ${state.feed.source}`}
             </p>
 
             <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
