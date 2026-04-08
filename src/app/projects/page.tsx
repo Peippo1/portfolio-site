@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AskThePortfolio } from "@/components/projects/ask-the-portfolio";
 import { ProjectList } from "@/components/projects/project-list";
 import { Container } from "@/components/ui/container";
 import { PageIntro } from "@/components/ui/page-intro";
@@ -28,17 +29,21 @@ const projectsByCategory = categoryOrder
 export default function ProjectsPage() {
   return (
     <main>
-      <Container className="max-w-4xl py-20 sm:py-24">
+      <Container className="max-w-4xl py-16 sm:py-20 lg:py-24">
         <PageIntro
           eyebrow="Projects"
           title="A small archive of product, systems, and experimental work."
           description="Six selected projects, grouped by the kind of engineering problem they address. The emphasis is on structure, implementation detail, and the shape of the solution rather than presentation for its own sake."
         />
 
-        <div className="mt-16 space-y-14 sm:mt-20 sm:space-y-16">
+        <div className="mt-12 sm:mt-14">
+          <AskThePortfolio />
+        </div>
+
+        <div className="mt-14 space-y-12 sm:mt-16 sm:space-y-14">
           {projectsByCategory.map((section) => (
             <section key={section.category} aria-labelledby={section.category}>
-              <div className="mb-5 sm:mb-6">
+              <div className="mb-4 sm:mb-5">
                 <h2
                   id={section.category}
                   className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase"

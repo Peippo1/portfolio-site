@@ -12,21 +12,21 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main>
-      <Container className="py-20 sm:py-24">
+      <Container className="py-16 sm:py-20 lg:py-24">
         <PageIntro
           eyebrow="About"
           title="A product-minded engineer focused on useful AI systems and durable software."
           description={profile.summary}
         />
 
-        <section className="mt-16 grid gap-12 border-t border-[var(--color-border)] pt-8 lg:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)]">
+        <section className="mt-14 grid gap-10 border-t border-[var(--color-border)] pt-7 lg:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)]">
           <div className="max-w-2xl space-y-5 text-base leading-8 text-[var(--color-muted)]">
             {profile.biography.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
 
-          <aside className="space-y-8">
+          <aside className="space-y-7">
             <div>
               <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
                 Base

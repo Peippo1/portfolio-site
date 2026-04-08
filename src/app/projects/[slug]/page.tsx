@@ -16,11 +16,11 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="border-t border-[var(--color-border)] pt-8 sm:pt-10">
+    <section className="border-t border-[var(--color-border)] pt-7 sm:pt-9">
       <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
         {title}
       </h2>
-      <div className="mt-5 text-base leading-8 text-[var(--color-muted)] sm:text-[1.02rem]">
+      <div className="mt-4 text-base leading-8 text-[var(--color-muted)] sm:text-[1.02rem]">
         {children}
       </div>
     </section>
@@ -63,8 +63,8 @@ export default async function ProjectDetailPage({
 
   return (
     <main>
-      <Container className="max-w-4xl py-14 sm:py-18">
-        <div className="sticky top-[4.6rem] z-10 -mx-2 mb-10 w-fit rounded-full bg-[rgba(247,245,240,0.9)] px-2 py-1 backdrop-blur-sm">
+      <Container className="max-w-4xl py-14 sm:py-18 lg:py-20">
+        <div className="sticky top-[4.2rem] z-10 -mx-1 mb-8 w-fit rounded-full bg-[rgba(248,246,241,0.88)] px-2 py-1 backdrop-blur-sm">
           <Link
             href="/projects"
             className="text-sm text-[var(--color-muted)] hover:text-[var(--color-text)]"
@@ -79,15 +79,15 @@ export default async function ProjectDetailPage({
               {project.category}
             </p>
 
-            <h1 className="font-editorial mt-5 text-4xl leading-tight sm:text-5xl">
+            <h1 className="font-editorial mt-5 text-4xl leading-tight sm:text-[3.25rem]">
               {project.title}
             </h1>
 
-            <p className="mt-5 text-lg leading-8 text-[var(--color-muted)]">
+            <p className="mt-4 text-[1.04rem] leading-8 text-[var(--color-muted)] sm:text-lg">
               {project.shortSummary}
             </p>
 
-            <dl className="mt-8 grid grid-cols-1 gap-y-4 border-t border-b border-[var(--color-border)] py-5 text-sm sm:grid-cols-3 sm:gap-x-6">
+            <dl className="mt-7 grid grid-cols-1 gap-y-4 border-t border-b border-[var(--color-border)] py-5 text-sm sm:grid-cols-3 sm:gap-x-6">
               <div>
                 <dt className="tracking-[0.16em] text-[var(--color-muted)] uppercase">
                   Category
@@ -109,7 +109,7 @@ export default async function ProjectDetailPage({
             </dl>
           </header>
 
-          <div className="mt-10 space-y-10 sm:mt-12 sm:space-y-12">
+          <div className="mt-9 space-y-9 sm:mt-10 sm:space-y-10">
             <Section title="Overview">
               <p>{project.longSummary}</p>
             </Section>
@@ -139,17 +139,17 @@ export default async function ProjectDetailPage({
             </Section>
 
             <Section title="Links">
-              <div className="flex flex-col gap-3 text-[var(--color-text)]">
+              <div className="flex flex-col gap-2.5 text-[var(--color-text)]">
                 <a
                   href={project.githubUrl}
-                  className="inline-flex w-fit items-center gap-2"
+                  className="inline-flex w-fit items-center gap-2 hover:text-[var(--color-muted)]"
                 >
                   GitHub <span aria-hidden="true">↗</span>
                 </a>
                 {project.demoUrl ? (
                   <a
                     href={project.demoUrl}
-                    className="inline-flex w-fit items-center gap-2"
+                    className="inline-flex w-fit items-center gap-2 hover:text-[var(--color-muted)]"
                   >
                     Demo <span aria-hidden="true">↗</span>
                   </a>

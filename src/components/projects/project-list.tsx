@@ -12,11 +12,11 @@ export function ProjectList({ projects }: ProjectListProps) {
         <article key={project.slug} className="group">
           <Link
             href={`/projects/${project.slug}`}
-            className="grid gap-4 py-6 sm:py-7 md:grid-cols-[minmax(0,1fr)_auto]"
+            className="grid gap-4 py-5 sm:py-6 md:grid-cols-[minmax(0,1fr)_auto]"
           >
             <div className="min-w-0">
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                <h3 className="font-editorial text-[1.6rem] leading-tight sm:text-[1.85rem]">
+                <h3 className="font-editorial text-[1.55rem] leading-tight sm:text-[1.75rem]">
                   {project.title}
                 </h3>
                 <span className="text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">
