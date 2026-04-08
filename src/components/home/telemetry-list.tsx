@@ -1,7 +1,7 @@
-import type { TelemetryFeed } from "@/lib/telemetry";
+import type { TelemetryResponse } from "@/data/telemetry";
 
 type TelemetryListProps = {
-  feed?: TelemetryFeed;
+  feed?: TelemetryResponse;
   loading?: boolean;
 };
 

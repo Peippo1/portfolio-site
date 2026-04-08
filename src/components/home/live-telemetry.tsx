@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  mockTelemetryFeed,
-  type TelemetryResponse,
-} from "@/lib/telemetry";
+import { mockTelemetry, liveTelemetryCopy, type TelemetryResponse } from "@/data/telemetry";
+import { normalizeTelemetryFeed } from "@/lib/telemetry";
 import { TelemetryLine } from "@/components/home/telemetry-line";
 import { TelemetryList } from "@/components/home/telemetry-list";
 
@@ -24,7 +22,7 @@ function formatUpdatedAt(value: string) {
 export function LiveTelemetry() {
   const [state, setState] = useState<TelemetryState>({
     status: "loading",
-    feed: mockTelemetryFeed,
+    feed: mockTelemetry,
   });
 
   useEffect(() => {
@@ -38,22 +36,24 @@ export function LiveTelemetry() {
         }
 
         const data = await response.json();
-        if (!data || typeof data !== "object" || !("items" in data)) {
+        const feed = normalizeTelemetryFeed(data);
+
+        if (!feed) {
           throw new Error("Telemetry payload invalid");
         }
 
         if (active) {
           setState({
             status: "success",
-            feed: data as TelemetryResponse,
+            feed,
           });
         }
       } catch {
         if (active) {
           setState({
             status: "fallback",
-            feed: mockTelemetryFeed,
-            note: "Telemetry temporarily unavailable.",
+            feed: mockTelemetry,
+            note: liveTelemetryCopy.fallback,
           });
         }
       }
@@ -79,19 +79,17 @@ export function LiveTelemetry() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-2xl">
           <p className="text-xs font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
-            Live telemetry
+            {liveTelemetryCopy.eyebrow}
           </p>
           <h2
             id="live-telemetry"
             className="font-editorial mt-3 text-[1.85rem] leading-tight sm:text-[2.15rem]"
           >
-            A quiet systems view inspired by deep-space links.
+            {liveTelemetryCopy.title}
           </h2>
         </div>
         <p className="max-w-xl text-sm leading-7 text-[var(--color-muted)] sm:text-right">
-          A restrained readout of stations, missions, and signal delay. It
-          stays secondary to the portfolio content and can switch between mock
-          and live data without a visual change.
+          {liveTelemetryCopy.description}
         </p>
       </div>
 
@@ -134,11 +132,11 @@ export function LiveTelemetry() {
             <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
               {state.status === "loading"
                 ? "Source pending"
-                : `${state.feed.isLive ? "Live" : "Cached"} source · ${state.feed.source}`}
+                : `${liveTelemetryCopy.sourceLabel} · ${state.feed.source}`}
             </p>
 
             <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
-              Updated {updatedLabel}
+              {liveTelemetryCopy.updatedLabel} {updatedLabel}
             </p>
           </div>
 

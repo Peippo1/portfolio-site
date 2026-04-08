@@ -1,11 +1,10 @@
 import "server-only";
 
 import {
-  mockTelemetryFeed,
   normalizeTelemetryCollection,
   normalizeTelemetryFeed,
-  type TelemetryResponse,
 } from "@/lib/telemetry";
+import { mockTelemetry, type TelemetryResponse } from "@/data/telemetry";
 
 const telemetrySourceLabel =
   process.env.TELEMETRY_SOURCE_LABEL?.trim() || "nasa-jpl";
@@ -27,7 +26,7 @@ function buildTelemetryFeed(
 
 export async function fetchTelemetryFeed(): Promise<TelemetryResponse> {
   if (!telemetrySourceUrl) {
-    return mockTelemetryFeed;
+    return mockTelemetry;
   }
 
   const abortController = new AbortController();
@@ -68,7 +67,7 @@ export async function fetchTelemetryFeed(): Promise<TelemetryResponse> {
     return buildTelemetryFeed(telemetrySourceLabel, true, items);
   } catch {
     return {
-      ...mockTelemetryFeed,
+      ...mockTelemetry,
       source: telemetrySourceUrl ? `${telemetrySourceLabel}:fallback` : "mock",
       isLive: false,
     };

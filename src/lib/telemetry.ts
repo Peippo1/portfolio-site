@@ -1,50 +1,13 @@
-export type TelemetryItem = {
-  station: string;
-  mission: string;
-  status: string;
-  signalTime: string;
-};
-
-export type TelemetryFeed = {
-  updatedAt: string;
-  source: string;
-  isLive: boolean;
-  items: TelemetryItem[];
-};
-
-export type TelemetryResponse = TelemetryFeed;
+import type {
+  TelemetryItem,
+  TelemetryResponse,
+} from "@/data/telemetry";
 
 type TelemetryShape = {
   updatedAt?: unknown;
   source?: unknown;
   isLive?: unknown;
   items?: unknown;
-};
-
-export const mockTelemetryFeed: TelemetryFeed = {
-  updatedAt: "2026-04-08T09:42:00Z",
-  source: "DSN-inspired telemetry",
-  isLive: false,
-  items: [
-    {
-      station: "Canberra",
-      mission: "Voyager 2",
-      status: "Two-way",
-      signalTime: "18m 42s",
-    },
-    {
-      station: "Madrid",
-      mission: "Mars Odyssey",
-      status: "Downlink",
-      signalTime: "07m 12s",
-    },
-    {
-      station: "DSS-14",
-      mission: "Psyche",
-      status: "Uplink",
-      signalTime: "12m 09s",
-    },
-  ],
 };
 
 function isObject(value: unknown): value is Record<string, unknown> {
@@ -56,11 +19,19 @@ function normalizeTelemetryItem(value: unknown): TelemetryItem | null {
     return null;
   }
 
+  const statusValues: TelemetryItem["status"][] = [
+    "Two-way",
+    "Downlink",
+    "Uplink",
+    "Monitoring",
+  ];
+
   if (
     typeof value.station !== "string" ||
     typeof value.mission !== "string" ||
     typeof value.status !== "string" ||
-    typeof value.signalTime !== "string"
+    typeof value.signalTime !== "string" ||
+    !statusValues.includes(value.status as TelemetryItem["status"])
   ) {
     return null;
   }
@@ -68,7 +39,7 @@ function normalizeTelemetryItem(value: unknown): TelemetryItem | null {
   return {
     station: value.station,
     mission: value.mission,
-    status: value.status,
+    status: value.status as TelemetryItem["status"],
     signalTime: value.signalTime,
   };
 }
@@ -104,7 +75,7 @@ export function normalizeTelemetryCollection(value: unknown): TelemetryItem[] | 
   return null;
 }
 
-export function normalizeTelemetryFeed(value: unknown): TelemetryFeed | null {
+export function normalizeTelemetryFeed(value: unknown): TelemetryResponse | null {
   if (!isObject(value)) {
     return null;
   }
