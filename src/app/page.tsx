@@ -36,7 +36,7 @@ export default function HomePage() {
 
         <section
           aria-labelledby="featured-projects"
-          className="mt-16 border-t border-[var(--color-border)] pt-7 sm:mt-20 sm:pt-8"
+          className="mt-14 border-t border-[var(--color-border)] pt-7 sm:mt-16 sm:pt-8"
         >
           <div className="flex items-baseline justify-between gap-4">
             <h2

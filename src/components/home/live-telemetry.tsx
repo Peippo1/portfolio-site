@@ -124,7 +124,7 @@ export function LiveTelemetry() {
   return (
     <section
       aria-labelledby="live-telemetry"
-      className="mt-16 border-t border-[var(--color-border)] pt-7 sm:mt-20 sm:pt-8"
+      className="mt-14 border-t border-[var(--color-border)] pt-7 sm:mt-16 sm:pt-8"
     >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-2xl">
@@ -135,13 +135,13 @@ export function LiveTelemetry() {
             id="live-telemetry"
             className="font-editorial mt-3 text-[1.85rem] leading-tight sm:text-[2.15rem]"
           >
-            A quiet signal sweep for the portfolio.
+            A quiet systems view inspired by deep-space links.
           </h2>
         </div>
         <p className="max-w-xl text-sm leading-7 text-[var(--color-muted)] sm:text-right">
-          A minimal readout of stations, missions, and delay states. It can use
-          mock data today or a normalized server feed later without changing
-          the presentation.
+          A restrained readout of stations, missions, and signal delay. It
+          stays secondary to the portfolio content and can switch between mock
+          and live data without a visual change.
         </p>
       </div>
 
@@ -175,9 +175,9 @@ export function LiveTelemetry() {
 
             <p className="max-w-prose text-sm leading-7 text-[var(--color-muted)]">
               {state.status === "loading"
-                ? "Reading the latest telemetry sweep."
+                ? "Reading the latest signal sweep."
                 : state.status === "success"
-                  ? `The panel is reading normalized telemetry from ${state.feed.source}.`
+                  ? `Normalized telemetry from ${state.feed.source}.`
                   : state.note}
             </p>
 
