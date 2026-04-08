@@ -1,11 +1,66 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+:root {
+  --color-bg: #f7f5f0;
+  --color-surface: rgba(255, 255, 255, 0.72);
+  --color-text: #111111;
+  --color-muted: rgba(17, 17, 17, 0.68);
+  --color-soft: rgba(17, 17, 17, 0.1);
+  --color-border: rgba(17, 17, 17, 0.14);
+  --shadow-soft: 0 18px 48px rgba(17, 17, 17, 0.05);
+  --font-sans:
+    "SF Pro Text", "Segoe UI", "Helvetica Neue", "Neue Haas Grotesk Text",
+    "Nimbus Sans", sans-serif;
+  --font-serif:
+    "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Baskerville",
+    "Times New Roman", serif;
+}
 
 html {
-  font-feature-settings: "rlig"1, "calt"1;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  font-feature-settings: "rlig" 1, "calt" 1;
 }
 
 body {
-  letter-spacing: -0.01em;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  letter-spacing: -0.015em;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(17, 17, 17, 0.12);
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease,
+    opacity 160ms ease;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: rgba(17, 17, 17, 0.78);
+}
+
+:focus-visible {
+  outline: 2px solid rgba(17, 17, 17, 0.45);
+  outline-offset: 3px;
+}
+
+.font-editorial {
+  font-family: var(--font-serif);
+  letter-spacing: -0.03em;
 }
