@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LiveTelemetry } from "@/components/home/live-telemetry";
 import { Container } from "@/components/ui/container";
 import { getFeaturedProjects } from "@/data/projects";
 import { profile } from "@/data/profile";
@@ -30,6 +31,8 @@ export default function HomePage() {
             about in production.
           </p>
         </header>
+
+        <LiveTelemetry />
 
         <section
           aria-labelledby="featured-projects"
