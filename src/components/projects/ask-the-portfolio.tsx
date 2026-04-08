@@ -123,13 +123,13 @@ export function AskThePortfolio() {
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div className="max-w-2xl">
                     <Link
-                      href={`/projects/${project.slug}`}
+                      href={project.href}
                       className="font-editorial text-[1.35rem] leading-tight transition-colors duration-150 hover:text-[var(--color-text)] focus-visible:text-[var(--color-text)] focus-visible:outline-none sm:text-[1.5rem]"
                     >
                       {project.title}
                     </Link>
                     <p className="mt-2 text-sm leading-7 text-[var(--color-muted)]">
-                      {project.shortSummary}
+                      {project.explanation}
                     </p>
                   </div>
 
@@ -141,11 +141,6 @@ export function AskThePortfolio() {
                 <p className="mt-3 text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">
                   {project.stack.join(" / ")}
                 </p>
-                {project.reasons.length > 0 ? (
-                  <p className="mt-2 text-sm leading-7 text-[var(--color-muted)]">
-                    Match: {project.reasons.slice(0, 2).join("; ")}
-                  </p>
-                ) : null}
               </article>
             ))}
           </div>

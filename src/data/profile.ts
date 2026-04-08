@@ -2,6 +2,8 @@ export const profile = {
   name: "Tim Finch",
   role: "AI engineer and builder",
   location: "London, UK",
+  githubUrl: "https://github.com/Peippo1",
+  linkedinUrl: undefined as string | undefined,
   summary:
     "I work on applied AI products with an engineering lens: evaluation, infrastructure, developer experience, and the product decisions that make systems dependable in practice.",
   biography: [

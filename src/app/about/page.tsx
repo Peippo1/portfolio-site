@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { PageIntro } from "@/components/ui/page-intro";
 import { profile } from "@/data/profile";
@@ -10,41 +11,71 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const socialLinks = [
+    profile.githubUrl ? { label: "GitHub", href: profile.githubUrl } : null,
+    profile.linkedinUrl ? { label: "LinkedIn", href: profile.linkedinUrl } : null,
+  ].filter(Boolean) as Array<{ label: string; href: string }>;
+
   return (
     <main>
       <Container className="py-16 sm:py-20 lg:py-24">
         <PageIntro
           eyebrow="About"
           title="A product-minded engineer focused on useful AI systems and durable software."
-          description={profile.summary}
+          description="I build applied AI products and systems that stay understandable under real use, with a bias toward clear interfaces and durable implementation."
         />
 
-        <section className="mt-14 grid gap-10 border-t border-[var(--color-border)] pt-7 lg:grid-cols-[minmax(0,2fr)_minmax(16rem,1fr)]">
-          <div className="max-w-2xl space-y-5 text-base leading-8 text-[var(--color-muted)]">
-            {profile.biography.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
+        <section className="mt-14 max-w-2xl border-t border-[var(--color-border)] pt-7">
+          <div className="space-y-8 text-base leading-8 text-[var(--color-muted)]">
+            <div>
+              <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
+                Current focus
+              </h2>
+              <p className="mt-3">
+                I’m currently working on applied AI products, evaluation loops,
+                and the infrastructure that keeps model-assisted workflows
+                dependable in practice.
+              </p>
+            </div>
 
-          <aside className="space-y-7">
+            <div>
+              <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
+                What I enjoy building
+              </h2>
+              <p className="mt-3">
+                I gravitate toward systems that combine product judgment with
+                technical clarity: AI tools with sensible interfaces, APIs that
+                slot into real workflows, and data products that make complex
+                behavior easier to inspect.
+              </p>
+            </div>
+
             <div>
               <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
                 Base
               </h2>
-              <p className="mt-3 text-base">{profile.location}</p>
+              <p className="mt-3">{profile.location}</p>
             </div>
+          </div>
 
-            <div>
+          {socialLinks.length > 0 ? (
+            <div className="mt-10 border-t border-[var(--color-border)] pt-7">
               <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
-                Principles
+                Links
               </h2>
-              <ul className="mt-3 space-y-3 text-sm leading-7 text-[var(--color-muted)]">
-                {profile.principles.map((principle) => (
-                  <li key={principle}>{principle}</li>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {socialLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="inline-flex rounded-full border border-[var(--color-border)] px-3 py-1.5 text-sm text-[var(--color-muted)] transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-text)] focus-visible:bg-black/[0.03] focus-visible:text-[var(--color-text)] focus-visible:outline-none"
+                  >
+                    {link.label}
+                  </Link>
                 ))}
-              </ul>
+              </div>
             </div>
-          </aside>
+          ) : null}
         </section>
       </Container>
     </main>
