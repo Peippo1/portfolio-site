@@ -67,7 +67,7 @@ export default async function ProjectDetailPage({
         <div className="sticky top-[4.2rem] z-10 mb-8 w-fit rounded-full bg-[rgba(248,246,241,0.9)] px-2 py-1 backdrop-blur-sm">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-sm text-[var(--color-muted)] hover:text-[var(--color-text)]"
+            className="inline-flex items-center gap-2 rounded-full px-1.5 py-0.5 text-sm text-[var(--color-muted)] transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-text)] focus-visible:bg-black/[0.03] focus-visible:outline-none"
           >
             <span aria-hidden="true">←</span>
             Back to projects
@@ -143,14 +143,14 @@ export default async function ProjectDetailPage({
               <div className="flex flex-col gap-2.5 text-[var(--color-text)]">
                 <a
                   href={project.githubUrl}
-                  className="inline-flex w-fit items-center gap-2 hover:text-[var(--color-muted)]"
+                  className="inline-flex w-fit items-center gap-2 rounded-full px-1 py-0.5 transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-muted)] focus-visible:bg-black/[0.03] focus-visible:outline-none"
                 >
                   GitHub <span aria-hidden="true">↗</span>
                 </a>
                 {project.demoUrl ? (
                   <a
                     href={project.demoUrl}
-                    className="inline-flex w-fit items-center gap-2 hover:text-[var(--color-muted)]"
+                    className="inline-flex w-fit items-center gap-2 rounded-full px-1 py-0.5 transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-muted)] focus-visible:bg-black/[0.03] focus-visible:outline-none"
                   >
                     Demo <span aria-hidden="true">↗</span>
                   </a>

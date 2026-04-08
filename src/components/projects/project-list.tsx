@@ -12,7 +12,7 @@ export function ProjectList({ projects }: ProjectListProps) {
         <article key={project.slug} className="group">
           <Link
             href={`/projects/${project.slug}`}
-            className="grid gap-5 rounded-[1rem] px-1 py-6 transition-colors duration-150 hover:bg-black/[0.015] sm:gap-6 sm:py-7 sm:px-2 md:grid-cols-[minmax(0,1fr)_auto] md:gap-8"
+            className="grid gap-5 rounded-[1rem] px-1 py-6 transition-colors duration-150 hover:bg-black/[0.015] focus-visible:bg-black/[0.02] focus-visible:outline-none sm:gap-6 sm:py-7 sm:px-2 md:grid-cols-[minmax(0,1fr)_auto] md:gap-8"
           >
             <div className="min-w-0">
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">

@@ -89,12 +89,12 @@ export function AskThePortfolio() {
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder='Try "Which projects use FastAPI?"'
-          className="w-full rounded-full border border-[var(--color-border)] bg-transparent px-4 py-3 text-sm text-[var(--color-text)] placeholder:text-[var(--color-muted)] focus:border-[rgba(17,17,17,0.2)]"
+          className="w-full rounded-full border border-[var(--color-border)] bg-transparent px-4 py-3 text-sm text-[var(--color-text)] placeholder:text-[var(--color-muted)] transition-colors duration-150 focus:border-[rgba(17,17,17,0.2)] focus-visible:bg-black/[0.015] focus-visible:outline-none"
         />
         <button
           type="submit"
           disabled={isLoading}
-          className="rounded-full border border-[var(--color-border)] px-4 py-3 text-sm text-[var(--color-text)] hover:bg-black/3 disabled:cursor-not-allowed disabled:opacity-60"
+          className="rounded-full border border-[var(--color-border)] px-4 py-3 text-sm text-[var(--color-text)] transition-colors duration-150 hover:bg-black/[0.03] focus-visible:bg-black/[0.03] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isLoading ? "Searching" : "Ask"}
         </button>
@@ -106,7 +106,7 @@ export function AskThePortfolio() {
             key={prompt}
             type="button"
             onClick={() => applyExample(prompt)}
-            className="rounded-full border border-[var(--color-border)] px-3 py-1.5 text-xs tracking-[0.08em] text-[var(--color-muted)] hover:bg-black/3 hover:text-[var(--color-text)]"
+            className="rounded-full border border-[var(--color-border)] px-3 py-1.5 text-xs tracking-[0.08em] text-[var(--color-muted)] transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-text)] focus-visible:bg-black/[0.03] focus-visible:text-[var(--color-text)] focus-visible:outline-none"
           >
             {prompt}
           </button>
@@ -124,7 +124,7 @@ export function AskThePortfolio() {
                   <div className="max-w-2xl">
                     <Link
                       href={`/projects/${project.slug}`}
-                      className="font-editorial text-[1.35rem] leading-tight sm:text-[1.5rem]"
+                      className="font-editorial text-[1.35rem] leading-tight transition-colors duration-150 hover:text-[var(--color-text)] focus-visible:text-[var(--color-text)] focus-visible:outline-none sm:text-[1.5rem]"
                     >
                       {project.title}
                     </Link>

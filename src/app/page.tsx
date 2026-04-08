@@ -44,7 +44,7 @@ export default function HomePage() {
             </h2>
             <Link
               href="/projects"
-              className="text-sm text-[var(--color-muted)] hover:text-[var(--color-text)]"
+              className="text-sm text-[var(--color-muted)] hover:text-[var(--color-text)] focus-visible:bg-black/[0.03] focus-visible:outline-none"
             >
               View all projects
             </Link>
@@ -55,7 +55,7 @@ export default function HomePage() {
               <article key={project.slug} className="group py-5 sm:py-6">
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="grid gap-3 rounded-[1rem] px-1 py-1 transition-colors duration-150 hover:bg-black/[0.015] sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-6 sm:px-2 sm:py-2"
+                  className="grid gap-3 rounded-[1rem] px-1 py-1 transition-colors duration-150 hover:bg-black/[0.015] focus-visible:bg-black/[0.02] focus-visible:outline-none sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-6 sm:px-2 sm:py-2"
                 >
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
