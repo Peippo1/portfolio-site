@@ -1,6 +1,11 @@
 import "server-only";
 
-import { mockTelemetryFeed, normalizeTelemetryCollection, normalizeTelemetryFeed, type TelemetryFeed } from "@/lib/telemetry";
+import {
+  mockTelemetryFeed,
+  normalizeTelemetryCollection,
+  normalizeTelemetryFeed,
+  type TelemetryResponse,
+} from "@/lib/telemetry";
 
 const telemetrySourceLabel =
   process.env.TELEMETRY_SOURCE_LABEL?.trim() || "nasa-jpl";
@@ -9,9 +14,9 @@ const telemetrySourceUrl = process.env.TELEMETRY_SOURCE_URL?.trim() || "";
 function buildTelemetryFeed(
   source: string,
   isLive: boolean,
-  items: TelemetryFeed["items"],
+  items: TelemetryResponse["items"],
   updatedAt = new Date().toISOString()
-): TelemetryFeed {
+): TelemetryResponse {
   return {
     updatedAt,
     source,
@@ -20,7 +25,7 @@ function buildTelemetryFeed(
   };
 }
 
-export async function fetchTelemetryFeed(): Promise<TelemetryFeed> {
+export async function fetchTelemetryFeed(): Promise<TelemetryResponse> {
   if (!telemetrySourceUrl) {
     return mockTelemetryFeed;
   }

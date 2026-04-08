@@ -12,6 +12,8 @@ export type TelemetryFeed = {
   items: TelemetryItem[];
 };
 
+export type TelemetryResponse = TelemetryFeed;
+
 type TelemetryShape = {
   updatedAt?: unknown;
   source?: unknown;
@@ -21,32 +23,26 @@ type TelemetryShape = {
 
 export const mockTelemetryFeed: TelemetryFeed = {
   updatedAt: "2026-04-08T09:42:00Z",
-  source: "mock",
+  source: "DSN-inspired telemetry",
   isLive: false,
   items: [
     {
-      station: "Goldstone",
-      mission: "Voyager 2",
-      status: "Nominal",
-      signalTime: "18m 12s",
-    },
-    {
       station: "Canberra",
-      mission: "Europa Clipper",
-      status: "Tracking",
-      signalTime: "4m 56s",
+      mission: "Voyager 2",
+      status: "Two-way",
+      signalTime: "18m 42s",
     },
     {
       station: "Madrid",
-      mission: "James Webb",
-      status: "Locked",
-      signalTime: "29m 08s",
+      mission: "Mars Odyssey",
+      status: "Downlink",
+      signalTime: "07m 12s",
     },
     {
       station: "DSS-14",
       mission: "Psyche",
-      status: "Queued",
-      signalTime: "7m 41s",
+      status: "Uplink",
+      signalTime: "12m 09s",
     },
   ],
 };
