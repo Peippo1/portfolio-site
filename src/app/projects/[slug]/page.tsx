@@ -16,11 +16,11 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="border-t border-[var(--color-border)] pt-7 sm:pt-9">
+    <section className="border-t border-[var(--color-border)] pt-7 sm:pt-8">
       <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
         {title}
       </h2>
-      <div className="mt-4 text-base leading-8 text-[var(--color-muted)] sm:text-[1.02rem]">
+      <div className="mt-4 text-[1rem] leading-8 text-[var(--color-muted)] sm:text-[1.03rem]">
         {children}
       </div>
     </section>
@@ -64,12 +64,13 @@ export default async function ProjectDetailPage({
   return (
     <main>
       <Container className="max-w-4xl py-14 sm:py-18 lg:py-20">
-        <div className="sticky top-[4.2rem] z-10 -mx-1 mb-8 w-fit rounded-full bg-[rgba(248,246,241,0.88)] px-2 py-1 backdrop-blur-sm">
+        <div className="sticky top-[4.2rem] z-10 mb-8 w-fit rounded-full bg-[rgba(248,246,241,0.9)] px-2 py-1 backdrop-blur-sm">
           <Link
             href="/projects"
-            className="text-sm text-[var(--color-muted)] hover:text-[var(--color-text)]"
+            className="inline-flex items-center gap-2 text-sm text-[var(--color-muted)] hover:text-[var(--color-text)]"
           >
-            ← Back to projects
+            <span aria-hidden="true">←</span>
+            Back to projects
           </Link>
         </div>
 
@@ -83,22 +84,22 @@ export default async function ProjectDetailPage({
               {project.title}
             </h1>
 
-            <p className="mt-4 text-[1.04rem] leading-8 text-[var(--color-muted)] sm:text-lg">
+            <p className="mt-4 text-[1.03rem] leading-8 text-[var(--color-muted)] sm:text-[1.08rem]">
               {project.shortSummary}
             </p>
 
             <dl className="mt-7 grid grid-cols-1 gap-y-4 border-t border-b border-[var(--color-border)] py-5 text-sm sm:grid-cols-3 sm:gap-x-6">
               <div>
                 <dt className="tracking-[0.16em] text-[var(--color-muted)] uppercase">
-                  Category
-                </dt>
-                <dd className="mt-2 text-[var(--color-text)]">{project.category}</dd>
-              </div>
-              <div>
-                <dt className="tracking-[0.16em] text-[var(--color-muted)] uppercase">
                   Year
                 </dt>
                 <dd className="mt-2 text-[var(--color-text)]">{project.year}</dd>
+              </div>
+              <div>
+                <dt className="tracking-[0.16em] text-[var(--color-muted)] uppercase">
+                  Category
+                </dt>
+                <dd className="mt-2 text-[var(--color-text)]">{project.category}</dd>
               </div>
               <div>
                 <dt className="tracking-[0.16em] text-[var(--color-muted)] uppercase">
@@ -110,7 +111,7 @@ export default async function ProjectDetailPage({
           </header>
 
           <div className="mt-9 space-y-9 sm:mt-10 sm:space-y-10">
-            <Section title="Overview">
+            <Section title="Intro">
               <p>{project.longSummary}</p>
             </Section>
 
@@ -118,17 +119,17 @@ export default async function ProjectDetailPage({
               <p>{project.problem}</p>
             </Section>
 
-            <Section title="Solution">
+            <Section title="Approach">
               <p>{project.solution}</p>
             </Section>
 
             <Section title="Stack">
-              <p className="text-sm tracking-[0.14em] uppercase sm:text-[0.82rem]">
+              <p className="text-xs tracking-[0.14em] text-[var(--color-text)] uppercase sm:text-[0.8rem]">
                 {project.stack.join(" / ")}
               </p>
             </Section>
 
-            <Section title="Key highlights">
+            <Section title="Selected highlights">
               <ul className="space-y-4">
                 {project.highlights.map((highlight) => (
                   <li key={highlight} className="border-l border-[var(--color-border)] pl-4">
