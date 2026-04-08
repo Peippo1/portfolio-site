@@ -19,21 +19,22 @@ export default function WritingPage() {
           description="Short essays and working notes, presented as a clean index rather than a blog theme."
         />
 
-        <section className="mt-14 divide-y divide-[var(--color-border)] border-y border-[var(--color-border)]">
+        <section className="mt-14 border-y border-[var(--color-border)]">
           {writingEntries.map((entry) => (
-            <article key={entry.slug} className="py-6 sm:py-7">
-              <div className="grid gap-4 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-6">
-                <p className="text-sm tracking-[0.14em] text-[var(--color-muted)] uppercase">
-                  {entry.date}
+            <article
+              key={entry.slug}
+              className="grid gap-4 border-b border-[var(--color-border)] py-6 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-6 sm:py-7"
+            >
+              <p className="text-sm tracking-[0.14em] text-[var(--color-muted)] uppercase">
+                {entry.date}
+              </p>
+              <div>
+                <h2 className="font-editorial text-[1.5rem] leading-tight sm:text-[1.75rem]">
+                  {entry.title}
+                </h2>
+                <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-muted)] sm:text-base">
+                  {entry.summary}
                 </p>
-                <div>
-                  <h2 className="font-editorial text-[1.5rem] leading-tight sm:text-[1.75rem]">
-                    {entry.title}
-                  </h2>
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-muted)] sm:text-base">
-                    {entry.summary}
-                  </p>
-                </div>
               </div>
             </article>
           ))}

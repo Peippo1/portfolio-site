@@ -26,7 +26,7 @@ export default function AboutPage() {
         />
 
         <section className="mt-14 max-w-2xl border-t border-[var(--color-border)] pt-7">
-          <div className="space-y-8 text-base leading-8 text-[var(--color-muted)]">
+          <div className="space-y-8 text-[1rem] leading-8 text-[var(--color-muted)] sm:text-[1.03rem]">
             <div>
               <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
                 Current focus

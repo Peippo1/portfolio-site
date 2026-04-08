@@ -164,8 +164,11 @@ export default async function ProjectDetailPage({
             </Section>
 
             {repositoryMetadata ? (
-              <Section title="Repository freshness">
-                <dl className="grid gap-4 text-sm sm:grid-cols-3">
+              <section className="border-t border-[var(--color-border)] pt-7 sm:pt-8">
+                <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
+                  Repository freshness
+                </h2>
+                <dl className="mt-4 grid gap-4 text-sm sm:grid-cols-3">
                   {repositoryMetadata.repoName ? (
                     <div>
                       <dt className="tracking-[0.16em] text-[var(--color-muted)] uppercase">
@@ -197,7 +200,7 @@ export default async function ProjectDetailPage({
                     </div>
                   ) : null}
                 </dl>
-              </Section>
+              </section>
             ) : null}
           </div>
         </article>
