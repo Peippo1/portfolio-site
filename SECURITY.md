@@ -11,3 +11,11 @@ This portfolio keeps the security model intentionally small and conservative.
 - Use Dependabot and GitHub security alerts to catch dependency or advisory issues early.
 
 When adding new environment variables, keep browser-exposed values limited to `NEXT_PUBLIC_` keys only when the client truly needs them.
+
+## Dependency notes
+
+- `next`, `react`, and `react-dom` are the only runtime dependencies; they are required for the App Router site itself.
+- `tailwindcss` and `@tailwindcss/postcss` are required for the current styling pipeline.
+- `typescript`, `eslint`, `eslint-config-next`, `@types/node`, `@types/react`, and `@types/react-dom` are build-time tooling and type support.
+- No `axios` dependency is present. Native `fetch` is used for server components and route handlers.
+- Keep `package-lock.json` committed so installs stay deterministic and reviewable.
