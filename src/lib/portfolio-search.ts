@@ -13,6 +13,8 @@ export type PortfolioSearchResponse = {
   fallbackResults: PortfolioSearchResult[];
 };
 
+export type QueryIntent = "filter" | "list" | "explain" | "default";
+
 type SearchContext = {
   terms: string[];
   expandedTerms: string[];
@@ -77,6 +79,24 @@ function tokenize(query: string) {
         .filter((term) => !stopWords.has(term))
     )
   );
+}
+
+export function detectQueryIntent(query: string): QueryIntent {
+  const normalized = normalizeQuery(query);
+
+  if (normalized.includes("which")) {
+    return "filter";
+  }
+
+  if (normalized.includes("show")) {
+    return "list";
+  }
+
+  if (normalized.includes("what")) {
+    return "explain";
+  }
+
+  return "default";
 }
 
 function expandTerms(terms: string[]) {
