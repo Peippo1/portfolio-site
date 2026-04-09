@@ -8,6 +8,11 @@ export type PortfolioSearchResult = Project & {
   reasons: string[];
 };
 
+export type PortfolioSearchResponse = {
+  results: PortfolioSearchResult[];
+  fallbackResults: PortfolioSearchResult[];
+};
+
 type SearchContext = {
   terms: string[];
   expandedTerms: string[];
@@ -275,11 +280,11 @@ function scoreProject(project: Project, context: SearchContext) {
   };
 }
 
-export function searchPortfolioProjects(query: string) {
+function rankPortfolioProjects(query: string) {
   const terms = tokenize(query);
   const context = { terms, expandedTerms: expandTerms(terms) };
 
-  const ranked = projects
+  return projects
     .map((project) => {
       const result = scoreProject(project, context);
 
@@ -289,8 +294,17 @@ export function searchPortfolioProjects(query: string) {
         ...result,
       };
     })
-    .filter((project) => project.score > 1)
     .sort((a, b) => b.score - a.score || b.year.localeCompare(a.year));
+}
 
-  return ranked.slice(0, 4);
+export function searchPortfolioProjects(query: string) {
+  return rankPortfolioProjects(query).filter((project) => project.score > 1).slice(0, 3);
+}
+
+export function searchPortfolioProjectsWithFallback(query: string) {
+  const ranked = rankPortfolioProjects(query);
+  const results = ranked.filter((project) => project.score > 1).slice(0, 3);
+  const fallbackResults = results.length === 0 ? ranked.filter((project) => project.score > 0).slice(0, 2) : [];
+
+  return { results, fallbackResults };
 }

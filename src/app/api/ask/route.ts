@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { searchPortfolioProjects } from "@/lib/portfolio-search";
+import { searchPortfolioProjectsWithFallback } from "@/lib/portfolio-search";
 
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => null)) as
@@ -18,13 +18,14 @@ export async function POST(request: Request) {
     );
   }
 
-  const results = searchPortfolioProjects(query);
+  const { results, fallbackResults } = searchPortfolioProjectsWithFallback(query);
 
   return NextResponse.json({
     results,
+    fallbackResults,
     message:
       results.length > 0
         ? `Found ${results.length} matching project${results.length === 1 ? "" : "s"}.`
-        : "No close matches found in the current portfolio data.",
+        : "No strong matches found.",
   });
 }

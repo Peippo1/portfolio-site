@@ -7,6 +7,7 @@ import type { PortfolioSearchResult } from "@/lib/portfolio-search";
 
 type AskThePortfolioResponse = {
   results: PortfolioSearchResult[];
+  fallbackResults?: PortfolioSearchResult[];
   message: string;
 };
 
@@ -19,6 +20,7 @@ const examplePrompts = [
 export function AskThePortfolio() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<PortfolioSearchResult[]>([]);
+  const [fallbackResults, setFallbackResults] = useState<PortfolioSearchResult[]>([]);
   const [message, setMessage] = useState(
     "Try a question about stack, category, or project style."
   );
@@ -30,6 +32,7 @@ export function AskThePortfolio() {
 
     if (!trimmed) {
       setResults([]);
+      setFallbackResults([]);
       setMessage("Try a question about stack, category, or project style.");
       return;
     }
@@ -47,9 +50,11 @@ export function AskThePortfolio() {
 
       const data = (await response.json()) as AskThePortfolioResponse;
       setResults(data.results);
+      setFallbackResults(data.fallbackResults ?? []);
       setMessage(data.message);
     } catch {
       setResults([]);
+      setFallbackResults([]);
       setMessage("Search is temporarily unavailable.");
     } finally {
       setIsLoading(false);
@@ -135,6 +140,34 @@ export function AskThePortfolio() {
 
                   <div className="text-sm text-[var(--color-muted)]">
                     {project.category}
+                  </div>
+                </div>
+
+                <p className="mt-3 text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">
+                  {project.stack.join(" / ")}
+                </p>
+              </article>
+            ))}
+          </div>
+        ) : fallbackResults.length > 0 ? (
+          <div className="mt-4 divide-y divide-[var(--color-border)]">
+            {fallbackResults.map((project) => (
+              <article key={project.slug} className="py-4 first:pt-0 last:pb-0">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="max-w-2xl">
+                    <Link
+                      href={project.href}
+                      className="font-editorial text-[1.35rem] leading-tight transition-colors duration-150 hover:text-[var(--color-text)] focus-visible:text-[var(--color-text)] focus-visible:outline-none sm:text-[1.5rem]"
+                    >
+                      {project.title}
+                    </Link>
+                    <p className="mt-2 text-sm leading-7 text-[var(--color-muted)]">
+                      {project.explanation}
+                    </p>
+                  </div>
+
+                  <div className="text-sm text-[var(--color-muted)]">
+                    Suggestion
                   </div>
                 </div>
 
