@@ -13,6 +13,14 @@ type SearchContext = {
   expandedTerms: string[];
 };
 
+type FieldMatches = {
+  title: string[];
+  stack: string[];
+  category: string[];
+  summary: string[];
+  highlights: string[];
+};
+
 const stopWords = new Set([
   "is",
   "the",
@@ -99,7 +107,8 @@ function scoreField(
   exactScore: number,
   partialScore: number,
   reasons: string[],
-  label: string
+  label: string,
+  matches: string[]
 ) {
   const normalizedField = normalizeQuery(fieldText);
   const fieldTokens = tokenizeText(fieldText);
@@ -110,11 +119,13 @@ function scoreField(
 
     if (exactMatch) {
       reasons.push(`${label} exact match "${term}"`);
+      matches.push(term);
       return score + exactScore;
     }
 
     if (normalizedField.includes(term)) {
       reasons.push(`${label} mentions "${term}"`);
+      matches.push(term);
       return score + partialScore;
     }
 
@@ -134,9 +145,71 @@ function buildExplanation(project: Project, reasons: string[]) {
     .join(". ");
 }
 
+function cleanTermList(terms: string[]) {
+  return Array.from(new Set(terms)).slice(0, 3);
+}
+
+function explainFromMatches(project: Project, matches: FieldMatches) {
+  const stackTerms = cleanTermList(matches.stack);
+  const categoryTerms = cleanTermList(matches.category);
+  const summaryTerms = cleanTermList(matches.summary);
+  const highlightTerms = cleanTermList(matches.highlights);
+
+  if (stackTerms.some((term) => term.includes("fastapi"))) {
+    return "Uses FastAPI for backend services.";
+  }
+
+  if (
+    stackTerms.some((term) => term.includes("openai") || term.includes("llm")) ||
+    summaryTerms.some((term) => term.includes("openai") || term.includes("llm") || term.includes("ai"))
+  ) {
+    return "AI-driven workflow system with structured outputs.";
+  }
+
+  if (
+    categoryTerms.some((term) => term.includes("data")) ||
+    summaryTerms.some((term) => term.includes("pipeline") || term.includes("analytics")) ||
+    highlightTerms.some((term) => term.includes("pipeline") || term.includes("trend"))
+  ) {
+    return "Focuses on data pipelines and trend analysis.";
+  }
+
+  if (
+    stackTerms.some((term) => term.includes("react") || term.includes("ui") || term.includes("interface")) ||
+    categoryTerms.some((term) => term.includes("ai products") || term.includes("product"))
+  ) {
+    return "Product-facing system with a clear user workflow.";
+  }
+
+  if (stackTerms.length > 0) {
+    return `Uses ${stackTerms[0]} in the core stack.`;
+  }
+
+  if (categoryTerms.length > 0) {
+    return `Sits in ${project.category.toLowerCase()}.`;
+  }
+
+  if (summaryTerms.length > 0) {
+    return `Mentions ${summaryTerms[0]} in the project summary.`;
+  }
+
+  if (highlightTerms.length > 0) {
+    return `Highlights ${highlightTerms[0]} as a notable capability.`;
+  }
+
+  return `Relevant because it sits in ${project.category.toLowerCase()}.`;
+}
+
 function scoreProject(project: Project, context: SearchContext) {
   let score = 0;
   const reasons: string[] = [];
+  const matches: FieldMatches = {
+    title: [],
+    stack: [],
+    category: [],
+    summary: [],
+    highlights: [],
+  };
   const summaryText = [
     project.shortSummary,
     project.longSummary,
@@ -149,16 +222,56 @@ function scoreProject(project: Project, context: SearchContext) {
     return { score: 0, reasons, explanation: "" };
   }
 
-  score += scoreField(context.expandedTerms, project.title, 3, 2, reasons, "title");
-  score += scoreField(context.expandedTerms, project.stack.join(" "), 3, 2, reasons, "stack");
-  score += scoreField(context.expandedTerms, project.category, 2, 1, reasons, "category");
-  score += scoreField(context.expandedTerms, summaryText, 2, 1, reasons, "summary");
-  score += scoreField(context.expandedTerms, highlightsText, 1, 0.5, reasons, "highlights");
+  score += scoreField(
+    context.expandedTerms,
+    project.title,
+    3,
+    2,
+    reasons,
+    "title",
+    matches.title
+  );
+  score += scoreField(
+    context.expandedTerms,
+    project.stack.join(" "),
+    3,
+    2,
+    reasons,
+    "stack",
+    matches.stack
+  );
+  score += scoreField(
+    context.expandedTerms,
+    project.category,
+    2,
+    1,
+    reasons,
+    "category",
+    matches.category
+  );
+  score += scoreField(
+    context.expandedTerms,
+    summaryText,
+    2,
+    1,
+    reasons,
+    "summary",
+    matches.summary
+  );
+  score += scoreField(
+    context.expandedTerms,
+    highlightsText,
+    1,
+    0.5,
+    reasons,
+    "highlights",
+    matches.highlights
+  );
 
   return {
     score,
     reasons,
-    explanation: buildExplanation(project, reasons),
+    explanation: explainFromMatches(project, matches) || buildExplanation(project, reasons),
   };
 }
 
