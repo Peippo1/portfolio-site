@@ -148,6 +148,10 @@ export default async function ProjectDetailPage({
                 : project.longSummary}
             </p>
 
+            <p className="mt-6 text-xs leading-6 tracking-[0.14em] text-[var(--color-muted)] uppercase sm:text-[0.8rem]">
+              {project.year} / {project.category} / {project.stack.join(" / ")}
+            </p>
+
             <dl className="mt-7 grid grid-cols-1 gap-y-4 border-t border-b border-[var(--color-border)] py-5 text-sm sm:grid-cols-3 sm:gap-x-6">
               <div>
                 <dt className="tracking-[0.16em] text-[var(--color-muted)] uppercase">

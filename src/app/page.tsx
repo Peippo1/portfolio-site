@@ -63,10 +63,10 @@ export default function HomePage() {
                       <h3 className="font-editorial text-[1.72rem] leading-tight transition-colors duration-150 group-hover:text-[var(--color-text)] sm:text-[1.95rem]">
                         {project.title}
                       </h3>
-                      <span className="text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">
-                        {project.year}
-                      </span>
                     </div>
+                    <p className="mt-1 text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">
+                      {project.year} / {project.status}
+                    </p>
                     <p className="mt-2 max-w-2xl text-sm leading-7 text-[var(--color-muted)] sm:text-[0.98rem]">
                       {project.shortSummary}
                     </p>

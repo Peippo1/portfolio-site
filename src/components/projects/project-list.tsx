@@ -19,10 +19,11 @@ export function ProjectList({ projects }: ProjectListProps) {
                 <h3 className="font-editorial text-[1.6rem] leading-tight transition-colors duration-150 group-hover:text-[var(--color-text)] sm:text-[1.9rem]">
                   {project.title}
                 </h3>
-                <span className="text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">
-                  {project.year}
-                </span>
               </div>
+
+              <p className="mt-1 text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">
+                {project.year} / {project.status}
+              </p>
 
               <p className="mt-2.5 max-w-2xl text-[0.96rem] leading-7 text-[var(--color-muted)] sm:text-[1rem]">
                 {project.shortSummary}
