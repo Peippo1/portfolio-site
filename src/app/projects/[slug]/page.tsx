@@ -31,6 +31,18 @@ function Section({
   );
 }
 
+function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul className="space-y-4">
+      {items.map((item) => (
+        <li key={item} className="border-l border-[var(--color-border)] pl-4">
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 const campaignForgeCaseStudy = {
   intro:
     "CampaignForge-AI is an AI-assisted campaign planning system for turning strategy into reviewable briefs, audience angles, and channel-ready outputs.",
@@ -43,11 +55,6 @@ const campaignForgeCaseStudy = {
     "I modeled campaign inputs as structured strategy objects and used staged generation rather than a single prompt so each output could be checked independently.",
     "Human review sits between generation steps, which keeps the workflow legible and avoids pushing unverified copy straight into downstream channels.",
     "The system favors text-first interfaces and explicit output shapes because the product needs to support editing, not just generation.",
-  ],
-  pipeline: [
-    "Input: campaign goal, audience context, product notes, and channel constraints.",
-    "Processing: structured strategy assembly, LLM-assisted drafting, and reviewable output staging.",
-    "Outputs: brief, audience angles, message variants, and channel-specific copy blocks.",
   ],
   stackGroups: [
     {
@@ -106,6 +113,7 @@ export default async function ProjectDetailPage({
   const { slug } = await params;
   const project = getProjectBySlug(slug);
   const repositoryMetadata = getProjectGitHubMetadata(slug);
+  const isCampaignForge = slug === "campaignforge-ai";
 
   if (!project) {
     notFound();
@@ -135,9 +143,9 @@ export default async function ProjectDetailPage({
             </h1>
 
             <p className="mt-4 text-[1.03rem] leading-8 text-[var(--color-muted)] sm:text-[1.08rem]">
-              {slug === "campaignforge-ai"
+              {isCampaignForge
                 ? campaignForgeCaseStudy.intro
-                : project.shortSummary}
+                : project.longSummary}
             </p>
 
             <dl className="mt-7 grid grid-cols-1 gap-y-4 border-t border-b border-[var(--color-border)] py-5 text-sm sm:grid-cols-3 sm:gap-x-6">
@@ -163,122 +171,62 @@ export default async function ProjectDetailPage({
           </header>
 
           <div className="mt-9 space-y-9 sm:mt-10 sm:space-y-10">
-            {slug === "campaignforge-ai" ? (
-              <>
-                <Section title="Problem">
-                  <ul className="space-y-4">
-                    {campaignForgeCaseStudy.problem.map((item) => (
-                      <li
-                        key={item}
-                        className="border-l border-[var(--color-border)] pl-4"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </Section>
+            <Section title="Intro">
+              <p>{isCampaignForge ? campaignForgeCaseStudy.intro : project.longSummary}</p>
+            </Section>
 
-                <Section title="Approach">
-                  <ul className="space-y-4">
-                    {campaignForgeCaseStudy.approach.map((item) => (
-                      <li
-                        key={item}
-                        className="border-l border-[var(--color-border)] pl-4"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </Section>
+            <Section title="Problem">
+              {isCampaignForge ? (
+                <BulletList items={campaignForgeCaseStudy.problem} />
+              ) : (
+                <p>{project.problem}</p>
+              )}
+            </Section>
 
-                <Section title="System overview">
-                  <ol className="space-y-4">
-                    {campaignForgeCaseStudy.pipeline.map((item) => (
-                      <li
-                        key={item}
-                        className="border-l border-[var(--color-border)] pl-4"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ol>
-                </Section>
+            <Section title="Approach">
+              {isCampaignForge ? (
+                <BulletList items={campaignForgeCaseStudy.approach} />
+              ) : (
+                <p>{project.solution}</p>
+              )}
+            </Section>
 
-                <Section title="Stack">
-                  <div className="grid gap-5 sm:grid-cols-3">
-                    {campaignForgeCaseStudy.stackGroups.map((group) => (
-                      <div key={group.label}>
-                        <p className="text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">
-                          {group.label}
-                        </p>
-                        <p className="mt-2 text-[var(--color-text)]">
-                          {group.items.join(" / ")}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </Section>
+            <Section title="Stack">
+              {isCampaignForge ? (
+                <div className="grid gap-5 sm:grid-cols-3">
+                  {campaignForgeCaseStudy.stackGroups.map((group) => (
+                    <div key={group.label}>
+                      <p className="text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">
+                        {group.label}
+                      </p>
+                      <p className="mt-2 text-[var(--color-text)]">
+                        {group.items.join(" / ")}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-xs tracking-[0.14em] text-[var(--color-text)] uppercase sm:text-[0.8rem]">
+                  {project.stack.join(" / ")}
+                </p>
+              )}
+            </Section>
 
-                <Section title="Highlights">
-                  <ul className="space-y-4">
-                    {campaignForgeCaseStudy.highlights.map((highlight) => (
-                      <li
-                        key={highlight}
-                        className="border-l border-[var(--color-border)] pl-4"
-                      >
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
-                </Section>
+            <Section title="Highlights">
+              <BulletList
+                items={
+                  isCampaignForge
+                    ? campaignForgeCaseStudy.highlights
+                    : project.highlights
+                }
+              />
+            </Section>
 
-                <Section title="What I learned">
-                  <ul className="space-y-4">
-                    {campaignForgeCaseStudy.learned.map((item) => (
-                      <li
-                        key={item}
-                        className="border-l border-[var(--color-border)] pl-4"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </Section>
-              </>
-            ) : (
-              <>
-                <Section title="Intro">
-                  <p>{project.longSummary}</p>
-                </Section>
-
-                <Section title="Problem">
-                  <p>{project.problem}</p>
-                </Section>
-
-                <Section title="Approach">
-                  <p>{project.solution}</p>
-                </Section>
-
-                <Section title="Stack">
-                  <p className="text-xs tracking-[0.14em] text-[var(--color-text)] uppercase sm:text-[0.8rem]">
-                    {project.stack.join(" / ")}
-                  </p>
-                </Section>
-
-                <Section title="Selected highlights">
-                  <ul className="space-y-4">
-                    {project.highlights.map((highlight) => (
-                      <li
-                        key={highlight}
-                        className="border-l border-[var(--color-border)] pl-4"
-                      >
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
-                </Section>
-              </>
-            )}
+            {isCampaignForge ? (
+              <Section title="What I learned">
+                <BulletList items={campaignForgeCaseStudy.learned} />
+              </Section>
+            ) : null}
 
             <Section title="Links">
               <div className="flex flex-col gap-2.5 text-[var(--color-text)]">
