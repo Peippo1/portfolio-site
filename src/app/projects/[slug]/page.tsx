@@ -31,6 +31,51 @@ function Section({
   );
 }
 
+const campaignForgeCaseStudy = {
+  intro:
+    "CampaignForge-AI is an AI-assisted campaign planning system for turning strategy into reviewable briefs, audience angles, and channel-ready outputs.",
+  problem: [
+    "Marketing teams often split planning, drafting, and channel adaptation across separate tools, which makes it hard to preserve campaign intent as work moves forward.",
+    "The non-trivial part is not generation itself, but keeping strategy, copy, and delivery aligned while still letting people edit and review the work in a controlled flow.",
+    "It is aimed at teams that need to move quickly without turning campaign work into a black-box prompt experiment.",
+  ],
+  approach: [
+    "I modeled campaign inputs as structured strategy objects and used staged generation rather than a single prompt so each output could be checked independently.",
+    "Human review sits between generation steps, which keeps the workflow legible and avoids pushing unverified copy straight into downstream channels.",
+    "The system favors text-first interfaces and explicit output shapes because the product needs to support editing, not just generation.",
+  ],
+  pipeline: [
+    "Input: campaign goal, audience context, product notes, and channel constraints.",
+    "Processing: structured strategy assembly, LLM-assisted drafting, and reviewable output staging.",
+    "Outputs: brief, audience angles, message variants, and channel-specific copy blocks.",
+  ],
+  stackGroups: [
+    {
+      label: "Frontend",
+      items: ["Next.js", "Tailwind CSS"],
+    },
+    {
+      label: "Backend",
+      items: ["TypeScript", "PostgreSQL"],
+    },
+    {
+      label: "AI",
+      items: ["OpenAI"],
+    },
+  ],
+  highlights: [
+    "Modeled campaign inputs as reusable strategy objects instead of one-off prompts.",
+    "Built staged generation flows with explicit human review points.",
+    "Created output templates for email, paid social, and landing page copy.",
+    "Kept the interface text-first so revision stays fast and predictable.",
+  ],
+  learned: [
+    "The best output quality came from narrowing the system around a clear workflow, not from adding more generation depth.",
+    "Keeping intermediate artifacts visible made the product easier to trust and easier to debug.",
+    "Small structure decisions at the input layer had a bigger impact on product quality than prompt tweaks alone.",
+  ],
+};
+
 export async function generateStaticParams() {
   return projects.map((project) => ({
     slug: project.slug,
@@ -90,7 +135,9 @@ export default async function ProjectDetailPage({
             </h1>
 
             <p className="mt-4 text-[1.03rem] leading-8 text-[var(--color-muted)] sm:text-[1.08rem]">
-              {project.shortSummary}
+              {slug === "campaignforge-ai"
+                ? campaignForgeCaseStudy.intro
+                : project.shortSummary}
             </p>
 
             <dl className="mt-7 grid grid-cols-1 gap-y-4 border-t border-b border-[var(--color-border)] py-5 text-sm sm:grid-cols-3 sm:gap-x-6">
@@ -116,33 +163,122 @@ export default async function ProjectDetailPage({
           </header>
 
           <div className="mt-9 space-y-9 sm:mt-10 sm:space-y-10">
-            <Section title="Intro">
-              <p>{project.longSummary}</p>
-            </Section>
+            {slug === "campaignforge-ai" ? (
+              <>
+                <Section title="Problem">
+                  <ul className="space-y-4">
+                    {campaignForgeCaseStudy.problem.map((item) => (
+                      <li
+                        key={item}
+                        className="border-l border-[var(--color-border)] pl-4"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </Section>
 
-            <Section title="Problem">
-              <p>{project.problem}</p>
-            </Section>
+                <Section title="Approach">
+                  <ul className="space-y-4">
+                    {campaignForgeCaseStudy.approach.map((item) => (
+                      <li
+                        key={item}
+                        className="border-l border-[var(--color-border)] pl-4"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </Section>
 
-            <Section title="Approach">
-              <p>{project.solution}</p>
-            </Section>
+                <Section title="System overview">
+                  <ol className="space-y-4">
+                    {campaignForgeCaseStudy.pipeline.map((item) => (
+                      <li
+                        key={item}
+                        className="border-l border-[var(--color-border)] pl-4"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ol>
+                </Section>
 
-            <Section title="Stack">
-              <p className="text-xs tracking-[0.14em] text-[var(--color-text)] uppercase sm:text-[0.8rem]">
-                {project.stack.join(" / ")}
-              </p>
-            </Section>
+                <Section title="Stack">
+                  <div className="grid gap-5 sm:grid-cols-3">
+                    {campaignForgeCaseStudy.stackGroups.map((group) => (
+                      <div key={group.label}>
+                        <p className="text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">
+                          {group.label}
+                        </p>
+                        <p className="mt-2 text-[var(--color-text)]">
+                          {group.items.join(" / ")}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </Section>
 
-            <Section title="Selected highlights">
-              <ul className="space-y-4">
-                {project.highlights.map((highlight) => (
-                  <li key={highlight} className="border-l border-[var(--color-border)] pl-4">
-                    {highlight}
-                  </li>
-                ))}
-              </ul>
-            </Section>
+                <Section title="Highlights">
+                  <ul className="space-y-4">
+                    {campaignForgeCaseStudy.highlights.map((highlight) => (
+                      <li
+                        key={highlight}
+                        className="border-l border-[var(--color-border)] pl-4"
+                      >
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </Section>
+
+                <Section title="What I learned">
+                  <ul className="space-y-4">
+                    {campaignForgeCaseStudy.learned.map((item) => (
+                      <li
+                        key={item}
+                        className="border-l border-[var(--color-border)] pl-4"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </Section>
+              </>
+            ) : (
+              <>
+                <Section title="Intro">
+                  <p>{project.longSummary}</p>
+                </Section>
+
+                <Section title="Problem">
+                  <p>{project.problem}</p>
+                </Section>
+
+                <Section title="Approach">
+                  <p>{project.solution}</p>
+                </Section>
+
+                <Section title="Stack">
+                  <p className="text-xs tracking-[0.14em] text-[var(--color-text)] uppercase sm:text-[0.8rem]">
+                    {project.stack.join(" / ")}
+                  </p>
+                </Section>
+
+                <Section title="Selected highlights">
+                  <ul className="space-y-4">
+                    {project.highlights.map((highlight) => (
+                      <li
+                        key={highlight}
+                        className="border-l border-[var(--color-border)] pl-4"
+                      >
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </Section>
+              </>
+            )}
 
             <Section title="Links">
               <div className="flex flex-col gap-2.5 text-[var(--color-text)]">

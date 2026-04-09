@@ -20,40 +20,57 @@ export default function AboutPage() {
       <Container className="py-16 sm:py-20 lg:py-24">
         <PageIntro
           eyebrow="About"
-          title="A product-minded engineer focused on useful AI systems and durable software."
-          description="I build applied AI products and systems that stay understandable under real use, with a bias toward clear interfaces and durable implementation."
+          title="AI Implementation Engineer building systems that need to work in the real world."
+          description="I design and ship AI systems, data pipelines, and production software with a focus on clarity, reliability, and practical use."
         />
 
         <section className="mt-14 max-w-2xl border-t border-[var(--color-border)] pt-7">
           <div className="space-y-8 text-[1rem] leading-8 text-[var(--color-muted)] sm:text-[1.03rem]">
             <div>
               <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
+                Opening
+              </h2>
+              <p className="mt-3">
+                I’m Tim Finch, an AI Implementation Engineer focused on AI
+                systems, data pipelines, and production software. I build
+                practical tools that turn messy inputs into reliable workflows
+                and clear outputs.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
                 Current focus
               </h2>
               <p className="mt-3">
-                I’m currently working on applied AI products, evaluation loops,
-                and the infrastructure that keeps model-assisted workflows
-                dependable in practice.
+                I’m currently working on applied AI products, evaluation
+                loops, and infrastructure that keeps model-assisted workflows
+                dependable in practice. I’m drawn to systems where the product
+                shape is as important as the model behavior.
               </p>
             </div>
 
             <div>
               <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
-                What I enjoy building
-              </h2>
-              <p className="mt-3">
-                I gravitate toward systems that combine product judgment with
-                technical clarity: AI tools with sensible interfaces, APIs that
-                slot into real workflows, and data products that make complex
-                behavior easier to inspect.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
-                Base
+                Background
               </h2>
               <p className="mt-3">{profile.location}</p>
+              <p className="mt-3">
+                My background sits between product engineering and
+                model-enabled systems. I like work that starts with ambiguity
+                and ends with something people can trust.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
+                Working style
+              </h2>
+              <p className="mt-3">
+                I prefer clear information models, small reliable interfaces,
+                and enough feedback in the system to make tradeoffs visible. I
+                try to keep the critical path boring and the outcome legible.
+              </p>
             </div>
           </div>
 
