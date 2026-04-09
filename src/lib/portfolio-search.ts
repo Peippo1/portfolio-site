@@ -20,6 +20,25 @@ type IntentMatcher = {
   explanation: string;
 };
 
+const stopWords = new Set([
+  "is",
+  "the",
+  "a",
+  "an",
+  "what",
+  "which",
+  "show",
+  "me",
+  "do",
+  "does",
+  "with",
+  "and",
+  "or",
+  "to",
+  "for",
+  "of",
+]);
+
 const categoryAliases: Record<Project["category"], string[]> = {
   "AI Products": ["ai", "product", "product-oriented", "product like"],
   "Data & Analytics": ["data", "analytics", "data engineering", "pipeline"],
@@ -64,6 +83,7 @@ function tokenize(query: string) {
       normalizeQuery(query)
         .split(/\s+/)
         .filter(Boolean)
+        .filter((term) => !stopWords.has(term))
     )
   );
 }
