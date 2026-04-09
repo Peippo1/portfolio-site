@@ -10,14 +10,6 @@ export type PortfolioSearchResult = Project & {
 
 type SearchContext = {
   terms: string[];
-  normalized: string;
-};
-
-type IntentMatcher = {
-  terms: string[];
-  categories: Project["category"][];
-  bonus: number;
-  explanation: string;
 };
 
 const stopWords = new Set([
@@ -39,42 +31,12 @@ const stopWords = new Set([
   "of",
 ]);
 
-const categoryAliases: Record<Project["category"], string[]> = {
-  "AI Products": ["ai", "product", "product-oriented", "product like"],
-  "Data & Analytics": ["data", "analytics", "data engineering", "pipeline"],
-  "APIs & Services": ["api", "apis", "service", "backend", "integration"],
-  Experiments: ["experiment", "prototype", "poc", "exploration"],
-};
-
-const intentMatchers: IntentMatcher[] = [
-  {
-    terms: ["fastapi"],
-    categories: ["Data & Analytics", "APIs & Services"],
-    bonus: 5,
-    explanation: "This work uses FastAPI or a similar service layer.",
-  },
-  {
-    terms: ["data engineering", "pipeline", "ingestion", "streaming"],
-    categories: ["Data & Analytics"],
-    bonus: 5,
-    explanation: "This is closer to data engineering or analytics work.",
-  },
-  {
-    terms: ["product", "product-oriented", "product oriented", "product-like"],
-    categories: ["AI Products"],
-    bonus: 5,
-    explanation: "This reads most like a product-facing AI workflow.",
-  },
-  {
-    terms: ["api", "apis", "openai", "llm", "backend"],
-    categories: ["APIs & Services", "AI Products"],
-    bonus: 5,
-    explanation: "This touches AI APIs, backend orchestration, or service design.",
-  },
-];
-
 function normalizeQuery(query: string) {
-  return query.trim().toLowerCase().replace(/[^\w\s+-]/g, " ");
+  return query
+    .trim()
+    .toLowerCase()
+    .replace(/[^\w\s+-]/g, " ")
+    .replace(/\s+/g, " ");
 }
 
 function tokenize(query: string) {
@@ -88,9 +50,39 @@ function tokenize(query: string) {
   );
 }
 
-function includesAny(text: string, terms: string[]) {
-  const value = text.toLowerCase();
-  return terms.some((term) => value.includes(term));
+function tokenizeText(text: string) {
+  return normalizeQuery(text)
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+function scoreField(
+  terms: string[],
+  fieldText: string,
+  exactScore: number,
+  partialScore: number,
+  reasons: string[],
+  label: string
+) {
+  const normalizedField = normalizeQuery(fieldText);
+  const fieldTokens = tokenizeText(fieldText);
+
+  return terms.reduce((score, term) => {
+    const exactMatch =
+      fieldTokens.includes(term) || normalizedField === term || normalizedField.includes(` ${term} `);
+
+    if (exactMatch) {
+      reasons.push(`${label} exact match "${term}"`);
+      return score + exactScore;
+    }
+
+    if (normalizedField.includes(term)) {
+      reasons.push(`${label} mentions "${term}"`);
+      return score + partialScore;
+    }
+
+    return score;
+  }, 0);
 }
 
 function buildExplanation(project: Project, reasons: string[]) {
@@ -108,111 +100,23 @@ function buildExplanation(project: Project, reasons: string[]) {
 function scoreProject(project: Project, context: SearchContext) {
   let score = 0;
   const reasons: string[] = [];
-  const haystack = [
-    project.title,
+  const summaryText = [
     project.shortSummary,
     project.longSummary,
-    project.category,
-    project.stack.join(" "),
     project.problem,
     project.solution,
-    project.highlights.join(" "),
-  ]
-    .join(" ")
-    .toLowerCase();
+  ].join(" ");
+  const highlightsText = project.highlights.join(" ");
 
   if (context.terms.length === 0) {
     return { score: 0, reasons, explanation: "" };
   }
 
-  for (const term of context.terms) {
-    if (project.title.toLowerCase().includes(term)) {
-      score += 8;
-      reasons.push(`title matches "${term}"`);
-      continue;
-    }
-
-    if (project.stack.some((item) => item.toLowerCase().includes(term))) {
-      score += 7;
-      reasons.push(`stack includes "${term}"`);
-      continue;
-    }
-
-    if (project.category.toLowerCase().includes(term)) {
-      score += 6;
-      reasons.push(`category matches "${term}"`);
-      continue;
-    }
-
-    if (
-      project.shortSummary.toLowerCase().includes(term) ||
-      project.longSummary.toLowerCase().includes(term) ||
-      project.problem.toLowerCase().includes(term) ||
-      project.solution.toLowerCase().includes(term) ||
-      project.highlights.some((highlight) => highlight.toLowerCase().includes(term))
-    ) {
-      score += 4;
-      reasons.push(`content mentions "${term}"`);
-      continue;
-    }
-
-    if (haystack.includes(term)) {
-      score += 2;
-    }
-  }
-
-  if (includesAny(project.category, context.terms)) {
-    score += 4;
-    reasons.push(`category aligns with ${project.category.toLowerCase()}`);
-  }
-
-  const matchedIntents = intentMatchers.filter((matcher) =>
-    matcher.terms.some((term) => context.normalized.includes(term))
-  );
-
-  for (const matcher of matchedIntents) {
-    if (matcher.categories.includes(project.category)) {
-      score += matcher.bonus;
-      reasons.push(matcher.explanation);
-    }
-  }
-
-  if (
-    context.normalized.includes("fastapi") &&
-    project.stack.some((item) => item.toLowerCase().includes("fastapi"))
-  ) {
-    score += 4;
-    reasons.push("stack includes FastAPI");
-  }
-
-  if (
-    context.normalized.includes("product") &&
-    project.category === "AI Products"
-  ) {
-    score += 4;
-    reasons.push("product-oriented framing");
-  }
-
-  if (
-    (context.normalized.includes("data engineering") ||
-      context.normalized.includes("pipeline") ||
-      context.normalized.includes("ingestion")) &&
-    project.category === "Data & Analytics"
-  ) {
-    score += 4;
-    reasons.push("data engineering shape");
-  }
-
-  if (
-    (context.normalized.includes("api") ||
-      context.normalized.includes("openai") ||
-      context.normalized.includes("llm")) &&
-    (project.category === "APIs & Services" ||
-      project.stack.some((item) => item.toLowerCase().includes("openai")))
-  ) {
-    score += 4;
-    reasons.push("AI API or service work");
-  }
+  score += scoreField(context.terms, project.title, 3, 2, reasons, "title");
+  score += scoreField(context.terms, project.stack.join(" "), 3, 2, reasons, "stack");
+  score += scoreField(context.terms, project.category, 2, 1, reasons, "category");
+  score += scoreField(context.terms, summaryText, 2, 1, reasons, "summary");
+  score += scoreField(context.terms, highlightsText, 1, 0.5, reasons, "highlights");
 
   return {
     score,
@@ -221,26 +125,13 @@ function scoreProject(project: Project, context: SearchContext) {
   };
 }
 
-function getCategoryHint(query: string) {
-  const normalized = normalizeQuery(query);
-  return (Object.entries(categoryAliases) as Array<
-    [Project["category"], string[]]
-  >).find(([, aliases]) => aliases.some((alias) => normalized.includes(alias)));
-}
-
 export function searchPortfolioProjects(query: string) {
   const terms = tokenize(query);
-  const context = { terms, normalized: normalizeQuery(query) };
-  const hint = getCategoryHint(query);
+  const context = { terms };
 
   const ranked = projects
     .map((project) => {
       const result = scoreProject(project, context);
-
-      if (hint && project.category === hint[0]) {
-        result.score += 4;
-        result.reasons.push(`query leans toward ${hint[0].toLowerCase()}`);
-      }
 
       return {
         ...project,
@@ -248,7 +139,7 @@ export function searchPortfolioProjects(query: string) {
         ...result,
       };
     })
-    .filter((project) => project.score > 0)
+    .filter((project) => project.score > 1)
     .sort((a, b) => b.score - a.score || b.year.localeCompare(a.year));
 
   return ranked.slice(0, 4);
