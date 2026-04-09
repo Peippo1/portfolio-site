@@ -27,10 +27,17 @@ export function LiveTelemetry() {
 
   useEffect(() => {
     let active = true;
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => {
+      controller.abort();
+    }, 2500);
 
     async function loadTelemetry() {
       try {
-        const response = await fetch("/api/telemetry", { cache: "no-store" });
+        const response = await fetch("/api/telemetry", {
+          cache: "no-store",
+          signal: controller.signal,
+        });
         if (!response.ok) {
           throw new Error("Telemetry route unavailable");
         }
@@ -63,6 +70,8 @@ export function LiveTelemetry() {
 
     return () => {
       active = false;
+      controller.abort();
+      window.clearTimeout(timeoutId);
     };
   }, []);
 
@@ -123,7 +132,7 @@ export function LiveTelemetry() {
 
             <p className="max-w-prose text-sm leading-7 text-[var(--color-muted)]">
               {state.status === "loading"
-                ? "Reading the latest signal sweep."
+                ? liveTelemetryCopy.description
                 : state.status === "success"
                   ? `Normalized telemetry from ${state.feed.source}.`
                   : state.note}
