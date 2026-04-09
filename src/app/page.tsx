@@ -26,9 +26,7 @@ export default function HomePage() {
           </h1>
 
           <p className="mt-5 max-w-2xl text-[1.02rem] leading-8 text-[var(--color-muted)] sm:text-[1.08rem]">
-            I design and ship focused software that helps teams work with
-            models, move data cleanly, and keep complex systems easy to reason
-            about in production.
+            I design and ship software that helps teams work with models, move data cleanly, and keep complex systems reliable in production.
           </p>
         </header>
 

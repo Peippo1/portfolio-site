@@ -7,7 +7,7 @@ import { TelemetryLine } from "@/components/home/telemetry-line";
 import { TelemetryList } from "@/components/home/telemetry-list";
 
 type TelemetryState = {
-  status: "loading" | "success" | "fallback";
+  status: "success" | "fallback";
   feed: TelemetryResponse;
   note?: string;
 };
@@ -21,7 +21,7 @@ function formatUpdatedAt(value: string) {
 
 export function LiveTelemetry() {
   const [state, setState] = useState<TelemetryState>({
-    status: "loading",
+    status: "success",
     feed: mockTelemetry,
   });
 
@@ -75,10 +75,7 @@ export function LiveTelemetry() {
     };
   }, []);
 
-  const updatedLabel =
-    state.status === "loading"
-      ? "Fetching current sweep"
-      : formatUpdatedAt(state.feed.updatedAt);
+  const updatedLabel = formatUpdatedAt(state.feed.updatedAt);
 
   return (
     <section
@@ -104,11 +101,10 @@ export function LiveTelemetry() {
 
       <div
         className="mt-5 overflow-hidden border border-[var(--color-border)] bg-[var(--color-surface)]"
-        aria-busy={state.status === "loading"}
         aria-live="polite"
       >
         <div className="border-b border-[var(--color-border)] px-4 pt-2 sm:px-6">
-          <TelemetryLine loading={state.status === "loading"} />
+          <TelemetryLine loading={false} />
         </div>
 
         <div className="grid gap-6 px-4 py-5 sm:px-6 sm:py-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-8">
@@ -122,26 +118,18 @@ export function LiveTelemetry() {
                 }`}
               />
               <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
-                {state.status === "loading"
-                  ? "Loading sweep"
-                  : state.status === "success"
-                    ? "Signal nominal"
-                    : "Fallback feed"}
+                {state.status === "success" ? "Signal nominal" : "Fallback feed"}
               </p>
             </div>
 
             <p className="max-w-prose text-sm leading-7 text-[var(--color-muted)]">
-              {state.status === "loading"
-                ? liveTelemetryCopy.description
-                : state.status === "success"
-                  ? `Normalized telemetry from ${state.feed.source}.`
-                  : state.note}
+              {state.status === "success"
+                ? `Normalized telemetry from ${state.feed.source}.`
+                : state.note}
             </p>
 
             <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
-              {state.status === "loading"
-                ? "Source pending"
-                : `${liveTelemetryCopy.sourceLabel} · ${state.feed.source}`}
+              {liveTelemetryCopy.sourceLabel} · {state.feed.source}
             </p>
 
             <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
@@ -150,10 +138,7 @@ export function LiveTelemetry() {
           </div>
 
           <div className="min-w-0">
-            <TelemetryList
-              loading={state.status === "loading"}
-              feed={state.status === "loading" ? undefined : state.feed}
-            />
+            <TelemetryList feed={state.feed} />
           </div>
         </div>
       </div>
