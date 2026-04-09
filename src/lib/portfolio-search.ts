@@ -10,6 +10,7 @@ export type PortfolioSearchResult = Project & {
 
 type SearchContext = {
   terms: string[];
+  expandedTerms: string[];
 };
 
 const stopWords = new Set([
@@ -31,6 +32,21 @@ const stopWords = new Set([
   "of",
 ]);
 
+const synonymMap: Record<string, string[]> = {
+  ai: ["llm", "models", "openai"],
+  api: ["fastapi", "service", "backend"],
+  data: ["pipeline", "etl", "analytics"],
+  frontend: ["ui", "react", "interface"],
+  product: ["app", "platform", "tool"],
+};
+
+const synonymLookup = new Map(
+  Object.entries(synonymMap).flatMap(([key, values]) => [
+    [key, key],
+    ...values.map((value) => [value, key] as const),
+  ])
+);
+
 function normalizeQuery(query: string) {
   return query
     .trim()
@@ -48,6 +64,27 @@ function tokenize(query: string) {
         .filter((term) => !stopWords.has(term))
     )
   );
+}
+
+function expandTerms(terms: string[]) {
+  const expanded = new Set<string>();
+
+  for (const term of terms) {
+    expanded.add(term);
+
+    const canonical = synonymLookup.get(term) ?? term;
+    expanded.add(canonical);
+
+    const relatedTerms = synonymMap[canonical];
+
+    if (relatedTerms) {
+      for (const relatedTerm of relatedTerms) {
+        expanded.add(relatedTerm);
+      }
+    }
+  }
+
+  return Array.from(expanded);
 }
 
 function tokenizeText(text: string) {
@@ -112,11 +149,11 @@ function scoreProject(project: Project, context: SearchContext) {
     return { score: 0, reasons, explanation: "" };
   }
 
-  score += scoreField(context.terms, project.title, 3, 2, reasons, "title");
-  score += scoreField(context.terms, project.stack.join(" "), 3, 2, reasons, "stack");
-  score += scoreField(context.terms, project.category, 2, 1, reasons, "category");
-  score += scoreField(context.terms, summaryText, 2, 1, reasons, "summary");
-  score += scoreField(context.terms, highlightsText, 1, 0.5, reasons, "highlights");
+  score += scoreField(context.expandedTerms, project.title, 3, 2, reasons, "title");
+  score += scoreField(context.expandedTerms, project.stack.join(" "), 3, 2, reasons, "stack");
+  score += scoreField(context.expandedTerms, project.category, 2, 1, reasons, "category");
+  score += scoreField(context.expandedTerms, summaryText, 2, 1, reasons, "summary");
+  score += scoreField(context.expandedTerms, highlightsText, 1, 0.5, reasons, "highlights");
 
   return {
     score,
@@ -127,7 +164,7 @@ function scoreProject(project: Project, context: SearchContext) {
 
 export function searchPortfolioProjects(query: string) {
   const terms = tokenize(query);
-  const context = { terms };
+  const context = { terms, expandedTerms: expandTerms(terms) };
 
   const ranked = projects
     .map((project) => {
