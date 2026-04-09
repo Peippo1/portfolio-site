@@ -33,8 +33,8 @@ export default function AboutPage() {
               <p className="mt-3">
                 I’m Tim Finch, an AI Implementation Engineer focused on AI
                 systems, data pipelines, and production software. I build
-                practical tools that turn messy inputs into reliable workflows
-                and clear outputs.
+                practical tools that turn complex inputs into reliable
+                workflows and clear outputs.
               </p>
             </div>
 
@@ -43,10 +43,9 @@ export default function AboutPage() {
                 Current focus
               </h2>
               <p className="mt-3">
-                I’m currently working on applied AI products, evaluation
-                loops, and infrastructure that keeps model-assisted workflows
-                dependable in practice. I’m drawn to systems where the product
-                shape is as important as the model behavior.
+                I’m currently working on applied AI products, evaluation loops,
+                and infrastructure for model-assisted workflows. I’m drawn to
+                problems where the system shape matters as much as the model.
               </p>
             </div>
 
@@ -54,11 +53,11 @@ export default function AboutPage() {
               <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
                 Background
               </h2>
-              <p className="mt-3">{profile.location}</p>
               <p className="mt-3">
                 My background sits between product engineering and
-                model-enabled systems. I like work that starts with ambiguity
-                and ends with something people can trust.
+                model-enabled systems. I’m based in {profile.location} and I
+                like work that starts with ambiguity and ends in something
+                people can trust.
               </p>
             </div>
 
