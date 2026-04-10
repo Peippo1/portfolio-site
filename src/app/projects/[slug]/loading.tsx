@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/container";
 export default function LoadingProjectPage() {
   return (
     <main>
-      <Container className="max-w-4xl py-14 sm:py-18 lg:py-20">
+      <Container className="max-w-4xl py-14 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-2xl animate-pulse">
           <div className="h-4 w-32 rounded bg-black/8" />
           <div className="mt-5 h-12 w-full max-w-xl rounded bg-black/8" />

@@ -39,9 +39,9 @@ export default function ProjectsPage() {
           </h1>
           <p className="mt-5 max-w-2xl text-[1.02rem] leading-8 text-[var(--color-muted)] sm:text-[1.08rem]">
             This archive highlights projects where product thinking and
-            technical implementation had to stay aligned: practical AI tools,
-            focused services, data-heavy workflows, and a few experimental
-            systems built to test an idea carefully.
+            technical implementation stayed aligned: practical AI tools,
+            focused services, data-heavy workflows, and a few experiments used
+            to test an idea carefully.
           </p>
         </header>
 

@@ -5,11 +5,11 @@ export const profile = {
   githubUrl: "https://github.com/Peippo1",
   linkedinUrl: "https://www.linkedin.com/in/tim-finch00/",
   summary:
-    "I work on applied AI products with an engineering lens: evaluation, infrastructure, developer experience, and the product decisions that make systems dependable in practice.",
+    "I build applied AI products with an engineering lens: evaluation, infrastructure, developer experience, and the product decisions that make systems dependable in practice.",
   biography: [
-    "My background sits between product engineering and model-enabled systems. I like work that starts with ambiguity and ends with a reliable tool someone can actually trust.",
+    "My background sits between product engineering and model-enabled systems. I like work that starts with ambiguity and ends in a tool people can trust.",
     "Most of my projects share the same shape: a careful information model, a pragmatic interface, and a feedback loop strong enough to improve the system after launch.",
-    "I’m especially interested in agents, AI-assisted developer workflows, evaluation frameworks, and compact software products with unusually high leverage.",
+    "I’m especially interested in agents, AI-assisted developer workflows, evaluation frameworks, and compact software products with high leverage.",
   ],
   principles: [
     "Ship fewer things, but make them legible.",

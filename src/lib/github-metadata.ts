@@ -10,7 +10,7 @@ export interface GitHubMetadataProvider {
 
 const localGitHubMetadata: Record<string, GitHubRepositoryMetadata> = {
   "campaignforge-ai": {
-    repoName: "CampaignForge-AI",
+    repoName: "CampaignForge AI",
     lastUpdated: "2026-04-01",
     primaryLanguage: "TypeScript",
   },
@@ -25,7 +25,7 @@ const localGitHubMetadata: Record<string, GitHubRepositoryMetadata> = {
     primaryLanguage: "Python",
   },
   "creative-automation-pipeline-poc": {
-    repoName: "creative-automation-pipeline-poc",
+    repoName: "Creative Automation Pipeline",
     lastUpdated: "2025-12-05",
     primaryLanguage: "TypeScript",
   },
@@ -35,7 +35,7 @@ const localGitHubMetadata: Record<string, GitHubRepositoryMetadata> = {
     primaryLanguage: "TypeScript",
   },
   "smart-reply-service": {
-    repoName: "smart-reply-service",
+    repoName: "Smart Reply Service",
     lastUpdated: "2025-11-29",
     primaryLanguage: "TypeScript",
   },

@@ -42,7 +42,7 @@ export default async function WritingDetailPage({ params }: WritingPageProps) {
 
   return (
     <main>
-      <Container className="max-w-4xl py-14 sm:py-18 lg:py-20">
+      <Container className="max-w-4xl py-14 sm:py-16 lg:py-20">
         <div className="sticky top-[4.2rem] z-10 mb-8 w-fit rounded-full bg-[rgba(248,246,241,0.9)] px-2 py-1 backdrop-blur-sm">
           <Link
             href="/writing"

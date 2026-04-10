@@ -45,10 +45,10 @@ function BulletList({ items }: { items: string[] }) {
 
 const campaignForgeCaseStudy = {
   intro:
-    "CampaignForge-AI is an AI-assisted campaign planning system for turning strategy into reviewable briefs, audience angles, and channel-ready outputs.",
+    "CampaignForge AI is an AI-assisted campaign planning workspace for turning strategy into reviewable briefs, audience angles, and channel-ready outputs.",
   problem: [
     "Marketing teams often split planning, drafting, and channel adaptation across separate tools, which makes it hard to preserve campaign intent as work moves forward.",
-    "The non-trivial part is not generation itself, but keeping strategy, copy, and delivery aligned while still letting people edit and review the work in a controlled flow.",
+    "The harder part is not generation itself, but keeping strategy, copy, and delivery aligned while still letting people edit and review the work in a controlled flow.",
     "It is aimed at teams that need to move quickly without turning campaign work into a black-box prompt experiment.",
   ],
   approach: [
@@ -121,7 +121,7 @@ export default async function ProjectDetailPage({
 
   return (
     <main>
-      <Container className="max-w-4xl py-14 sm:py-18 lg:py-20">
+      <Container className="max-w-4xl py-14 sm:py-16 lg:py-20">
         <div className="sticky top-[4.2rem] z-10 mb-8 w-fit rounded-full bg-[rgba(248,246,241,0.9)] px-2 py-1 backdrop-blur-sm">
           <Link
             href="/projects"

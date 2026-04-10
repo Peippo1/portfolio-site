@@ -17,7 +17,7 @@ export default function WritingPage() {
         <PageIntro
           eyebrow="Writing"
           title="A small archive of notes on AI products, interfaces, and systems work."
-          description="Short essays and working notes, presented as a clean index rather than a blog theme."
+          description="Short notes and essays, presented as a clean index rather than a blog theme."
         />
 
         <section className="mt-14 border-y border-[var(--color-border)]">

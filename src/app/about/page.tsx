@@ -20,8 +20,8 @@ export default function AboutPage() {
       <Container className="py-16 sm:py-20 lg:py-24">
         <PageIntro
           eyebrow="About"
-          title="AI Implementation Engineer building systems that need to work in the real world."
-          description="I design and ship AI systems, data pipelines, and production software with a focus on clarity, reliability, and practical use."
+          title="AI engineer building systems that need to work in the real world."
+          description="I build practical AI systems, data infrastructure, and product software with a focus on clarity, reliability, and real-world use."
         />
 
         <section className="mt-14 max-w-2xl border-t border-[var(--color-border)] pt-7">
@@ -31,10 +31,8 @@ export default function AboutPage() {
                 Opening
               </h2>
               <p className="mt-3">
-                I’m Tim Finch, an AI Implementation Engineer focused on AI
-                systems, data pipelines, and production software. I build
-                practical tools that turn complex inputs into reliable
-                workflows and clear outputs.
+                I’m Tim Finch, an AI Implementation Engineer building practical
+                systems that work in the real world.
               </p>
             </div>
 
@@ -43,9 +41,9 @@ export default function AboutPage() {
                 Current focus
               </h2>
               <p className="mt-3">
-                I’m currently working on applied AI products, evaluation loops,
-                and infrastructure for model-assisted workflows. I’m drawn to
-                problems where the system shape matters as much as the model.
+                I work across AI engineering, data infrastructure, and product
+                development, designing systems that connect models with real
+                data and operational workflows.
               </p>
             </div>
 
@@ -54,10 +52,9 @@ export default function AboutPage() {
                 Background
               </h2>
               <p className="mt-3">
-                My background sits between product engineering and
-                model-enabled systems. I’m based in {profile.location} and I
-                like work that starts with ambiguity and ends in something
-                people can trust.
+                My focus is on turning emerging AI capabilities into reliable,
+                usable tools, from LLM applications and agents to APIs,
+                automation services, and data pipelines.
               </p>
             </div>
 
@@ -66,9 +63,11 @@ export default function AboutPage() {
                 Working style
               </h2>
               <p className="mt-3">
-                I prefer clear information models, small reliable interfaces,
-                and enough feedback in the system to make tradeoffs visible. I
-                try to keep the critical path boring and the outcome legible.
+                I care about how teams use AI in practice, and I prefer clear
+                information models, small reliable interfaces, and systems
+                that are easy to understand, operate, and trust. I’m a
+                user-focused engineer with a bias toward calm execution and
+                production-ready work.
               </p>
             </div>
           </div>

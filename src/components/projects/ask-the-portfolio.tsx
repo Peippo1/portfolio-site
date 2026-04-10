@@ -13,8 +13,8 @@ type AskThePortfolioResponse = {
 
 const examplePrompts = [
   "Which projects use FastAPI?",
-  "Show data engineering work",
-  "Which project is most product-like?",
+  "Show data systems work",
+  "What feels most product-like?",
 ];
 
 export function AskThePortfolio() {
@@ -22,7 +22,7 @@ export function AskThePortfolio() {
   const [results, setResults] = useState<PortfolioSearchResult[]>([]);
   const [fallbackResults, setFallbackResults] = useState<PortfolioSearchResult[]>([]);
   const [message, setMessage] = useState(
-    "Try a question about stack, category, or project style."
+    "Ask about a stack, category, or style of work."
   );
   const [isLoading, setIsLoading] = useState(false);
 
@@ -33,7 +33,7 @@ export function AskThePortfolio() {
     if (!trimmed) {
       setResults([]);
       setFallbackResults([]);
-      setMessage("Try a question about stack, category, or project style.");
+      setMessage("Ask about a stack, category, or style of work.");
       return;
     }
 
@@ -99,7 +99,7 @@ export function AskThePortfolio() {
           disabled={isLoading}
           className="rounded-md border border-[var(--color-border)] px-4 py-3 text-sm text-[var(--color-text)] transition-colors duration-150 hover:bg-black/[0.03] focus-visible:bg-black/[0.03] focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {isLoading ? "Searching" : "Ask"}
+          {isLoading ? "Searching" : "Search"}
         </button>
       </form>
 
@@ -119,9 +119,9 @@ export function AskThePortfolio() {
       <div className="mt-6 border-t border-[var(--color-border)] pt-4">
         <p className="text-sm leading-7 text-[var(--color-muted)]">{message}</p>
 
-        {results.length > 0 ? (
+        {results.length > 0 || fallbackResults.length > 0 ? (
           <ul className="mt-4 divide-y divide-[var(--color-border)]">
-            {results.map((project) => (
+            {(results.length > 0 ? results : fallbackResults).map((project) => (
               <li key={project.slug} className="py-4 first:pt-0 last:pb-0">
                 <Link
                   href={project.href}
@@ -148,36 +148,11 @@ export function AskThePortfolio() {
               </li>
             ))}
           </ul>
-        ) : fallbackResults.length > 0 ? (
-          <ul className="mt-4 divide-y divide-[var(--color-border)]">
-            {fallbackResults.map((project) => (
-              <li key={project.slug} className="py-4 first:pt-0 last:pb-0">
-                <Link
-                  href={project.href}
-                  className="group block rounded-md transition-colors duration-150 hover:bg-black/[0.02] focus-visible:bg-black/[0.02] focus-visible:outline-none"
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="min-w-0">
-                      <h3 className="font-editorial text-[1.25rem] leading-tight text-[var(--color-text)] sm:text-[1.35rem]">
-                        {project.title}
-                      </h3>
-                      <p className="mt-2 max-w-2xl text-sm leading-7 text-[var(--color-muted)]">
-                        {project.explanation}
-                      </p>
-                    </div>
-
-                    <span
-                      aria-hidden="true"
-                      className="mt-0.5 shrink-0 text-sm text-[var(--color-muted)] transition-transform duration-150 group-hover:translate-x-0.5 group-focus-visible:translate-x-0.5"
-                    >
-                      ↗
-                    </span>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        ) : null}
+        ) : (
+          <p className="mt-4 text-sm leading-7 text-[var(--color-muted)]">
+            Results will appear here once you ask a question.
+          </p>
+        )}
       </div>
     </section>
   );

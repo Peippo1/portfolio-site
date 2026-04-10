@@ -124,7 +124,7 @@ export function LiveTelemetry() {
 
             <p className="max-w-prose text-sm leading-7 text-[var(--color-muted)]">
               {state.status === "success"
-                ? `Normalized telemetry from ${state.feed.source}.`
+                ? `Live telemetry normalized from ${state.feed.source}.`
                 : state.note}
             </p>
 

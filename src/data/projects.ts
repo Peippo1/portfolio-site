@@ -3,11 +3,11 @@ import type { Project } from "@/types/content";
 export const projects: Project[] = [
   {
     slug: "campaignforge-ai",
-    title: "CampaignForge-AI",
+    title: "CampaignForge AI",
     shortSummary:
-      "An AI-assisted campaign planning workspace for generating briefs, audience angles, and channel-specific content from a shared strategy model.",
+      "An AI-assisted campaign planning workspace for turning strategy into briefs, audience angles, and channel-ready outputs.",
     longSummary:
-      "CampaignForge-AI was built to reduce the manual overhead of turning a product narrative into repeatable campaign assets. The system centers on structured inputs, reusable prompt chains, and reviewable outputs so strategy, copy, and distribution logic stay aligned as campaigns move from planning into execution.",
+      "CampaignForge AI reduces the manual overhead of turning a product narrative into repeatable campaign assets. The system centers on structured inputs, staged generation, and reviewable outputs so strategy, copy, and distribution logic stay aligned as campaigns move from planning into execution.",
     category: "AI Products",
     year: "2026",
     stack: ["Next.js", "TypeScript", "PostgreSQL", "OpenAI", "Tailwind CSS"],
@@ -23,7 +23,7 @@ export const projects: Project[] = [
       "Created output templates for email, paid social, and landing page copy.",
       "Kept the interface text-first to support fast editorial revision.",
     ],
-    status: "Active development",
+    status: "In progress",
   },
   {
     slug: "streamsense",
@@ -31,7 +31,7 @@ export const projects: Project[] = [
     shortSummary:
       "A real-time analytics system for ingesting event streams, enriching records, and surfacing operational signals through lightweight dashboards and APIs.",
     longSummary:
-      "StreamSense explores how streaming infrastructure and applied analytics can be combined into a focused operational product. The project emphasizes ingestion reliability, event normalization, and clear downstream access patterns so teams can observe systems without building a bespoke reporting path for each use case.",
+      "StreamSense explores how streaming infrastructure and applied analytics can combine into a focused operational product. The project emphasizes ingestion reliability, event normalization, and clear downstream access patterns so teams can observe systems without building a bespoke reporting path for each use case.",
     category: "Data & Analytics",
     year: "2025",
     stack: ["TypeScript", "Node.js", "Kafka", "ClickHouse", "React"],
@@ -75,11 +75,11 @@ export const projects: Project[] = [
   },
   {
     slug: "creative-automation-pipeline-poc",
-    title: "creative-automation-pipeline-poc",
+    title: "Creative Automation Pipeline",
     shortSummary:
       "A proof of concept for automating creative asset generation, transformation, and packaging across multiple campaign formats.",
     longSummary:
-      "This project tested whether a creative workflow could be decomposed into a reliable pipeline instead of a collection of manual handoffs. The work focused on orchestration, asset transformation rules, and queue-based processing to understand where automation could help without introducing brittle outputs into production design work.",
+      "This project tested whether a creative workflow could become a reliable pipeline instead of a collection of manual handoffs. The work focused on orchestration, asset transformation rules, and queue-based processing to understand where automation could help without introducing brittle outputs into production design work.",
     category: "Experiments",
     year: "2024",
     stack: ["Node.js", "TypeScript", "Queues", "FFmpeg", "Cloud Storage"],
@@ -95,15 +95,15 @@ export const projects: Project[] = [
       "Added failure handling around incomplete source files and malformed specs.",
       "Measured where automation saved time and where human review remained essential.",
     ],
-    status: "POC",
+    status: "Proof of concept",
   },
   {
     slug: "briefly",
     title: "Briefly",
     shortSummary:
-      "A concise briefing generator that turns raw notes, transcripts, and links into structured summaries for internal teams and client-facing updates.",
+      "A concise briefing generator that turns raw notes, transcripts, and links into structured summaries for internal teams and client updates.",
     longSummary:
-      "Briefly was designed as a small AI product for one specific communication problem: turning messy source material into useful summaries without losing essential detail. The engineering work centered on source handling, prompt structure, and output formatting so generated briefs stayed readable, scoped, and easy to edit.",
+      "Briefly was designed as a focused AI product for one communication problem: turning messy source material into useful summaries without losing essential detail. The engineering work centered on source handling, prompt structure, and output formatting so generated briefs stayed readable, scoped, and easy to edit.",
     category: "AI Products",
     year: "2024",
     stack: ["Next.js", "TypeScript", "OpenAI", "Supabase", "Tailwind CSS"],
@@ -123,11 +123,11 @@ export const projects: Project[] = [
   },
   {
     slug: "smart-reply-service",
-    title: "Smart-Reply-Service",
+    title: "Smart Reply Service",
     shortSummary:
       "A backend service for generating context-aware suggested replies from conversation history, user metadata, and product-specific response rules.",
     longSummary:
-      "Smart-Reply-Service was built as an API-first component intended to sit inside existing messaging or support products. The main engineering work involved request shaping, response constraints, and service-level reliability so generated suggestions could be integrated safely into user-facing workflows.",
+      "Smart Reply Service was built as an API-first component intended to sit inside existing messaging or support products. The main engineering work involved request shaping, response constraints, and service-level reliability so generated suggestions could be integrated safely into user-facing workflows.",
     category: "APIs & Services",
     year: "2023",
     stack: ["Node.js", "TypeScript", "Fastify", "Redis", "OpenAI"],

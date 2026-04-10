@@ -27,7 +27,7 @@ export function SiteHeader() {
       <Container className="flex items-center justify-between gap-4 py-4 sm:gap-6 sm:py-5">
         <Link
           href="/"
-          className="min-w-0 rounded-full px-0.5 py-0.5 transition-colors duration-150 hover:text-[var(--color-text)] focus-visible:bg-black/[0.03]"
+          className="min-w-0 rounded-full px-1 py-1 transition-colors duration-150 hover:text-[var(--color-text)] focus-visible:bg-black/[0.03] focus-visible:outline-none"
         >
           <span className="block text-sm font-medium tracking-[0.18em] uppercase">
             Tim Finch
@@ -46,9 +46,9 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`rounded-full px-2.5 py-1.5 text-sm tracking-[0.01em] focus-visible:bg-black/[0.03] ${
+                className={`rounded-full px-2.5 py-1.5 text-sm tracking-[0.01em] focus-visible:bg-black/[0.03] focus-visible:outline-none ${
                   active
-                    ? "bg-black/[0.04] text-[var(--color-text)] ring-1 ring-black/5"
+                    ? "bg-black/[0.05] text-[var(--color-text)] ring-1 ring-black/10"
                     : "text-[var(--color-muted)] hover:bg-black/[0.03] hover:text-[var(--color-text)]"
                 }`}
               >

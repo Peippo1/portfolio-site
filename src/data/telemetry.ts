@@ -46,10 +46,10 @@ export const mockTelemetry: TelemetryResponse = {
 
 export const liveTelemetryCopy = {
   eyebrow: "Live telemetry",
-  title: "A quiet systems view inspired by deep-space communications.",
+  title: "A quiet systems view that loads live when available.",
   description:
-    "A subtle signal layer built to make the portfolio feel live, precise, and a little more memorable.",
-  fallback: "Telemetry temporarily unavailable.",
+    "A small signal layer that keeps the portfolio feeling current without getting in the way.",
+  fallback: "Telemetry temporarily unavailable. Showing a static snapshot instead.",
   sourceLabel: "Source",
   updatedLabel: "Updated",
 };
