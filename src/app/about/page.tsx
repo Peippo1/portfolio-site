@@ -21,7 +21,7 @@ export default function AboutPage() {
         <PageIntro
           eyebrow="About"
           title="AI engineer building systems that need to work in the real world."
-          description="I build practical AI systems, data infrastructure, and product software with a focus on clarity, reliability, and real-world use."
+          description="I build practical AI systems, data infrastructure, and product software with a focus on clarity and reliability."
         />
 
         <section className="mt-14 max-w-2xl border-t border-[var(--color-border)] pt-7">
@@ -31,8 +31,8 @@ export default function AboutPage() {
                 Opening
               </h2>
               <p className="mt-3">
-                I’m Tim Finch, an AI Implementation Engineer building practical
-                systems that work in the real world.
+                I’m Tim Finch, an AI Implementation Engineer focused on
+                practical systems in production.
               </p>
             </div>
 
@@ -42,8 +42,8 @@ export default function AboutPage() {
               </h2>
               <p className="mt-3">
                 I work across AI engineering, data infrastructure, and product
-                development, designing systems that connect models with real
-                data and operational workflows.
+                development, designing systems that connect model output to
+                real workflows.
               </p>
             </div>
 
@@ -52,9 +52,9 @@ export default function AboutPage() {
                 Background
               </h2>
               <p className="mt-3">
-                My focus is on turning emerging AI capabilities into reliable,
-                usable tools, from LLM applications and agents to APIs,
-                automation services, and data pipelines.
+                That usually means LLM applications, agents, APIs, automation
+                services, and data pipelines built with clear contracts and
+                measurable behavior.
               </p>
             </div>
 

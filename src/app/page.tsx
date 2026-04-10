@@ -7,9 +7,9 @@ import { profile } from "@/data/profile";
 const featuredProjects = getFeaturedProjects(3);
 
 const recentFocus = [
-  "Model-assisted workflows",
-  "Evaluation and review loops",
-  "Data products with clear operational surfaces",
+  "Structured campaign workflows",
+  "Reviewable telemetry with fallback feeds",
+  "Reply systems with clear contracts",
 ];
 
 export default function HomePage() {
@@ -22,11 +22,11 @@ export default function HomePage() {
           </p>
 
           <h1 className="font-editorial mt-5 max-w-2xl text-4xl leading-tight sm:text-5xl">
-            Practical AI systems for products that need to keep working.
+            Practical AI systems for real workflows.
           </h1>
 
           <p className="mt-5 max-w-2xl text-[1.02rem] leading-8 text-[var(--color-muted)] sm:text-[1.08rem]">
-            I design and ship software that helps teams work with models, move data cleanly, and keep complex workflows reliable in production.
+            I design software that connects models, data, and the workflows around them.
           </p>
         </header>
 
@@ -93,8 +93,8 @@ export default function HomePage() {
           <div className="mt-4 grid gap-6 text-sm leading-7 text-[var(--color-muted)] sm:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
             <p className="max-w-2xl">
               I’m focused on products that stay useful after the novelty wears
-              off: clear interfaces, explicit evaluation, and systems that are
-              easy to reason about.
+              off: clear interfaces, explicit review loops, and systems that
+              are easy to reason about.
             </p>
             <ul className="space-y-2.5">
               {recentFocus.map((item) => (

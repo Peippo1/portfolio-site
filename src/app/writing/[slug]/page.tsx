@@ -84,9 +84,8 @@ export default async function WritingDetailPage({ params }: WritingPageProps) {
                 Note
               </h2>
               <p className="text-[1rem] leading-8 text-[var(--color-muted)] sm:text-[1.03rem]">
-                This archive entry is intentionally brief. It captures the core
-                idea in a compact form and leaves room for the note to expand
-                later without changing the reading structure.
+                These notes stay brief by design. Each one focuses on a single
+                idea and keeps the structure light.
               </p>
             </section>
           </div>

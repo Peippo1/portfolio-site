@@ -45,41 +45,48 @@ function BulletList({ items }: { items: string[] }) {
 
 const campaignForgeCaseStudy = {
   intro:
-    "CampaignForge AI is an AI-assisted campaign planning workspace for turning strategy into reviewable briefs, audience angles, and channel-ready outputs.",
+    "An end-to-end AI pipeline that generates marketing strategy, copy, and creative concepts from a single brief.",
   problem: [
-    "Marketing teams often split planning, drafting, and channel adaptation across separate tools, which makes it hard to preserve campaign intent as work moves forward.",
-    "The harder part is not generation itself, but keeping strategy, copy, and delivery aligned while still letting people edit and review the work in a controlled flow.",
-    "It is aimed at teams that need to move quickly without turning campaign work into a black-box prompt experiment.",
+    "Marketing teams often work across fragmented tools and workflows, which makes strategy, copywriting, and creative direction slow and inconsistent.",
+    "The challenge is not only generating outputs, but keeping them structured, controllable, and usable in practice.",
   ],
   approach: [
-    "I modeled campaign inputs as structured strategy objects and used staged generation rather than a single prompt so each output could be checked independently.",
-    "Human review sits between generation steps, which keeps the workflow legible and avoids pushing unverified copy straight into downstream channels.",
-    "The system favors text-first interfaces and explicit output shapes because the product needs to support editing, not just generation.",
+    "CampaignForge uses a structured, multi-stage pipeline that transforms one brief into a complete set of campaign outputs.",
+    "Rather than relying on isolated prompts, the system enforces a defined flow from brief to strategy to copy to creative concepts to review and export.",
+    "Each stage builds on the previous one, which keeps the workflow consistent and easier to control.",
   ],
   stackGroups: [
     {
-      label: "Frontend",
-      items: ["Next.js", "Tailwind CSS"],
-    },
-    {
       label: "Backend",
-      items: ["TypeScript", "PostgreSQL"],
+      items: ["FastAPI"],
     },
     {
       label: "AI",
-      items: ["OpenAI"],
+      items: ["Gemini", "OpenAI-compatible"],
+    },
+    {
+      label: "Frontend",
+      items: ["Streamlit"],
+    },
+    {
+      label: "Data",
+      items: ["Structured JSON outputs"],
+    },
+    {
+      label: "Deployment",
+      items: ["Containerised"],
     },
   ],
   highlights: [
-    "Modeled campaign inputs as reusable strategy objects instead of one-off prompts.",
-    "Built staged generation flows with explicit human review points.",
-    "Created output templates for email, paid social, and landing page copy.",
-    "Kept the interface text-first so revision stays fast and predictable.",
+    "Designed a multi-stage AI pipeline with enforced structure across outputs.",
+    "Reduced reliance on ad-hoc prompting by making the workflow stages explicit.",
+    "Built an API-first system that can integrate with other tools and workflows.",
+    "Produced outputs that are structured, consistent, and ready for downstream use.",
   ],
   learned: [
-    "The best output quality came from narrowing the system around a clear workflow, not from adding more generation depth.",
-    "Keeping intermediate artifacts visible made the product easier to trust and easier to debug.",
-    "Small structure decisions at the input layer had a bigger impact on product quality than prompt tweaks alone.",
+    "Structure matters more than prompt quality when building multi-step AI systems.",
+    "Constraining outputs improves usability and reduces downstream friction.",
+    "Designing for real workflows requires thinking beyond individual model calls.",
   ],
 };
 
@@ -143,9 +150,7 @@ export default async function ProjectDetailPage({
             </h1>
 
             <p className="mt-4 text-[1.03rem] leading-8 text-[var(--color-muted)] sm:text-[1.08rem]">
-              {isCampaignForge
-                ? campaignForgeCaseStudy.intro
-                : project.longSummary}
+              {isCampaignForge ? campaignForgeCaseStudy.intro : project.shortSummary}
             </p>
 
             <p className="mt-6 text-xs leading-6 tracking-[0.14em] text-[var(--color-muted)] uppercase sm:text-[0.8rem]">
@@ -176,7 +181,7 @@ export default async function ProjectDetailPage({
 
           <div className="mt-9 space-y-9 sm:mt-10 sm:space-y-10">
             <Section title="Intro">
-              <p>{isCampaignForge ? campaignForgeCaseStudy.intro : project.longSummary}</p>
+              <p>{project.longSummary}</p>
             </Section>
 
             <Section title="Problem">
@@ -197,7 +202,7 @@ export default async function ProjectDetailPage({
 
             <Section title="Stack">
               {isCampaignForge ? (
-                <div className="grid gap-5 sm:grid-cols-3">
+                <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                   {campaignForgeCaseStudy.stackGroups.map((group) => (
                     <div key={group.label}>
                       <p className="text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">

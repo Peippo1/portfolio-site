@@ -7,7 +7,7 @@ export const writingEntries: WritingEntry[] = [
     date: "March 2026",
     category: "Applied AI",
     summary:
-      "Why small, legible evaluation systems create more product velocity than broad but fragile benchmark suites.",
+      "How small, legible evaluation loops create more product velocity than broad benchmark suites.",
   },
   {
     slug: "interfaces-for-slow-thinking",
@@ -23,6 +23,6 @@ export const writingEntries: WritingEntry[] = [
     date: "October 2025",
     category: "Systems",
     summary:
-      "What staged execution, fallback rules, and operator visibility change about the reliability of agent workflows.",
+      "How staged execution, fallback rules, and operator visibility improve the reliability of agent workflows.",
   },
 ];
