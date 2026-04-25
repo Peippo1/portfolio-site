@@ -56,7 +56,7 @@ export type WritingSection = {
   blocks: WritingSectionBlock[];
 };
 
-export type WritingSeriesSlug = "hoxa-build-thread";
+export type WritingSeriesSlug = "hoxa-build-thread" | "cityscout-build-thread";
 
 export type WritingSeries = {
   slug: WritingSeriesSlug;
