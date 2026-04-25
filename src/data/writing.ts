@@ -63,7 +63,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "Hoxa is built around a broader view of fitness than a single training mode. The product needs to support running, strength, mobility, balance, and recovery because real users do not experience those domains separately. Someone preparing for a half marathon may also need better hip mobility, a more reliable strength routine, and a calmer way to recover after a difficult week."
         ),
         paragraph(
-          "That mix matters more for beginner to intermediate users than it does for specialists. At this stage, the right product is not the one that optimizes a single training metric in isolation. It is the one that helps a person build a sustainable relationship with movement across different contexts: at home, in a gym, and out on a run."
+          "That mix matters more for beginner to intermediate users than it does for specialists. At this stage, the right product is not the one that optimises a single training metric in isolation. It is the one that helps a person build a sustainable relationship with movement across different contexts: at home, in a gym, and out on a run."
         ),
         list([
           "Running support should cover first 5K plans through half marathon preparation.",
@@ -74,7 +74,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
       ]),
       section("Tone Is Product Logic", [
         paragraph(
-          "The emotional tone of a fitness app is not a branding layer added after the system works. It shapes whether the system can work at all. If the language feels macho, punishing, or relentlessly optimized, many users will edit themselves around the product instead of using it honestly. They will skip the app on tired weeks, overstate what they completed, or quietly disengage."
+          "The emotional tone of a fitness app is not a branding layer added after the system works. It shapes whether the system can work at all. If the language feels macho, punishing, or relentlessly optimised, many users will edit themselves around the product instead of using it honestly. They will skip the app on tired weeks, overstate what they completed, or quietly disengage."
         ),
         paragraph(
           "A calmer tone is not about being soft or vague. It is about creating a system that can absorb ordinary life. The product should be able to say: you slept badly, your week got messy, your legs are heavy today, and the plan can still make sense. That is a much more credible promise than pretending consistency means perfect adherence."
@@ -115,7 +115,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
       ]),
       section("Visual Restraint With Enough Warmth", [
         paragraph(
-          "I want Hoxa to feel premium, but not sterile. That means using typography, spacing, and contrast to create room around the content, rather than relying on the familiar fitness pattern of maximal color, oversized metrics, and competitive visual language. A calmer product can still feel precise. In fact, precision usually reads more clearly when the design is not competing with the content."
+          "I want Hoxa to feel premium, but not sterile. That means using typography, spacing, and contrast to create room around the content, rather than relying on the familiar fitness pattern of maximal colour, oversized metrics, and competitive visual language. A calmer product can still feel precise. In fact, precision usually reads more clearly when the design is not competing with the content."
         ),
         paragraph(
           "Warmth matters too. If the interface becomes too clinical, it starts to resemble a reporting dashboard rather than a personal training companion. The right balance is something like quiet confidence: enough polish to feel intentional, enough softness to feel human, and enough structure to keep the user oriented."
@@ -137,7 +137,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
       ]),
       section("Calm Requires Editorial Judgment", [
         paragraph(
-          "The easiest way to make software feel calm is to remove information. That is also how you make it less useful. The harder task is editorial: deciding what belongs at each moment, in what order, with what emphasis, and with what explanation. Calm design is usually a consequence of sharper judgment, not less content."
+          "The easiest way to make software feel calm is to remove information. That is also how you make it less useful. The harder task is editorial: deciding what belongs at each moment, in what order, with what emphasis, and with what explanation. Calm design is usually a consequence of sharper judgement, not less content."
         ),
         quote(
           "If the interface cannot explain the day clearly, the plan itself is probably still too vague.",
@@ -186,7 +186,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "Several things are intentionally out of scope for the MVP. Deep device integrations, advanced coaching analytics, generative planning experiments, complex social mechanics, and broad nutrition tracking all make sense as future layers, but they would blur the first release if introduced too early."
         ),
         paragraph(
-          "The practical reason to wait is focus. The more subtle reason is credibility. If Hoxa makes claims about intelligence before it can demonstrate a reliable core system, the product starts to look like it is borrowing confidence from language rather than earning it through behavior."
+          "The practical reason to wait is focus. The more subtle reason is credibility. If Hoxa makes claims about intelligence before it can demonstrate a reliable core system, the product starts to look like it is borrowing confidence from language rather than earning it through behaviour."
         ),
       ]),
       section("Keeping Half Marathon Support Honest", [
@@ -219,7 +219,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "For the MVP, the most useful inputs are the ones users can actually provide or validate: stated goals, training background, available days, equipment context, completed sessions, perceived effort, and light recovery signals such as soreness or general fatigue. These are less glamorous than wearable streams, but they are enough to build a sensible adaptive loop."
         ),
         paragraph(
-          "Later integrations from Apple Health, Apple Watch, Garmin, and calendar systems can sharpen context. They should not replace the visible core logic. Device data can improve judgment about load and routine, but the plan still needs to read as something a thoughtful coach might plausibly recommend, not an optimization artifact."
+          "Later integrations from Apple Health, Apple Watch, Garmin, and calendar systems can sharpen context. They should not replace the visible core logic. Device data can improve judgement about load and routine, but the plan still needs to read as something a thoughtful coach might plausibly recommend, not an optimisation artefact."
         ),
       ]),
       section("How Progression Should Work", [
@@ -238,7 +238,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "A lot of adaptive systems fail at the explanation layer. They may make plausible changes, but they do not tell the user what changed, why it changed, or what to expect next. That creates a subtle but important problem: the user stops learning from the system. They receive plans, but they do not build understanding."
         ),
         paragraph(
-          "Hoxa should explain adjustment in plain language. If a long run moved, there should be a reason. If a recovery session replaced a harder day, that should be stated directly. The product should help users internalize a better training model rather than merely personalizing outputs behind the curtain."
+          "Hoxa should explain adjustment in plain language. If a long run moved, there should be a reason. If a recovery session replaced a harder day, that should be stated directly. The product should help users internalize a better training model rather than merely personalising outputs behind the curtain."
         ),
       ]),
       section("Failure Modes To Avoid", [
@@ -247,7 +247,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "Training principle"
         ),
         paragraph(
-          "There are predictable ways adaptive products become less useful. They overreact to a small number of misses. They optimize for completion at the expense of progression. They become so protective that the plan never gets meaningfully harder. Or they become so aggressive that users stop trusting the guidance. Good adaptation is a balancing act, not a constant intervention."
+          "There are predictable ways adaptive products become less useful. They overreact to a small number of misses. They optimise for completion at the expense of progression. They become so protective that the plan never gets meaningfully harder. Or they become so aggressive that users stop trusting the guidance. Good adaptation is a balancing act, not a constant intervention."
         ),
         paragraph(
           "The bar for Hoxa is narrower than the category often suggests. The engine does not need to behave like an oracle. It needs to become reliably good at adjusting plans for ordinary human variability while staying legible. That would already be a meaningful product advantage."
@@ -272,7 +272,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     sections: [
       section("Start With The Product Loop", [
         paragraph(
-          "The architecture only makes sense if it mirrors the product loop. Hoxa begins with onboarding, moves into goal and profile setup, generates a weekly plan, captures workout completion, and then updates future plans based on recent behavior. That sequence creates the minimum structure the rest of the system needs to support."
+          "The architecture only makes sense if it mirrors the product loop. Hoxa begins with onboarding, moves into goal and profile setup, generates a weekly plan, captures workout completion, and then updates future plans based on recent behaviour. That sequence creates the minimum structure the rest of the system needs to support."
         ),
         diagram(
           `User
@@ -302,7 +302,7 @@ Progress + Adaptation`,
       ]),
       section("Service Boundaries", [
         paragraph(
-          "For an early version, I would keep the architecture centered on a clean API layer and a small set of explicit domain services. The iOS app is likely the primary user-facing product surface. A web app can support companion experiences later, and an internal web surface can support operational tooling, content adjustments, and model inspection where useful."
+          "For an early version, I would keep the architecture centred on a clean API layer and a small set of explicit domain services. The iOS app is likely the primary user-facing product surface. A web app can support companion experiences later, and an internal web surface can support operational tooling, content adjustments, and model inspection where useful."
         ),
         diagram(
           `iOS App -----------+
@@ -350,7 +350,7 @@ Calendar --------+                              |
         list([
           "Keep training rules and adaptation decisions inspectable in the early product.",
           "Treat AI-generated language as presentation support, not authoritative programming logic.",
-          "Use service boundaries to make future integrations additive rather than destabilizing.",
+          "Use service boundaries to make future integrations additive rather than destabilising.",
           "Prefer a smaller number of clear domain services over a large mesh of premature microservices.",
         ]),
         paragraph(
@@ -376,7 +376,7 @@ Calendar --------+                              |
         ),
         list([
           "Translate training rationale into plain language.",
-          "Summarize trends from recent workout history.",
+          "Summarise trends from recent workout history.",
           "Draft supportive check-ins or weekly reflections.",
           "Help users understand tradeoffs when the plan adapts.",
         ]),
@@ -409,7 +409,7 @@ Calendar --------+                              |
       ]),
       section("How This Shapes Hoxa", [
         paragraph(
-          "For Hoxa, the likely path is careful layering. Start with deterministic planning logic, well-bounded adaptation rules, and strong product explanation. Then introduce AI where it can improve comprehension, support, and orientation. If later ML models contribute to prediction or personalization, they should do so through interfaces that remain reviewable."
+          "For Hoxa, the likely path is careful layering. Start with deterministic planning logic, well-bounded adaptation rules, and strong product explanation. Then introduce AI where it can improve comprehension, support, and orientation. If later ML models contribute to prediction or personalisation, they should do so through interfaces that remain reviewable."
         ),
         paragraph(
           "That approach may look conservative from the outside. I think it is the opposite. In a category where trust is easy to overstate and hard to rebuild, restraint is a product advantage."
@@ -434,7 +434,7 @@ Calendar --------+                              |
     sections: [
       section("Why Document The Build", [
         paragraph(
-          "Hoxa is still in progress, which is exactly why the writing matters now. Early-stage product decisions have a habit of hardening before they are properly articulated. Writing forces those decisions into language. Once a product claim, a design principle, or an architectural boundary is written down, it becomes easier to evaluate whether the implementation is actually honoring it."
+          "Hoxa is still in progress, which is exactly why the writing matters now. Early-stage product decisions have a habit of hardening before they are properly articulated. Writing forces those decisions into language. Once a product claim, a design principle, or an architectural boundary is written down, it becomes easier to evaluate whether the implementation is actually honouring it."
         ),
         paragraph(
           "That is especially important for a product like Hoxa, where tone and credibility are part of the product itself. The build thread helps me see whether the product is drifting toward unnecessary complexity, borrowed AI rhetoric, or category defaults that do not fit the original thesis."
@@ -456,7 +456,7 @@ Calendar --------+                              |
           "No heroic builder narrative that hides tradeoffs or uncertainty.",
         ]),
         paragraph(
-          "I would rather publish a quieter post that clarifies one design or systems decision than a louder update that says very little. Serious products are usually built through accumulation: small judgments, revised assumptions, and repeated simplification. The writing should reflect that reality."
+          "I would rather publish a quieter post that clarifies one design or systems decision than a louder update that says very little. Serious products are usually built through accumulation: small judgements, revised assumptions, and repeated simplification. The writing should reflect that reality."
         ),
       ]),
       section("What The Thread Should Become", [
@@ -501,7 +501,7 @@ export const archiveWritingEntries: WritingEntry[] = [
     date: "January 18, 2026",
     category: "Design",
     summary:
-      "Designing tools for research and analysis means optimizing for orientation, not just throughput.",
+      "Designing tools for research and analysis means optimising for orientation, not just throughput.",
     readingTime: "5 min read",
   },
   {
