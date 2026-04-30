@@ -71,6 +71,13 @@ function renderBlock(block: WritingBlock, key: string) {
   );
 }
 
+function sectionId(title: string) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 export function generateStaticParams() {
   return getOrderedWritingEntries().map((entry) => ({
     slug: entry.slug,
@@ -120,6 +127,11 @@ export default async function WritingDetailPage({ params }: WritingPageProps) {
       ? `${entry.series.name} / Part ${entry.series.order} of ${seriesEntries.length}`
       : undefined;
   const bodyLead = entry.intro ?? entry.summary;
+  const sectionLinks =
+    entry.sections?.map((section) => ({
+      title: section.title,
+      id: sectionId(section.title),
+    })) ?? [];
 
   return (
     <main>
@@ -161,6 +173,33 @@ export default async function WritingDetailPage({ params }: WritingPageProps) {
             </p>
           </header>
 
+          {sectionLinks.length > 0 ? (
+            <section className="border-y border-[var(--color-border)] py-6 sm:py-7">
+              <div className="grid gap-4 lg:grid-cols-[12rem_minmax(0,1fr)] lg:gap-10">
+                <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
+                  Contents
+                </p>
+                <nav aria-label="On this page">
+                  <ul className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-[var(--color-muted)]">
+                    {sectionLinks.map((section, index) => (
+                      <li key={section.id} className="flex items-center gap-3">
+                        <span className="text-xs tracking-[0.14em] text-[var(--color-soft)] uppercase">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <a
+                          href={`#${section.id}`}
+                          className="transition-colors duration-150 hover:text-[var(--color-text)] focus-visible:text-[var(--color-text)] focus-visible:outline-none"
+                        >
+                          {section.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              </div>
+            </section>
+          ) : null}
+
           {entry.pullQuote ? (
             <section className="border-y border-[var(--color-border)] py-8 sm:py-10">
               <figure className="space-y-4">
@@ -179,7 +218,11 @@ export default async function WritingDetailPage({ params }: WritingPageProps) {
           {entry.sections && entry.sections.length > 0 ? (
             <div className="space-y-12 py-10 sm:space-y-14 sm:py-12">
               {entry.sections.map((section) => (
-                <section key={section.title} className="space-y-5">
+                <section
+                  key={section.title}
+                  id={sectionId(section.title)}
+                  className="scroll-mt-24 space-y-5"
+                >
                   <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
                     {section.title}
                   </h2>

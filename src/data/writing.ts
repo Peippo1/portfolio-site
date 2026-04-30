@@ -16,7 +16,7 @@ const hoxaSeriesDescription =
 const cityScoutSeriesSlug: WritingSeriesSlug = "cityscout-build-thread";
 const cityScoutSeriesName = "CityScout Build Thread";
 const cityScoutSeriesDescription =
-  "A build thread documenting the product reasoning, native iOS experience, AI backend, and future web layer behind CityScout, an AI-powered city-first travel companion.";
+  "A build thread documenting the product reasoning, native iOS app, AI backend, and future web planning layer behind CityScout, an AI-powered city-first travel companion.";
 
 function section(title: string, blocks: WritingSectionBlock[]): WritingSection {
   return { title, blocks };
