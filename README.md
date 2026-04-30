@@ -81,6 +81,9 @@ vercel --prod
 - The writing content is the source of truth for long-form editorial pages.
 - The project archive is generated from local data, so new entries should keep slugs stable.
 - Keep route and metadata changes in sync with the static content model.
+- See [`ARCHITECTURE.md`](ARCHITECTURE.md) for the system layout.
+- See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the workflow.
+- See [`CHANGELOG.md`](CHANGELOG.md) for project updates.
 
 ## License
 
