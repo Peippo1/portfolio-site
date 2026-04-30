@@ -1,6 +1,6 @@
 # Dev Portfolio
 
-A calm, editorial portfolio for Tim Finch. Built with Next.js 16, TypeScript, and Tailwind CSS, it presents projects, writing, and current work with a restrained visual system and a content-first structure.
+Editorial portfolio for Tim Finch. Built with Next.js 16, TypeScript, and Tailwind CSS, it presents projects, writing, and current work with a restrained visual system and a content-first structure.
 
 ## What It Includes
 
