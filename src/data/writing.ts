@@ -16,7 +16,7 @@ const hoxaSeriesDescription =
 const cityScoutSeriesSlug: WritingSeriesSlug = "cityscout-build-thread";
 const cityScoutSeriesName = "CityScout Build Thread";
 const cityScoutSeriesDescription =
-  "A build thread documenting the product thinking, travel experience design, AI architecture, and roadmap behind CityScout, an AI-powered city-first travel companion.";
+  "A build thread documenting the product reasoning, native iOS experience, AI backend, and future web layer behind CityScout, an AI-powered city-first travel companion.";
 
 function section(title: string, blocks: WritingSectionBlock[]): WritingSection {
   return { title, blocks };
@@ -492,267 +492,156 @@ export const hoxaSeriesEntries: WritingEntry[] = hoxaEntriesWithoutSeries.map(
 const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
   {
     slug: "why-im-building-cityscout",
-    title: "Why I'm Building CityScout",
+    title: "Building CityScout: A Local-First AI Travel Companion",
     date: "April 25, 2026",
     category: "Product Strategy",
     summary:
-      "CityScout starts from a simple frustration: travel apps are still organised around fragments, while the actual experience of a city is holistic and local.",
+      "CityScout is a city-first travel companion designed to help people orient themselves before a trip starts, while keeping the product calm, local-first, and careful about where AI actually belongs.",
     intro:
-      "I am building CityScout around a city-first idea: the best travel companion should help someone understand a place before it tries to optimise their itinerary. The product is meant to reduce uncertainty, surface better choices, and make a trip feel more grounded in the character of the city itself.",
-    readingTime: "7 min read",
+      "I am building CityScout around a simple premise: travel should feel local, legible, and calm. The product is meant to help someone understand a city before it tries to optimise the trip for them.",
+    readingTime: "8 min read",
     pullQuote: {
       quote:
-        "The goal is not to know everything about a city. It is to help you feel oriented enough to enjoy it.",
+        "The product should help you orient yourself before it tries to be clever.",
     },
     sections: [
-      section("The Problem With Fragmented Travel", [
+      section("Why The Problem Matters", [
         paragraph(
-          "Most travel planning still happens across too many surfaces. One app for maps, one for bookings, one for reviews, one for notes, and a handful of tabs for articles or saved places. That fragmentation makes planning feel like administration. It also makes it harder to build confidence, because the user keeps switching between contexts instead of forming a coherent picture of the trip."
+          "Most travel planning still happens across too many surfaces. One app for maps, one for bookings, one for reviews, one for notes, and a handful of tabs for saved places. That fragmentation makes planning feel like administration. It also makes it harder to build confidence, because the user keeps switching between contexts instead of forming a coherent picture of the trip."
         ),
         paragraph(
-          "CityScout is meant to do the opposite. The product should bring discovery, planning, and in-city navigation into the same mental model so the trip feels like one flow rather than a pile of disconnected decisions."
-        ),
-      ]),
-      section("City-First By Design", [
-        paragraph(
-          "A city-first product starts with the place, not the booking. That means helping someone understand what a city is good at, how its neighbourhoods differ, when to move slowly, and where the local texture actually lives. The app should feel like it is helping the user travel like a local without pretending they already know the city."
-        ),
-        paragraph(
-          "That distinction matters because confidence in travel is rarely about raw information volume. It is about feeling oriented. If the product can help a person decide where to spend time, what to cluster together, and what to ignore, it becomes much more useful than a list of generic suggestions."
+          "CityScout is meant to do the opposite. The product should bring discovery, planning, and trip-time reference into the same mental model so the experience feels like one flow rather than a pile of disconnected decisions."
         ),
       ]),
-      section("Confidence Over Coverage", [
+      section("Why City-First Matters", [
+        paragraph(
+          "A city-first product starts with the place, not the booking. That means helping someone understand what a city is good at, how its neighbourhoods differ, when to move slowly, and where the local texture actually lives. The app should feel like it is helping the user travel with context, not pretending they already know the city."
+        ),
+        paragraph(
+          "That distinction matters because confidence in travel is rarely about raw information volume. It is about feeling oriented. If the product can help a person decide where to spend time, what to cluster together, and what to ignore, it becomes more useful than a list of generic suggestions."
+        ),
+      ]),
+      section("Why I Chose iOS First", [
+        paragraph(
+          "CityScout is a native iOS app built with SwiftUI and SwiftData because the product belongs close to the trip. A travel companion needs to live on the device, feel fast, and stay useful when the user is moving between places, not sitting in a desktop workflow."
+        ),
+        paragraph(
+          "The platform choice is also a product decision. iOS gives the app a strong baseline for maps, mobile interaction, local storage, and the kind of in-context use that travel software depends on. That makes the first version easier to trust and easier to keep simple."
+        ),
+      ]),
+      section("Why AI Should Stay Selective", [
         list([
-          "Help users decide, not just collect options.",
-          "Surface fewer places with better context instead of overwhelming the screen.",
-          "Translate city knowledge into practical choices that reduce friction.",
-          "Make local texture feel accessible without turning the app into a guidebook clone.",
+          "Use AI to start itineraries and answer guide questions, not to replace the whole product.",
+          "Keep structured city content and saved trip data as the source of truth.",
+          "Prefer clear outputs that can be reviewed, stored, and reused.",
+          "Let AI improve orientation and drafting, not obscure the underlying travel model.",
         ]),
         paragraph(
-          "That is the product bet: confidence is a stronger travel feature than coverage. A person does not need every possible restaurant or attraction. They need enough structure to move through a city with curiosity rather than hesitation."
+          "The product bet is that careful AI is more useful than omnipresent AI. CityScout does not need to use language generation everywhere. It needs to use it where it reduces friction, then step back when a stable city record or a simple interaction is the better answer."
         ),
       ]),
     ],
   },
   {
-    slug: "designing-cityscout-as-a-trip-loop",
-    title: "Designing CityScout As A Trip Loop",
-    date: "April 26, 2026",
-    category: "Product Design",
-    summary:
-      "The product needs a loop that stays legible across planning, travel, and reuse, so each trip improves the next one without making the interface heavier.",
-    intro:
-      "CityScout should not behave like a static itinerary builder. It needs to feel like a loop that starts with curiosity, becomes planning, supports the trip itself, and then feeds knowledge back into the next journey.",
-    readingTime: "8 min read",
-    sections: [
-      section("The Core Loop", [
-        paragraph(
-          "The product should be organised around a simple sequence: learn, explore, plan, trip, reuse. That gives the user a clear sense of where they are in the journey and keeps the product from becoming a generic repository of saved places. Each stage should feel distinct, but not disconnected."
-        ),
-        diagram(
-          `Learn
-  |
-  v
-Explore
-  |
-  v
-Plan
-  |
-  v
-Trip
-  |
-  v
-Reuse`,
-          "CityScout trip loop"
-        ),
-      ]),
-      section("Navigation Has To Stay Obvious", [
-        paragraph(
-          "Travel products fail when navigation becomes a hidden taxonomy problem. If the user cannot tell whether they are browsing ideas, editing a plan, or using the plan on the ground, the app starts to feel uncertain even when the content is useful. CityScout needs to make state obvious at every step."
-        ),
-        paragraph(
-          "That is why the interface should privilege clear modes and stable wayfinding. The user should always know what the current action is, what can be added later, and how a decision in one context affects the next one."
-        ),
-      ]),
-      section("Simplicity Should Accrue Over Time", [
-        paragraph(
-          "A good travel system becomes simpler as it learns more. On the first trip, it may need more explanation and more scaffolding. On the second or third, it should start to recognise patterns: preferred pace, neighbourhood density, food priorities, or the kinds of days that tend to work best."
-        ),
-        list([
-          "Use the first trip to collect useful structure, not just content.",
-          "Make saved decisions reusable without forcing a rigid template.",
-          "Let the interface get lighter as familiarity increases.",
-          "Keep the loop understandable even when the system becomes more personalised.",
-        ]),
-      ]),
-    ],
-  },
-  {
-    slug: "cityscout-ai-architecture",
-    title: "CityScout AI Architecture",
+    slug: "cityscout-architecture-native-ios-fastapi-shared-ai-backend",
+    title: "CityScout Architecture: Native iOS, FastAPI, and a Shared AI Backend",
     date: "April 27, 2026",
     category: "Architecture",
     summary:
-      "The architecture should keep AI useful without moving sensitive logic onto the device or blurring the boundary between itinerary structure and conversational assistance.",
+      "CityScout now keeps the iOS app thin, the backend authoritative, and OpenAI behind a server boundary so itinerary generation and guide chat stay easier to secure, test, and evolve.",
     intro:
-      "For CityScout, I want the technical shape of the product to stay boring in the right places. The app should feel intelligent to the user, but the architecture should keep the parts that matter easy to reason about and safe to evolve.",
-    readingTime: "10 min read",
+      "The current shape of CityScout is intentionally split: SwiftUI and SwiftData on device, FastAPI on the server, and OpenAI calls kept server-side. That gives the product a clearer security boundary and makes the AI behavior easier to change.",
+    readingTime: "9 min read",
     pullQuote: {
       quote:
-        "The device should stay clean. The backend should own the boundary. AI should explain, not obscure.",
+        "The app should hold the trip; the backend should hold the contract.",
     },
     sections: [
-      section("iOS, FastAPI, OpenAI", [
+      section("Native iOS As The Primary Surface", [
         paragraph(
-          "The core path is straightforward: the iOS app captures intent and interaction, FastAPI handles orchestration and persistence, and OpenAI is called from the backend where prompts, structure, and policy can be managed centrally. That keeps the client thin and avoids spreading sensitive logic across the device."
+          "SwiftUI and SwiftData are a good fit for the core product because they keep the mobile experience close to the user's data. CityScout is designed as a travel companion, so the iPhone app needs to feel immediate, local, and dependable when the user is on the move."
         ),
-        diagram(
-          `iOS App
-  |
-  v
-FastAPI Backend
-  |
-  v
-OpenAI
-  |
-  v
-Structured Output`,
-          "Backend-mediated AI flow"
+        paragraph(
+          "That local-first shape matters. The app should be able to keep trip state, saved places, and user decisions on device first, then synchronize through the backend where it makes sense. The point is to reduce friction, not to build a cloud-first planning system that happens to run on a phone."
         ),
       ]),
-      section("No API Keys On Device", [
+      section("FastAPI Owns The AI Boundary", [
         paragraph(
-          "Keeping API keys off the device is not just a security preference. It also keeps the product architecture cleaner. The backend can rate limit, log, validate, retry, and reformat responses before the app sees them. That makes the system easier to debug and easier to trust."
+          "FastAPI sits between the app and OpenAI so the model never becomes a client-side dependency. That lets the server manage prompts, validation, retries, logging, and response shaping in one place, instead of scattering those concerns across the device."
         ),
         paragraph(
-          "It also gives CityScout room to evolve. If the backend owns the call layer, the product can change models, tune prompts, or add fallback behaviour without requiring a client release for every adjustment."
+          "The current backend boundary also supports shared-secret auth, which keeps the client from carrying sensitive credentials. That is a practical security choice, and it also keeps the mobile app simpler. The app sends intent; the backend decides how to turn that intent into itinerary generation or guide chat."
         ),
       ]),
-      section("Structured Itinerary, Not Just Chat", [
+      section("Structured Endpoints Beat Free-Form Output", [
         paragraph(
-          "Chat can be a helpful interface, but the product should not collapse into conversation alone. CityScout needs structured itinerary data because users need things they can save, reorder, map, and revisit. A chat surface can help generate and explain that structure, but it should not replace the structure itself."
+          "CityScout now has dedicated itinerary generation and guide chat endpoints, which is the right shape for a product that needs both structure and explanation. Itineraries are not just conversation transcripts. They are durable objects that can be saved, reviewed, and reused."
         ),
         list([
-          "Itinerary objects should remain explicit and serializable.",
-          "Generated suggestions should be validated before they enter the saved plan.",
-          "Conversation should augment editing, not substitute for the source of truth.",
-          "The backend should translate model output into a stable domain shape.",
+          "Itinerary output should stay structured enough to serialize and validate.",
+          "Guide chat should explain and support, not replace the trip model.",
+          "Seeded JSON city content should make the app useful before generation runs.",
+          "The backend should normalize model output into a stable contract for the client.",
         ]),
       ]),
-      section("Why The Boundary Matters", [
+      section("What Stays Future Work", [
         paragraph(
-          "Once the backend owns the contract, the rest of the product can stay more honest. The app can present confidence without pretending the model is infallible. If a generated suggestion is weak, incomplete, or uncertain, the backend can say that plainly and keep the failure local instead of leaking confusion into the UI."
+          "The planned Next.js web planning layer belongs in the future, not the current shipped product. It makes sense as a secondary surface for planning and sharing, but it should reuse the same API contract instead of creating a separate version of the truth."
         ),
         paragraph(
-          "That is the real architectural goal: preserve a stable product boundary so AI helps the trip feel clearer rather than more magical."
+          "That future layer only works if the contract stays stable. If the backend schema drifts, the product starts to lose the simplicity that makes the current split between client, server, and model manageable."
         ),
       ]),
     ],
   },
   {
-    slug: "from-itinerary-to-map",
-    title: "From Itinerary To Map",
-    date: "April 29, 2026",
-    category: "Product Systems",
-    summary:
-      "The itinerary only becomes genuinely useful once every saved stop can resolve cleanly onto a map, with the product handling unmatched places gracefully.",
-    intro:
-      "The map is where the plan becomes real. If CityScout cannot move cleanly from a written itinerary into spatial context, then the experience will always feel a step behind the user's actual trip.",
-    readingTime: "8 min read",
-    sections: [
-      section("Save Everything First", [
-        paragraph(
-          "The product should treat saving as the main act, not a side effect. Users may not know yet whether a place belongs on day one, day two, or only as a backup. Capturing the full flow early gives the system room to refine the plan without making the user redo their work."
-        ),
-        paragraph(
-          "That also makes later matching more reliable. Once the trip contains saved places, notes, preferences, and time windows, the app can make better mapping decisions than it could from a single isolated search result."
-        ),
-      ]),
-      section("POI Matching Needs Buckets", [
-        paragraph(
-          "A point-of-interest match should not be treated as a binary success or failure. CityScout should distinguish between clean matches, fuzzy matches, and items that could not be resolved confidently. That keeps the interface honest while still allowing the product to be helpful."
-        ),
-        list([
-          "Mapped: a place resolves with high confidence.",
-          "Fuzzy: a likely candidate exists, but the user should review it.",
-          "Unmatched: the item needs a manual decision or more context.",
-        ]),
-      ]),
-      section("Route And Map Integration", [
-        diagram(
-          `Saved Trip Items
-  |
-  v
-POI Matching
-  |
-  +----> Mapped Stops ----> Route Builder
-  |
-  +----> Fuzzy Matches ---> Review State
-  |
-  +----> Unmatched Items --> Manual Fix`,
-          "From saved items to route context"
-        ),
-        paragraph(
-          "Route building should depend on the quality of the underlying map matches. If the system is uncertain, it should ask for review instead of silently making a poor choice. The goal is not perfect automation. The goal is useful automation with clear escape hatches."
-        ),
-      ]),
-      section("Why This Improves The Trip", [
-        paragraph(
-          "Once the app can turn saved intentions into routeable places, the product stops being only a planner. It becomes a companion during the trip itself. That shift is important because it makes the saved data operational instead of archival."
-        ),
-        paragraph(
-          "The user should be able to open CityScout mid-trip and immediately understand what is next, what is nearby, and what still needs attention."
-        ),
-      ]),
-    ],
-  },
-  {
-    slug: "where-cityscout-goes-next",
-    title: "Where CityScout Goes Next",
+    slug: "extending-cityscout-to-web",
+    title: "Extending CityScout to Web: Multi-Surface Product Design",
     date: "April 30, 2026",
     category: "Roadmap",
     summary:
-      "The next phase is about proving the product in the real world before expanding into accounts, bookings, and deeper experience layers.",
+      "The web layer should expand where planning happens and where trips are shared, while keeping iOS as the in-trip companion and the backend contract as the shared source of truth.",
     intro:
-      "The roadmap for CityScout should be guided by trust, not by feature appetite. I want the first usable version to prove that the product can support a real trip before it starts widening into a broader travel platform.",
-    readingTime: "7 min read",
+      "The web version of CityScout is not meant to replace the iOS app. It is meant to broaden where planning can happen and where a trip can be reviewed, shared, or resumed. iOS remains the in-trip companion.",
+    readingTime: "8 min read",
     pullQuote: {
       quote:
-        "Trust has to arrive before monetisation. If the product does not earn confidence, every later layer becomes harder to justify.",
+        "Web should help shape the trip. iOS should help you live it.",
     },
     sections: [
-      section("TestFlight First", [
+      section("Why Add Web At All", [
         paragraph(
-          "The immediate goal is a credible TestFlight build. That means making sure the core loop holds together on a real device, the AI boundary behaves predictably, and the save-to-map flow feels stable enough for early use. A polished concept is not enough; the app has to survive ordinary trip planning."
+          "A web surface makes sense when the product needs a larger planning canvas. People often research travel across tabs, share plans with other people, or revisit details from a desktop before they leave. Web is a better fit for that kind of work than a phone-only interface."
         ),
         paragraph(
-          "This is also where the product starts learning what matters in practice. Travel workflows tend to expose edge cases quickly, especially around place naming, network timing, and changes of intent. TestFlight should surface those issues before the product promises too much."
-        ),
-      ]),
-      section("Real Device Backend Work", [
-        paragraph(
-          "The backend needs to behave like a real service under real use, not a demo harness. That means handling auth, persistence, request shaping, retries, and structured responses with enough discipline that the app feels dependable even when the model does something imperfect."
-        ),
-        paragraph(
-          "If the service layer is solid, the product can improve incrementally without constant structural resets. That matters because CityScout is the kind of app where user trust compounds over repeated trips."
+          "That does not make the web the primary experience. It makes it the planning and sharing layer. The trip itself still belongs on iOS, where the app can stay close to maps, quick decisions, and the on-the-ground rhythm of moving through a city."
         ),
       ]),
-      section("Future Layers", [
+      section("One Contract, Multiple Surfaces", [
+        paragraph(
+          "A shared API contract is the right anchor for multiple surfaces. The iOS app and the future web app should both speak to the same itinerary and guide shapes, so the product does not fork into two subtly different versions of the same trip."
+        ),
+        paragraph(
+          "If the web layer lands, I would want the schema, validation rules, and endpoint behavior to stay aligned across clients. Whether that lives in a monorepo or another shared workspace shape is a future decision, but the architectural direction is clear: keep the contract central and avoid duplication."
+        ),
+      ]),
+      section("Security Gets Harder In The Browser", [
+        paragraph(
+          "Browser clients raise the security bar. They make shared secrets harder to protect, increase the surface area for abuse, and demand more care around auth, rate limiting, and response shaping. That is another reason the AI boundary should stay on the server."
+        ),
         list([
-          "Accounts for cross-device persistence and trip history.",
-          "Bookings for turning saved intent into actual reservations.",
-          "Experiences for richer local context and trip-specific recommendations.",
+          "Never expose model credentials to the browser.",
+          "Treat client requests as untrusted until validated on the server.",
+          "Prefer explicit auth and rate limits over optimistic assumptions.",
+          "Keep the itinerary contract stable enough that clients do not need special logic for every endpoint.",
         ]),
-        paragraph(
-          "Those features are useful, but they only make sense after the core trip loop feels trustworthy. Otherwise the product risks expanding before it has earned the right to do so."
-        ),
       ]),
-      section("The Principle That Should Hold", [
+      section("Why TDD Matters More Here", [
         paragraph(
-          "CityScout should keep choosing trust over surface area. That means delaying cleverness when it weakens clarity, and only adding new systems when they make the trip easier to understand or easier to enjoy."
+          "Once a product has multiple surfaces, tests stop being optional polish. They become the easiest way to keep the contract honest while the UI evolves. The web layer should not move the system faster than the tests can describe it."
         ),
         paragraph(
-          "If the product stays faithful to that principle, it can grow into a genuinely useful travel companion rather than another app that asks users to do the work the system should have done for them."
+          "The direction I want to keep tightening is straightforward: test the contract, test the failure modes, and make sure the product stays production-ready before expanding the surface area again. That is how the web layer can add value without adding confusion."
         ),
       ]),
     ],
