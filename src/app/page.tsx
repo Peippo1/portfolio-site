@@ -3,6 +3,7 @@ import { LiveTelemetry } from "@/components/home/live-telemetry";
 import { Container } from "@/components/ui/container";
 import { getFeaturedProjects } from "@/data/projects";
 import { profile } from "@/data/profile";
+import { cityScoutSummary } from "@/data/writing";
 
 const featuredProjects = getFeaturedProjects(3);
 
@@ -91,11 +92,7 @@ export default function HomePage() {
             Currently building
           </h2>
           <div className="mt-4 grid gap-6 text-sm leading-7 text-[var(--color-muted)] sm:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
-            <p className="max-w-2xl">
-              I’m focused on products that stay useful after the novelty wears
-              off: clear interfaces, explicit review loops, and systems that
-              are easy to reason about.
-            </p>
+            <p className="max-w-2xl">{cityScoutSummary.oneLine}</p>
             <ul className="space-y-2.5">
               {recentFocus.map((item) => (
                 <li key={item} className="border-l border-[var(--color-border)] pl-4">

@@ -18,6 +18,15 @@ const cityScoutSeriesName = "CityScout Build Thread";
 const cityScoutSeriesDescription =
   "A build thread documenting the product reasoning, native iOS app, AI backend, and future web planning layer behind CityScout, an AI-powered city-first travel companion.";
 
+export const cityScoutSummary = {
+  oneLine:
+    "CityScout is a local-first iOS travel companion with a shared AI backend and a planned web planning layer.",
+  readerFacing:
+    "CityScout is built around a simple idea: travel feels better when the product understands the city, not just the booking. The iOS app keeps trip state close to the device, while a FastAPI backend handles itinerary generation, guide chat, and structured AI outputs. A future web layer will support planning and sharing, but iOS remains the in-trip companion.",
+  technical:
+    "CityScout is a native iOS travel app with a FastAPI backend and a shared AI contract. OpenAI calls stay server-side behind shared-secret auth, with seeded city content and structured endpoints for itineraries and guide chat. The product is being shaped for security, testability, and a future web planning layer.",
+};
+
 function section(title: string, blocks: WritingSectionBlock[]): WritingSection {
   return { title, blocks };
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/container";
 import { PageIntro } from "@/components/ui/page-intro";
 import { profile } from "@/data/profile";
+import { cityScoutSummary } from "@/data/writing";
 
 export const metadata: Metadata = {
   title: "About",
@@ -45,6 +46,13 @@ export default function AboutPage() {
                 development, designing systems that connect model output to
                 real workflows.
               </p>
+            </div>
+
+            <div>
+              <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
+                Current build
+              </h2>
+              <p className="mt-3">{cityScoutSummary.oneLine}</p>
             </div>
 
             <div>
