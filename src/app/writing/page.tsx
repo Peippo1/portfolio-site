@@ -112,7 +112,7 @@ export default function WritingPage() {
         <PageIntro
           eyebrow="Writing"
           title="Product notes, systems thinking, and the working record behind what gets built."
-          description="A restrained archive of writing on product engineering, interfaces, and applied AI, alongside in-progress build threads for Hoxa and CityScout."
+          description="A restrained archive of writing on product engineering, interfaces, and applied AI, alongside in-progress build threads for Hoxa and CityScout and build logs like CreatorOS."
         />
 
         <section className="mt-14">
@@ -192,7 +192,7 @@ export default function WritingPage() {
               Archive
             </p>
             <h2 className="font-editorial mt-4 text-[1.85rem] leading-tight sm:text-[2.15rem]">
-              Standalone notes on systems, interfaces, and applied AI.
+              Standalone notes and build logs on systems, interfaces, and applied AI.
             </h2>
           </div>
 

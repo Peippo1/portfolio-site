@@ -672,6 +672,79 @@ export const cityScoutSeriesEntries: WritingEntry[] =
 
 export const archiveWritingEntries: WritingEntry[] = [
   {
+    slug: "building-creatoros-an-ai-growth-operating-system-for-creators",
+    title: "Building CreatorOS: an AI growth operating system for creators",
+    date: "May 9, 2026",
+    category: "Build Log",
+    summary:
+      "CreatorOS is an AI growth operating system for creators and internet brands, built to turn source material into a Creator Growth Pack through a structured multi-agent workflow.",
+    intro:
+      "CreatorOS started from exploring D2C and creator businesses and asking a simpler question: what would reduce the amount of decision fatigue a creator carries every week? The answer was not another generic AI writing tool. It was a product that could reason about audience, strategy, content gaps, and repurposing as separate steps in one workflow.",
+    readingTime: "8 min read",
+    pullQuote: {
+      quote:
+        "Repurposing is useful, but it is only one output layer.",
+    },
+    sections: [
+      section("Why This Project Exists", [
+        paragraph(
+          "Most creators do not need more raw output. They need help deciding what matters, what is missing, and what to do next. CreatorOS is an attempt to turn that messy decision-making into a structured product flow that starts with source material and ends with a practical Creator Growth Pack."
+        ),
+        paragraph(
+          "That starting point came from looking at D2C and creator businesses more closely. The same pattern kept appearing: the work was not just about making content, it was about evaluating audience signals, finding repeated gaps, and deciding which opportunities were worth acting on."
+        ),
+      ]),
+      section("Why This Is Not Just Another AI Writing Tool", [
+        paragraph(
+          "CreatorOS is not meant to be a generic writer with a few prompts wrapped around it. The stronger product angle is strategic reasoning. Audience intelligence, content gap discovery, platform-aware strategy, and experiment recommendations are all part of the system because they shape the decision before any repurposed output is generated."
+        ),
+        paragraph(
+          "Repurposing still matters, but only as the final layer. If the product only rewrites content, it misses the larger problem. The useful part is understanding what the creator should do with the material in the first place."
+        ),
+      ]),
+      section("The First Workflow", [
+        diagram(
+          `Transcript / Input
+  → Audience Intelligence Agent
+  → Content Strategy Agent
+  → Repurposing Agent
+  → Creator Growth Pack`,
+          "The first end-to-end workflow is designed to stay readable and fast."
+        ),
+        paragraph(
+          "The first version is deliberately narrow. The goal is to prove whether one workflow can produce genuinely useful strategy in under five minutes, without collapsing into a broad content platform."
+        ),
+      ]),
+      section("The Agent Architecture", [
+        paragraph(
+          "The implementation uses Next.js App Router, TypeScript, Tailwind, shadcn/ui, OpenAI Responses API calls, structured JSON outputs, and Zod schemas to keep the data model explicit. The agents are modular rather than fused into one prompt so each step can do one job well."
+        ),
+        paragraph(
+          "The backend also includes a mock fallback when OPENAI_API_KEY is missing, which keeps the prototype usable during development and testing. Vitest provides the first test foundation, including API route tests, and the public routes use lightweight request caps and in-memory rate limiting so the shape of the product is harder to abuse while it is still small."
+        ),
+      ]),
+      section("Building For Usefulness Before Scale", [
+        list([
+          "No auth yet, because the first question is whether the workflow is useful at all.",
+          "No billing yet, because the product still needs proof of value before monetization work matters.",
+          "No database persistence yet, because the early goal is to validate the interaction model and the quality of the output.",
+          "No analytics integrations yet, because the prototype should stay focused on reasoning and usefulness rather than instrumentation.",
+        ]),
+        paragraph(
+          "That restraint is intentional. The product needs to prove that a creator can feed in source material and get a genuinely helpful strategic pack back, without waiting for a larger platform to exist around it."
+        ),
+      ]),
+      section("What Comes Next", [
+        paragraph(
+          "Future work will likely focus on persistence, authentication, and stronger integrations once the core workflow proves itself. If the product earns that next step, the data model can grow around the workflow instead of forcing the workflow to fit an oversized platform."
+        ),
+        paragraph(
+          "The bar for the next phase is simple: keep the product strategic, keep the output structured, and keep the experience useful before it gets ambitious."
+        ),
+      ]),
+    ],
+  },
+  {
     slug: "building-with-clear-evaluation-loops",
     title: "Building With Clear Evaluation Loops",
     date: "March 27, 2026",

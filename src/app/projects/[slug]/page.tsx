@@ -43,6 +43,10 @@ function BulletList({ items }: { items: string[] }) {
   );
 }
 
+function isExternalUrl(value: string) {
+  return /^https?:\/\//i.test(value);
+}
+
 const campaignForgeCaseStudy = {
   intro:
     "An end-to-end AI pipeline that generates marketing strategy, copy, and creative concepts from a single brief.",
@@ -239,23 +243,35 @@ export default async function ProjectDetailPage({
 
             <Section title="Links">
               <div className="flex flex-col gap-2.5 text-[var(--color-text)]">
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="inline-flex w-fit items-center gap-2 rounded-full px-1 py-0.5 transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-muted)] focus-visible:bg-black/[0.03] focus-visible:outline-none"
-                >
-                  GitHub <span aria-hidden="true">↗</span>
-                </a>
-                {project.demoUrl ? (
+                {isExternalUrl(project.githubUrl) ? (
                   <a
-                    href={project.demoUrl}
+                    href={project.githubUrl}
                     target="_blank"
                     rel="noreferrer noopener"
                     className="inline-flex w-fit items-center gap-2 rounded-full px-1 py-0.5 transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-muted)] focus-visible:bg-black/[0.03] focus-visible:outline-none"
                   >
-                    Demo <span aria-hidden="true">↗</span>
+                    GitHub <span aria-hidden="true">↗</span>
                   </a>
+                ) : (
+                  <div className="rounded-[1rem] border border-dashed border-[var(--color-border)] px-4 py-3 text-sm text-[var(--color-muted)]">
+                    GitHub: {project.githubUrl}
+                  </div>
+                )}
+                {project.demoUrl ? (
+                  isExternalUrl(project.demoUrl) ? (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="inline-flex w-fit items-center gap-2 rounded-full px-1 py-0.5 transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-muted)] focus-visible:bg-black/[0.03] focus-visible:outline-none"
+                    >
+                      Demo <span aria-hidden="true">↗</span>
+                    </a>
+                  ) : (
+                    <div className="rounded-[1rem] border border-dashed border-[var(--color-border)] px-4 py-3 text-sm text-[var(--color-muted)]">
+                      Demo: {project.demoUrl}
+                    </div>
+                  )
                 ) : null}
               </div>
             </Section>

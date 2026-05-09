@@ -2,6 +2,31 @@ import type { Project } from "@/types/content";
 
 export const projects: Project[] = [
   {
+    slug: "creatoros",
+    title: "CreatorOS",
+    shortSummary:
+      "AI growth operating system for creators and internet brands.",
+    longSummary:
+      "CreatorOS is an AI operating system for creators and internet brands. It uses a structured multi-agent workflow to turn source material into a Creator Growth Pack, with audience intelligence, strategy, and repurposing stages kept separate so the output stays useful.",
+    category: "AI Products",
+    year: "2026",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "OpenAI", "Zod", "Vitest"],
+    featured: true,
+    githubUrl: "TODO: add CreatorOS GitHub repository URL",
+    demoUrl: "TODO: add live demo URL",
+    problem:
+      "Creators and internet brands spend a lot of time deciding what to make, how to adapt source material, and where the biggest content gaps actually are.",
+    solution:
+      "CreatorOS breaks the work into structured stages so the system can reason about audience intelligence, content gaps, platform-aware strategy, and repurposing without collapsing them into one generic writing flow.",
+    highlights: [
+      "Designed a multi-agent workflow from transcript input to a Creator Growth Pack.",
+      "Kept audience intelligence and content strategy separate from repurposing output.",
+      "Used structured JSON outputs and Zod schemas to keep responses predictable.",
+      "Added a mock fallback so the prototype stays usable without an OpenAI key.",
+    ],
+    status: "Active prototype",
+  },
+  {
     slug: "campaignforge-ai",
     title: "CampaignForge AI",
     shortSummary:
