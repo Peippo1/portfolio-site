@@ -734,6 +734,17 @@ export const archiveWritingEntries: WritingEntry[] = [
           "That restraint is intentional. The product needs to prove that a creator can feed in source material and get a genuinely helpful strategic pack back, without waiting for a larger platform to exist around it."
         ),
       ]),
+      section("Why Evaluation Tooling Matters", [
+        paragraph(
+          "A major part of building AI systems is not only generating outputs, but creating ways to evaluate them over time. For CreatorOS, that means checking whether the system is actually improving prompt quality, strategic usefulness, repetition, and failure modes instead of just sounding better."
+        ),
+        list([
+          "Structured outputs make it easier to compare results and spot regressions.",
+          "Prompt evaluation harnesses help test the same workflow against changing inputs.",
+          "Deterministic tests around schemas and API boundaries keep the contract stable.",
+          "The real goal is to improve usefulness, not to chase bigger architectures for their own sake.",
+        ]),
+      ]),
       section("What Comes Next", [
         paragraph(
           "Future work will likely focus on persistence, authentication, and stronger integrations once the core workflow proves itself. If the product earns that next step, the data model can grow around the workflow instead of forcing the workflow to fit an oversized platform."
