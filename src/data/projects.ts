@@ -12,7 +12,7 @@ export const projects: Project[] = [
     year: "2026",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "OpenAI", "Zod", "Vitest"],
     featured: true,
-    githubUrl: "TODO: add CreatorOS GitHub repository URL",
+    githubUrl: "https://github.com/Peippo1/CreatorOS",
     demoUrl: "TODO: add live demo URL",
     problem:
       "Creators and internet brands spend a lot of time deciding what to make, how to adapt source material, and where the biggest content gaps actually are.",
