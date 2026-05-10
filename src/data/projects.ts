@@ -2,6 +2,54 @@ import type { Project } from "@/types/content";
 
 export const projects: Project[] = [
   {
+    slug: "hoxa",
+    title: "Hoxa",
+    shortSummary:
+      "An adaptive fitness companion for beginner to intermediate users, built around calm design and a multi-mode training system.",
+    longSummary:
+      "Hoxa is a fitness product designed for people who want to get stronger and move more confidently without the performance anxiety most fitness software creates. The product covers running, strength, mobility, balance, and recovery in one training loop, with a FastAPI backend and an adaptive engine that adjusts plans based on adherence, effort, and context signals while explaining its reasoning in plain language.",
+    category: "AI Products",
+    year: "2026",
+    stack: ["SwiftUI", "SwiftData", "FastAPI", "OpenAI", "TypeScript"],
+    featured: true,
+    githubUrl: "Coming soon",
+    problem:
+      "Most fitness products lose beginners before training becomes useful, because the product asks users to perform confidence they don't yet have. The language, design, and intensity cues are calibrated for people who already identify as athletes.",
+    solution:
+      "Hoxa uses a calmer tone, a multi-mode training system, and an adaptive engine that responds to real-world signals — fatigue, schedule friction, missed sessions — without making users feel they've failed. The system explains its decisions rather than hiding them.",
+    highlights: [
+      "Designing a multi-mode training system covering running, strength, mobility, balance, and recovery.",
+      "Building an adaptive training engine that adjusts plans based on adherence, effort, and context signals.",
+      "Keeping the product tone measured and non-performative to lower friction for beginner and intermediate users.",
+      "Planning integrations with Apple Health, Apple Watch, and Garmin for richer context over time.",
+    ],
+    status: "In design",
+  },
+  {
+    slug: "cityscout",
+    title: "CityScout",
+    shortSummary:
+      "A local-first iOS travel companion with a shared AI backend and a planned web planning layer.",
+    longSummary:
+      "CityScout is a native iOS travel app built around a simple premise: travel feels better when the product understands the city, not just the booking. The iOS app keeps trip state close to the device, while a FastAPI backend handles itinerary generation, guide chat, and structured AI outputs behind a shared-secret auth boundary. A future web layer will support planning and sharing.",
+    category: "AI Products",
+    year: "2026",
+    stack: ["SwiftUI", "SwiftData", "FastAPI", "OpenAI", "Next.js"],
+    featured: true,
+    githubUrl: "Coming soon",
+    problem:
+      "Travel planning is fragmented across maps, bookings, reviews, and note apps, making it hard to build a coherent picture of a trip. Most tools optimise for booking rather than orientation.",
+    solution:
+      "CityScout combines discovery, planning, and trip-time reference in one product, with the iOS app staying close to the device and a FastAPI backend keeping AI calls server-side behind a clean security boundary.",
+    highlights: [
+      "Built a native iOS app with SwiftUI and SwiftData for local-first trip state.",
+      "Designed a FastAPI backend with dedicated itinerary generation and guide chat endpoints.",
+      "Kept OpenAI calls server-side behind shared-secret auth to avoid client credential exposure.",
+      "Planned a Next.js web layer that reuses the same API contract for planning and sharing.",
+    ],
+    status: "Active prototype",
+  },
+  {
     slug: "creatoros",
     title: "CreatorOS",
     shortSummary:

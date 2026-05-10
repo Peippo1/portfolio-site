@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/container";
 import { PageIntro } from "@/components/ui/page-intro";
 import {
   getCityScoutSeriesEntries,
+  getCreatorOSSeriesEntries,
   getHoxaSeriesEntries,
   getStandaloneArchiveEntries,
 } from "@/data/writing";
@@ -78,9 +79,11 @@ function WritingFeed({
 export default function WritingPage() {
   const cityScoutSeriesEntries = getCityScoutSeriesEntries();
   const hoxaSeriesEntries = getHoxaSeriesEntries();
+  const creatorOSSeriesEntries = getCreatorOSSeriesEntries();
   const archiveEntries = getStandaloneArchiveEntries();
   const cityScoutSeries = cityScoutSeriesEntries[0]?.series;
   const hoxaSeries = hoxaSeriesEntries[0]?.series;
+  const creatorOSSeries = creatorOSSeriesEntries[0]?.series;
   const featuredSeries = [
     cityScoutSeries
       ? {
@@ -96,11 +99,18 @@ export default function WritingPage() {
           summaryLine: "Seven posts / Product, design, architecture, and process",
         }
       : null,
+    creatorOSSeries
+      ? {
+          series: creatorOSSeries,
+          entries: creatorOSSeriesEntries,
+          summaryLine: "One post / Product strategy and agent architecture",
+        }
+      : null,
   ].filter(
     (
       item
     ): item is {
-      series: NonNullable<typeof cityScoutSeries | typeof hoxaSeries>;
+      series: NonNullable<typeof cityScoutSeries | typeof hoxaSeries | typeof creatorOSSeries>;
       entries: WritingEntry[];
       summaryLine: string;
     } => item !== null
@@ -112,7 +122,7 @@ export default function WritingPage() {
         <PageIntro
           eyebrow="Writing"
           title="Product notes, systems thinking, and the working record behind what gets built."
-          description="A restrained archive of writing on product engineering, interfaces, and applied AI, alongside in-progress build threads for Hoxa and CityScout and build logs like CreatorOS."
+          description="A restrained archive of writing on product engineering, interfaces, and applied AI, alongside in-progress build threads for Hoxa, CityScout, and CreatorOS."
         />
 
         <section className="mt-14">

@@ -4,14 +4,14 @@ import { Container } from "@/components/ui/container";
 import { Surface } from "@/components/ui/surface";
 import { getFeaturedProjects } from "@/data/projects";
 import { profile } from "@/data/profile";
-import { cityScoutSummary } from "@/data/writing";
+import { cityScoutSummary, hoxaSummary, creatorOSSummary } from "@/data/writing";
 
 const featuredProjects = getFeaturedProjects(3);
 
-const recentFocus = [
-  "Structured campaign workflows",
-  "Reviewable telemetry with fallback feeds",
-  "Reply systems with clear contracts",
+const activeBuildLinks = [
+  { title: "Hoxa", oneLine: hoxaSummary.oneLine, href: "/projects/hoxa" },
+  { title: "CityScout", oneLine: cityScoutSummary.oneLine, href: "/projects/cityscout" },
+  { title: "CreatorOS", oneLine: creatorOSSummary.oneLine, href: "/projects/creatoros" },
 ];
 
 export default function HomePage() {
@@ -59,14 +59,22 @@ export default function HomePage() {
             <div className="space-y-6">
               <div>
                 <p className="text-xs tracking-[0.18em] text-[var(--color-muted)] uppercase">
-                  Current build
+                  Active builds
                 </p>
-                <p className="font-editorial mt-3 text-[1.35rem] leading-tight text-[var(--color-text)] sm:text-[1.55rem]">
-                  CityScout
-                </p>
-                <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
-                  {cityScoutSummary.oneLine}
-                </p>
+                <ul className="mt-3 divide-y divide-[var(--color-border)]">
+                  {activeBuildLinks.map(({ title, oneLine, href }) => (
+                    <li key={title} className="py-3.5 first:pt-2">
+                      <Link href={href} className="group block">
+                        <p className="font-editorial text-[1.15rem] leading-tight transition-opacity duration-150 group-hover:opacity-75">
+                          {title}
+                        </p>
+                        <p className="mt-1 text-sm leading-6 text-[var(--color-muted)]">
+                          {oneLine}
+                        </p>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               <div className="border-t border-[var(--color-border)] pt-5">
@@ -151,15 +159,25 @@ export default function HomePage() {
           <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
             Currently building
           </h2>
-          <div className="mt-4 grid gap-6 text-sm leading-7 text-[var(--color-muted)] sm:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
-            <p className="max-w-2xl">{cityScoutSummary.readerFacing}</p>
-            <ul className="space-y-2.5">
-              {recentFocus.map((item) => (
-                <li key={item} className="border-l border-[var(--color-border)] pl-4">
-                  {item}
-                </li>
-              ))}
-            </ul>
+          <div className="mt-4 divide-y divide-[var(--color-border)]">
+            {[
+              { title: "Hoxa", summary: hoxaSummary.oneLine, href: "/writing/why-im-building-hoxa" },
+              { title: "CityScout", summary: cityScoutSummary.oneLine, href: "/writing/why-im-building-cityscout" },
+              { title: "CreatorOS", summary: creatorOSSummary.oneLine, href: "/writing/building-creatoros-an-ai-growth-operating-system-for-creators" },
+            ].map(({ title, summary, href }) => (
+              <div key={title} className="grid gap-4 py-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline sm:gap-8">
+                <div>
+                  <p className="font-editorial text-[1.1rem] leading-tight">{title}</p>
+                  <p className="mt-2 text-sm leading-7 text-[var(--color-muted)]">{summary}</p>
+                </div>
+                <Link
+                  href={href}
+                  className="shrink-0 text-sm text-[var(--color-muted)] transition-colors duration-150 hover:text-[var(--color-text)]"
+                >
+                  Build thread ↗
+                </Link>
+              </div>
+            ))}
           </div>
         </section>
       </Container>

@@ -17,6 +17,10 @@ const cityScoutSeriesSlug: WritingSeriesSlug = "cityscout-build-thread";
 const cityScoutSeriesName = "CityScout Build Thread";
 const cityScoutSeriesDescription =
   "A build thread documenting the product reasoning, native iOS app, AI backend, and future web planning layer behind CityScout, an AI-powered city-first travel companion.";
+const creatorOSSeriesSlug: WritingSeriesSlug = "creatoros-build-thread";
+const creatorOSSeriesName = "CreatorOS Build Thread";
+const creatorOSSeriesDescription =
+  "A build thread documenting the product reasoning, agent architecture, and evaluation approach behind CreatorOS, an AI growth operating system for creators and internet brands.";
 
 export const cityScoutSummary = {
   oneLine:
@@ -25,6 +29,20 @@ export const cityScoutSummary = {
     "CityScout is built around a simple idea: travel feels better when the product understands the city, not just the booking. The iOS app keeps trip state close to the device, while a FastAPI backend handles itinerary generation, guide chat, and structured AI outputs. A future web layer will support planning and sharing, but iOS remains the in-trip companion.",
   technical:
     "CityScout is a native iOS travel app with a FastAPI backend and a shared AI contract. OpenAI calls stay server-side behind shared-secret auth, with seeded city content and structured endpoints for itineraries and guide chat. The product is being shaped for security, testability, and a future web planning layer.",
+};
+
+export const hoxaSummary = {
+  oneLine:
+    "Hoxa is an adaptive fitness companion for beginner to intermediate users, built around calm design and a multi-mode training system.",
+  readerFacing:
+    "Hoxa is built around a broader view of fitness than a single training mode. The iOS app supports running, strength, mobility, balance, and recovery in one planning loop, with a FastAPI backend and an adaptive engine that adjusts plans based on adherence, effort, and context signals while explaining its reasoning in plain language.",
+};
+
+export const creatorOSSummary = {
+  oneLine:
+    "CreatorOS is an AI growth operating system that turns source material into audience intelligence, strategy, and repurposed content for creators.",
+  readerFacing:
+    "CreatorOS started from a simple question: what reduces the decision fatigue a creator carries every week? The product uses a structured multi-agent workflow to turn transcript input into a Creator Growth Pack, keeping audience intelligence, content strategy, and repurposing as separate steps so the output stays useful and strategically grounded.",
 };
 
 function section(title: string, blocks: WritingSectionBlock[]): WritingSection {
@@ -60,7 +78,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     readingTime: "8 min read",
     pullQuote: {
       quote:
-        "Most beginners do not need more intensity from software. They need better orientation.",
+        "The only person you need to be better than is the person you were yesterday",
     },
     sections: [
       section("The Gap I Keep Seeing", [
@@ -339,7 +357,7 @@ Admin Surface -----+             +---- Progress Service
         ),
         diagram(
           `Apple Health ----+
-Apple Watch -----+ 
+Apple Watch -----+
 Garmin ----------+---- Integrations Layer ---- Normalized Activity Events
 Calendar --------+                              |
                                                  v
@@ -410,7 +428,7 @@ Calendar --------+                              |
       ]),
       section("Credibility Comes From Boundaries", [
         paragraph(
-          "One of the easier ways to lose trust is to let the system sound wiser than it is. Fitness products are already operating close to people’s bodies, routines, anxieties, and self-perception. That context deserves precision. If AI is involved, the product should be candid about what it is doing and what it is not doing."
+          "One of the easier ways to lose trust is to let the system sound wiser than it is. Fitness products are already operating close to people's bodies, routines, anxieties, and self-perception. That context deserves precision. If AI is involved, the product should be candid about what it is doing and what it is not doing."
         ),
         quote(
           "A credible system is allowed to be helpful before it is allowed to be authoritative.",
@@ -670,7 +688,7 @@ export const cityScoutSeriesEntries: WritingEntry[] =
     },
   }));
 
-export const archiveWritingEntries: WritingEntry[] = [
+const creatorOSEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
   {
     slug: "building-creatoros-an-ai-growth-operating-system-for-creators",
     title: "Building CreatorOS: an AI growth operating system for creators",
@@ -755,6 +773,23 @@ export const archiveWritingEntries: WritingEntry[] = [
       ]),
     ],
   },
+];
+
+export const creatorOSSeriesEntries: WritingEntry[] = creatorOSEntriesWithoutSeries.map(
+  (entry, index, entries) => ({
+    ...entry,
+    series: {
+      slug: creatorOSSeriesSlug,
+      name: creatorOSSeriesName,
+      description: creatorOSSeriesDescription,
+      order: index + 1,
+      previousSlug: index > 0 ? entries[index - 1]?.slug : undefined,
+      nextSlug: index < entries.length - 1 ? entries[index + 1]?.slug : undefined,
+    },
+  })
+);
+
+export const archiveWritingEntries: WritingEntry[] = [
   {
     slug: "building-with-clear-evaluation-loops",
     title: "Building With Clear Evaluation Loops",
@@ -787,6 +822,7 @@ export const archiveWritingEntries: WritingEntry[] = [
 export const writingEntries: WritingEntry[] = [
   ...cityScoutSeriesEntries,
   ...hoxaSeriesEntries,
+  ...creatorOSSeriesEntries,
   ...archiveWritingEntries,
 ];
 
@@ -804,6 +840,10 @@ export function getHoxaSeriesEntries() {
 
 export function getCityScoutSeriesEntries() {
   return cityScoutSeriesEntries;
+}
+
+export function getCreatorOSSeriesEntries() {
+  return creatorOSSeriesEntries;
 }
 
 export function getStandaloneArchiveEntries() {
