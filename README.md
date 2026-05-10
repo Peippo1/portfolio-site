@@ -4,7 +4,7 @@ Editorial portfolio for Tim Finch. Built with Next.js 16, TypeScript, and Tailwi
 
 ## What It Includes
 
-- Editorial home page with featured projects and live telemetry
+- Editorial home page with featured projects and a lightweight space-data telemetry layer
 - Project archive with search and statically generated case studies
 - Writing archive with structured long-form entries and build threads
 - About page with a concise working profile and social links
@@ -36,7 +36,18 @@ Content lives in local data files so the site stays easy to update and staticall
 - [`src/data/projects.ts`](src/data/projects.ts) for project content
 - [`src/data/writing.ts`](src/data/writing.ts) for essays and build threads
 - [`src/data/profile.ts`](src/data/profile.ts) for about/profile copy
-- [`src/data/telemetry.ts`](src/data/telemetry.ts) for live and fallback telemetry content
+- [`src/data/telemetry.ts`](src/data/telemetry.ts) for telemetry copy and fallback mission content
+
+## Telemetry Data
+
+The home page telemetry panel uses a small server-side integration with the official JPL Horizons API when available. It requests heliocentric vector snapshots for Earth, Voyager 2, Mars Odyssey, Psyche, and Europa Clipper, then renders those positions in the minimalist SVG mission visual.
+
+- Live position data is labelled `Live JPL Horizons data`; partial Horizons responses are labelled `Live JPL Horizons data (partial)`.
+- DSN communication status, signal lines, stations, and signal times remain simulated.
+- `mockTelemetry` remains the fallback source if Horizons is unavailable, slow, or returns no mission positions.
+- NASA Open APIs were reviewed, but their key-based public datasets are better suited to imagery, Mars rover photos, DONKI, NeoWs, EPIC, and APOD than this mission-position view.
+- DSN Now was reviewed as the official live DSN status product, but this project does not consume it because no stable documented JSON API is wired here.
+- No environment variables are required for the current Horizons integration.
 
 ## Routes
 

@@ -3,6 +3,19 @@ export type TelemetryItem = {
   mission: string;
   status: "Two-way" | "Downlink" | "Uplink" | "Monitoring";
   signalTime: string;
+  position?: TelemetryPosition;
+};
+
+export type TelemetryPosition = {
+  x: number;
+  y: number;
+  z: number;
+  rangeAu: number;
+};
+
+export type TelemetryReferenceBody = {
+  name: "Earth";
+  position: TelemetryPosition;
 };
 
 export type TelemetryResponse = {
@@ -10,11 +23,12 @@ export type TelemetryResponse = {
   source: string;
   isLive: boolean;
   items: TelemetryItem[];
+  referenceBodies?: TelemetryReferenceBody[];
 };
 
 export const mockTelemetry: TelemetryResponse = {
   updatedAt: "2026-04-08T18:42:00Z",
-  source: "DSN-inspired telemetry",
+  source: "Simulated DSN-inspired snapshot",
   isLive: false,
   items: [
     {
@@ -45,11 +59,11 @@ export const mockTelemetry: TelemetryResponse = {
 };
 
 export const liveTelemetryCopy = {
-  eyebrow: "Live telemetry",
-  title: "A quiet systems view that loads live when available.",
+  eyebrow: "DSN-inspired systems",
+  title: "A mission-position layer for a systems-led portfolio.",
   description:
-    "A small signal layer that keeps the portfolio feeling current without getting in the way.",
-  fallback: "Telemetry temporarily unavailable. Showing a static snapshot instead.",
+    "A minimal mission-operations visual backed by JPL Horizons when available. DSN communication status remains simulated unless a reliable DSN feed is implemented.",
+  fallback: "Telemetry temporarily unavailable. Showing the mock DSN-inspired snapshot instead.",
   sourceLabel: "Source",
   updatedLabel: "Updated",
 };

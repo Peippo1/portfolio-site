@@ -124,3 +124,34 @@ h3 {
     transform: translateX(6px);
   }
 }
+
+@keyframes telemetry-pulse {
+  0%,
+  100% {
+    opacity: 0.46;
+    transform: scale(0.94);
+    transform-origin: center;
+  }
+
+  50% {
+    opacity: 0.86;
+    transform: scale(1.08);
+    transform-origin: center;
+  }
+}
+
+@keyframes telemetry-signal {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 0.18;
+  }
+
+  50% {
+    opacity: 0.44;
+  }
+
+  100% {
+    stroke-dashoffset: -36;
+    opacity: 0.18;
+  }
+}

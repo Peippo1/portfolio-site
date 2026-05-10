@@ -1,5 +1,6 @@
 import type {
   TelemetryItem,
+  TelemetryPosition,
   TelemetryResponse,
 } from "@/data/telemetry";
 
@@ -8,10 +9,33 @@ type TelemetryShape = {
   source?: unknown;
   isLive?: unknown;
   items?: unknown;
+  referenceBodies?: unknown;
 };
 
 function isObject(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function normalizeTelemetryPosition(value: unknown): TelemetryPosition | null {
+  if (!isObject(value)) {
+    return null;
+  }
+
+  if (
+    typeof value.x !== "number" ||
+    typeof value.y !== "number" ||
+    typeof value.z !== "number" ||
+    typeof value.rangeAu !== "number"
+  ) {
+    return null;
+  }
+
+  return {
+    x: value.x,
+    y: value.y,
+    z: value.z,
+    rangeAu: value.rangeAu,
+  };
 }
 
 function normalizeTelemetryItem(value: unknown): TelemetryItem | null {
@@ -41,6 +65,9 @@ function normalizeTelemetryItem(value: unknown): TelemetryItem | null {
     mission: value.mission,
     status: value.status as TelemetryItem["status"],
     signalTime: value.signalTime,
+    ...(normalizeTelemetryPosition(value.position)
+      ? { position: normalizeTelemetryPosition(value.position) ?? undefined }
+      : {}),
   };
 }
 
@@ -100,10 +127,34 @@ export function normalizeTelemetryFeed(value: unknown): TelemetryResponse | null
     return null;
   }
 
+  const referenceBodies = Array.isArray(normalized.referenceBodies)
+    ? normalized.referenceBodies
+        .map((body) => {
+          if (!isObject(body) || body.name !== "Earth") {
+            return null;
+          }
+
+          const position = normalizeTelemetryPosition(body.position);
+
+          return position
+            ? {
+                name: "Earth" as const,
+                position,
+              }
+            : null;
+        })
+        .filter(Boolean)
+    : [];
+
   return {
     updatedAt: normalized.updatedAt,
     source: normalized.source,
     isLive: normalized.isLive,
     items: items as TelemetryItem[],
+    ...(referenceBodies.length
+      ? {
+          referenceBodies: referenceBodies as TelemetryResponse["referenceBodies"],
+        }
+      : {}),
   };
 }

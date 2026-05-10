@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
-import { mockTelemetry } from "@/data/telemetry";
+import { fetchTelemetryFeed } from "@/lib/telemetry-server";
 
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 export async function GET() {
-  return NextResponse.json(mockTelemetry, {
+  const feed = await fetchTelemetryFeed();
+
+  return NextResponse.json(feed, {
     headers: {
-      "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
+      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
     },
   });
 }

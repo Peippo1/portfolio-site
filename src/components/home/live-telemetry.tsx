@@ -5,6 +5,7 @@ import { mockTelemetry, liveTelemetryCopy, type TelemetryResponse } from "@/data
 import { normalizeTelemetryFeed } from "@/lib/telemetry";
 import { TelemetryLine } from "@/components/home/telemetry-line";
 import { TelemetryList } from "@/components/home/telemetry-list";
+import { TelemetryOrbit } from "@/components/home/telemetry-orbit";
 
 type TelemetryState = {
   status: "success" | "fallback";
@@ -76,6 +77,12 @@ export function LiveTelemetry() {
   }, []);
 
   const updatedLabel = formatUpdatedAt(state.feed.updatedAt);
+  const hasPartialHorizonsData = state.feed.source.includes("(partial)");
+  const sourceDescription = state.feed.isLive
+    ? hasPartialHorizonsData
+      ? "Live JPL Horizons data resolved for some mission positions. DSN station status remains simulated."
+      : "Live JPL Horizons data provides the orbital positions. DSN station status remains simulated."
+    : "Simulated DSN-inspired snapshot using fallback mission positions and communication status.";
 
   return (
     <section
@@ -107,25 +114,27 @@ export function LiveTelemetry() {
           <TelemetryLine loading={false} />
         </div>
 
-        <div className="grid gap-6 px-4 py-5 sm:px-6 sm:py-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-8">
+        <div className="grid gap-6 px-4 py-5 sm:px-6 sm:py-6 lg:grid-cols-[minmax(18rem,0.95fr)_minmax(0,1.05fr)] lg:gap-8">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <span
                 className={`h-2 w-2 rounded-full ${
-                  state.status === "success"
+                  state.feed.isLive
                     ? "bg-[var(--color-text)]/60"
                     : "bg-[var(--color-text)]/30"
                 }`}
               />
               <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
-                {state.status === "success" ? "Signal nominal" : "Fallback feed"}
+                {state.feed.isLive
+                  ? "Live JPL Horizons data"
+                  : "Simulated DSN-inspired snapshot"}
               </p>
             </div>
 
             <p className="max-w-prose text-sm leading-7 text-[var(--color-muted)]">
-              {state.status === "success"
-                ? `Live telemetry normalized from ${state.feed.source}.`
-                : state.note}
+              {state.status === "fallback" && state.note
+                ? state.note
+                : sourceDescription}
             </p>
 
             <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
@@ -135,9 +144,16 @@ export function LiveTelemetry() {
             <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
               {liveTelemetryCopy.updatedLabel} {updatedLabel}
             </p>
+
+            <p className="max-w-prose border-t border-[var(--color-border)] pt-4 text-xs leading-6 tracking-[0.08em] text-[var(--color-muted)] uppercase">
+              {state.feed.isLive
+                ? "Available mission positions use official JPL Horizons vectors. DSN signal lines are illustrative."
+                : "DSN-inspired system view. Marker positions and signal lines are illustrative, not live NASA DSN coordinates."}
+            </p>
           </div>
 
-          <div className="min-w-0">
+          <div className="min-w-0 space-y-5">
+            <TelemetryOrbit feed={state.feed} />
             <TelemetryList feed={state.feed} />
           </div>
         </div>
