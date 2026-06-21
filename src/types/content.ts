@@ -38,16 +38,28 @@ export type DiagramBlock = {
   caption?: string;
 };
 
+export type LinkItem = {
+  label: string;
+  href: string;
+};
+
+export type LinkListBlock = {
+  type: "links";
+  items: LinkItem[];
+};
+
 export type WritingParagraphBlock = ParagraphBlock;
 export type WritingListBlock = ListBlock;
 export type WritingQuoteBlock = QuoteBlock;
 export type WritingDiagramBlock = DiagramBlock;
+export type WritingLinkListBlock = LinkListBlock;
 
 export type WritingSectionBlock =
   | ParagraphBlock
   | ListBlock
   | QuoteBlock
-  | DiagramBlock;
+  | DiagramBlock
+  | LinkListBlock;
 
 export type WritingBlock = WritingSectionBlock;
 
@@ -56,7 +68,11 @@ export type WritingSection = {
   blocks: WritingSectionBlock[];
 };
 
-export type WritingSeriesSlug = "hoxa-build-thread" | "cityscout-build-thread" | "creatoros-build-thread";
+export type WritingSeriesSlug =
+  | "hoxa-build-thread"
+  | "cityscout-build-thread"
+  | "creatoros-build-thread"
+  | "evalkit-build-thread";
 
 export type WritingSeries = {
   slug: WritingSeriesSlug;

@@ -57,6 +57,23 @@ function renderBlock(block: WritingBlock, key: string) {
     );
   }
 
+  if (block.type === "links") {
+    return (
+      <div key={key} className="flex flex-col gap-2.5">
+        {block.items.map((item) => (
+          <a
+            key={item.label}
+            href={item.href}
+            className="inline-flex w-fit items-center gap-2 rounded-full px-1 py-0.5 text-[1.02rem] leading-8 text-[var(--color-text)] transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-muted)] focus-visible:bg-black/[0.03] focus-visible:outline-none sm:text-[1.05rem]"
+          >
+            {item.label}
+            <span aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <figure key={key} className="space-y-3">
       <pre className="overflow-x-auto rounded-[1.125rem] border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-5 font-mono text-[0.89rem] leading-[1.75] text-[var(--color-text)] shadow-[var(--shadow-soft)] sm:px-6">

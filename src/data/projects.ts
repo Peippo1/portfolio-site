@@ -75,6 +75,30 @@ export const projects: Project[] = [
     status: "Active prototype",
   },
   {
+    slug: "evalkit",
+    title: "EvalKit",
+    shortSummary:
+      "A SaaS eval engine for regression testing LLM outputs across suites, cases, checks, and runs.",
+    longSummary:
+      "EvalKit is a multi-tenant SaaS for regression testing LLM behavior. It gives teams a deterministic evaluation engine for suites, cases, checks, and runs, so they can catch schema drift, forbidden content, length regressions, and silent capability loss before those changes reach users.",
+    category: "AI Products",
+    year: "2026",
+    stack: ["FastAPI", "SQLAlchemy", "PostgreSQL", "Neon", "Stripe", "Railway"],
+    featured: false,
+    githubUrl: "https://github.com/Peippo1/EvalKit",
+    problem:
+      "LLM features drift in ways that spot checks miss, and teams usually lack a repeatable harness for measuring output quality over time.",
+    solution:
+      "EvalKit turns evaluation into a product workflow: define suites and cases, attach checks, run them automatically, and review regressions before they ship.",
+    highlights: [
+      "Built a deterministic check engine for repeatable regression tests.",
+      "Designed the SaaS for multi-tenant projects and scoped access.",
+      "Handled billing, metering, and webhook-driven subscription state.",
+      "Shipped a Railway deployment path without Docker to keep iteration fast.",
+    ],
+    status: "Active prototype",
+  },
+  {
     slug: "campaignforge-ai",
     title: "CampaignForge AI",
     shortSummary:

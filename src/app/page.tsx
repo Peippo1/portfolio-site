@@ -4,7 +4,12 @@ import { Container } from "@/components/ui/container";
 import { Surface } from "@/components/ui/surface";
 import { getFeaturedProjects } from "@/data/projects";
 import { profile } from "@/data/profile";
-import { cityScoutSummary, hoxaSummary, creatorOSSummary } from "@/data/writing";
+import {
+  cityScoutSummary,
+  creatorOSSummary,
+  evalkitSummary,
+  hoxaSummary,
+} from "@/data/writing";
 
 const featuredProjects = getFeaturedProjects(3);
 
@@ -12,6 +17,7 @@ const activeBuildLinks = [
   { title: "Hoxa", oneLine: hoxaSummary.oneLine, href: "/projects/hoxa" },
   { title: "CityScout", oneLine: cityScoutSummary.oneLine, href: "/projects/cityscout" },
   { title: "CreatorOS", oneLine: creatorOSSummary.oneLine, href: "/projects/creatoros" },
+  { title: "EvalKit", oneLine: evalkitSummary.oneLine, href: "/projects/evalkit" },
 ];
 
 export default function HomePage() {
@@ -164,6 +170,7 @@ export default function HomePage() {
               { title: "Hoxa", summary: hoxaSummary.oneLine, href: "/writing/why-im-building-hoxa" },
               { title: "CityScout", summary: cityScoutSummary.oneLine, href: "/writing/why-im-building-cityscout" },
               { title: "CreatorOS", summary: creatorOSSummary.oneLine, href: "/writing/building-creatoros-an-ai-growth-operating-system-for-creators" },
+              { title: "EvalKit", summary: evalkitSummary.oneLine, href: "/writing/introducing-evalkit" },
             ].map(({ title, summary, href }) => (
               <div key={title} className="grid gap-4 py-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline sm:gap-8">
                 <div>

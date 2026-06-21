@@ -5,6 +5,7 @@ import { PageIntro } from "@/components/ui/page-intro";
 import {
   getCityScoutSeriesEntries,
   getCreatorOSSeriesEntries,
+  getEvalKitSeriesEntries,
   getHoxaSeriesEntries,
   getStandaloneArchiveEntries,
 } from "@/data/writing";
@@ -80,10 +81,12 @@ export default function WritingPage() {
   const cityScoutSeriesEntries = getCityScoutSeriesEntries();
   const hoxaSeriesEntries = getHoxaSeriesEntries();
   const creatorOSSeriesEntries = getCreatorOSSeriesEntries();
+  const evalKitSeriesEntries = getEvalKitSeriesEntries();
   const archiveEntries = getStandaloneArchiveEntries();
   const cityScoutSeries = cityScoutSeriesEntries[0]?.series;
   const hoxaSeries = hoxaSeriesEntries[0]?.series;
   const creatorOSSeries = creatorOSSeriesEntries[0]?.series;
+  const evalKitSeries = evalKitSeriesEntries[0]?.series;
   const featuredSeries = [
     cityScoutSeries
       ? {
@@ -106,11 +109,20 @@ export default function WritingPage() {
           summaryLine: "One post / Product strategy and agent architecture",
         }
       : null,
+    evalKitSeries
+      ? {
+          series: evalKitSeries,
+          entries: evalKitSeriesEntries,
+          summaryLine: "Three posts / Launch, evaluation strategy, and engine architecture",
+        }
+      : null,
   ].filter(
     (
       item
     ): item is {
-      series: NonNullable<typeof cityScoutSeries | typeof hoxaSeries | typeof creatorOSSeries>;
+      series: NonNullable<
+        typeof cityScoutSeries | typeof hoxaSeries | typeof creatorOSSeries | typeof evalKitSeries
+      >;
       entries: WritingEntry[];
       summaryLine: string;
     } => item !== null
@@ -122,7 +134,7 @@ export default function WritingPage() {
         <PageIntro
           eyebrow="Writing"
           title="Product notes, systems thinking, and the working record behind what gets built."
-          description="A restrained archive of writing on product engineering, interfaces, and applied AI, alongside in-progress build threads for Hoxa, CityScout, and CreatorOS."
+          description="A restrained archive of writing on product engineering, interfaces, and applied AI, alongside in-progress build threads for Hoxa, CityScout, CreatorOS, and EvalKit."
         />
 
         <section className="mt-14">

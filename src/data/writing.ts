@@ -1,5 +1,6 @@
 import type {
   DiagramBlock,
+  LinkListBlock,
   ListBlock,
   ParagraphBlock,
   QuoteBlock,
@@ -21,6 +22,10 @@ const creatorOSSeriesSlug: WritingSeriesSlug = "creatoros-build-thread";
 const creatorOSSeriesName = "CreatorOS Build Thread";
 const creatorOSSeriesDescription =
   "A build thread documenting the product reasoning, agent architecture, and evaluation approach behind CreatorOS, an AI growth operating system for creators and internet brands.";
+const evalKitSeriesSlug: WritingSeriesSlug = "evalkit-build-thread";
+const evalKitSeriesName = "EvalKit Build Thread";
+const evalKitSeriesDescription =
+  "A build thread documenting the product launch, evaluation philosophy, and deterministic FastAPI engine behind EvalKit, a SaaS for regression testing LLM outputs.";
 
 export const cityScoutSummary = {
   oneLine:
@@ -45,6 +50,15 @@ export const creatorOSSummary = {
     "CreatorOS started from a simple question: what reduces the decision fatigue a creator carries every week? The product uses a structured multi-agent workflow to turn transcript input into a Creator Growth Pack, keeping audience intelligence, content strategy, and repurposing as separate steps so the output stays useful and strategically grounded.",
 };
 
+export const evalkitSummary = {
+  oneLine:
+    "EvalKit is a SaaS eval engine for regression testing LLM outputs across suites, cases, checks, and runs.",
+  readerFacing:
+    "EvalKit was shaped around a practical problem: LLM features drift in ways that are hard to catch by hand. The product gives teams a deterministic workflow for defining suites, cases, checks, and runs so output quality can be measured before users feel the regression.",
+  technical:
+    "EvalKit is a multi-tenant SaaS built around a deterministic FastAPI check engine, SQLAlchemy models, Neon Postgres, Stripe billing, and Railway deployment. The system is designed so evaluation logic, tenancy, metering, and webhook-driven subscription state stay explicit and testable.",
+};
+
 function section(title: string, blocks: WritingSectionBlock[]): WritingSection {
   return { title, blocks };
 }
@@ -63,6 +77,10 @@ function quote(content: string, attribution?: string): QuoteBlock {
 
 function diagram(content: string, caption?: string): DiagramBlock {
   return { type: "diagram", language: "text", content, caption };
+}
+
+function links(items: LinkListBlock["items"]): LinkListBlock {
+  return { type: "links", items };
 }
 
 const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
@@ -789,6 +807,328 @@ export const creatorOSSeriesEntries: WritingEntry[] = creatorOSEntriesWithoutSer
   })
 );
 
+const evalKitEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
+  {
+    slug: "introducing-evalkit",
+    title: "Introducing EvalKit",
+    date: "June 9, 2026",
+    category: "Product Strategy",
+    summary:
+      "A product launch note for EvalKit, with the problem, the product model, the current state of the build, and the roadmap that follows from it.",
+    intro:
+      "EvalKit started from a simple frustration: once an LLM feature ships, the hard part is not getting another response from the model. The hard part is knowing whether the system still behaves the way the product needs it to behave. This post lays out the product model I wanted to build, the evaluation objects that make it usable, and the next steps I think matter most.",
+    readingTime: "8 min read",
+    pullQuote: {
+      quote:
+        "If you cannot tell whether the model improved, you are shipping guesses with a nicer interface.",
+    },
+    sections: [
+      section("Outline", [
+        list([
+          "The product problem EvalKit is solving.",
+          "How suites, cases, checks, and runs fit together.",
+          "Who the product is for and where it fits.",
+          "What is currently shipped.",
+          "What comes next and how the series connects.",
+        ]),
+      ]),
+      section("The Problem", [
+        paragraph(
+          "LLM teams usually discover regressions late because the outputs are easy to glance at and hard to measure. A prompt change can quietly alter JSON shape, length, tone, safety boundaries, or the capability that actually made the feature useful in the first place. Spot checks catch obvious breakage, but they do not give you a repeatable record of what changed."
+        ),
+        paragraph(
+          "EvalKit exists to make that record explicit. The point is not to test every possible response. The point is to create a reliable harness that makes output drift visible before it becomes a product problem."
+        ),
+      ]),
+      section("How EvalKit Works", [
+        diagram(
+          `Suite
+  |
+  v
+Cases
+  |
+  v
+Checks
+  |
+  v
+Run
+  |
+  v
+Regression Report`,
+          "The evaluation loop keeps the product legible."
+        ),
+        paragraph(
+          "A suite groups a product flow. A case captures one concrete prompt or interaction. A check describes what good looks like for that case: valid schema, forbidden content, maximum length, or a capability constraint the output should preserve. A run executes the suite, records results, and shows where the output drifted."
+        ),
+        list([
+          "Suites keep the scope aligned with a real product surface.",
+          "Cases make the test data explicit and reusable.",
+          "Checks let different failure modes stay separate instead of blending into one vague score.",
+          "Runs preserve history so regressions can be compared over time.",
+        ]),
+      ]),
+      section("Who It Is For", [
+        paragraph(
+          "EvalKit is aimed at teams shipping LLM features inside SaaS products, internal tools, support automation, and agent workflows. It is most useful where the model is part of a larger system and the team needs confidence that a change in one place did not break behavior somewhere else."
+        ),
+        paragraph(
+          "That includes product teams that need a simple evaluation ritual, engineers who want regression coverage they can reason about, and founders who need to prove that the AI layer is doing real work instead of just producing novel text."
+        ),
+      ]),
+      section("Current Status", [
+        paragraph(
+          "The current build establishes the core evaluation objects, the SaaS shape, and the deterministic flow through the engine. The immediate goal was to get the product model right enough that future features can attach to it without rewriting the foundation."
+        ),
+        paragraph(
+          "The launch post is part of the work. It sets the vocabulary for the rest of the series and gives the other two posts a stable reference point: the evaluation argument and the engine implementation."
+        ),
+      ]),
+      section("Roadmap And Cross-Links", [
+        links([
+          {
+            label: "Next: Why Your LLM Needs Regression Tests",
+            href: "/writing/why-your-llm-needs-regression-tests",
+          },
+          {
+            label: "Then: How We Built a Deterministic Eval Engine in FastAPI",
+            href: "/writing/how-we-built-a-deterministic-eval-engine-in-fastapi",
+          },
+          {
+            label: "EvalKit Notion docs [#]",
+            href: "#",
+          },
+        ]),
+        paragraph(
+          "Those three posts are meant to read as one sequence. The launch post explains the product, the second post argues for the need, and the third post documents the implementation tradeoffs that made the product credible."
+        ),
+      ]),
+    ],
+  },
+  {
+    slug: "why-your-llm-needs-regression-tests",
+    title: "Why Your LLM Needs Regression Tests",
+    date: "June 11, 2026",
+    category: "Applied AI",
+    summary:
+      "A first-principles case for regression testing LLM features, focused on the failure modes spot checks miss and the workflow that keeps them visible.",
+    intro:
+      "The strongest objection to LLM regression testing is usually phrased as realism: the model is probabilistic, so why pretend its outputs can be tested like ordinary software? That objection is useful because it points at the real problem. You do not want to freeze a model into a single exact response. You want a way to notice when the output stops satisfying the product contract.",
+    readingTime: "8 min read",
+    pullQuote: {
+      quote:
+        "Probabilistic output changes the shape of the test. It does not remove the need for one.",
+    },
+    sections: [
+      section("The Four Failure Modes", [
+        list([
+          "Schema drift: the model still sounds plausible, but the JSON shape or field semantics no longer match what downstream code expects.",
+          "Forbidden content: the response introduces unsafe, off-brand, or policy-breaking language that spot checks missed.",
+          "Length regression: the answer becomes too short to be useful or too long to be practical, even though it still appears coherent.",
+          "Silent capability loss: the model stops doing the one job that made the feature valuable, but the failure is subtle enough to pass casual review.",
+        ]),
+        paragraph(
+          "These are not theoretical issues. They are the kinds of regressions that show up when prompts change, context changes, model versions change, or surrounding code changes. The output can remain fluent while the product quietly gets worse."
+        ),
+      ]),
+      section("Why Probabilistic Does Not Mean Untestable", [
+        paragraph(
+          "The objection usually assumes regression tests only make sense when a function returns one exact answer. That is too narrow. In practice, evaluation should test expectations, not literal strings. The output can vary while still satisfying a schema, staying inside a safety boundary, respecting a length range, and preserving the capability the product depends on."
+        ),
+        paragraph(
+          "That is the distinction EvalKit leans on. It is not trying to turn the model into a deterministic calculator. It is trying to turn product expectations into checks that can be repeated and audited."
+        ),
+      ]),
+      section("What A Good Check Looks Like", [
+        list([
+          "Schema checks confirm the output still validates against the expected structure.",
+          "Content checks detect forbidden phrases, unsafe claims, and unexpected policy violations.",
+          "Length checks keep the model inside the practical envelope the product needs.",
+          "Capability checks catch cases where the answer is fluent but no longer performs the intended task.",
+        ]),
+        paragraph(
+          "That mix is enough for most product teams to get meaningful protection without overbuilding the evaluation layer. The point is to make regressions legible, not to chase abstract completeness."
+        ),
+      ]),
+      section("A Practical Workflow", [
+        diagram(
+          `Change prompt or code
+  |
+  v
+Run EvalKit suite
+  |
+  v
+Inspect failed checks
+  |
+  v
+Fix prompt, data, or code
+  |
+  v
+Re-run and compare`,
+          "A lightweight regression loop keeps the product moving."
+        ),
+        paragraph(
+          "The workflow should be ordinary. When something changes, run the relevant suite, inspect the failures, fix the actual cause, and re-run until the difference is understood. That is a lot closer to normal software practice than many teams expect from AI work, and that is the point."
+        ),
+      ]),
+      section("Where This Fits In Distribution", [
+        paragraph(
+          "This is the post I would send when a team says they are shipping LLM features but has not built a regression habit yet. It is written to stand on its own for HN or Reddit, but it also feeds into the product story and the implementation deep dive."
+        ),
+        links([
+          {
+            label: "If you want the product framing, start with Introducing EvalKit",
+            href: "/writing/introducing-evalkit",
+          },
+          {
+            label: "If you want the implementation detail, read How We Built a Deterministic Eval Engine in FastAPI",
+            href: "/writing/how-we-built-a-deterministic-eval-engine-in-fastapi",
+          },
+          {
+            label: "The working notes and examples live in the EvalKit Notion docs [#]",
+            href: "#",
+          },
+        ]),
+      ]),
+    ],
+  },
+  {
+    slug: "how-we-built-a-deterministic-eval-engine-in-fastapi",
+    title: "How We Built a Deterministic Eval Engine in FastAPI",
+    date: "June 13, 2026",
+    category: "Architecture",
+    summary:
+      "A technical deep dive into the EvalKit engine, covering checks, tenancy, enum handling, auth, metering, billing, deployment, and the test strategy.",
+    intro:
+      "The engineering constraint behind EvalKit was simple to say and annoying to satisfy: the product had to be deterministic enough to debug while still representing the non-determinism of model behavior honestly. The architecture ended up centering on a check engine, explicit tenancy boundaries, and a set of integrations that stay legible under change.",
+    readingTime: "10 min read",
+    pullQuote: {
+      quote:
+        "Determinism belongs in the eval layer, not inside the model.",
+    },
+    sections: [
+      section("The Engine Shape", [
+        diagram(
+          `API Request
+  |
+  v
+Suite Load
+  |
+  v
+Case Selection
+  |
+  v
+Check Execution
+  |
+  v
+Persist Results
+  |
+  v
+Report + Metering`,
+          "The engine is designed around repeatable evaluation steps."
+        ),
+        paragraph(
+          "The check engine is the heart of the system. It loads a suite, materialises the cases, executes the checks, and persists the results in a form that can be compared later. Each step is intentionally explicit so a failure can be traced back to the exact boundary where the behavior changed."
+        ),
+      ]),
+      section("Multi-Tenant Data Model", [
+        diagram(
+          `Tenant
+  |
+  v
+Project
+  |
+  v
+Suite
+  |
+  v
+Case
+  |
+  v
+Run
+  |
+  v
+Check Result`,
+          "Tenant scoping stays visible all the way through the run."
+        ),
+        paragraph(
+          "EvalKit is built as a multi-tenant SaaS, so the data model has to keep project-scoped records isolated without making the app hard to operate. The main product objects are deliberately small: tenants own projects, projects own suites, suites own cases, and runs own the check results that fall out of execution."
+        ),
+      ]),
+      section("The Enum Problem We Had To Solve", [
+        paragraph(
+          "One of the more annoying implementation issues came from the boundary between SQLAlchemy and Neon around enum handling. The practical fix was to make the enum contract explicit instead of relying on implicit inference to do the right thing across ORM, migration, and database layers."
+        ),
+        paragraph(
+          "That kind of bug is worth calling out because it changes how you design the rest of the system. Once a schema edge has bitten you, you stop treating type inference as a convenience and start treating it as a place where hidden coupling shows up."
+        ),
+      ]),
+      section("Auth, Metering, And Stripe", [
+        list([
+          "Use a dual auth strategy so trusted service calls and tenant-scoped requests do not share the same assumptions.",
+          "Meter usage at the point where the product can explain what consumed a run, not after the fact in a vague aggregate.",
+          "Keep Stripe webhook handling idempotent so subscription state remains stable under retries.",
+          "Treat billing state as part of the SaaS contract, not a side effect hidden in the UI.",
+        ]),
+        paragraph(
+          "The integration work matters because SaaS credibility is not only about the core engine. If the product cannot handle access control, usage accounting, and billing state cleanly, the evaluation layer is not enough on its own."
+        ),
+      ]),
+      section("Railway Without Docker", [
+        paragraph(
+          "The deployment choice was deliberately pragmatic. Railway gave us a straightforward path to production without requiring Docker in the first iteration. That kept the build moving and reduced the amount of infrastructure overhead the team had to carry while the product shape was still changing."
+        ),
+        paragraph(
+          "The important part is not the platform itself. It is the decision to avoid unnecessary deployment ceremony when the real work is still proving that the engine, the tenancy model, and the SaaS plumbing are all behaving correctly together."
+        ),
+      ]),
+      section("The Test Strategy", [
+        list([
+          "Unit tests cover individual checks and deterministic scoring behavior.",
+          "Route tests exercise the API contract and failure responses.",
+          "Webhook tests verify billing state changes stay idempotent.",
+          "Regression tests guard the enum fix and other schema-sensitive paths.",
+        ]),
+        paragraph(
+          "The test strategy is meant to mirror the product model. If the engine is deterministic, the tests should be deterministic too. If the SaaS contract includes webhooks and tenant boundaries, the tests should make those edges visible instead of assuming the happy path is enough."
+        ),
+      ]),
+      section("How The Three Posts Connect", [
+        links([
+          {
+            label: "Start with Introducing EvalKit for the product framing",
+            href: "/writing/introducing-evalkit",
+          },
+          {
+            label: "Use Why Your LLM Needs Regression Tests for the argument",
+            href: "/writing/why-your-llm-needs-regression-tests",
+          },
+          {
+            label: "Treat the EvalKit Notion docs [#] as the living implementation notes",
+            href: "#",
+          },
+        ]),
+        paragraph(
+          "Taken together, the series shows the same idea from three angles: why the product exists, why the problem matters, and what it takes to build the engine cleanly."
+        ),
+      ]),
+    ],
+  },
+];
+
+export const evalKitSeriesEntries: WritingEntry[] = evalKitEntriesWithoutSeries.map(
+  (entry, index, entries) => ({
+    ...entry,
+    series: {
+      slug: evalKitSeriesSlug,
+      name: evalKitSeriesName,
+      description: evalKitSeriesDescription,
+      order: index + 1,
+      previousSlug: index > 0 ? entries[index - 1]?.slug : undefined,
+      nextSlug: index < entries.length - 1 ? entries[index + 1]?.slug : undefined,
+    },
+  })
+);
+
 export const archiveWritingEntries: WritingEntry[] = [
   {
     slug: "building-with-clear-evaluation-loops",
@@ -823,6 +1163,7 @@ export const writingEntries: WritingEntry[] = [
   ...cityScoutSeriesEntries,
   ...hoxaSeriesEntries,
   ...creatorOSSeriesEntries,
+  ...evalKitSeriesEntries,
   ...archiveWritingEntries,
 ];
 
@@ -844,6 +1185,10 @@ export function getCityScoutSeriesEntries() {
 
 export function getCreatorOSSeriesEntries() {
   return creatorOSSeriesEntries;
+}
+
+export function getEvalKitSeriesEntries() {
+  return evalKitSeriesEntries;
 }
 
 export function getStandaloneArchiveEntries() {
