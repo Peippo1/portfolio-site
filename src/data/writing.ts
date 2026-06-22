@@ -13,23 +13,23 @@ import type {
 const hoxaSeriesSlug: WritingSeriesSlug = "hoxa-build-thread";
 const hoxaSeriesName = "Hoxa Build Thread";
 const hoxaSeriesDescription =
-  "A build thread documenting the product, design, training system, and architecture decisions behind Hoxa, an adaptive fitness app for beginner to intermediate users.";
+  "A running record of how Hoxa is taking shape, from the product idea through the training system and architecture.";
 const cityScoutSeriesSlug: WritingSeriesSlug = "cityscout-build-thread";
 const cityScoutSeriesName = "CityScout Build Thread";
 const cityScoutSeriesDescription =
-  "A build thread documenting the product reasoning, native iOS app, AI backend, and future web planning layer behind CityScout, an AI-powered city-first travel companion.";
+  "A build thread on building a calmer, city-first travel product across iOS, backend, and a future web planning layer.";
 const creatorOSSeriesSlug: WritingSeriesSlug = "creatoros-build-thread";
 const creatorOSSeriesName = "CreatorOS Build Thread";
 const creatorOSSeriesDescription =
-  "A build thread documenting the product reasoning, agent architecture, and evaluation approach behind CreatorOS, an AI growth operating system for creators and internet brands.";
+  "A build thread on building CreatorOS, from the product thesis through the agent system and evaluation approach.";
 const evalKitSeriesSlug: WritingSeriesSlug = "evalkit-build-thread";
 const evalKitSeriesName = "EvalKit Build Thread";
 const evalKitSeriesDescription =
-  "A build thread documenting the product launch, evaluation philosophy, and deterministic FastAPI engine behind EvalKit, a SaaS for regression testing LLM outputs.";
+  "A build thread on turning EvalKit into a real product, from the evaluation argument through the FastAPI engine and SaaS plumbing.";
 
 export const cityScoutSummary = {
   oneLine:
-    "CityScout is a local-first iOS travel companion with a shared AI backend and a planned web planning layer.",
+    "CityScout is a city-first travel companion with a local-first iOS app and a shared AI backend.",
   readerFacing:
     "CityScout is built around a simple idea: travel feels better when the product understands the city, not just the booking. The iOS app keeps trip state close to the device, while a FastAPI backend handles itinerary generation, guide chat, and structured AI outputs. A future web layer will support planning and sharing, but iOS remains the in-trip companion.",
   technical:
@@ -38,25 +38,25 @@ export const cityScoutSummary = {
 
 export const hoxaSummary = {
   oneLine:
-    "Hoxa is an adaptive fitness companion for beginner to intermediate users, built around calm design and a multi-mode training system.",
+    "Hoxa is a calmer fitness product for people who want structure without the usual performance noise.",
   readerFacing:
-    "Hoxa is built around a broader view of fitness than a single training mode. The iOS app supports running, strength, mobility, balance, and recovery in one planning loop, with a FastAPI backend and an adaptive engine that adjusts plans based on adherence, effort, and context signals while explaining its reasoning in plain language.",
+    "Hoxa is built around a broader view of fitness than a single training mode. The app supports running, strength, mobility, balance, and recovery in one planning loop, with an adaptive engine that adjusts plans based on adherence, effort, and context signals while explaining its reasoning in plain language.",
 };
 
 export const creatorOSSummary = {
   oneLine:
-    "CreatorOS is an AI growth operating system that turns source material into audience intelligence, strategy, and repurposed content for creators.",
+    "CreatorOS is a strategy-first AI system that helps creators turn source material into useful next steps.",
   readerFacing:
     "CreatorOS started from a simple question: what reduces the decision fatigue a creator carries every week? The product uses a structured multi-agent workflow to turn transcript input into a Creator Growth Pack, keeping audience intelligence, content strategy, and repurposing as separate steps so the output stays useful and strategically grounded.",
 };
 
 export const evalkitSummary = {
   oneLine:
-    "EvalKit is a SaaS eval engine for regression testing LLM outputs across suites, cases, checks, and runs.",
+    "EvalKit is a product for catching LLM regressions before they quietly reach users.",
   readerFacing:
     "EvalKit was shaped around a practical problem: LLM features drift in ways that are hard to catch by hand. The product gives teams a deterministic workflow for defining suites, cases, checks, and runs so output quality can be measured before users feel the regression.",
   technical:
-    "EvalKit is a multi-tenant SaaS built around a deterministic FastAPI check engine, SQLAlchemy models, Neon Postgres, Stripe billing, and Railway deployment. The system is designed so evaluation logic, tenancy, metering, and webhook-driven subscription state stay explicit and testable.",
+    "EvalKit is a multi-tenant SaaS built around a deterministic FastAPI check engine, SQLAlchemy models, Neon Postgres, Stripe billing, and Railway deployment. The system keeps evaluation logic, tenancy, metering, and webhook-driven subscription state explicit and testable.",
 };
 
 function section(title: string, blocks: WritingSectionBlock[]): WritingSection {
@@ -90,9 +90,9 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     date: "April 12, 2026",
     category: "Product Strategy",
     summary:
-      "Hoxa starts from a simple observation: many fitness products lose people long before training becomes useful, because the product asks them to perform confidence they do not yet have.",
+      "Hoxa starts from a simple observation: a lot of fitness products ask for confidence before they do enough to help someone build it.",
     intro:
-      "I am building Hoxa as an attempt to make fitness software feel more companionable, more legible, and less theatrical. The product is aimed at people who want to get stronger, move more confidently, and train consistently without stepping into the visual and emotional language that still dominates much of the category.",
+      "I am building Hoxa because I want fitness software to feel more companionable, more legible, and less theatrical. It is for people who want to get stronger, move more confidently, and train consistently without stepping into the visual and emotional language that still dominates much of the category.",
     readingTime: "8 min read",
     pullQuote: {
       quote:
@@ -145,7 +145,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     date: "April 14, 2026",
     category: "Product Design",
     summary:
-      "The visual and interaction tone of Hoxa has to lower friction without flattening ambition. Calm should come from clear priorities, not from stripping the interface until it feels generic.",
+      "The visual and interaction tone of Hoxa has to lower friction without flattening ambition. Calm should come from clear priorities, not from sanding the product down until it feels generic.",
     intro:
       "When people say they want a fitness app that feels motivating, they often mean they want one that keeps momentum without making them feel judged. That distinction matters. Hoxa should not look or behave like a digital coach yelling from the edge of the screen.",
     readingTime: "9 min read",
@@ -204,7 +204,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     date: "April 16, 2026",
     category: "Product Strategy",
     summary:
-      "The MVP should be broad enough to express the product thesis, but narrow enough that every feature contributes directly to a credible training loop.",
+      "The MVP should be broad enough to show the product thesis, but narrow enough that every feature earns its place in the training loop.",
     intro:
       "Fitness products become confusing quickly when they try to simulate completeness too early. Hoxa needs an MVP that is intentionally shaped: enough surface area to prove the training system, enough restraint to keep the first version coherent.",
     readingTime: "8 min read",
@@ -254,7 +254,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     date: "April 18, 2026",
     category: "Training Systems",
     summary:
-      "The training engine should adapt in visible, defensible ways. If users cannot understand why the week changed, the system will feel clever before it feels trustworthy.",
+      "The training engine should adapt in visible, defensible ways. If users cannot see why the week changed, the system will feel clever before it feels trustworthy.",
     intro:
       "Adaptive training is an attractive phrase because it implies responsiveness. In practice, it can easily become a black box that changes plans without building confidence. I want Hoxa's engine to behave more like a careful editor than a magician.",
     readingTime: "10 min read",
@@ -310,7 +310,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     date: "April 19, 2026",
     category: "Architecture",
     summary:
-      "The Hoxa architecture should support adaptation, accountability, and future integrations without turning the product into an opaque tangle of services too early.",
+      "The Hoxa architecture should support adaptation, accountability, and future integrations without turning into a tangle too early.",
     intro:
       "I want the architecture to reflect the product posture: measured, modular, and explainable. It should be capable enough to support future intelligence and integrations, but simple enough that the training logic remains inspectable while the product is still taking shape.",
     readingTime: "11 min read",
@@ -414,7 +414,7 @@ Calendar --------+                              |
     date: "April 21, 2026",
     category: "Applied AI",
     summary:
-      "AI can make fitness software more responsive and more understandable, but only if its role stays narrow enough to be earned and explained.",
+      "AI can make fitness software more responsive and easier to understand, but only if its role stays narrow enough to earn trust.",
     intro:
       "There is a strong temptation to describe any adaptive product as an AI product first. I think that is usually a mistake. In fitness, especially, the useful question is not how much AI can be added. It is which jobs genuinely benefit from it without weakening trust.",
     readingTime: "9 min read",
@@ -541,9 +541,9 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     date: "April 25, 2026",
     category: "Product Strategy",
     summary:
-      "CityScout is a city-first travel companion designed to help people orient themselves before a trip starts, while keeping the product calm, local-first, and careful about where AI actually belongs.",
+      "CityScout is a city-first travel companion built to help people feel oriented before a trip starts, without forcing AI into every corner of the product.",
     intro:
-      "I am building CityScout around a simple premise: travel should feel local, legible, and calm. The product is meant to help someone understand a city before it tries to optimise the trip for them.",
+      "I am building CityScout around a simple premise: travel should feel local, legible, and calm. The product should help someone understand a city before it tries to optimise the trip for them.",
     readingTime: "8 min read",
     pullQuote: {
       quote:
@@ -593,7 +593,7 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     date: "April 27, 2026",
     category: "Architecture",
     summary:
-      "CityScout now keeps the iOS app thin, the backend authoritative, and OpenAI behind a server boundary so itinerary generation and guide chat stay easier to secure, test, and evolve.",
+      "CityScout keeps the iOS app light, the backend authoritative, and OpenAI behind a server boundary so the product stays easier to secure and evolve.",
     intro:
       "The current shape of CityScout is intentionally split: SwiftUI and SwiftData on device, FastAPI on the server, and OpenAI calls kept server-side. That gives the product a clearer security boundary and makes the AI behavior easier to change.",
     readingTime: "9 min read",
@@ -645,7 +645,7 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     date: "April 30, 2026",
     category: "Roadmap",
     summary:
-      "The web layer should expand where planning happens and where trips are shared, while keeping iOS as the in-trip companion and the backend contract as the shared source of truth.",
+      "The web layer should give CityScout more room for planning and sharing, while keeping iOS as the in-trip companion.",
     intro:
       "The web version of CityScout is not meant to replace the iOS app. It is meant to broaden where planning can happen and where a trip can be reviewed, shared, or resumed. iOS remains the in-trip companion.",
     readingTime: "8 min read",
@@ -713,7 +713,7 @@ const creatorOSEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     date: "May 9, 2026",
     category: "Build Log",
     summary:
-      "CreatorOS is an AI growth operating system for creators and internet brands, built to turn source material into a Creator Growth Pack through a structured multi-agent workflow.",
+      "CreatorOS is a strategy-first AI product for creators, built to turn source material into a structured Creator Growth Pack.",
     intro:
       "CreatorOS started from exploring D2C and creator businesses and asking a simpler question: what would reduce the amount of decision fatigue a creator carries every week? The answer was not another generic AI writing tool. It was a product that could reason about audience, strategy, content gaps, and repurposing as separate steps in one workflow.",
     readingTime: "8 min read",
@@ -814,7 +814,7 @@ const evalKitEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     date: "June 9, 2026",
     category: "Product Strategy",
     summary:
-      "A product launch note for EvalKit, with the problem, the product model, the current state of the build, and the roadmap that follows from it.",
+      "A launch note for EvalKit covering the problem, the product model, the current build, and where it goes next.",
     intro:
       "EvalKit started from a simple frustration: once an LLM feature ships, the hard part is not getting another response from the model. The hard part is knowing whether the system still behaves the way the product needs it to behave. This post lays out the product model I wanted to build, the evaluation objects that make it usable, and the next steps I think matter most.",
     readingTime: "8 min read",
@@ -912,7 +912,7 @@ Regression Report`,
     summary:
       "A first-principles case for regression testing LLM features, focused on the failure modes spot checks miss and the workflow that keeps them visible.",
     intro:
-      "The strongest objection to LLM regression testing is usually phrased as realism: the model is probabilistic, so why pretend its outputs can be tested like ordinary software? That objection is useful because it points at the real problem. You do not want to freeze a model into a single exact response. You want a way to notice when the output stops satisfying the product contract.",
+      "The strongest objection to LLM regression testing usually sounds like realism: the model is probabilistic, so why pretend its outputs can be tested like ordinary software? That objection is useful because it points at the real problem. You do not want to freeze a model into one exact response. You want a way to notice when the output stops satisfying the product contract.",
     readingTime: "8 min read",
     pullQuote: {
       quote:
@@ -997,7 +997,7 @@ Re-run and compare`,
     date: "June 13, 2026",
     category: "Architecture",
     summary:
-      "A technical deep dive into the EvalKit engine, covering checks, tenancy, enum handling, auth, metering, billing, deployment, and the test strategy.",
+      "A technical deep dive into the EvalKit engine, covering checks, tenancy, auth, billing, deployment, and the test strategy.",
     intro:
       "The engineering constraint behind EvalKit was simple to say and annoying to satisfy: the product had to be deterministic enough to debug while still representing the non-determinism of model behavior honestly. The architecture ended up centering on a check engine, explicit tenancy boundaries, and a set of integrations that stay legible under change.",
     readingTime: "10 min read",
@@ -1136,7 +1136,7 @@ export const archiveWritingEntries: WritingEntry[] = [
     date: "March 27, 2026",
     category: "Applied AI",
     summary:
-      "How small, legible evaluation loops create more product velocity than broad benchmark suites.",
+      "How smaller, clearer evaluation loops can create more product velocity than broad benchmark suites.",
     readingTime: "4 min read",
   },
   {
@@ -1145,7 +1145,7 @@ export const archiveWritingEntries: WritingEntry[] = [
     date: "January 18, 2026",
     category: "Design",
     summary:
-      "Designing tools for research and analysis means optimising for orientation, not just throughput.",
+      "Designing tools for research and analysis means optimising for orientation, not just speed.",
     readingTime: "5 min read",
   },
   {
@@ -1154,7 +1154,7 @@ export const archiveWritingEntries: WritingEntry[] = [
     date: "October 9, 2025",
     category: "Systems",
     summary:
-      "How staged execution, fallback rules, and operator visibility improve the reliability of agent workflows.",
+      "How staged execution, fallback rules, and operator visibility make agent workflows much easier to trust.",
     readingTime: "5 min read",
   },
 ];

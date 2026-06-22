@@ -159,7 +159,7 @@ export default async function WritingDetailPage({ params }: WritingPageProps) {
             className="inline-flex items-center gap-2 text-sm text-[var(--color-muted)] transition-colors duration-150 hover:text-[var(--color-text)] focus-visible:outline-none"
           >
             <span aria-hidden="true">←</span>
-            Back to writing
+            Back to notes
           </Link>
         </div>
 
@@ -188,13 +188,23 @@ export default async function WritingDetailPage({ params }: WritingPageProps) {
             <p className="max-w-3xl text-[1.08rem] leading-8 text-[var(--color-text)] sm:text-[1.14rem] sm:leading-[2.1rem]">
               {bodyLead}
             </p>
+
+            <div className="rounded-[1.4rem] border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(16,17,20,0.02),rgba(16,17,20,0.008))] px-5 py-4">
+              <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
+                Reading note
+              </p>
+              <p className="mt-2 text-[1rem] leading-7 text-[var(--color-text)]">
+                A clearer write-up of the product thinking, system choices, and
+                tradeoffs behind the build.
+              </p>
+            </div>
           </header>
 
           {sectionLinks.length > 0 ? (
             <section className="border-y border-[var(--color-border)] py-6 sm:py-7">
               <div className="grid gap-4 lg:grid-cols-[12rem_minmax(0,1fr)] lg:gap-10">
                 <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
-                  Contents
+                  In this post
                 </p>
                 <nav aria-label="On this page">
                   <ul className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-[var(--color-muted)]">
@@ -254,8 +264,8 @@ export default async function WritingDetailPage({ params }: WritingPageProps) {
           ) : (
             <section className="py-10 sm:py-12">
               <p className="text-[1.02rem] leading-8 text-[var(--color-muted)] sm:text-[1.05rem] sm:leading-[2rem]">
-                This note remains a shorter archive entry. Its summary stands as
-                the primary record for now.
+                This one is still a shorter archive note. The summary is the
+                main record for now.
               </p>
             </section>
           )}
@@ -276,7 +286,7 @@ export default async function WritingDetailPage({ params }: WritingPageProps) {
                       className="group block rounded-[1rem] border border-[var(--color-border)] bg-white/35 px-5 py-4 transition-colors duration-150 hover:bg-white/55 focus-visible:bg-white/55 focus-visible:outline-none"
                     >
                       <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
-                        Previous in thread
+                        Previous post
                       </p>
                       <p className="mt-2 text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">
                         Part {entry.series.order - 1} of {seriesEntries.length}
@@ -287,7 +297,7 @@ export default async function WritingDetailPage({ params }: WritingPageProps) {
                     </Link>
                   ) : (
                     <div className="rounded-[1rem] border border-dashed border-[var(--color-border)] px-5 py-4 text-sm text-[var(--color-muted)]">
-                      Start of series
+                      Start of thread
                     </div>
                   )}
                 </div>
@@ -299,7 +309,7 @@ export default async function WritingDetailPage({ params }: WritingPageProps) {
                       className="group block rounded-[1rem] border border-[var(--color-border)] bg-white/35 px-5 py-4 transition-colors duration-150 hover:bg-white/55 focus-visible:bg-white/55 focus-visible:outline-none"
                     >
                       <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
-                        Next in thread
+                        Next post
                       </p>
                       <p className="mt-2 text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">
                         Part {entry.series.order + 1} of {seriesEntries.length}
@@ -310,7 +320,7 @@ export default async function WritingDetailPage({ params }: WritingPageProps) {
                     </Link>
                   ) : (
                     <div className="rounded-[1rem] border border-dashed border-[var(--color-border)] px-5 py-4 text-sm text-[var(--color-muted)]">
-                      End of series
+                      End of thread
                     </div>
                   )}
                 </div>

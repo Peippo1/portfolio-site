@@ -47,6 +47,20 @@ function isExternalUrl(value: string) {
   return /^https?:\/\//i.test(value);
 }
 
+function sectionLabel(title: string) {
+  const labels: Record<string, string> = {
+    Intro: "Overview",
+    Problem: "Why it exists",
+    Approach: "How it works",
+    Stack: "Built with",
+    Highlights: "What I focused on",
+    "What I learned": "What I learned",
+    Links: "Where to look",
+  };
+
+  return labels[title] ?? title;
+}
+
 const campaignForgeCaseStudy = {
   intro:
     "An end-to-end AI pipeline that generates marketing strategy, copy, and creative concepts from a single brief.",
@@ -139,7 +153,7 @@ export default async function ProjectDetailPage({
             className="inline-flex items-center gap-2 rounded-full px-1.5 py-0.5 text-sm text-[var(--color-muted)] transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-text)] focus-visible:bg-black/[0.03] focus-visible:outline-none"
           >
             <span aria-hidden="true">←</span>
-            Back to projects
+            Back to work
           </Link>
         </div>
 
@@ -160,6 +174,16 @@ export default async function ProjectDetailPage({
             <p className="mt-6 text-xs leading-6 tracking-[0.14em] text-[var(--color-muted)] uppercase sm:text-[0.8rem]">
               {project.year} / {project.category} / {project.stack.join(" / ")}
             </p>
+
+            <div className="mt-7 rounded-[1.4rem] border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(16,17,20,0.02),rgba(16,17,20,0.008))] px-5 py-4">
+              <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
+                Quick read
+              </p>
+              <p className="mt-2 text-[1rem] leading-7 text-[var(--color-text)]">
+                A calmer breakdown of the product, the reasoning behind it, and
+                the implementation choices that matter.
+              </p>
+            </div>
 
             <dl className="mt-7 grid grid-cols-1 gap-y-4 border-t border-b border-[var(--color-border)] py-5 text-sm sm:grid-cols-3 sm:gap-x-6">
               <div>
@@ -184,11 +208,11 @@ export default async function ProjectDetailPage({
           </header>
 
           <div className="mt-9 space-y-9 sm:mt-10 sm:space-y-10">
-            <Section title="Intro">
+            <Section title={sectionLabel("Intro")}>
               <p>{project.longSummary}</p>
             </Section>
 
-            <Section title="Problem">
+            <Section title={sectionLabel("Problem")}>
               {isCampaignForge ? (
                 <BulletList items={campaignForgeCaseStudy.problem} />
               ) : (
@@ -196,7 +220,7 @@ export default async function ProjectDetailPage({
               )}
             </Section>
 
-            <Section title="Approach">
+            <Section title={sectionLabel("Approach")}>
               {isCampaignForge ? (
                 <BulletList items={campaignForgeCaseStudy.approach} />
               ) : (
@@ -204,7 +228,7 @@ export default async function ProjectDetailPage({
               )}
             </Section>
 
-            <Section title="Stack">
+            <Section title={sectionLabel("Stack")}>
               {isCampaignForge ? (
                 <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                   {campaignForgeCaseStudy.stackGroups.map((group) => (
@@ -225,7 +249,7 @@ export default async function ProjectDetailPage({
               )}
             </Section>
 
-            <Section title="Highlights">
+            <Section title={sectionLabel("Highlights")}>
               <BulletList
                 items={
                   isCampaignForge
@@ -236,12 +260,12 @@ export default async function ProjectDetailPage({
             </Section>
 
             {isCampaignForge ? (
-              <Section title="What I learned">
+              <Section title={sectionLabel("What I learned")}>
                 <BulletList items={campaignForgeCaseStudy.learned} />
               </Section>
             ) : null}
 
-            <Section title="Links">
+            <Section title={sectionLabel("Links")}>
               <div className="flex flex-col gap-2.5 text-[var(--color-text)]">
                 {isExternalUrl(project.githubUrl) ? (
                   <a
@@ -279,7 +303,7 @@ export default async function ProjectDetailPage({
             {repositoryMetadata ? (
               <section className="border-t border-[var(--color-border)] pt-7 sm:pt-8">
                 <h2 className="text-sm font-medium tracking-[0.18em] text-[var(--color-muted)] uppercase">
-                  Repository freshness
+                  Repository snapshot
                 </h2>
                 <dl className="mt-4 grid gap-4 text-sm sm:grid-cols-3">
                   {repositoryMetadata.repoName ? (
