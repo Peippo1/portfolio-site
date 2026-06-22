@@ -8,7 +8,7 @@ import type { Project } from "@/types/content";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "A curated selection of AI systems, tools, and product work focused on reliability, clarity, and real-world usefulness.",
+    "A selection of product, AI, and systems work shaped around clarity, usefulness, and solid engineering.",
 };
 
 const categoryOrder: Project["category"][] = [
@@ -34,14 +34,12 @@ export default function ProjectsPage() {
             Projects
           </p>
           <h1 className="font-editorial mt-5 max-w-2xl text-4xl leading-tight sm:text-5xl">
-            Selected work across AI products, data systems, APIs, and
-            experiments.
+            Product work, AI systems, APIs, and a few useful experiments.
           </h1>
           <p className="mt-5 max-w-2xl text-[1.02rem] leading-8 text-[var(--color-muted)] sm:text-[1.08rem]">
-            This archive highlights projects where product thinking and
-            technical implementation stayed aligned: practical AI tools,
-            focused services, data-heavy workflows, and a few experiments used
-            to test an idea carefully.
+            This is the work where product thinking and implementation stayed
+            close together: practical AI tools, focused services, data-heavy
+            workflows, and a few experiments built to test an idea properly.
           </p>
         </header>
 
@@ -62,12 +60,12 @@ export default function ProjectsPage() {
                   </h2>
                   <p className="mt-2 max-w-2xl text-sm leading-7 text-[var(--color-muted)]">
                     {section.category === "AI Products"
-                      ? "Products where the model is part of the workflow, not the whole product."
+                      ? "Products where the model supports the workflow instead of pretending to be the whole product."
                       : section.category === "Data & Analytics"
-                        ? "Work focused on signal, structure, and making data easier to act on."
+                        ? "Work focused on signal, structure, and making data easier to use."
                         : section.category === "APIs & Services"
-                          ? "Smaller services designed to slot into existing systems cleanly."
-                          : "Explorations used to test a shape of interface, pipeline, or automation."}
+                          ? "Smaller services designed to fit neatly into larger systems."
+                          : "Explorations used to test an interface, pipeline, or automation idea."}
                   </p>
                 </div>
                 <p className="text-xs tracking-[0.14em] text-[var(--color-muted)] uppercase">

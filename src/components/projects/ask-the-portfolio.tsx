@@ -14,7 +14,7 @@ type AskThePortfolioResponse = {
 const examplePrompts = [
   "Which projects use FastAPI?",
   "Show data systems work",
-  "What feels most product-like?",
+  "Which work feels most product-led?",
 ];
 
 export function AskThePortfolio() {
@@ -22,7 +22,7 @@ export function AskThePortfolio() {
   const [results, setResults] = useState<PortfolioSearchResult[]>([]);
   const [fallbackResults, setFallbackResults] = useState<PortfolioSearchResult[]>([]);
   const [message, setMessage] = useState(
-    "Ask about a stack, category, or style of work."
+    "Ask about a stack, category, or type of work."
   );
   const [isLoading, setIsLoading] = useState(false);
 
@@ -33,7 +33,7 @@ export function AskThePortfolio() {
     if (!trimmed) {
       setResults([]);
       setFallbackResults([]);
-      setMessage("Ask about a stack, category, or style of work.");
+      setMessage("Ask about a stack, category, or type of work.");
       return;
     }
 
@@ -78,7 +78,7 @@ export function AskThePortfolio() {
           Ask the portfolio
         </h2>
         <p className="mt-2 max-w-2xl text-sm leading-7 text-[var(--color-muted)]">
-          Search the local project data by stack, category, or working style.
+          Search the project data by stack, category, or kind of work.
         </p>
       </div>
 

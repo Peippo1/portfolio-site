@@ -36,7 +36,7 @@ export function ProjectList({ projects }: ProjectListProps) {
 
             <div className="flex items-start md:justify-end">
               <span className="inline-flex items-center gap-2 text-sm text-[var(--color-muted)] transition-transform duration-150 group-hover:translate-x-0.5 group-hover:text-[var(--color-text)]">
-                Open case study
+                Open project
                 <span aria-hidden="true">↗</span>
               </span>
             </div>

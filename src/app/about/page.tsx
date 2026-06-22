@@ -8,7 +8,7 @@ import { cityScoutSummary } from "@/data/writing";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Background, working principles, and the kind of applied AI and product engineering work I care about most.",
+    "Background, working principles, and the kind of AI and product engineering work I care about most.",
 };
 
 export default function AboutPage() {
@@ -22,8 +22,8 @@ export default function AboutPage() {
       <Container className="py-16 sm:py-20 lg:py-24">
         <PageIntro
           eyebrow="About"
-          title="AI engineer building systems that need to work in the real world."
-          description="I build practical AI systems, data infrastructure, and product software with a focus on clarity and reliability."
+          title="AI engineer building products and systems that need to hold up in real use."
+          description="I build AI products, data systems, and software with a bias toward clarity, reliability, and work people can actually use."
         />
 
         <section className="mt-14 grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)] lg:items-start">
@@ -34,8 +34,9 @@ export default function AboutPage() {
                   Opening
                 </h2>
                 <p className="mt-3">
-                  I’m Tim Finch, an AI Implementation Engineer focused on
-                  practical systems in production.
+                  I’m Tim Finch. I build AI products and supporting systems with
+                  a strong bias toward things that are understandable, testable,
+                  and useful in practice.
                 </p>
               </div>
 
@@ -44,9 +45,9 @@ export default function AboutPage() {
                   Current focus
                 </h2>
                 <p className="mt-3">
-                  I work across AI engineering, data infrastructure, and product
-                  development, designing systems that connect model output to
-                  real workflows.
+                  Most of my current work sits across AI engineering, product
+                  development, and data infrastructure, especially where model
+                  output has to connect cleanly to a real workflow.
                 </p>
               </div>
 
@@ -57,7 +58,7 @@ export default function AboutPage() {
                 <p className="mt-3">
                   That usually means LLM applications, agents, APIs, automation
                   services, and data pipelines built with clear contracts and
-                  measurable behavior.
+                  behavior you can actually measure.
                 </p>
               </div>
 
@@ -66,11 +67,10 @@ export default function AboutPage() {
                   Working style
                 </h2>
                 <p className="mt-3">
-                  I care about how teams use AI in practice, and I prefer clear
-                  information models, small reliable interfaces, and systems
-                  that are easy to understand, operate, and trust. I’m a
-                  user-focused engineer with a bias toward calm execution and
-                  production-ready work.
+                  I care about how teams actually use AI in practice, and I
+                  prefer clear information models, smaller reliable interfaces,
+                  and systems that are easy to understand, operate, and trust.
+                  I like calm execution more than technical theatre.
                 </p>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function AboutPage() {
               </p>
               <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
                 I use writing to keep product decisions legible, especially when
-                the system shape changes faster than the copy does.
+                the system is changing faster than the language around it.
               </p>
             </Surface>
           </div>

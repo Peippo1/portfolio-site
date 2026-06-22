@@ -7,7 +7,7 @@ export function SiteFooter() {
       <Container className="grid gap-6 py-8 text-sm text-[var(--color-muted)] sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
         <div className="max-w-2xl">
           <p className="text-xs tracking-[0.18em] uppercase">
-            Available for careful product, platform, and applied AI work.
+            Open to thoughtful product, platform, and AI work.
           </p>
           <p className="mt-2 leading-7">
             {profile.summary}

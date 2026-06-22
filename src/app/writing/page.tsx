@@ -13,7 +13,7 @@ import type { WritingEntry } from "@/types/content";
 export const metadata: Metadata = {
   title: "Writing",
   description:
-    "Notes on applied AI, product engineering, interfaces, and the craft of making complex systems feel legible.",
+    "Notes on AI products, engineering, interfaces, and making complex systems easier to understand.",
 };
 
 function ThreadPreview({ slug }: { slug: string }) {
