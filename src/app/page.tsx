@@ -262,10 +262,10 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-6 max-w-lg text-[1.02rem] leading-8 text-[var(--color-muted)] sm:text-[1.08rem]">
-              I&apos;m {profile.name}, an AI engineer building products intended
-              to become real companies. I design, build, and ship systems that
-              turn messy data and long-context reasoning into outcomes people
-              can rely on.
+              I&apos;m {profile.name}, an AI engineer building product ideas into
+              things people can actually use. Most of my work sits somewhere
+              between AI systems, product thinking, and the messy operational
+              work needed to make software hold up.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -418,8 +418,9 @@ export default function HomePage() {
                 Articles, build threads, and workflow notes.
               </h2>
               <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
-                A scrolling rail for the work behind the products, including the
-                reusable PR-to-Paper Trail automation system.
+                Writing about what I&apos;m building, what is changing, and where
+                the thinking is still getting worked out, including
+                PR-to-Paper-Trail and the CampaignForge AI product work.
               </p>
             </div>
             <Link
@@ -473,8 +474,8 @@ export default function HomePage() {
                     Active builds
                   </p>
                   <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
-                    Product essays, launch notes, and implementation threads tied
-                    directly to the products in progress.
+                    The writing that sits closest to the products: what they
+                    are, why they exist, and what still needs sorting.
                   </p>
                 </div>
               </div>
@@ -505,9 +506,9 @@ export default function HomePage() {
                 PR-to-Paper Trail
               </h3>
               <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
-                A repeatable Codex workflow for turning pull request activity
-                into ticket updates, documentation prompts, follow-on actions,
-                and audit receipts without crossing the approval boundary.
+                A reusable Codex workflow for reviewing pull requests and
+                drafting the follow-up work people usually forget: ticket
+                updates, doc prompts, follow-on actions, and an audit trail.
               </p>
               <div className="mt-5 space-y-3">
                 {workflowLinks.map(({ label, href }) => (

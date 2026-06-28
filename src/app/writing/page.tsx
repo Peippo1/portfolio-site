@@ -14,7 +14,7 @@ import type { WritingEntry } from "@/types/content";
 export const metadata: Metadata = {
   title: "Writing",
   description:
-    "Notes on AI products, engineering, interfaces, and making complex systems easier to understand.",
+    "Writing on AI products, engineering, product decisions, and the real work of making systems usable.",
 };
 
 function ThreadPreview({ slug }: { slug: string }) {
@@ -222,8 +222,8 @@ export default function WritingPage() {
               Writing.
             </h1>
             <p className="mt-5 max-w-xl text-[1.05rem] leading-8 text-[var(--color-muted)] sm:text-[1.1rem]">
-              Build threads, case studies, and ideas on building AI products
-              that become companies.
+              Build threads, product notes, and technical writing about trying
+              to make useful software instead of just interesting prototypes.
             </p>
           </div>
           <div className="flex min-h-[15rem] items-center justify-center rounded-[2rem] border border-[var(--color-border)] bg-white p-6 shadow-[var(--shadow-soft)]">
@@ -279,12 +279,12 @@ export default function WritingPage() {
               Featured build threads
             </p>
             <h2 className="font-editorial mt-3 text-[2rem] leading-tight sm:text-[2.45rem]">
-              Launch surfaces for products in progress.
+              Writing tied directly to products in progress.
             </h2>
             <p className="mt-4 text-[1rem] leading-8 text-[var(--color-muted)] sm:text-[1.04rem]">
-              Each series is structured to explain the product, the architecture,
-              and the reasoning behind the work instead of functioning as loose
-              status updates.
+              These series are where I work through product shape,
+              architecture, trade-offs, and commercial questions without
+              turning the writing into vague progress theatre.
             </p>
           </div>
 
@@ -352,7 +352,7 @@ export default function WritingPage() {
               All writing
             </p>
             <h2 className="font-editorial mt-3 text-[2rem] leading-tight sm:text-[2.35rem]">
-              Product notes, technical essays, and build logs.
+              Shorter notes, essays, and archive pieces.
             </h2>
           </div>
 
