@@ -102,9 +102,9 @@ export const projects: Project[] = [
     slug: "campaignforge-ai",
     title: "CampaignForge AI",
     shortSummary:
-      "A structured AI pipeline that takes one brief and turns it into a full campaign starting point.",
+      "A tool for turning one brief into a stronger campaign starting point across strategy, messaging, and creative direction.",
     longSummary:
-      "CampaignForge AI is an end-to-end pipeline for generating marketing strategy, copy, and creative concepts from one brief. The workflow is intentionally structured so the outputs stay consistent and usable instead of reading like disconnected prompt results.",
+      "CampaignForge AI is a structured workflow for generating marketing strategy, copy, and creative concepts from one brief. The point is not to flood a team with AI output. It is to give them a better first pass that is easier to review, shape, and use.",
     category: "AI Products",
     year: "2026",
     stack: ["FastAPI", "Streamlit", "Gemini", "OpenAI-compatible JSON", "Docker"],
@@ -113,7 +113,7 @@ export const projects: Project[] = [
     problem:
       "Campaign teams often split strategy, copywriting, and creative direction across separate tools, which makes the work slower, less consistent, and harder to review.",
     solution:
-      "I use structured inputs and staged generation so each step stays controllable, easier to review, and actually usable in practice.",
+      "I use structured inputs and staged generation so each step stays reviewable, more consistent, and easier to use in practice.",
     highlights: [
       "Designed a multi-stage pipeline with enforced structure across outputs.",
       "Reduced ad-hoc prompting by making each workflow stage explicit.",

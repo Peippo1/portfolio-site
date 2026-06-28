@@ -5,6 +5,7 @@ import { Surface } from "@/components/ui/surface";
 import { getProjectBySlug } from "@/data/projects";
 import { profile } from "@/data/profile";
 import {
+  campaignForgeSummary,
   cityScoutSummary,
   creatorOSSummary,
   evalkitSummary,
@@ -13,22 +14,44 @@ import {
 } from "@/data/writing";
 import { IconMark } from "@/components/ui/icon-mark";
 
-const featuredProjects = ["hoxa", "cityscout", "creatoros", "evalkit"]
+const featuredProjects = ["campaignforge-ai", "evalkit", "hoxa", "cityscout"]
   .map((slug) => getProjectBySlug(slug))
   .filter((project) => project !== undefined);
 
 const activeBuildLinks = [
+  {
+    title: "CampaignForge AI",
+    oneLine: campaignForgeSummary.oneLine,
+    href: "/projects/campaignforge-ai",
+  },
+  { title: "EvalKit", oneLine: evalkitSummary.oneLine, href: "/projects/evalkit" },
   { title: "Hoxa", oneLine: hoxaSummary.oneLine, href: "/projects/hoxa" },
   { title: "CityScout", oneLine: cityScoutSummary.oneLine, href: "/projects/cityscout" },
   { title: "CreatorOS", oneLine: creatorOSSummary.oneLine, href: "/projects/creatoros" },
-  { title: "EvalKit", oneLine: evalkitSummary.oneLine, href: "/projects/evalkit" },
 ];
 
 const featuredWriting = [
-  getWritingEntryBySlug("why-im-building-hoxa"),
+  getWritingEntryBySlug("building-a-reusable-pr-to-paper-trail-workflow"),
+  getWritingEntryBySlug("introducing-campaignforge-ai"),
+  getWritingEntryBySlug("choosing-the-right-commercial-path-for-campaignforge-ai"),
+  getWritingEntryBySlug("what-campaignforge-ai-needs-before-hosted-deployment"),
   getWritingEntryBySlug("introducing-evalkit"),
-  getWritingEntryBySlug("why-im-building-cityscout"),
 ].filter((entry) => entry !== undefined);
+
+const workflowLinks = [
+  {
+    label: "Read the workflow article",
+    href: "/writing/building-a-reusable-pr-to-paper-trail-workflow",
+  },
+  {
+    label: "View the reusable skill",
+    href: "https://github.com/Peippo1/EvalKit/tree/main/skills/pr-to-paper-trail",
+  },
+  {
+    label: "View the workflow package",
+    href: "https://github.com/Peippo1/EvalKit/tree/main/pr_to_paper_trail",
+  },
+];
 
 const launchMetrics = [
   { label: "API requests (24h)", value: "2.41M", delta: "+23%" },
@@ -239,10 +262,10 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-6 max-w-lg text-[1.02rem] leading-8 text-[var(--color-muted)] sm:text-[1.08rem]">
-              I&apos;m {profile.name}, an AI engineer building products intended
-              to become real companies. I design, build, and ship systems that
-              turn messy data and long-context reasoning into outcomes people
-              can rely on.
+              I&apos;m {profile.name}, an AI engineer building product ideas into
+              things people can actually use. Most of my work sits somewhere
+              between AI systems, product thinking, and the messy operational
+              work needed to make software hold up.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -392,8 +415,13 @@ export default function HomePage() {
                 Featured writing
               </p>
               <h2 className="font-editorial mt-3 text-[2.05rem] leading-tight sm:text-[2.55rem]">
-                Build threads and ideas.
+                Articles, build threads, and workflow notes.
               </h2>
+              <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
+                Writing about what I&apos;m building, what is changing, and where
+                the thinking is still getting worked out, including
+                PR-to-Paper-Trail and the CampaignForge AI product work.
+              </p>
             </div>
             <Link
               href="/writing"
@@ -402,16 +430,16 @@ export default function HomePage() {
               Explore all writing <span aria-hidden="true">→</span>
             </Link>
           </div>
-          <div className="mt-10 flex snap-x gap-6 overflow-x-auto pb-2 lg:grid lg:grid-cols-3 lg:gap-7 lg:overflow-visible">
+          <div className="mt-10 flex snap-x gap-6 overflow-x-auto pb-2">
             {featuredWriting.map((entry, index) => (
-              <article key={entry.slug} className="min-w-[20rem] snap-start lg:min-w-0">
+              <article key={entry.slug} className="min-w-[20rem] snap-start md:min-w-[24rem] lg:min-w-[22rem]">
                 <Link
                   href={`/writing/${entry.slug}`}
                   className="group block overflow-hidden rounded-[1.7rem] border border-[var(--color-border)] bg-white shadow-[var(--shadow-soft)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[var(--shadow-card)]"
                 >
                   <div className="aspect-[1.28/0.72] border-b border-[var(--color-border)] p-3">
                     <WritingPreview
-                      variant={index === 0 ? "dark" : index === 1 ? "diagram" : "landscape"}
+                      variant={index % 3 === 0 ? "dark" : index % 3 === 1 ? "diagram" : "landscape"}
                     />
                   </div>
                   <div className="p-5">
@@ -438,34 +466,62 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="mt-8 rounded-[1.8rem] border border-[var(--color-border)] bg-white px-5 py-5 shadow-[var(--shadow-soft)]">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-              <div className="max-w-xl">
-                <p className="text-xs tracking-[0.18em] text-[var(--color-muted)] uppercase">
-                  Active builds
-                </p>
-                <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
-                  Product essays, launch notes, and implementation threads tied
-                  directly to the products in progress.
-                </p>
+          <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(18rem,0.8fr)]">
+            <div className="rounded-[1.8rem] border border-[var(--color-border)] bg-white px-5 py-5 shadow-[var(--shadow-soft)]">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div className="max-w-xl">
+                  <p className="text-xs tracking-[0.18em] text-[var(--color-muted)] uppercase">
+                    Active builds
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
+                    The writing that sits closest to the products: what they
+                    are, why they exist, and what still needs sorting.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-5 divide-y divide-[var(--color-border)]">
+                {activeBuildLinks.map(({ title, oneLine, href }) => (
+                  <Link
+                    key={title}
+                    href={href}
+                    className="grid gap-4 py-4 transition-colors duration-150 hover:bg-black/[0.012] sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center"
+                  >
+                    <div>
+                      <p className="font-editorial text-[1.2rem] leading-tight">{title}</p>
+                      <p className="mt-1.5 text-sm leading-7 text-[var(--color-muted)]">
+                        {oneLine}
+                      </p>
+                    </div>
+                    <span className="text-sm text-[var(--color-muted)]">Open thread →</span>
+                  </Link>
+                ))}
               </div>
             </div>
-            <div className="mt-5 divide-y divide-[var(--color-border)]">
-              {activeBuildLinks.map(({ title, oneLine, href }) => (
-                <Link
-                  key={title}
-                  href={href}
-                  className="grid gap-4 py-4 transition-colors duration-150 hover:bg-black/[0.012] sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center"
-                >
-                  <div>
-                    <p className="font-editorial text-[1.2rem] leading-tight">{title}</p>
-                    <p className="mt-1.5 text-sm leading-7 text-[var(--color-muted)]">
-                      {oneLine}
-                    </p>
-                  </div>
-                  <span className="text-sm text-[var(--color-muted)]">Open thread →</span>
-                </Link>
-              ))}
+
+            <div className="rounded-[1.8rem] border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(15,138,100,0.045),rgba(255,255,255,0.92))] px-5 py-5 shadow-[var(--shadow-soft)]">
+              <p className="text-xs tracking-[0.18em] text-[var(--color-muted)] uppercase">
+                Reusable workflow
+              </p>
+              <h3 className="font-editorial mt-3 text-[1.8rem] leading-tight">
+                PR-to-Paper Trail
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
+                A reusable Codex workflow for reviewing pull requests and
+                drafting the follow-up work people usually forget: ticket
+                updates, doc prompts, follow-on actions, and an audit trail.
+              </p>
+              <div className="mt-5 space-y-3">
+                {workflowLinks.map(({ label, href }) => (
+                  <Link
+                    key={label}
+                    href={href}
+                    className="flex items-center justify-between rounded-[1rem] border border-[var(--color-border)] bg-white/90 px-4 py-3 text-sm text-[var(--color-text)] transition-colors duration-150 hover:bg-white"
+                  >
+                    <span>{label}</span>
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </section>
