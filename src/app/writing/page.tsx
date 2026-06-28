@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import {
+  getCampaignForgeSeriesEntries,
   getCityScoutSeriesEntries,
   getCreatorOSSeriesEntries,
   getEvalKitSeriesEntries,
@@ -139,16 +140,25 @@ function ArchiveList({ entries }: { entries: WritingEntry[] }) {
 }
 
 export default function WritingPage() {
+  const campaignForgeSeriesEntries = getCampaignForgeSeriesEntries();
   const cityScoutSeriesEntries = getCityScoutSeriesEntries();
   const hoxaSeriesEntries = getHoxaSeriesEntries();
   const creatorOSSeriesEntries = getCreatorOSSeriesEntries();
   const evalKitSeriesEntries = getEvalKitSeriesEntries();
   const archiveEntries = getStandaloneArchiveEntries();
+  const campaignForgeSeries = campaignForgeSeriesEntries[0]?.series;
   const cityScoutSeries = cityScoutSeriesEntries[0]?.series;
   const hoxaSeries = hoxaSeriesEntries[0]?.series;
   const creatorOSSeries = creatorOSSeriesEntries[0]?.series;
   const evalKitSeries = evalKitSeriesEntries[0]?.series;
   const featuredSeries = [
+    campaignForgeSeries
+      ? {
+          series: campaignForgeSeries,
+          entries: campaignForgeSeriesEntries,
+          summaryLine: "Three posts / Positioning, commercial path, and hosted-product reality",
+        }
+      : null,
     cityScoutSeries
       ? {
           series: cityScoutSeries,
@@ -182,12 +192,26 @@ export default function WritingPage() {
       item
     ): item is {
       series: NonNullable<
-        typeof cityScoutSeries | typeof hoxaSeries | typeof creatorOSSeries | typeof evalKitSeries
+        | typeof campaignForgeSeries
+        | typeof cityScoutSeries
+        | typeof hoxaSeries
+        | typeof creatorOSSeries
+        | typeof evalKitSeries
       >;
       entries: WritingEntry[];
       summaryLine: string;
     } => item !== null
   );
+
+  const essayCount =
+    campaignForgeSeriesEntries.length +
+    cityScoutSeriesEntries.length +
+    hoxaSeriesEntries.length +
+    creatorOSSeriesEntries.length +
+    evalKitSeriesEntries.length +
+    archiveEntries.length;
+  const threadCount = featuredSeries.length;
+  const productCount = featuredSeries.length;
 
   return (
     <main>
@@ -230,19 +254,19 @@ export default function WritingPage() {
                   <div className="text-[11px] tracking-[0.14em] text-[var(--color-muted)] uppercase">
                     Essays
                   </div>
-                  <div className="mt-2 text-2xl font-semibold tracking-[-0.04em]">18</div>
+                  <div className="mt-2 text-2xl font-semibold tracking-[-0.04em]">{essayCount}</div>
                 </div>
                 <div className="rounded-[1.2rem] border border-[var(--color-border)] bg-white/82 p-3">
                   <div className="text-[11px] tracking-[0.14em] text-[var(--color-muted)] uppercase">
                     Threads
                   </div>
-                  <div className="mt-2 text-2xl font-semibold tracking-[-0.04em]">4</div>
+                  <div className="mt-2 text-2xl font-semibold tracking-[-0.04em]">{threadCount}</div>
                 </div>
                 <div className="rounded-[1.2rem] border border-[var(--color-border)] bg-white/82 p-3 col-span-2 sm:col-span-1">
                   <div className="text-[11px] tracking-[0.14em] text-[var(--color-muted)] uppercase">
                     Products
                   </div>
-                  <div className="mt-2 text-2xl font-semibold tracking-[-0.04em]">4</div>
+                  <div className="mt-2 text-2xl font-semibold tracking-[-0.04em]">{productCount}</div>
                 </div>
               </div>
             </div>
@@ -285,29 +309,29 @@ export default function WritingPage() {
                       {series.description}
                     </p>
                     <ol className="mt-6 divide-y divide-[var(--color-border)] border-t border-[var(--color-border)]">
-                    {entries.slice(0, 2).map((entry, entryIndex) => (
-                      <li
-                        key={entry.slug}
-                        className={entryIndex === 0 ? "pt-5 pb-5" : "py-5"}
-                      >
-                        <Link
-                          href={`/writing/${entry.slug}`}
-                          className="group block rounded-sm focus-visible:bg-black/[0.02] focus-visible:outline-none"
+                      {entries.slice(0, 2).map((entry, entryIndex) => (
+                        <li
+                          key={entry.slug}
+                          className={entryIndex === 0 ? "pt-5 pb-5" : "py-5"}
                         >
-                          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
-                            <span>Part {entry.series?.order}</span>
-                            <span aria-hidden="true">/</span>
-                            <span>{entry.date}</span>
-                          </div>
-                          <h4 className="font-editorial mt-3 text-[1.4rem] leading-tight transition-colors duration-150 group-hover:text-[var(--color-text)] sm:text-[1.6rem]">
-                            {entry.title}
-                          </h4>
-                          <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-muted)] sm:text-[0.98rem] sm:leading-8">
-                            {entry.summary}
-                          </p>
-                        </Link>
-                      </li>
-                    ))}
+                          <Link
+                            href={`/writing/${entry.slug}`}
+                            className="group block rounded-sm focus-visible:bg-black/[0.02] focus-visible:outline-none"
+                          >
+                            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
+                              <span>Part {entry.series?.order}</span>
+                              <span aria-hidden="true">/</span>
+                              <span>{entry.date}</span>
+                            </div>
+                            <h4 className="font-editorial mt-3 text-[1.4rem] leading-tight transition-colors duration-150 group-hover:text-[var(--color-text)] sm:text-[1.6rem]">
+                              {entry.title}
+                            </h4>
+                            <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-muted)] sm:text-[0.98rem] sm:leading-8">
+                              {entry.summary}
+                            </p>
+                          </Link>
+                        </li>
+                      ))}
                     </ol>
                     <Link
                       href={`/writing/${entries[0]?.slug}`}

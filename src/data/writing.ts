@@ -26,6 +26,10 @@ const evalKitSeriesSlug: WritingSeriesSlug = "evalkit-build-thread";
 const evalKitSeriesName = "EvalKit Build Thread";
 const evalKitSeriesDescription =
   "A build thread on turning EvalKit into a real product, from the evaluation argument through the FastAPI engine and SaaS plumbing.";
+const campaignForgeSeriesSlug: WritingSeriesSlug = "campaignforge-build-thread";
+const campaignForgeSeriesName = "CampaignForge AI Build Thread";
+const campaignForgeSeriesDescription =
+  "A build thread on turning CampaignForge AI from a broad prototype into a smaller, more credible product that could actually be sold.";
 
 export const cityScoutSummary = {
   oneLine:
@@ -57,6 +61,15 @@ export const evalkitSummary = {
     "EvalKit was shaped around a practical problem: LLM features drift in ways that are hard to catch by hand. The product gives teams a deterministic workflow for defining suites, cases, checks, and runs so output quality can be measured before users feel the regression.",
   technical:
     "EvalKit is a multi-tenant SaaS built around a deterministic FastAPI check engine, SQLAlchemy models, Neon Postgres, Stripe billing, and Railway deployment. The system keeps evaluation logic, tenancy, metering, and webhook-driven subscription state explicit and testable.",
+};
+
+export const campaignForgeSummary = {
+  oneLine:
+    "CampaignForge AI is a structured campaign-planning workflow that turns one brief into a usable marketing starting point.",
+  readerFacing:
+    "CampaignForge AI started as a broad prototype for turning one brief into strategy, copy, and creative direction. The product work now is about narrowing it into something smaller, more credible, and easier to sell without pretending it is already a full platform.",
+  technical:
+    "CampaignForge AI currently combines a FastAPI backend, a Streamlit surface, staged generation, and structured outputs. The next product questions are less about adding features and more about storage, auth, hosted safety, and deciding which commercial path deserves to exist first.",
 };
 
 function section(title: string, blocks: WritingSectionBlock[]): WritingSection {
@@ -1129,7 +1142,259 @@ export const evalKitSeriesEntries: WritingEntry[] = evalKitEntriesWithoutSeries.
   })
 );
 
+const campaignForgeEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
+  {
+    slug: "introducing-campaignforge-ai",
+    title: "Introducing CampaignForge AI",
+    date: "June 21, 2026",
+    category: "Product Strategy",
+    summary:
+      "CampaignForge AI is a structured campaign-planning workflow designed to turn one brief into strategy, copy, and creative direction that a small team can actually use.",
+    intro:
+      "CampaignForge AI started from a practical frustration. Campaign planning work often gets split across too many disconnected tools and too many blank pages. The goal here was not to build another general-purpose writing tool. It was to build a tighter workflow that could take a brief and return a more coherent campaign starting point.",
+    readingTime: "7 min read",
+    pullQuote: {
+      quote:
+        "The product needs to be more useful than magical.",
+    },
+    sections: [
+      section("What The Product Actually Does", [
+        paragraph(
+          "The current product takes a structured brief and moves it through staged generation rather than one oversized prompt. That matters because strategy, copy, and creative direction are related but not identical jobs. Keeping those stages explicit makes the outputs easier to review and more consistent to reuse."
+        ),
+        diagram(
+          `Brief
+  |
+  v
+Strategy
+  |
+  v
+Messaging
+  |
+  v
+Creative Direction
+  |
+  v
+Campaign Draft`,
+          "The workflow is intentionally staged so the output stays readable."
+        ),
+      ]),
+      section("Who It Is For", [
+        paragraph(
+          "The clearest buyer is not a giant enterprise team. It is a small marketing team, freelancer, or agency that wants a faster first pass without giving up editorial judgement. That narrower audience makes the product easier to shape and easier to price."
+        ),
+        list([
+          "Small in-house marketing teams that need speed without a full platform rollout.",
+          "Freelancers who want a stronger structured starting point for campaign work.",
+          "Agencies that want a repeatable internal accelerator rather than another broad content tool.",
+        ]),
+      ]),
+      section("Why The Product Needs More Narrowing", [
+        paragraph(
+          "The prototype proves the workflow shape better than it proves the commercial shape. That is normal, but it matters. A tool can be interesting and still be too broad to sell cleanly. The real work now is deciding what stays in scope, what becomes optional, and what should wait until the product has clearer demand."
+        ),
+        links([
+          {
+            label: "CampaignForge AI repository",
+            href: "https://github.com/Peippo1/CampaignForge-AI",
+          },
+          {
+            label: "CampaignForge AI Productization Hub",
+            href: "https://app.notion.com/p/38d2f6b56a9d8108aeccef703153919f",
+          },
+          {
+            label: "CampaignForge AI Commercial Roadmap",
+            href: "https://app.notion.com/p/38d2f6b56a9d810aa155d62cdb290c8b",
+          },
+        ]),
+      ]),
+    ],
+  },
+  {
+    slug: "choosing-the-right-commercial-path-for-campaignforge-ai",
+    title: "Choosing the Right Commercial Path for CampaignForge AI",
+    date: "June 24, 2026",
+    category: "Commercial Strategy",
+    summary:
+      "The best near-term path for CampaignForge AI is not to rush into a platform. It is to choose the smallest commercial shape that the current product can support honestly.",
+    intro:
+      "There are at least three plausible ways to sell CampaignForge AI: as a code asset, as a productised service, or as a small SaaS. Each path changes what has to be built, what has to be supported, and what can be claimed responsibly.",
+    readingTime: "8 min read",
+    sections: [
+      section("The Three Paths", [
+        list([
+          "Code asset: sell the workflow as a downloadable or licensed starting point for teams that can self-host and adapt it.",
+          "Productised service: use the workflow as an internal delivery accelerator for done-for-you campaign work.",
+          "Small SaaS: host the product directly with stricter boundaries around auth, storage, billing, and tenant safety.",
+        ]),
+        paragraph(
+          "All three paths are viable in theory. The question is which one matches the current codebase and the fastest credible route to revenue."
+        ),
+      ]),
+      section("Why Productised Service Comes First", [
+        paragraph(
+          "The service path is the most honest near-term option because it needs fewer hard platform guarantees. It lets the workflow prove itself on real campaign work before a hosted product has to solve authentication, tenancy, durable storage, and support expectations all at once."
+        ),
+        paragraph(
+          "That does not make SaaS the wrong destination. It makes SaaS a later step that should be earned. The advantage of service first is that it creates sharper feedback about where the workflow is genuinely valuable and where the prototype still leaks complexity."
+        ),
+      ]),
+      section("What Stays Out Of Scope", [
+        list([
+          "No broad enterprise positioning yet.",
+          "No multi-role permission system before a clearer hosted need exists.",
+          "No sprawling campaign operations suite with every adjacent workflow bundled in.",
+          "No production marketing claims that the current implementation cannot support.",
+        ]),
+        links([
+          {
+            label: "CampaignForge AI Productization Hub",
+            href: "https://app.notion.com/p/38d2f6b56a9d8108aeccef703153919f",
+          },
+          {
+            label: "CampaignForge AI Commercial Roadmap",
+            href: "https://app.notion.com/p/38d2f6b56a9d810aa155d62cdb290c8b",
+          },
+        ]),
+      ]),
+    ],
+  },
+  {
+    slug: "what-campaignforge-ai-needs-before-hosted-deployment",
+    title: "What CampaignForge AI Needs Before Hosted Deployment",
+    date: "June 27, 2026",
+    category: "Architecture",
+    summary:
+      "CampaignForge AI can become a credible hosted product, but only after the basics are tightened: storage, auth, tenancy, and operational visibility.",
+    intro:
+      "Hosted products fail in unglamorous ways. Not because the core workflow is uninteresting, but because the operational basics were treated like later details. For CampaignForge AI, the hosted path is credible only if those basics stop being optional.",
+    readingTime: "8 min read",
+    pullQuote: {
+      quote:
+        "A hosted product has to be safer than a demo, not just better marketed than one.",
+    },
+    sections: [
+      section("The Gaps That Matter Most", [
+        list([
+          "Durable storage instead of file-based campaign artifacts.",
+          "Authentication and tenant boundaries for any shared hosted use.",
+          "Usage controls and rate limits so the service behaves predictably.",
+          "Compatibility, logging, and observability baselines for support and debugging.",
+        ]),
+        paragraph(
+          "None of these are decorative platform work. They are the minimum conditions for claiming that the product can be used by more than one person in a controlled way."
+        ),
+      ]),
+      section("What This Means For Scope", [
+        paragraph(
+          "The right move is not to build every possible hosted feature. It is to build the smallest hosted version that preserves the product thesis. That probably means a narrower campaign workflow, fewer integrations, and a more explicit operator posture while the first users are still validating the system."
+        ),
+        diagram(
+          `Prototype Workflow
+  |
+  v
+Storage + Auth
+  |
+  v
+Tenant Safety
+  |
+  v
+Observability
+  |
+  v
+Credible Hosted MVP`,
+          "Hosted credibility comes from the boring layers underneath the workflow."
+        ),
+      ]),
+      section("Why This Work Is Worth Writing Down", [
+        paragraph(
+          "One reason to document this now is to keep the product honest. It is easy to talk about productisation in abstract terms. It is harder, and more useful, to name the exact things the product still needs before hosted deployment is a responsible claim."
+        ),
+        links([
+          {
+            label: "CampaignForge AI repository",
+            href: "https://github.com/Peippo1/CampaignForge-AI",
+          },
+          {
+            label: "CampaignForge AI Productization Hub",
+            href: "https://app.notion.com/p/38d2f6b56a9d8108aeccef703153919f",
+          },
+          {
+            label: "CampaignForge AI Commercial Roadmap",
+            href: "https://app.notion.com/p/38d2f6b56a9d810aa155d62cdb290c8b",
+          },
+        ]),
+      ]),
+    ],
+  },
+];
+
+export const campaignForgeSeriesEntries: WritingEntry[] =
+  campaignForgeEntriesWithoutSeries.map((entry, index, entries) => ({
+    ...entry,
+    series: {
+      slug: campaignForgeSeriesSlug,
+      name: campaignForgeSeriesName,
+      description: campaignForgeSeriesDescription,
+      order: index + 1,
+      previousSlug: index > 0 ? entries[index - 1]?.slug : undefined,
+      nextSlug: index < entries.length - 1 ? entries[index + 1]?.slug : undefined,
+    },
+  }));
+
 export const archiveWritingEntries: WritingEntry[] = [
+  {
+    slug: "building-a-reusable-pr-to-paper-trail-workflow",
+    title: "Building a Reusable PR-to-Paper Trail Workflow in Codex",
+    date: "June 28, 2026",
+    category: "Automation",
+    summary:
+      "How a one-off review routine became a reusable Codex workflow for turning pull request activity into cleaner updates, clearer follow-on actions, and an auditable paper trail.",
+    readingTime: "6 min read",
+    intro:
+      "The workflow started from a small but recurring problem. Pull requests capture code changes, but they rarely capture the surrounding operational work that makes teams easier to run: ticket updates, documentation notes, follow-on actions, standup-ready summaries, and a record of what still needs human approval. PR-to-Paper Trail was built to close that gap without turning automation into silent write-back.",
+    sections: [
+      section("What The Workflow Does", [
+        paragraph(
+          "PR-to-Paper Trail reviews recent pull request activity, reads the surrounding repository context, and drafts the operational paper trail that usually gets forgotten. The useful outputs are not just summaries. They are structured suggestions that separate inspected facts, recommendations, unknowns, and actions that still need approval."
+        ),
+        list([
+          "Review recent PR activity and relevant diffs.",
+          "Pull in repository, issue, project, and documentation context where available.",
+          "Draft ticket updates, documentation notes, follow-on actions, standup summaries, and audit receipts.",
+          "Keep every write action behind an explicit human approval gate.",
+        ]),
+      ]),
+      section("Why The Approval Boundary Matters", [
+        paragraph(
+          "The whole point is to reduce admin drag without pretending automation should own project state. The workflow is intentionally draft-first. It can observe, reconcile, and recommend, but it should not quietly mutate tickets, docs, or repositories just because it found something plausible to say."
+        ),
+        quote(
+          "Observe, recommend, approve, act is a much better workflow than observe, act.",
+          "PR-to-Paper Trail principle"
+        ),
+      ]),
+      section("Why It Became Reusable", [
+        paragraph(
+          "Once the logic was separated cleanly, the workflow stopped looking like a one-off helper and started looking like a portable operating pattern. The reusable version now supports manual review mode for one PR, scheduled digest mode for recurring review windows, and approval mode for explicit human-authorised write-back."
+        ),
+        links([
+          {
+            label: "EvalKit repository",
+            href: "https://github.com/Peippo1/EvalKit",
+          },
+          {
+            label: "PR-to-Paper Trail package",
+            href: "https://github.com/Peippo1/EvalKit/tree/main/pr_to_paper_trail",
+          },
+          {
+            label: "PR-to-Paper Trail skill",
+            href: "https://github.com/Peippo1/EvalKit/tree/main/skills/pr-to-paper-trail",
+          },
+        ]),
+      ]),
+    ],
+  },
   {
     slug: "building-with-clear-evaluation-loops",
     title: "Building With Clear Evaluation Loops",
@@ -1160,6 +1425,7 @@ export const archiveWritingEntries: WritingEntry[] = [
 ];
 
 export const writingEntries: WritingEntry[] = [
+  ...campaignForgeSeriesEntries,
   ...cityScoutSeriesEntries,
   ...hoxaSeriesEntries,
   ...creatorOSSeriesEntries,
@@ -1173,6 +1439,10 @@ export function getOrderedWritingEntries() {
 
 export function getWritingEntryBySlug(slug: string) {
   return writingEntries.find((entry) => entry.slug === slug);
+}
+
+export function getCampaignForgeSeriesEntries() {
+  return campaignForgeSeriesEntries;
 }
 
 export function getHoxaSeriesEntries() {
