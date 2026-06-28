@@ -125,7 +125,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "Hoxa is built around a broader view of fitness than a single training mode. The product needs to support running, strength, mobility, balance, and recovery because real users do not experience those domains separately. Someone preparing for a half marathon may also need better hip mobility, a more reliable strength routine, and a calmer way to recover after a difficult week."
         ),
         paragraph(
-          "That mix matters more for beginner to intermediate users than it does for specialists. At this stage, the right product is not the one that optimises a single training metric in isolation. It is the one that helps a person build a sustainable relationship with movement across different contexts: at home, in a gym, and out on a run."
+          "That mix matters more for beginner to intermediate users than it does for specialists. At this stage, the right product is not the one that optimises a single training metric in isolation. It should help someone build a sustainable relationship with movement across different contexts: at home, in a gym, and out on a run."
         ),
         list([
           "Running support should cover first 5K plans through half marathon preparation.",
@@ -139,12 +139,12 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "The emotional tone of a fitness app is not a branding layer added after the system works. It shapes whether the system can work at all. If the language feels macho, punishing, or relentlessly optimised, many users will edit themselves around the product instead of using it honestly. They will skip the app on tired weeks, overstate what they completed, or quietly disengage."
         ),
         paragraph(
-          "A calmer tone is not about being soft or vague. It is about creating a system that can absorb ordinary life. The product should be able to say: you slept badly, your week got messy, your legs are heavy today, and the plan can still make sense. That is a much more credible promise than pretending consistency means perfect adherence."
+          "A calmer tone is not about being soft or vague. It is about creating a system that can absorb ordinary life. The product should be able to say: you slept badly, your week got messy, your legs are heavy today, and the plan can still make sense. That is a better promise than pretending consistency means perfect adherence."
         ),
       ]),
       section("What I Want Hoxa To Become", [
         paragraph(
-          "Later, Hoxa should become better at understanding context through workout history, Apple Health and Apple Watch data, Garmin data, and calendar signals. But the point of those integrations is not to look sophisticated. The point is to reduce guesswork while keeping the product legible. If a future system adapts, it should be able to explain why it adapted in plain language."
+          "Later, Hoxa should become better at understanding context through workout history, Apple Health and Apple Watch data, Garmin data, and calendar signals. Those integrations are not there to make the product look sophisticated. They should reduce guesswork while keeping the product legible. If a future system adapts, it should be able to explain why in plain language."
         ),
         paragraph(
           "That is the thread I want this project to hold. Hoxa should feel elegant and intelligent, but never intimidating. It should help users build capability without asking them to adopt the identity or rhetoric that so often comes bundled with fitness software."
@@ -253,7 +253,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
       ]),
       section("Keeping Half Marathon Support Honest", [
         paragraph(
-          "Supporting running goals up to half marathon is important because it expands the product from general fitness into a more concrete outcome. But that support has to be implemented carefully. The goal is not to become a specialist endurance platform in version one. The goal is to help non-elite runners train for a meaningful milestone without neglecting strength, mobility, and recovery."
+          "Supporting running goals up to half marathon is important because it expands the product from general fitness into a more concrete outcome. But that support has to be implemented carefully. Version one should not become a specialist endurance platform. It should help non-elite runners train for a meaningful milestone without neglecting strength, mobility, and recovery."
         ),
         paragraph(
           "That framing changes the product decisions. The running plan should not dominate the rest of the week. It should coordinate with it. Hoxa should make the user feel like they are building a durable body that can handle the goal, not just accumulating miles because the plan says so."
@@ -429,7 +429,7 @@ Calendar --------+                              |
     summary:
       "AI can make fitness software more responsive and easier to understand, but only if its role stays narrow enough to earn trust.",
     intro:
-      "There is a strong temptation to describe any adaptive product as an AI product first. I think that is usually a mistake. In fitness, especially, the useful question is not how much AI can be added. It is which jobs actually benefit from it without weakening trust.",
+      "There is a strong temptation to describe any adaptive product as an AI product first. I think that is usually a mistake. In fitness, especially, the better question is not how much AI can be added. It is which jobs actually benefit from it without weakening trust.",
     readingTime: "9 min read",
     sections: [
       section("Where AI Can Help", [
@@ -576,7 +576,7 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "A city-first product starts with the place, not the booking. That means helping someone understand what a city is good at, how its neighbourhoods differ, when to move slowly, and where the local texture actually lives. The app should feel like it is helping the user travel with context, not pretending they already know the city."
         ),
         paragraph(
-          "That distinction matters because confidence in travel is rarely about raw information volume. It is about feeling oriented. If the product can help a person decide where to spend time, what to cluster together, and what to ignore, it becomes more useful than a list of generic suggestions."
+          "That distinction matters because confidence in travel is rarely about raw information volume. It is about feeling oriented. If the product can help someone decide where to spend time, what to cluster together, and what to ignore, it becomes more useful than a list of generic suggestions."
         ),
       ]),
       section("Why I Chose iOS First", [
@@ -748,7 +748,7 @@ const creatorOSEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "CreatorOS is not meant to be a generic writer with a few prompts wrapped around it. The stronger product angle is strategic reasoning. Audience intelligence, content gap discovery, platform-aware strategy, and experiment recommendations are all part of the system because they shape the decision before any repurposed output is generated."
         ),
         paragraph(
-          "Repurposing still matters, but only as the final layer. If the product only rewrites content, it misses the larger problem. The useful part is understanding what the creator should do with the material in the first place."
+          "Repurposing still matters, but only as the final layer. If the product only rewrites content, it misses the larger problem. The more useful job is working out what the creator should do with the material in the first place."
         ),
       ]),
       section("The First Workflow", [
@@ -850,7 +850,7 @@ const evalKitEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "LLM teams usually discover regressions late because the outputs are easy to glance at and hard to measure. A prompt change can quietly alter JSON shape, length, tone, safety boundaries, or the capability that actually made the feature useful in the first place. Spot checks catch obvious breakage, but they do not give you a repeatable record of what changed."
         ),
         paragraph(
-          "EvalKit exists to make that record explicit. The point is not to test every possible response. The point is to create a reliable harness that makes output drift visible before it becomes a product problem."
+          "EvalKit exists to make that record explicit. It is not trying to test every possible response. It is there to create a reliable harness that makes output drift visible before it becomes a product problem."
         ),
       ]),
       section("How EvalKit Works", [
@@ -959,7 +959,7 @@ Regression Report`,
           "Capability checks catch cases where the answer is fluent but no longer performs the intended task.",
         ]),
         paragraph(
-          "That mix is enough for most product teams to get meaningful protection without overbuilding the evaluation layer. The point is to make regressions legible, not to chase abstract completeness."
+          "That mix is enough for most product teams to get meaningful protection without overbuilding the evaluation layer. The aim is to make regressions legible, not to chase abstract completeness."
         ),
       ]),
       section("A Practical Workflow", [
@@ -1216,7 +1216,7 @@ Campaign Draft`,
     date: "June 24, 2026",
     category: "Commercial Strategy",
     summary:
-      "The best next step for CampaignForge AI is not a big platform play. It is picking the smallest shape that makes sense and seeing if people want it.",
+      "The best next step for CampaignForge AI is not a big platform play. It is to pick the smallest shape that makes sense and see if people want it.",
     intro:
       "There are a few ways this could go. It could be sold as a code asset, run as a productised service, or pushed towards a small SaaS. Each one comes with different expectations, so the main thing is choosing the one that matches the product as it actually is now.",
     readingTime: "8 min read",
@@ -1228,7 +1228,7 @@ Campaign Draft`,
           "Small SaaS: host the product directly with stricter boundaries around auth, storage, billing, and tenant safety.",
         ]),
         paragraph(
-          "All three are possible on paper. The real question is which one fits the current product, and which one gets it into the world without adding a load of unnecessary baggage."
+          "All three are possible on paper. The real question is which one fits the current product, and which one gets it into the world without a load of unnecessary baggage."
         ),
       ]),
       section("Why Productised Service Comes First", [
@@ -1287,7 +1287,7 @@ Campaign Draft`,
       ]),
       section("What This Means For Scope", [
         paragraph(
-          "The answer is not to pile on hosted features. It is to build the smallest version that still feels useful. That probably means a narrower workflow, fewer integrations, and being pretty clear that the first version is there to learn from."
+          "The answer is not to pile on hosted features. It is to build the smallest version that still feels useful. That probably means a narrower workflow, fewer integrations, and being clear that the first version is there to learn from."
         ),
         diagram(
           `Prototype Workflow
@@ -1356,7 +1356,7 @@ export const archiveWritingEntries: WritingEntry[] = [
     sections: [
       section("What The Workflow Does", [
         paragraph(
-          "PR-to-Paper Trail looks at recent pull request activity, reads the surrounding repo context, and drafts the paper trail that usually gets skipped. The useful part is not just that it writes things. It separates what it found, what it thinks, what is still unclear, and what still needs a person to approve."
+          "PR-to-Paper Trail looks at recent pull request activity, reads the surrounding repo context, and drafts the paper trail that usually gets skipped. What matters is not just that it writes things. It separates what it found, what it thinks, what is still unclear, and what still needs a person to approve."
         ),
         list([
           "Review recent PR activity and relevant diffs.",
