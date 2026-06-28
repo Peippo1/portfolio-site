@@ -14,28 +14,28 @@ import {
 } from "@/data/writing";
 import { IconMark } from "@/components/ui/icon-mark";
 
-const featuredProjects = ["hoxa", "cityscout", "creatoros", "evalkit"]
+const featuredProjects = ["campaignforge-ai", "evalkit", "hoxa", "cityscout"]
   .map((slug) => getProjectBySlug(slug))
   .filter((project) => project !== undefined);
 
 const activeBuildLinks = [
-  { title: "Hoxa", oneLine: hoxaSummary.oneLine, href: "/projects/hoxa" },
-  { title: "CityScout", oneLine: cityScoutSummary.oneLine, href: "/projects/cityscout" },
-  { title: "CreatorOS", oneLine: creatorOSSummary.oneLine, href: "/projects/creatoros" },
   {
     title: "CampaignForge AI",
     oneLine: campaignForgeSummary.oneLine,
     href: "/projects/campaignforge-ai",
   },
   { title: "EvalKit", oneLine: evalkitSummary.oneLine, href: "/projects/evalkit" },
+  { title: "Hoxa", oneLine: hoxaSummary.oneLine, href: "/projects/hoxa" },
+  { title: "CityScout", oneLine: cityScoutSummary.oneLine, href: "/projects/cityscout" },
+  { title: "CreatorOS", oneLine: creatorOSSummary.oneLine, href: "/projects/creatoros" },
 ];
 
 const featuredWriting = [
   getWritingEntryBySlug("building-a-reusable-pr-to-paper-trail-workflow"),
   getWritingEntryBySlug("introducing-campaignforge-ai"),
   getWritingEntryBySlug("choosing-the-right-commercial-path-for-campaignforge-ai"),
+  getWritingEntryBySlug("what-campaignforge-ai-needs-before-hosted-deployment"),
   getWritingEntryBySlug("introducing-evalkit"),
-  getWritingEntryBySlug("why-im-building-cityscout"),
 ].filter((entry) => entry !== undefined);
 
 const workflowLinks = [
