@@ -72,7 +72,8 @@ export type WritingSeriesSlug =
   | "hoxa-build-thread"
   | "cityscout-build-thread"
   | "creatoros-build-thread"
-  | "evalkit-build-thread";
+  | "evalkit-build-thread"
+  | "campaignforge-build-thread";
 
 export type WritingSeries = {
   slug: WritingSeriesSlug;
