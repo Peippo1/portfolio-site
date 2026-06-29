@@ -45,11 +45,11 @@ const workflowLinks = [
   },
   {
     label: "View the reusable skill",
-    href: "https://github.com/Peippo1/EvalKit/tree/main/skills/pr-to-paper-trail",
+    href: "https://github.com/Peippo1/pr-to-paper-trail/tree/main/skills/pr-to-paper-trail",
   },
   {
     label: "View the workflow package",
-    href: "https://github.com/Peippo1/EvalKit/tree/main/pr_to_paper_trail",
+    href: "https://github.com/Peippo1/pr-to-paper-trail/tree/main/pr_to_paper_trail",
   },
 ];
 
