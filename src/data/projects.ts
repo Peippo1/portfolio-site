@@ -36,7 +36,7 @@ export const projects: Project[] = [
     year: "2026",
     stack: ["React", "TypeScript", "Express", "PostgreSQL", "OpenAI", "ONNX"],
     featured: true,
-    githubUrl: "https://github.com/Peippo1/building-a-background-removal-tool-you",
+    githubUrl: "https://github.com/Peippo1/Cutout-Studio",
     demoUrl: "Live beta deployment in progress",
     problem:
       "A simple image utility becomes much less simple once it is exposed to the public. Anonymous uploads, unclear account state, no moderation gate, and weak logging all make a background-removal service easier to abuse.",
