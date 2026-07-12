@@ -37,7 +37,7 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Express", "PostgreSQL", "OpenAI", "ONNX"],
     featured: true,
     githubUrl: "https://github.com/Peippo1/Cutout-Studio",
-    demoUrl: "Live beta deployment in progress",
+    demoUrl: "https://cutout-studio.tim-o-finch.chatgpt.site",
     problem:
       "A simple image utility becomes much less simple once it is exposed to the public. Anonymous uploads, unclear account state, no moderation gate, and weak logging all make a background-removal service easier to abuse.",
     solution:

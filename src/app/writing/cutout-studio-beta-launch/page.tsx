@@ -143,13 +143,21 @@ export default function CutoutStudioLaunchPage() {
 
           <Section title="Where the product is now">
             <p>
-              The beta hardening work is complete in the codebase. What remains
-              is the last deployment step and the production secrets needed for
-              GitHub OAuth, Postgres, moderation, and Turnstile. Once that is
-              live, the public beta URL will be added to this page and to the
-              project case study so people can use the tool directly.
+              The beta app shell is now live on Sites with the safety posture
+              visible to users. Processing remains fail-closed until the
+              production GitHub OAuth, Postgres, moderation, and Turnstile
+              settings are configured, which is the right default for a tool
+              that should not process anonymous or unsafe uploads.
             </p>
             <div className="flex flex-col gap-2.5 text-[var(--color-text)]">
+              <a
+                href="https://cutout-studio.tim-o-finch.chatgpt.site"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex w-fit items-center gap-2 rounded-full px-1 py-0.5 transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-muted)] focus-visible:bg-black/[0.03] focus-visible:outline-none"
+              >
+                Use Cutout Studio <span aria-hidden="true">↗</span>
+              </a>
               <a
                 href="https://github.com/Peippo1/Cutout-Studio"
                 target="_blank"
