@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/container";
 import {
   getOrderedWritingEntries,
   getWritingEntryBySlug,
-} from "@/data/writing";
+} from "@/data/writing-release-readiness";
 import type { WritingBlock } from "@/types/content";
 
 export const dynamicParams = false;
