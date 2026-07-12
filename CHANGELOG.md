@@ -2,6 +2,10 @@
 
 All notable changes to this portfolio will be recorded here.
 
+## 2026-07-12
+
+- Added a public CV asset and linked it from the home page, About page, and site footer.
+
 ## 2026-04-30
 
 - Added a reusable CityScout summary block.
@@ -14,4 +18,3 @@ All notable changes to this portfolio will be recorded here.
 
 - Added the CityScout writing series.
 - Updated the writing archive and route metadata to support the new series.
-

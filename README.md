@@ -7,7 +7,7 @@ Editorial portfolio for Tim Finch. Built with Next.js 16, TypeScript, and Tailwi
 - Editorial home page with featured projects and a lightweight space-data telemetry layer
 - Project archive with search and statically generated case studies
 - Writing archive with structured long-form entries and build threads
-- About page with a concise working profile and social links
+- About page with a concise working profile, social links, and a public CV link
 - Lightweight API routes for portfolio search and telemetry fallback data
 
 ## Visual System
@@ -57,6 +57,7 @@ The home page telemetry panel uses a small server-side integration with the offi
 - `/writing` writing archive
 - `/writing/[slug]` long-form writing entries
 - `/about` bio and links
+- `/Tim_Finch_CV.pdf` public CV asset
 - `/api/ask` local portfolio search endpoint
 - `/api/telemetry` telemetry feed with fallback content
 

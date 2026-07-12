@@ -322,6 +322,14 @@ export default function HomePage() {
               >
                 Read writing
               </Link>
+              {profile.cvUrl ? (
+                <a
+                  href={profile.cvUrl}
+                  className="inline-flex rounded-full border border-[var(--color-border-strong)] bg-white px-5 py-3 text-sm text-[var(--color-text)] transition-colors duration-150 hover:bg-black/[0.03] focus-visible:bg-black/[0.03] focus-visible:outline-none"
+                >
+                  View CV
+                </a>
+              ) : null}
             </div>
 
             <div className="mt-10 grid gap-5 sm:grid-cols-2">

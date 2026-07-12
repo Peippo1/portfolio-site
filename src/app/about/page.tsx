@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   const socialLinks = [
+    profile.cvUrl ? { label: "View CV", href: profile.cvUrl } : null,
     profile.githubUrl ? { label: "GitHub", href: profile.githubUrl } : null,
     profile.linkedinUrl ? { label: "LinkedIn", href: profile.linkedinUrl } : null,
   ].filter(Boolean) as Array<{ label: string; href: string }>;
@@ -85,8 +86,8 @@ export default function AboutPage() {
                     <a
                       key={link.label}
                       href={link.href}
-                      target="_blank"
-                      rel="noreferrer noopener"
+                      target={link.href.startsWith("http") ? "_blank" : undefined}
+                      rel={link.href.startsWith("http") ? "noreferrer noopener" : undefined}
                       className="inline-flex rounded-full border border-[var(--color-border)] px-3 py-1.5 text-sm text-[var(--color-muted)] transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-text)] focus-visible:bg-black/[0.03] focus-visible:text-[var(--color-text)] focus-visible:outline-none"
                     >
                       {link.label}
