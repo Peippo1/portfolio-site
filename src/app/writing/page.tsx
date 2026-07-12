@@ -8,7 +8,7 @@ import {
   getEvalKitSeriesEntries,
   getHoxaSeriesEntries,
   getStandaloneArchiveEntries,
-} from "@/data/writing";
+} from "@/data/writing-release-readiness";
 import type { WritingEntry } from "@/types/content";
 
 export const metadata: Metadata = {
@@ -163,7 +163,7 @@ export default function WritingPage() {
       ? {
           series: cityScoutSeries,
           entries: cityScoutSeriesEntries,
-          summaryLine: "Three posts / Product strategy, architecture, and roadmap",
+          summaryLine: "Four posts / Product strategy, architecture, roadmap, and release readiness",
         }
       : null,
     hoxaSeries
