@@ -26,6 +26,31 @@ export const projects: Project[] = [
     status: "In design",
   },
   {
+    slug: "cutout-studio",
+    title: "Cutout Studio",
+    shortSummary:
+      "A background-removal tool hardened into a verified beta with moderation, audit logging, and no image retention by default.",
+    longSummary:
+      "Cutout Studio started as a person-focused background-removal tool and then had to be shaped into something safer to operate as a public beta. The product now combines a React and TypeScript frontend, an Express API, local ONNX-based segmentation, GitHub verified-email access control, policy acceptance, moderation-before-processing, abuse reporting, admin review paths, structured audit logging, and a Postgres-backed session and user model.",
+    category: "AI Products",
+    year: "2026",
+    stack: ["React", "TypeScript", "Express", "PostgreSQL", "OpenAI", "ONNX"],
+    featured: true,
+    githubUrl: "https://github.com/Peippo1/building-a-background-removal-tool-you",
+    demoUrl: "Live beta deployment in progress",
+    problem:
+      "A simple image utility becomes much less simple once it is exposed to the public. Anonymous uploads, unclear account state, no moderation gate, and weak logging all make a background-removal service easier to abuse.",
+    solution:
+      "Cutout Studio treats the launch as an accountable beta instead of an anonymous free tool. It requires verified GitHub login for processing, persists user and policy state in Postgres, runs moderation before background removal, fails closed on safety-critical uncertainty, keeps raw images out of durable storage, and gives operators a minimal review surface for abuse reports and account actions.",
+    highlights: [
+      "Moved from an in-memory access model to durable Postgres-backed users, sessions, policy acceptances, audit events, abuse reports, and moderation decisions.",
+      "Added moderation-before-processing, strict fail-closed behavior, abuse reporting, and admin-only account review actions.",
+      "Kept the privacy posture narrow by processing images in memory and persisting only metadata, request identifiers, and decision codes.",
+      "Built a product-facing safety flow with verified GitHub login, policy gating, request correlation IDs, and clearer rejection states.",
+    ],
+    status: "Beta hardening complete",
+  },
+  {
     slug: "cityscout",
     title: "CityScout",
     shortSummary:
