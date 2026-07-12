@@ -151,7 +151,7 @@ export default function CutoutStudioLaunchPage() {
             </p>
             <div className="flex flex-col gap-2.5 text-[var(--color-text)]">
               <a
-                href="https://github.com/Peippo1/building-a-background-removal-tool-you"
+                href="https://github.com/Peippo1/Cutout-Studio"
                 target="_blank"
                 rel="noreferrer noopener"
                 className="inline-flex w-fit items-center gap-2 rounded-full px-1 py-0.5 transition-colors duration-150 hover:bg-black/[0.03] hover:text-[var(--color-muted)] focus-visible:bg-black/[0.03] focus-visible:outline-none"
