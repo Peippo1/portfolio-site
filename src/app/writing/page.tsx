@@ -17,6 +17,16 @@ export const metadata: Metadata = {
     "Writing on AI products, engineering, product decisions, and the real work of making systems usable.",
 };
 
+const cutoutStudioLaunchEntry: WritingEntry = {
+  slug: "cutout-studio-beta-launch",
+  title: "Launching Cutout Studio as a Verified Beta",
+  date: "July 12, 2026",
+  category: "Product Launch",
+  summary:
+    "How Cutout Studio moved from a simple background-removal tool to a safer public beta with verified login, moderation, audit logging, and no image retention by default.",
+  readingTime: "7 min read",
+};
+
 function ThreadPreview({ slug }: { slug: string }) {
   if (slug === "hoxa-build-thread") {
     return (
@@ -145,7 +155,7 @@ export default function WritingPage() {
   const hoxaSeriesEntries = getHoxaSeriesEntries();
   const creatorOSSeriesEntries = getCreatorOSSeriesEntries();
   const evalKitSeriesEntries = getEvalKitSeriesEntries();
-  const archiveEntries = getStandaloneArchiveEntries();
+  const archiveEntries = [cutoutStudioLaunchEntry, ...getStandaloneArchiveEntries()];
   const campaignForgeSeries = campaignForgeSeriesEntries[0]?.series;
   const cityScoutSeries = cityScoutSeriesEntries[0]?.series;
   const hoxaSeries = hoxaSeriesEntries[0]?.series;
@@ -270,6 +280,30 @@ export default function WritingPage() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="mt-12 rounded-[1.8rem] border border-[var(--color-border)] bg-white px-5 py-5 shadow-[var(--shadow-soft)] sm:px-6">
+          <p className="text-xs tracking-[0.18em] text-[var(--color-muted)] uppercase">
+            Latest launch note
+          </p>
+          <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <h2 className="font-editorial text-[1.9rem] leading-tight sm:text-[2.35rem]">
+                Launching Cutout Studio as a Verified Beta.
+              </h2>
+              <p className="mt-3 text-[1rem] leading-8 text-[var(--color-muted)] sm:text-[1.04rem]">
+                A background-removal tool becomes a much more serious product
+                once you treat public use, abuse handling, moderation, and
+                operator accountability as first-class requirements.
+              </p>
+            </div>
+            <Link
+              href="/writing/cutout-studio-beta-launch"
+              className="inline-flex items-center gap-2 text-sm text-[var(--color-muted)] transition-colors duration-150 hover:text-[var(--color-text)]"
+            >
+              Read launch post <span aria-hidden="true">→</span>
+            </Link>
           </div>
         </section>
 
