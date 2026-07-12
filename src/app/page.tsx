@@ -14,11 +14,17 @@ import {
 } from "@/data/writing";
 import { IconMark } from "@/components/ui/icon-mark";
 
-const featuredProjects = ["campaignforge-ai", "evalkit", "hoxa", "cityscout"]
+const featuredProjects = ["cutout-studio", "campaignforge-ai", "evalkit", "hoxa", "cityscout"]
   .map((slug) => getProjectBySlug(slug))
   .filter((project) => project !== undefined);
 
 const activeBuildLinks = [
+  {
+    title: "Cutout Studio",
+    oneLine:
+      "A safer public beta for portrait background removal with verified login, moderation, and audit logging.",
+    href: "/projects/cutout-studio",
+  },
   {
     title: "CampaignForge AI",
     oneLine: campaignForgeSummary.oneLine,
@@ -30,7 +36,18 @@ const activeBuildLinks = [
   { title: "CreatorOS", oneLine: creatorOSSummary.oneLine, href: "/projects/creatoros" },
 ];
 
+const cutoutStudioLaunchEntry = {
+  slug: "cutout-studio-beta-launch",
+  title: "Launching Cutout Studio as a Verified Beta",
+  date: "July 12, 2026",
+  category: "Product Launch",
+  summary:
+    "How a simple background-removal tool turned into a stricter public beta with verified login, moderation, abuse reporting, and no image retention by default.",
+  readingTime: "7 min read",
+};
+
 const featuredWriting = [
+  cutoutStudioLaunchEntry,
   getWritingEntryBySlug("building-a-reusable-pr-to-paper-trail-workflow"),
   getWritingEntryBySlug("introducing-campaignforge-ai"),
   getWritingEntryBySlug("choosing-the-right-commercial-path-for-campaignforge-ai"),
@@ -165,6 +182,17 @@ function ProductBoardPreview() {
 
 function ProjectPreview({ slug }: { slug: string }) {
   const previewBySlug: Record<string, React.ReactNode> = {
+    "cutout-studio": (
+      <div className="relative h-full overflow-hidden rounded-[1.3rem] bg-[radial-gradient(circle_at_18%_18%,rgba(248,190,110,0.32),transparent_22%),radial-gradient(circle_at_78%_24%,rgba(54,123,94,0.22),transparent_20%),linear-gradient(135deg,#f8f4ea,#e9efe9_56%,#ffffff)]">
+        <div className="absolute inset-[8%] rounded-[1.15rem] border border-black/8 bg-white/70" />
+        <div className="absolute left-[11%] top-[15%] h-[58%] w-[26%] rounded-[1.2rem] bg-[linear-gradient(180deg,rgba(16,17,20,0.05),rgba(16,17,20,0.01))]" />
+        <div className="absolute right-[11%] top-[16%] h-[22%] w-[34%] rounded-full bg-white/94 shadow-[0_18px_42px_rgba(54,123,94,0.08)]" />
+        <div className="absolute right-[12%] bottom-[16%] h-[34%] w-[28%] rounded-[1.35rem] bg-[linear-gradient(180deg,rgba(54,123,94,0.14),rgba(255,255,255,0.72))]" />
+        <div className="absolute left-[43%] top-[39%] h-[8px] w-[28%] rounded-full bg-[rgba(54,123,94,0.58)]" />
+        <div className="absolute left-[43%] top-[51%] h-[8px] w-[24%] rounded-full bg-black/[0.08]" />
+        <div className="absolute left-[43%] top-[63%] h-[8px] w-[20%] rounded-full bg-black/[0.06]" />
+      </div>
+    ),
     hoxa: (
       <div className="relative h-full overflow-hidden rounded-[1.3rem] bg-[radial-gradient(circle_at_18%_18%,rgba(106,235,172,0.56),transparent_22%),radial-gradient(circle_at_80%_26%,rgba(106,235,172,0.22),transparent_24%),linear-gradient(135deg,#111413,#1d2522_58%,#28332f)]">
         <div className="absolute inset-[8%] rounded-[1.15rem] border border-white/10 bg-white/[0.03]" />
@@ -213,7 +241,19 @@ function ProjectPreview({ slug }: { slug: string }) {
   return <>{previewBySlug[slug]}</>;
 }
 
-function WritingPreview({ variant }: { variant: "dark" | "diagram" | "landscape" }) {
+function WritingPreview({ variant }: { variant: "dark" | "diagram" | "landscape" | "launch" }) {
+  if (variant === "launch") {
+    return (
+      <div className="relative h-full overflow-hidden rounded-[1.2rem] bg-[radial-gradient(circle_at_18%_18%,rgba(248,190,110,0.26),transparent_18%),radial-gradient(circle_at_78%_20%,rgba(54,123,94,0.2),transparent_18%),linear-gradient(135deg,#f8f4ea,#f0f4ef)]">
+        <div className="absolute inset-[9%] rounded-[1rem] border border-black/8 bg-white/76" />
+        <div className="absolute left-[12%] top-[16%] h-[18%] w-[42%] rounded-full bg-[rgba(54,123,94,0.1)]" />
+        <div className="absolute left-[12%] top-[42%] h-[8px] w-[48%] rounded-full bg-[rgba(54,123,94,0.58)]" />
+        <div className="absolute left-[12%] top-[54%] h-[8px] w-[36%] rounded-full bg-black/[0.08]" />
+        <div className="absolute right-[12%] bottom-[14%] h-[34%] w-[24%] rounded-[1.2rem] bg-[linear-gradient(180deg,rgba(54,123,94,0.12),rgba(255,255,255,0.72))]" />
+      </div>
+    );
+  }
+
   if (variant === "dark") {
     return (
       <div className="relative h-full overflow-hidden rounded-[1.2rem] bg-[radial-gradient(circle_at_76%_20%,rgba(89,233,167,0.22),transparent_18%),linear-gradient(180deg,#111414,#1a201d)]">
@@ -419,8 +459,9 @@ export default function HomePage() {
               </h2>
               <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
                 Writing about what I&apos;m building, what is changing, and where
-                the thinking is still getting worked out, including
-                PR-to-Paper-Trail and the CampaignForge AI product work.
+                the thinking is still getting worked out, including Cutout
+                Studio, PR-to-Paper-Trail, and the CampaignForge AI product
+                work.
               </p>
             </div>
             <Link
@@ -439,7 +480,15 @@ export default function HomePage() {
                 >
                   <div className="aspect-[1.28/0.72] border-b border-[var(--color-border)] p-3">
                     <WritingPreview
-                      variant={index % 3 === 0 ? "dark" : index % 3 === 1 ? "diagram" : "landscape"}
+                      variant={
+                        index === 0
+                          ? "launch"
+                          : index % 3 === 1
+                            ? "diagram"
+                            : index % 3 === 2
+                              ? "landscape"
+                              : "dark"
+                      }
                     />
                   </div>
                   <div className="p-5">
