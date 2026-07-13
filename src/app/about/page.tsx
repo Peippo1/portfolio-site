@@ -36,8 +36,7 @@ export default function AboutPage() {
                 </h2>
                 <p className="mt-3">
                   I’m Tim Finch. I build AI products and the systems behind
-                  them, and I try to keep things simple enough that I can
-                  actually test whether they work.
+                  them, and I try to keep things simple.
                 </p>
               </div>
 
@@ -46,9 +45,9 @@ export default function AboutPage() {
                   Current focus
                 </h2>
                 <p className="mt-3">
-                  Right now that’s a mix of AI engineering, product work, and
-                  data infrastructure — mostly figuring out how to get model
-                  output to hold up inside a real workflow, not just a demo.
+                  My work is a mix of AI engineering, product work, and
+                  data infrastructure — using AI to explore and build new
+                  products, and building the systems that make them work.
                 </p>
               </div>
 
@@ -57,8 +56,8 @@ export default function AboutPage() {
                   Background
                 </h2>
                 <p className="mt-3">
-                  In practice that’s LLM applications, agents, APIs, automation
-                  services, and data pipelines — built with contracts I can
+                  I love to work on LLM applications, agents, APIs, automation
+                  services, and data pipelines, built with contracts I can
                   point to and behavior I can actually measure.
                 </p>
               </div>
@@ -68,9 +67,9 @@ export default function AboutPage() {
                   Working style
                 </h2>
                 <p className="mt-3">
-                  I’d rather ship a smaller, boring interface that I trust
-                  than a clever one I have to babysit. Most of my time goes
-                  into figuring out what to leave out.
+                  I love writing about what I’m building and sharing it as I
+                  go — it’s a good way to learn in public, and I’d like to
+                  think it’s useful to whoever’s reading too.
                 </p>
               </div>
             </div>
