@@ -302,10 +302,10 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-6 max-w-lg text-[1.02rem] leading-8 text-[var(--color-muted)] sm:text-[1.08rem]">
-              I&apos;m {profile.name}, an AI engineer building product ideas into
-              things people can actually use. Most of my work sits somewhere
-              between AI systems, product thinking, and the messy operational
-              work needed to make software hold up.
+              I&apos;m {profile.name}, an AI engineer. I turn product ideas
+              into things people actually use — usually a mix of AI systems,
+              product decisions, and the unglamorous work of keeping software
+              running once real people touch it.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">

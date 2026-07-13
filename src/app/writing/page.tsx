@@ -316,9 +316,9 @@ export default function WritingPage() {
               Writing tied directly to products in progress.
             </h2>
             <p className="mt-4 text-[1rem] leading-8 text-[var(--color-muted)] sm:text-[1.04rem]">
-              These series are where I work through product shape,
-              architecture, trade-offs, and commercial questions without
-              turning the writing into vague progress theatre.
+              These series are where I actually work through product shape,
+              architecture, trade-offs, and commercial questions — not a
+              highlight reel, the real back-and-forth.
             </p>
           </div>
 

@@ -5,9 +5,9 @@ export const projects: Project[] = [
     slug: "hoxa",
     title: "Hoxa",
     shortSummary:
-      "A calmer fitness product for people who want structure, progress, and less noise.",
+      "A fitness product for people who want structure and progress without the usual gamified noise.",
     longSummary:
-      "Hoxa is a fitness product for people who want to get stronger and move more confidently without the performance theatre that so much fitness software leans on. It brings running, strength, mobility, balance, and recovery into one training loop, with a FastAPI backend and an adaptive engine that responds to adherence, effort, and context while explaining its decisions in plain language.",
+      "Hoxa is a fitness product for people who want to get stronger and move more confidently without the streaks, badges, and guilt-tripping most fitness apps lean on. It brings running, strength, mobility, balance, and recovery into one training loop, with a FastAPI backend and an adaptive engine that responds to adherence, effort, and context while explaining its decisions in plain language.",
     category: "AI Products",
     year: "2026",
     stack: ["SwiftUI", "SwiftData", "FastAPI", "OpenAI", "TypeScript"],
@@ -16,7 +16,7 @@ export const projects: Project[] = [
     problem:
       "A lot of fitness products lose people before training becomes useful because they assume the user already feels like an athlete. The language, design, and intensity cues often create pressure before they create confidence.",
     solution:
-      "Hoxa uses a calmer tone, a broader training system, and an adaptive engine that responds to real-world signals like fatigue, missed sessions, and a messy week without turning those moments into failure. The product explains why the plan changes instead of hiding the logic.",
+      "Hoxa uses a plainer tone and an adaptive engine that responds to real signals — fatigue, missed sessions, a bad week — without treating any of it as failure. When the plan changes, it says why.",
     highlights: [
       "Designing a multi-mode training system covering running, strength, mobility, balance, and recovery.",
       "Building an adaptive training engine that adjusts plans based on adherence, effort, and context signals.",

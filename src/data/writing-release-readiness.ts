@@ -15,7 +15,7 @@ const cityScoutPreviousSlug = "extending-cityscout-to-web";
 const cityScoutSeriesSlug = "cityscout-build-thread";
 const cityScoutSeriesName = "CityScout Build Thread";
 const cityScoutSeriesDescription =
-  "A build thread on building a calmer, city-first travel product across iOS, backend, and a future web planning layer.";
+  "A build thread on building a city-first travel product across iOS, backend, and a future web planning layer.";
 
 const cityScoutReleaseReadinessEntry: WritingEntry = {
   slug: cityScoutReleaseReadinessSlug,
@@ -25,7 +25,7 @@ const cityScoutReleaseReadinessEntry: WritingEntry = {
   summary:
     "CityScout is moving from prototype shape to release discipline: security boundaries, tests, mobile configuration, store metadata, and the remaining work before it can be treated as a real product.",
   intro:
-    "The recent CityScout work has been less about adding flashy surface area and more about removing the reasons the product could not be trusted yet. That means tightening web auth, backend limits, failure behavior, release configuration, Android structure, and the documentation that keeps all of it honest.",
+    "The recent CityScout work has been less about adding flashy surface area and more about removing the reasons the product couldn't be trusted yet: tightening web auth, backend limits, failure behavior, release configuration, Android structure, and the documentation that keeps all of it honest.",
   readingTime: "9 min read",
   pullQuote: {
     quote:
@@ -45,12 +45,12 @@ const cityScoutReleaseReadinessEntry: WritingEntry = {
         {
           type: "paragraph",
           content:
-            "The early energy around CityScout was about proving the shape of the product: a local-first iOS app, a shared AI backend, structured city content, and a future web planning surface. That work made the prototype legible. It did not, by itself, make the product ready to trust.",
+            "The early energy around CityScout was about proving the shape of the product: a local-first iOS app, a shared AI backend, structured city content, and a future web planning surface. That made the prototype easy to follow. It didn't, by itself, make the product ready to trust.",
         },
         {
           type: "paragraph",
           content:
-            "The current push is different. It is about release discipline: fewer loose assumptions, clearer environment boundaries, safer failure behavior, and enough tests that the product can change without quietly breaking its contract. That is less visible than a new screen, but it is the work that decides whether the product can leave the demo stage.",
+            "This push is different — it's about release discipline: fewer loose assumptions, clearer environment boundaries, safer failure behavior, and enough tests that the product can change without quietly breaking its contract. Less visible than a new screen, but it's the work that decides whether the product can leave the demo stage.",
         },
       ],
     },
@@ -74,7 +74,7 @@ const cityScoutReleaseReadinessEntry: WritingEntry = {
         {
           type: "paragraph",
           content:
-            "This is not the whole security story, but it is the right direction. The product should add surface area only when the trust boundary around that surface is clear enough to defend.",
+            "This isn't the whole security story, but it's the right direction. The product should only add surface area once the trust boundary around it is clear enough to defend.",
         },
       ],
     },
@@ -84,7 +84,7 @@ const cityScoutReleaseReadinessEntry: WritingEntry = {
         {
           type: "paragraph",
           content:
-            "The iOS app now has a more concrete release configuration path, including backend URL and shared-secret settings that can be supplied without hardcoding production values. That matters because a mobile release is not only a binary. It is signing, configuration, store metadata, privacy details, support URLs, and a repeatable way to build the same thing twice.",
+            "The iOS app now has a more concrete release configuration path, including backend URL and shared-secret settings that can be supplied without hardcoding production values. That matters because a mobile release isn't just a binary — it's signing, configuration, store metadata, privacy details, support URLs, and a repeatable way to build the same thing twice.",
         },
         {
           type: "paragraph",
@@ -113,7 +113,7 @@ const cityScoutReleaseReadinessEntry: WritingEntry = {
         {
           type: "paragraph",
           content:
-            "That is the product value of testing here. It makes the boring parts observable enough that the visible parts can change with less risk.",
+            "That's the value of testing here — it makes the boring parts observable enough that the visible parts can change with less risk.",
         },
       ],
     },
@@ -123,7 +123,7 @@ const cityScoutReleaseReadinessEntry: WritingEntry = {
         {
           type: "paragraph",
           content:
-            "This push is not a launch announcement. It is a release-readiness pass, and several important pieces are still unfinished. The Android app still needs real destination content, tab content, and instrumented UI coverage. Store release work still needs account-side setup, screenshots, signing material, tester groups, privacy details, and support links.",
+            "This push isn't a launch announcement. It's a release-readiness pass, and several important pieces are still unfinished. The Android app still needs real destination content, tab content, and instrumented UI coverage. Store release work still needs account-side setup, screenshots, signing material, tester groups, privacy details, and support links.",
         },
         {
           type: "list",
@@ -138,7 +138,7 @@ const cityScoutReleaseReadinessEntry: WritingEntry = {
         {
           type: "paragraph",
           content:
-            "That remaining list is the point of writing this down. CityScout is no longer only asking whether the idea works. It is asking whether the system around the idea is disciplined enough to make the product safe to release.",
+            "That remaining list is the point of writing this down. CityScout isn't just asking whether the idea works anymore — it's asking whether the system around the idea is disciplined enough to make the product safe to release.",
         },
       ],
     },

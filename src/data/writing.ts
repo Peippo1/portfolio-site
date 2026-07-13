@@ -17,7 +17,7 @@ const hoxaSeriesDescription =
 const cityScoutSeriesSlug: WritingSeriesSlug = "cityscout-build-thread";
 const cityScoutSeriesName = "CityScout Build Thread";
 const cityScoutSeriesDescription =
-  "A build thread on building a calmer, city-first travel product across iOS, backend, and a future web planning layer.";
+  "A build thread on building a city-first travel product across iOS, backend, and a future web planning layer.";
 const creatorOSSeriesSlug: WritingSeriesSlug = "creatoros-build-thread";
 const creatorOSSeriesName = "CreatorOS Build Thread";
 const creatorOSSeriesDescription =
@@ -42,7 +42,7 @@ export const cityScoutSummary = {
 
 export const hoxaSummary = {
   oneLine:
-    "Hoxa is a calmer fitness product for people who want structure without the usual performance noise.",
+    "Hoxa is a fitness product for people who want structure without the usual streaks-and-guilt performance layer.",
   readerFacing:
     "Hoxa is built around a broader view of fitness than a single training mode. The app supports running, strength, mobility, balance, and recovery in one planning loop, with an adaptive engine that adjusts plans based on adherence, effort, and context signals while explaining its reasoning in plain language.",
 };
@@ -105,7 +105,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     summary:
       "Hoxa starts from a simple observation: a lot of fitness products ask for confidence before they do enough to help someone build it.",
     intro:
-      "I am building Hoxa because I want fitness software to feel more companionable, more legible, and less theatrical. It is for people who want to get stronger, move more confidently, and train consistently without stepping into the visual and emotional language that still dominates much of the category.",
+      "I'm building Hoxa because I want fitness software that feels like a training partner, not a performance. It's for people who want to get stronger, move more confidently, and train consistently without buying into the visual and emotional language that still dominates most of the category.",
     readingTime: "8 min read",
     pullQuote: {
       quote:
@@ -122,7 +122,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
       ]),
       section("A Different Product Thesis", [
         paragraph(
-          "Hoxa is built around a broader view of fitness than a single training mode. The product needs to support running, strength, mobility, balance, and recovery because real users do not experience those domains separately. Someone preparing for a half marathon may also need better hip mobility, a more reliable strength routine, and a calmer way to recover after a difficult week."
+          "Hoxa is built around a broader view of fitness than a single training mode. It needs to support running, strength, mobility, balance, and recovery, because real users don't experience those domains separately. Someone preparing for a half marathon may also need better hip mobility, a more reliable strength routine, and an actual plan for recovering after a bad week."
         ),
         paragraph(
           "That mix matters more for beginner to intermediate users than it does for specialists. At this stage, the right product is not the one that optimises a single training metric in isolation. It should help someone build a sustainable relationship with movement across different contexts: at home, in a gym, and out on a run."
@@ -144,7 +144,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
       ]),
       section("What I Want Hoxa To Become", [
         paragraph(
-          "Later, Hoxa should become better at understanding context through workout history, Apple Health and Apple Watch data, Garmin data, and calendar signals. Those integrations are not there to make the product look sophisticated. They should reduce guesswork while keeping the product legible. If a future system adapts, it should be able to explain why in plain language."
+          "Later, Hoxa should get better at reading context — workout history, Apple Health and Apple Watch data, Garmin data, calendar signals. Those integrations aren't there to make the product look sophisticated. They're there to reduce guesswork, and whatever the system decides, it should be able to explain why in plain language."
         ),
         paragraph(
           "That is the thread I want this project to hold. Hoxa should feel elegant and intelligent, but never intimidating. It should help users build capability without asking them to adopt the identity or rhetoric that so often comes bundled with fitness software."
@@ -177,7 +177,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
       ]),
       section("Visual Restraint With Enough Warmth", [
         paragraph(
-          "I want Hoxa to feel premium, but not sterile. That means using typography, spacing, and contrast to create room around the content, rather than relying on the familiar fitness pattern of maximal colour, oversized metrics, and competitive visual language. A calmer product can still feel precise. In fact, precision usually reads more clearly when the design is not competing with the content."
+          "I want Hoxa to feel premium, but not sterile. That means using typography, spacing, and contrast to create room around the content, rather than leaning on the familiar fitness pattern of maximal colour, oversized metrics, and competitive visual language. Precision usually reads more clearly when the design isn't competing with the content."
         ),
         paragraph(
           "Warmth matters too. If the interface becomes too clinical, it starts to resemble a reporting dashboard rather than a personal training companion. The right balance is something like quiet confidence: enough polish to feel intentional, enough softness to feel human, and enough structure to keep the user oriented."
@@ -227,7 +227,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "The MVP does not need to prove that Hoxa can become a full health platform. It needs to prove that the core planning loop is helpful. A user should be able to define a goal, receive a weekly structure that fits their context, complete workouts across different environments, and feel the plan respond sensibly over time."
         ),
         paragraph(
-          "That means the first release has to demonstrate coherence more than coverage. Running, strength, mobility, balance, and recovery all belong in scope because they are part of the product thesis. But each one should appear only insofar as it strengthens the main loop: assess, plan, complete, adapt, reflect."
+          "So the first release has to demonstrate coherence more than coverage. Running, strength, mobility, balance, and recovery all belong in scope because they're part of the thesis — but each one only earns its place if it strengthens the main loop: assess, plan, complete, adapt, reflect."
         ),
       ]),
       section("What Belongs In V1", [
@@ -240,7 +240,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "Lightweight accountability features that reinforce follow-through without turning the product into a social feed.",
         ]),
         paragraph(
-          "This set is enough to prove the core loop without asking Hoxa to be everything at once. It allows the product to express a gentler view of training while still giving users real structure. It also creates the right data foundation for future adaptation, because the plan and the completion loop are both present from the start."
+          "This is enough to prove the core loop without asking Hoxa to be everything at once. It lets the product express a gentler view of training while still giving users real structure, and it sets up the right data foundation for adaptation later, since the plan and the completion loop both exist from day one."
         ),
       ]),
       section("What Should Wait", [
@@ -248,7 +248,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "Several things are intentionally out of scope for the MVP. Deep device integrations, advanced coaching analytics, generative planning experiments, complex social mechanics, and broad nutrition tracking all make sense as future layers, but they would blur the first release if introduced too early."
         ),
         paragraph(
-          "The practical reason to wait is focus. The more subtle reason is credibility. If Hoxa makes claims about intelligence before it can demonstrate a reliable core system, the product starts to look like it is borrowing confidence from language rather than earning it through behaviour."
+          "The practical reason to wait is focus. The less obvious reason is credibility — if Hoxa talks up its intelligence before the core system is reliable, it starts borrowing confidence from marketing copy instead of earning it through behaviour."
         ),
       ]),
       section("Keeping Half Marathon Support Honest", [
@@ -256,7 +256,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "Supporting running goals up to half marathon is important because it expands the product from general fitness into a more concrete outcome. But that support has to be implemented carefully. Version one should not become a specialist endurance platform. It should help non-elite runners train for a meaningful milestone without neglecting strength, mobility, and recovery."
         ),
         paragraph(
-          "That framing changes the product decisions. The running plan should not dominate the rest of the week. It should coordinate with it. Hoxa should make the user feel like they are building a durable body that can handle the goal, not just accumulating miles because the plan says so."
+          "So the running plan shouldn't dominate the rest of the week — it should coordinate with it. Hoxa should make the user feel like they're building a body that can handle the goal, not just racking up miles because the plan says so."
         ),
       ]),
     ],
@@ -269,7 +269,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     summary:
       "The training engine should adapt in visible, defensible ways. If users cannot see why the week changed, the system will feel clever before it feels trustworthy.",
     intro:
-      "Adaptive training is an attractive phrase because it implies responsiveness. In practice, it can easily become a black box that changes plans without building confidence. I want Hoxa's engine to behave more like a careful editor than a magician.",
+      "\"Adaptive training\" sounds great on a landing page. In practice it can easily become a black box that changes your plan without earning your trust. I want Hoxa's engine to behave more like a careful editor than a magician.",
     readingTime: "10 min read",
     pullQuote: {
       quote:
@@ -281,7 +281,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "For the MVP, the most useful inputs are the ones users can actually provide or validate: stated goals, training background, available days, equipment context, completed sessions, perceived effort, and light recovery signals such as soreness or general fatigue. These are less glamorous than wearable streams, but they are enough to build a sensible adaptive loop."
         ),
         paragraph(
-          "Later integrations from Apple Health, Apple Watch, Garmin, and calendar systems can sharpen context. They should not replace the visible core logic. Device data can improve judgement about load and routine, but the plan still needs to read as something a thoughtful coach might plausibly recommend, not an optimisation artefact."
+          "Later integrations — Apple Health, Apple Watch, Garmin, calendar data — can sharpen the context, but they shouldn't replace the visible core logic. Device data can improve judgement about load and routine, but the plan still needs to read like something a thoughtful coach would recommend, not the output of an optimiser."
         ),
       ]),
       section("How Progression Should Work", [
@@ -297,10 +297,10 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
       ]),
       section("Interpretability As A Product Requirement", [
         paragraph(
-          "A lot of adaptive systems fail at the explanation layer. They may make plausible changes, but they do not tell the user what changed, why it changed, or what to expect next. That creates a subtle but important problem: the user stops learning from the system. They receive plans, but they do not build understanding."
+          "A lot of adaptive systems fail at the explanation layer. The changes might be perfectly reasonable, but the user never finds out what changed, why, or what to expect next — and that's a quieter problem than it sounds. They stop learning from the system. They just receive plans."
         ),
         paragraph(
-          "Hoxa should explain adjustment in plain language. If a long run moved, there should be a reason. If a recovery session replaced a harder day, that should be stated directly. The product should help users internalize a better training model rather than merely personalising outputs behind the curtain."
+          "Hoxa should explain adjustments in plain language. If a long run moved, say why. If a recovery session replaced a harder day, say that directly. The goal is to help users build a better mental model of their own training, not just personalise outputs behind the curtain."
         ),
       ]),
       section("Failure Modes To Avoid", [
@@ -312,7 +312,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "There are predictable ways adaptive products become less useful. They overreact to a small number of misses. They optimise for completion at the expense of progression. They become so protective that the plan never gets meaningfully harder. Or they become so aggressive that users stop trusting the guidance. Good adaptation is a balancing act, not a constant intervention."
         ),
         paragraph(
-          "The bar for Hoxa is narrower than the category often suggests. The engine does not need to behave like an oracle. It needs to become reliably good at adjusting plans for ordinary human variability while staying legible. That would already be a meaningful product advantage."
+          "The bar for Hoxa is narrower than the category often suggests. The engine doesn't need to behave like an oracle. It needs to get reliably good at adjusting plans for ordinary human variability, and explain itself when it does. That alone would be a real advantage."
         ),
       ]),
     ],
@@ -359,7 +359,7 @@ Progress + Adaptation`,
           "Core product flow"
         ),
         paragraph(
-          "Representing the loop this way is helpful because it keeps the boundaries visible. The training engine is not the whole product. It is one layer in a broader system that also has to manage identity, schedule context, completion events, progress views, and eventually integrations."
+          "Drawing the loop out this way keeps the boundaries visible. The training engine isn't the whole product — it's one layer in a broader system that also has to manage identity, schedule context, completion events, progress views, and eventually integrations."
         ),
       ]),
       section("Service Boundaries", [
@@ -402,7 +402,7 @@ Calendar --------+                              |
           "Integration and adaptation flow"
         ),
         paragraph(
-          "That separation matters for safety and reasoning. The training engine should consume a stable representation of recent activity and context, not a patchwork of vendor-specific event formats. It should also be possible to inspect what the system believed happened before explaining why the plan changed."
+          "That split matters for safety and for debugging. The training engine should work off one stable representation of recent activity and context, not a patchwork of vendor-specific formats — and it should always be possible to check what the system believed happened before it explains why the plan changed."
         ),
       ]),
       section("What This Enables Later", [
@@ -416,7 +416,7 @@ Calendar --------+                              |
           "Prefer a smaller number of clear domain services over a large mesh of premature microservices.",
         ]),
         paragraph(
-          "That is the main architectural goal for now: make it easy to evolve Hoxa without losing sight of how the product actually works. If the architecture obscures the training logic, it will be moving in the wrong direction."
+          "The main architectural goal for now is to make it easy to evolve Hoxa without losing sight of how the product actually works. If the architecture ever makes the training logic harder to see, something's gone wrong."
         ),
       ]),
     ],
@@ -429,7 +429,7 @@ Calendar --------+                              |
     summary:
       "AI can make fitness software more responsive and easier to understand, but only if its role stays narrow enough to earn trust.",
     intro:
-      "There is a strong temptation to describe any adaptive product as an AI product first. I think that is usually a mistake. In fitness, especially, the better question is not how much AI can be added. It is which jobs actually benefit from it without weakening trust.",
+      "There's a strong temptation to describe any adaptive product as an AI product first. I think that's usually a mistake. In fitness especially, the question isn't how much AI you can add — it's which jobs actually benefit from it without weakening trust.",
     readingTime: "9 min read",
     sections: [
       section("Where AI Can Help", [
@@ -443,7 +443,7 @@ Calendar --------+                              |
           "Help users understand tradeoffs when the plan adapts.",
         ]),
         paragraph(
-          "These are not trivial jobs. They affect whether the product feels usable and intelligent. But they are support roles. They improve interpretation and communication around a training system that should still have explicit rules, constraints, and accountability."
+          "None of that is trivial — it affects whether the product feels usable and intelligent. But it's still a support role, improving interpretation and communication around a training system that needs its own explicit rules, constraints, and accountability underneath."
         ),
       ]),
       section("Where AI Should Stay Constrained", [
@@ -459,14 +459,14 @@ Calendar --------+                              |
       ]),
       section("Credibility Comes From Boundaries", [
         paragraph(
-          "One of the easier ways to lose trust is to let the system sound wiser than it is. Fitness products are already operating close to people's bodies, routines, anxieties, and self-perception. That context deserves precision. If AI is involved, the product should be candid about what it is doing and what it is not doing."
+          "One of the easiest ways to lose trust is to let the system sound wiser than it is. Fitness products already operate close to people's bodies, routines, anxieties, and self-perception, so precision matters here more than most categories. If AI is involved, the product should be upfront about what it's doing and what it isn't."
         ),
         quote(
           "A credible system is allowed to be helpful before it is allowed to be authoritative.",
           "Product principle"
         ),
         paragraph(
-          "That posture is less flashy than the industry norm, but it creates a stronger foundation. Users are more likely to stay with a product that explains itself clearly and respects its own limits than one that gestures at intelligence while avoiding responsibility."
+          "It's less flashy than the industry norm, but it builds a stronger foundation. People stick with products that explain themselves and respect their own limits, more than ones that gesture at intelligence while dodging responsibility."
         ),
       ]),
       section("How This Shapes Hoxa", [
@@ -474,7 +474,7 @@ Calendar --------+                              |
           "For Hoxa, the likely path is careful layering. Start with deterministic planning logic, well-bounded adaptation rules, and strong product explanation. Then introduce AI where it can improve comprehension, support, and orientation. If later ML models contribute to prediction or personalisation, they should do so through interfaces that remain reviewable."
         ),
         paragraph(
-          "That approach may look conservative from the outside. I think it is the opposite. In a category where trust is easy to overstate and hard to rebuild, restraint is a product advantage."
+          "That might look conservative from the outside. I'd argue it's the opposite — in a category where trust is easy to oversell and hard to win back, restraint is the actual advantage."
         ),
       ]),
     ],
@@ -487,7 +487,7 @@ Calendar --------+                              |
     summary:
       "Writing the build thread is part of the product work. It sharpens decisions, exposes weak assumptions, and leaves a clearer record of how the system is taking shape.",
     intro:
-      "I do not think building in public is automatically useful. It often collapses into performance, marketing, or a stream of isolated screenshots. For Hoxa, I want the public record to function more like an engineering and product journal: slower, more specific, and more accountable.",
+      "I don't think building in public is automatically useful — it often collapses into performance, marketing, or a stream of disconnected screenshots. For Hoxa I want the public record to work more like an engineering journal: slower, more specific, and something I can be held to.",
     readingTime: "7 min read",
     pullQuote: {
       quote:
@@ -496,10 +496,10 @@ Calendar --------+                              |
     sections: [
       section("Why Document The Build", [
         paragraph(
-          "Hoxa is still in progress, which is exactly why the writing matters now. Early-stage product decisions have a habit of hardening before they are properly articulated. Writing forces those decisions into language. Once a product claim, a design principle, or an architectural boundary is written down, it becomes easier to evaluate whether the implementation is actually honouring it."
+          "Hoxa is still in progress, which is exactly why the writing matters now. Early-stage decisions have a habit of hardening before anyone's actually written them down. Once a product claim, a design principle, or an architectural boundary is on paper, it's much easier to check whether the implementation is actually honouring it."
         ),
         paragraph(
-          "That is especially important for a product like Hoxa, where tone and credibility are part of the product itself. The build thread helps me see whether the product is drifting toward unnecessary complexity, borrowed AI rhetoric, or category defaults that do not fit the original thesis."
+          "That matters especially for a product like Hoxa, where tone and credibility are part of the product itself. The build thread is how I check whether things are drifting toward unnecessary complexity, borrowed AI rhetoric, or category defaults that don't actually fit the thesis."
         ),
       ]),
       section("Who The Writing Is For", [
@@ -507,7 +507,7 @@ Calendar --------+                              |
           "The audience is intentionally mixed. Portfolio readers and recruiters can use the series to understand how I think about product and systems work. Product people can see how scope, tone, and interaction choices connect. Engineers can inspect the architecture and adaptation logic. Potential early users can decide whether the product posture feels trustworthy."
         ),
         paragraph(
-          "That mixed audience is useful because it discourages lazy writing. If a post only sounds good to one group, it is probably leaning too hard on shorthand. The best entries should remain readable across disciplines while still containing enough specificity to be technically meaningful."
+          "Having a mixed audience is useful because it kills lazy writing. If a post only makes sense to one group, it's probably leaning too hard on shorthand. The best entries stay readable across disciplines while still being specific enough to mean something technically."
         ),
       ]),
       section("What I Want To Avoid", [
@@ -523,10 +523,10 @@ Calendar --------+                              |
       ]),
       section("What The Thread Should Become", [
         paragraph(
-          "Over time, I want the Hoxa writing section to become a usable record of the product. Someone should be able to read through the series and understand not only what Hoxa is, but why it is being shaped this way. That includes the obvious product choices and the less visible decisions about architecture, AI boundaries, and tone."
+          "Over time I want this to become a usable record of the product — something you could read through and understand not just what Hoxa is, but why it's shaped this way. That covers the obvious product choices and the less visible decisions about architecture, AI boundaries, and tone."
         ),
         paragraph(
-          "If the thread does its job, it should improve the product internally and make the product easier to trust externally. That is a much better reason to write than visibility alone."
+          "If the thread does its job, it should sharpen the product internally and make it easier to trust from the outside. That's a much better reason to write than visibility for its own sake."
         ),
       ]),
     ],
@@ -556,7 +556,7 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     summary:
       "CityScout is a city-first travel companion built to help people feel oriented before a trip starts, without forcing AI into every corner of the product.",
     intro:
-      "I am building CityScout around a simple premise: travel should feel local, legible, and calm. The product should help someone understand a city before it tries to optimise the trip for them.",
+      "I'm building CityScout around a simple premise: travel should feel local and easy to make sense of. The product should help someone understand a city before it tries to optimise the trip for them.",
     readingTime: "8 min read",
     pullQuote: {
       quote:
@@ -565,7 +565,7 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     sections: [
       section("Why The Problem Matters", [
         paragraph(
-          "Most travel planning still happens across too many surfaces. One app for maps, one for bookings, one for reviews, one for notes, and a handful of tabs for saved places. That fragmentation makes planning feel like administration. It also makes it harder to build confidence, because the user keeps switching between contexts instead of forming a coherent picture of the trip."
+          "Most travel planning still happens across too many apps — one for maps, one for bookings, one for reviews, one for notes, and a pile of browser tabs for saved places. It makes planning feel like admin, and it's harder to build any confidence when you're constantly switching contexts instead of forming a real picture of the trip."
         ),
         paragraph(
           "CityScout is meant to do the opposite. The product should bring discovery, planning, and trip-time reference into the same mental model so the experience feels like one flow rather than a pile of disconnected decisions."
@@ -573,10 +573,10 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
       ]),
       section("Why City-First Matters", [
         paragraph(
-          "A city-first product starts with the place, not the booking. That means helping someone understand what a city is good at, how its neighbourhoods differ, when to move slowly, and where the local texture actually lives. The app should feel like it is helping the user travel with context, not pretending they already know the city."
+          "A city-first product starts with the place, not the booking — helping someone understand what a city is actually good at, how its neighbourhoods differ, when to slow down, and where the local texture lives. The app should help the user travel with context, not pretend they already know the city."
         ),
         paragraph(
-          "That distinction matters because confidence in travel is rarely about raw information volume. It is about feeling oriented. If the product can help someone decide where to spend time, what to cluster together, and what to ignore, it becomes more useful than a list of generic suggestions."
+          "Confidence in travel is rarely about how much information you have. It's about feeling oriented. If the product can help someone decide where to spend time, what to cluster together, and what to skip, it's already more useful than another list of generic suggestions."
         ),
       ]),
       section("Why I Chose iOS First", [
@@ -584,7 +584,7 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "CityScout is a native iOS app built with SwiftUI and SwiftData because the product belongs close to the trip. A travel companion needs to live on the device, feel fast, and stay useful when the user is moving between places, not sitting in a desktop workflow."
         ),
         paragraph(
-          "The platform choice is also a product decision. iOS gives the app a strong baseline for maps, mobile interaction, local storage, and the kind of in-context use that travel software depends on. That makes the first version easier to trust and easier to keep simple."
+          "The platform choice is also a product decision. iOS gives a strong baseline for maps, mobile interaction, local storage, and the kind of in-context use travel software depends on — which makes the first version easier to trust and easier to keep simple."
         ),
       ]),
       section("Why AI Should Stay Selective", [
@@ -595,7 +595,7 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "Let AI improve orientation and drafting, not obscure the underlying travel model.",
         ]),
         paragraph(
-          "The product bet is that careful AI is more useful than omnipresent AI. CityScout does not need to use language generation everywhere. It needs to use it where it reduces friction, then step back when a stable city record or a simple interaction is the better answer."
+          "The bet is that careful AI beats omnipresent AI. CityScout doesn't need language generation everywhere — just where it actually reduces friction, stepping back when a stable city record or a plain interaction does the job better."
         ),
       ]),
     ],
@@ -620,7 +620,7 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "SwiftUI and SwiftData are a good fit for the core product because they keep the mobile experience close to the user's data. CityScout is designed as a travel companion, so the iPhone app needs to feel immediate, local, and dependable when the user is on the move."
         ),
         paragraph(
-          "That local-first shape matters. The app should be able to keep trip state, saved places, and user decisions on device first, then synchronize through the backend where it makes sense. The point is to reduce friction, not to build a cloud-first planning system that happens to run on a phone."
+          "That local-first shape matters: trip state, saved places, and user decisions live on device first, then sync through the backend where it makes sense. The point is reducing friction, not building a cloud-first planning system that happens to run on a phone."
         ),
       ]),
       section("FastAPI Owns The AI Boundary", [
@@ -628,12 +628,12 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "FastAPI sits between the app and OpenAI so the model never becomes a client-side dependency. That lets the server manage prompts, validation, retries, logging, and response shaping in one place, instead of scattering those concerns across the device."
         ),
         paragraph(
-          "The current backend boundary also supports shared-secret auth, which keeps the client from carrying sensitive credentials. That is a practical security choice, and it also keeps the mobile app simpler. The app sends intent; the backend decides how to turn that intent into itinerary generation or guide chat."
+          "The current boundary also supports shared-secret auth, so the client never has to carry sensitive credentials. It's a practical security choice that also keeps the mobile app simpler: the app sends intent, and the backend decides how to turn that into itinerary generation or guide chat."
         ),
       ]),
       section("Structured Endpoints Beat Free-Form Output", [
         paragraph(
-          "CityScout now has dedicated itinerary generation and guide chat endpoints, which is the right shape for a product that needs both structure and explanation. Itineraries are not just conversation transcripts. They are durable objects that can be saved, reviewed, and reused."
+          "CityScout now has dedicated itinerary generation and guide chat endpoints — the right shape for a product that needs both structure and explanation. Itineraries aren't just conversation transcripts. They're durable objects you can save, review, and reuse."
         ),
         list([
           "Itinerary output should stay structured enough to serialize and validate.",
@@ -647,7 +647,7 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "The planned Next.js web planning layer belongs in the future, not the current shipped product. It makes sense as a secondary surface for planning and sharing, but it should reuse the same API contract instead of creating a separate version of the truth."
         ),
         paragraph(
-          "That future layer only works if the contract stays stable. If the backend schema drifts, the product starts to lose the simplicity that makes the current split between client, server, and model manageable."
+          "That only works if the contract stays stable — if the backend schema drifts, the product loses the simplicity that makes the current split between client, server, and model manageable."
         ),
       ]),
     ],
@@ -660,7 +660,7 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     summary:
       "The web layer should give CityScout more room for planning and sharing, while keeping iOS as the in-trip companion.",
     intro:
-      "The web version of CityScout is not meant to replace the iOS app. It is meant to broaden where planning can happen and where a trip can be reviewed, shared, or resumed. iOS remains the in-trip companion.",
+      "The web version of CityScout isn't meant to replace the iOS app. It's there to widen where planning can happen and where a trip can be reviewed, shared, or resumed — iOS stays the in-trip companion.",
     readingTime: "8 min read",
     pullQuote: {
       quote:
@@ -672,7 +672,7 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "A web surface makes sense when the product needs a larger planning canvas. People often research travel across tabs, share plans with other people, or revisit details from a desktop before they leave. Web is a better fit for that kind of work than a phone-only interface."
         ),
         paragraph(
-          "That does not make the web the primary experience. It makes it the planning and sharing layer. The trip itself still belongs on iOS, where the app can stay close to maps, quick decisions, and the on-the-ground rhythm of moving through a city."
+          "That doesn't make web the primary experience — it makes it the planning and sharing layer. The trip itself still belongs on iOS, close to maps, quick decisions, and the on-the-ground rhythm of moving through a city."
         ),
       ]),
       section("One Contract, Multiple Surfaces", [
@@ -685,7 +685,7 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
       ]),
       section("Security Gets Harder In The Browser", [
         paragraph(
-          "Browser clients raise the security bar. They make shared secrets harder to protect, increase the surface area for abuse, and demand more care around auth, rate limiting, and response shaping. That is another reason the AI boundary should stay on the server."
+          "Browser clients raise the security bar. Shared secrets get harder to protect, the surface area for abuse grows, and auth, rate limiting, and response shaping all need more care. It's another reason the AI boundary needs to stay on the server."
         ),
         list([
           "Never expose model credentials to the browser.",
@@ -699,7 +699,7 @@ const cityScoutEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "Once a product has multiple surfaces, tests stop being optional polish. They become the easiest way to keep the contract honest while the UI evolves. The web layer should not move the system faster than the tests can describe it."
         ),
         paragraph(
-          "The direction I want to keep tightening is straightforward: test the contract, test the failure modes, and make sure the product stays production-ready before expanding the surface area again. That is how the web layer can add value without adding confusion."
+          "The direction I want to keep tightening is straightforward: test the contract, test the failure modes, and keep the product production-ready before expanding the surface area again. That's how the web layer adds value without adding confusion."
         ),
       ]),
     ],
@@ -728,7 +728,7 @@ const creatorOSEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     summary:
       "CreatorOS is a strategy-first AI product for creators, built to turn source material into a structured Creator Growth Pack.",
     intro:
-      "CreatorOS started from exploring D2C and creator businesses and asking a simpler question: what would reduce the amount of decision fatigue a creator carries every week? The answer was not another generic AI writing tool. It was a product that could reason about audience, strategy, content gaps, and repurposing as separate steps in one workflow.",
+      "CreatorOS started from looking at D2C and creator businesses and asking a simpler question: what would actually cut the decision fatigue a creator carries every week? Not another generic AI writing tool — a product that reasons about audience, strategy, content gaps, and repurposing as separate steps in one workflow.",
     readingTime: "8 min read",
     pullQuote: {
       quote:
@@ -737,18 +737,18 @@ const creatorOSEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     sections: [
       section("Why This Project Exists", [
         paragraph(
-          "Most creators do not need more raw output. They need help deciding what matters, what is missing, and what to do next. CreatorOS is an attempt to turn that messy decision-making into a structured product flow that starts with source material and ends with a practical Creator Growth Pack."
+          "Most creators don't need more raw output. They need help deciding what matters, what's missing, and what to do next. CreatorOS turns that messy decision-making into a structured flow that starts with source material and ends with a practical Creator Growth Pack."
         ),
         paragraph(
-          "That starting point came from looking at D2C and creator businesses more closely. The same pattern kept appearing: the work was not just about making content, it was about evaluating audience signals, finding repeated gaps, and deciding which opportunities were worth acting on."
+          "That came from looking closely at D2C and creator businesses and seeing the same pattern over and over: the real work wasn't making content, it was evaluating audience signals, finding repeated gaps, and deciding which opportunities were actually worth chasing."
         ),
       ]),
       section("Why This Is Not Just Another AI Writing Tool", [
         paragraph(
-          "CreatorOS is not meant to be a generic writer with a few prompts wrapped around it. The stronger product angle is strategic reasoning. Audience intelligence, content gap discovery, platform-aware strategy, and experiment recommendations are all part of the system because they shape the decision before any repurposed output is generated."
+          "CreatorOS isn't meant to be a generic writer with a few prompts bolted on. The stronger angle is strategic reasoning — audience intelligence, content gap discovery, platform-aware strategy, and experiment recommendations, all shaping the decision before any repurposed output gets generated."
         ),
         paragraph(
-          "Repurposing still matters, but only as the final layer. If the product only rewrites content, it misses the larger problem. The more useful job is working out what the creator should do with the material in the first place."
+          "Repurposing still matters, but only as the last layer. A product that just rewrites content misses the bigger problem. The more useful job is working out what the creator should actually do with the material in the first place."
         ),
       ]),
       section("The First Workflow", [
@@ -780,12 +780,12 @@ const creatorOSEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "No analytics integrations yet, because the prototype should stay focused on reasoning and usefulness rather than instrumentation.",
         ]),
         paragraph(
-          "That restraint is intentional. The product needs to prove that a creator can feed in source material and get a helpful strategic pack back, without waiting for a larger platform to exist around it."
+          "That's on purpose. The product needs to prove a creator can feed in source material and get a genuinely useful strategic pack back, without waiting on a bigger platform to exist around it first."
         ),
       ]),
       section("Why Evaluation Tooling Matters", [
         paragraph(
-          "A major part of building AI systems is not only generating outputs, but creating ways to evaluate them over time. For CreatorOS, that means checking whether the system is actually improving prompt quality, strategic usefulness, repetition, and failure modes instead of just sounding better."
+          "Building AI systems isn't just about generating outputs — it's about having a way to check them over time. For CreatorOS that means actually tracking prompt quality, strategic usefulness, repetition, and failure modes, instead of just trusting that it sounds better."
         ),
         list([
           "Structured outputs make it easier to compare results and spot regressions.",
@@ -829,7 +829,7 @@ const evalKitEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
     summary:
       "A launch note for EvalKit covering the problem, the product model, the current build, and where it goes next.",
     intro:
-      "EvalKit started from a simple frustration: once an LLM feature ships, the hard part is not getting another response from the model. The hard part is knowing whether the system still behaves the way the product needs it to behave. This post lays out the product model I wanted to build, the evaluation objects that make it usable, and the next steps I think matter most.",
+      "EvalKit started from a simple frustration: once an LLM feature ships, getting another response from the model is easy. Knowing whether the system still behaves the way the product needs it to is the hard part. This post lays out the product model I wanted to build, the evaluation objects that make it usable, and what I think matters most next.",
     readingTime: "8 min read",
     pullQuote: {
       quote:
@@ -847,10 +847,10 @@ const evalKitEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
       ]),
       section("The Problem", [
         paragraph(
-          "LLM teams usually discover regressions late because the outputs are easy to glance at and hard to measure. A prompt change can quietly alter JSON shape, length, tone, safety boundaries, or the capability that actually made the feature useful in the first place. Spot checks catch obvious breakage, but they do not give you a repeatable record of what changed."
+          "LLM teams usually discover regressions late, because outputs are easy to glance at and hard to measure. A prompt change can quietly alter JSON shape, length, tone, safety boundaries, or the exact capability that made the feature useful in the first place. Spot checks catch the obvious breakage, but they don't leave you a repeatable record of what changed."
         ),
         paragraph(
-          "EvalKit exists to make that record explicit. It is not trying to test every possible response. It is there to create a reliable harness that makes output drift visible before it becomes a product problem."
+          "EvalKit exists to make that record explicit. It's not trying to test every possible response — it's a harness that makes output drift visible before it turns into a product problem."
         ),
       ]),
       section("How EvalKit Works", [
@@ -868,7 +868,7 @@ Run
   |
   v
 Regression Report`,
-          "The evaluation loop keeps the product legible."
+          "The evaluation loop is what makes drift visible."
         ),
         paragraph(
           "A suite groups a product flow. A case captures one concrete prompt or interaction. A check describes what good looks like for that case: valid schema, forbidden content, maximum length, or a capability constraint the output should preserve. A run executes the suite, records results, and shows where the output drifted."
@@ -882,18 +882,18 @@ Regression Report`,
       ]),
       section("Who It Is For", [
         paragraph(
-          "EvalKit is aimed at teams shipping LLM features inside SaaS products, internal tools, support automation, and agent workflows. It is most useful where the model is part of a larger system and the team needs confidence that a change in one place did not break behavior somewhere else."
+          "EvalKit is aimed at teams shipping LLM features inside SaaS products, internal tools, support automation, and agent workflows — anywhere the model is part of a larger system and the team needs confidence that a change in one place didn't break behavior somewhere else."
         ),
         paragraph(
-          "That includes product teams that need a simple evaluation ritual, engineers who want regression coverage they can reason about, and founders who need to prove that the AI layer is doing real work instead of just producing novel text."
+          "That's product teams who need a simple evaluation ritual, engineers who want regression coverage they can reason about, and founders who need to prove the AI layer is doing real work instead of just producing plausible-sounding text."
         ),
       ]),
       section("Current Status", [
         paragraph(
-          "The current build establishes the core evaluation objects, the SaaS shape, and the deterministic flow through the engine. The immediate goal was to get the product model right enough that future features can attach to it without rewriting the foundation."
+          "The current build establishes the core evaluation objects, the SaaS shape, and the deterministic flow through the engine. The immediate goal was getting the product model right enough that future features can attach to it without rewriting the foundation."
         ),
         paragraph(
-          "The launch post is part of the work. It sets the vocabulary for the rest of the series and gives the other two posts a stable reference point: the evaluation argument and the engine implementation."
+          "The launch post is part of the work too — it sets the vocabulary for the rest of the series and gives the other two posts a stable reference point: the evaluation argument and the engine implementation."
         ),
       ]),
       section("Roadmap And Cross-Links", [
@@ -959,7 +959,7 @@ Regression Report`,
           "Capability checks catch cases where the answer is fluent but no longer performs the intended task.",
         ]),
         paragraph(
-          "That mix is enough for most product teams to get meaningful protection without overbuilding the evaluation layer. The aim is to make regressions legible, not to chase abstract completeness."
+          "That mix is enough for most product teams to get meaningful protection without overbuilding the evaluation layer. The aim is to make regressions visible early, not to chase abstract completeness."
         ),
       ]),
       section("A Practical Workflow", [
@@ -980,12 +980,12 @@ Re-run and compare`,
           "A lightweight regression loop keeps the product moving."
         ),
         paragraph(
-          "The workflow should be ordinary. When something changes, run the relevant suite, inspect the failures, fix the actual cause, and re-run until the difference is understood. That is a lot closer to normal software practice than many teams expect from AI work, and that is the point."
+          "The workflow should be ordinary: when something changes, run the relevant suite, inspect the failures, fix the actual cause, and re-run until the difference makes sense. That's a lot closer to normal software practice than most teams expect from AI work — which is the whole point."
         ),
       ]),
       section("Where This Fits In Distribution", [
         paragraph(
-          "This is the post I would send when a team says they are shipping LLM features but has not built a regression habit yet. It is written to stand on its own for HN or Reddit, but it also feeds into the product story and the implementation deep dive."
+          "This is the post I'd send a team that's shipping LLM features without a regression habit yet. It's written to stand on its own on HN or Reddit, but it also feeds into the product story and the implementation deep dive."
         ),
         links([
           {
@@ -1012,7 +1012,7 @@ Re-run and compare`,
     summary:
       "A technical deep dive into the EvalKit engine, covering checks, tenancy, auth, billing, deployment, and the test strategy.",
     intro:
-      "The engineering constraint behind EvalKit was simple to say and annoying to satisfy: the product had to be deterministic enough to debug while still representing the non-determinism of model behavior honestly. The architecture ended up centering on a check engine, explicit tenancy boundaries, and a set of integrations that stay legible under change.",
+      "The engineering constraint behind EvalKit was simple to say and annoying to satisfy: the product had to be deterministic enough to debug while still representing the non-determinism of model behavior honestly. The architecture ended up centering on a check engine, explicit tenancy boundaries, and a set of integrations that don't get harder to reason about as they change.",
     readingTime: "10 min read",
     pullQuote: {
       quote:
@@ -1072,7 +1072,7 @@ Check Result`,
           "One of the more annoying implementation issues came from the boundary between SQLAlchemy and Neon around enum handling. The practical fix was to make the enum contract explicit instead of relying on implicit inference to do the right thing across ORM, migration, and database layers."
         ),
         paragraph(
-          "That kind of bug is worth calling out because it changes how you design the rest of the system. Once a schema edge has bitten you, you stop treating type inference as a convenience and start treating it as a place where hidden coupling shows up."
+          "Worth calling out because it changes how you design the rest of the system. Once a schema edge has bitten you once, you stop treating type inference as a convenience and start treating it as a place where hidden coupling shows up."
         ),
       ]),
       section("Auth, Metering, And Stripe", [
@@ -1083,7 +1083,7 @@ Check Result`,
           "Treat billing state as part of the SaaS contract, not a side effect hidden in the UI.",
         ]),
         paragraph(
-          "The integration work matters because SaaS credibility is not only about the core engine. If the product cannot handle access control, usage accounting, and billing state cleanly, the evaluation layer is not enough on its own."
+          "This integration work matters because SaaS credibility isn't only about the core engine. If the product can't handle access control, usage accounting, and billing state cleanly, a good evaluation layer alone isn't enough."
         ),
       ]),
       section("Railway Without Docker", [
@@ -1091,7 +1091,7 @@ Check Result`,
           "The deployment choice was deliberately pragmatic. Railway gave us a straightforward path to production without requiring Docker in the first iteration. That kept the build moving and reduced the amount of infrastructure overhead the team had to carry while the product shape was still changing."
         ),
         paragraph(
-          "The important part is not the platform itself. It is the decision to avoid unnecessary deployment ceremony when the real work is still proving that the engine, the tenancy model, and the SaaS plumbing are all behaving correctly together."
+          "The important part isn't the platform itself — it's choosing not to add deployment ceremony when the real work is still proving the engine, the tenancy model, and the SaaS plumbing all behave correctly together."
         ),
       ]),
       section("The Test Strategy", [
@@ -1102,7 +1102,7 @@ Check Result`,
           "Regression tests guard the enum fix and other schema-sensitive paths.",
         ]),
         paragraph(
-          "The test strategy is meant to mirror the product model. If the engine is deterministic, the tests should be deterministic too. If the SaaS contract includes webhooks and tenant boundaries, the tests should make those edges visible instead of assuming the happy path is enough."
+          "The test strategy is meant to mirror the product model: if the engine is deterministic, the tests should be too. If the SaaS contract includes webhooks and tenant boundaries, the tests need to make those edges visible instead of assuming the happy path covers it."
         ),
       ]),
       section("How The Three Posts Connect", [
@@ -1181,7 +1181,7 @@ Campaign Draft`,
       ]),
       section("Who It Is For", [
         paragraph(
-          "I do not think this needs to be a big platform. The more obvious fit is a small marketing team, a freelancer, or an agency that wants to get to a decent first pass faster without handing over all the judgement."
+          "I don't think this needs to be a big platform. It's a better fit for a small marketing team, a freelancer, or an agency that wants a decent first pass faster without handing over all the judgement."
         ),
         list([
           "Small in-house marketing teams that need speed without a full platform rollout.",
@@ -1236,7 +1236,7 @@ Campaign Draft`,
           "The service route still feels like the cleanest first move. It puts the workflow into real use without forcing it to solve every SaaS problem upfront."
         ),
         paragraph(
-          "That does not rule out SaaS later. It just means SaaS should be earned rather than assumed. Service gives better feedback, faster, and usually shows you what the product really is."
+          "Doesn't rule out SaaS later — it just means SaaS should be earned, not assumed. Service gets you better feedback faster, and usually shows you what the product actually is."
         ),
       ]),
       section("What Stays Out Of Scope", [
@@ -1287,7 +1287,7 @@ Campaign Draft`,
       ]),
       section("What This Means For Scope", [
         paragraph(
-          "The answer is not to pile on hosted features. It is to build the smallest version that still feels useful. That probably means a narrower workflow, fewer integrations, and being clear that the first version is there to learn from."
+          "The answer isn't piling on hosted features — it's building the smallest version that still feels useful. Probably a narrower workflow, fewer integrations, and being upfront that the first version is there to learn from."
         ),
         diagram(
           `Prototype Workflow
@@ -1308,7 +1308,7 @@ Credible Hosted MVP`,
       ]),
       section("Why This Work Is Worth Writing Down", [
         paragraph(
-          "Part of the reason to write this down now is to stay honest. It is easy to talk about productisation in the abstract. It is more useful to be specific about what still needs sorting before this can be treated like a hosted product."
+          "Part of the reason to write this down now is to stay honest. It's easy to talk about productisation in the abstract — much more useful to be specific about what still needs sorting before this counts as a hosted product."
         ),
         links([
           {
@@ -1352,11 +1352,11 @@ export const archiveWritingEntries: WritingEntry[] = [
       "How a small internal review habit turned into a reusable Codex workflow for updates, follow-on actions, and all the admin that usually gets missed.",
     readingTime: "6 min read",
     intro:
-      "This started from a pretty ordinary problem. A PR shows the code, but it usually does not show the rest of the work that follows it. Tickets need updating. Docs need touching. Follow-on tasks appear. Stand-up notes need writing. Most of that gets done late, badly, or not at all.",
+      "This started from a pretty ordinary problem. A PR shows the code, but it usually doesn't show the rest of the work that follows it — tickets need updating, docs need touching, follow-on tasks appear, standup notes need writing. Most of that gets done late, badly, or not at all.",
     sections: [
       section("What The Workflow Does", [
         paragraph(
-          "PR-to-Paper Trail looks at recent pull request activity, reads the surrounding repo context, and drafts the paper trail that usually gets skipped. What matters is not just that it writes things. It separates what it found, what it thinks, what is still unclear, and what still needs a person to approve."
+          "PR-to-Paper Trail looks at recent pull request activity, reads the surrounding repo context, and drafts the paper trail that usually gets skipped. The important part isn't that it writes things — it's that it separates what it found, what it thinks, what's still unclear, and what still needs a person to sign off on."
         ),
         list([
           "Review recent PR activity and relevant diffs.",
@@ -1367,7 +1367,7 @@ export const archiveWritingEntries: WritingEntry[] = [
       ]),
       section("Why The Approval Boundary Matters", [
         paragraph(
-          "That approval boundary matters. The point is to reduce admin drag, not hand over project state to an automation. The workflow is draft-first on purpose. It can inspect, suggest, and organise, but it should not quietly update tickets or docs because it came up with something that sounds about right."
+          "The point is to cut admin drag, not hand over project state to an automation. The workflow is draft-first on purpose — it can inspect, suggest, and organise, but it shouldn't quietly update tickets or docs just because it came up with something that sounds about right."
         ),
         quote(
           "Observe, recommend, approve, act is a much better workflow than observe, act.",

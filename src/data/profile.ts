@@ -6,16 +6,16 @@ export const profile = {
   githubUrl: "https://github.com/Peippo1",
   linkedinUrl: "https://www.linkedin.com/in/tim-finch00/",
   summary:
-    "I build customer-focused AI and software products, especially at the frontier of AI where enterprise workflows, platform thinking, and product decisions need to come together to create useful things for people.",
+    "I build AI and software products for real users, usually where enterprise workflows and product decisions have to meet in the middle.",
   biography: [
-    "My background sits between product engineering and model-enabled systems. I like work that starts a little messy and ends in a tool people can actually trust.",
-    "Most of my projects share the same shape: a clear information model, a pragmatic interface, and a feedback loop strong enough to improve the system after launch.",
-    "I’m especially interested in agents, AI-assisted developer workflows, evaluation systems, and compact software products with a lot of leverage.",
+    "I sit somewhere between product engineering and AI systems. Projects usually start rough and get shaped into something people actually rely on.",
+    "Most of what I build has a similar shape: a clear data model, a simple interface, and a way to tell if it's working once it's live.",
+    "Lately I'm most interested in agents, AI-assisted developer tooling, and evaluation — building things that don't need much to do a lot.",
   ],
   principles: [
-    "Ship fewer things, but make them legible.",
-    "Prefer boring architecture in the critical path.",
-    "Treat evaluation as part of the product, not a side process.",
-    "Use design to reduce cognitive load, not decorate it.",
+    "Ship fewer things, and make them easy to understand.",
+    "Keep boring, predictable architecture in the critical path.",
+    "Test and evaluate as you build, not after.",
+    "Use design to cut clutter, not add polish.",
   ],
 };

@@ -23,8 +23,8 @@ export default function AboutPage() {
       <Container className="py-16 sm:py-20 lg:py-24">
         <PageIntro
           eyebrow="About"
-          title="AI engineer building products and systems that need to hold up in real use."
-          description="I build AI products, data systems, and software with a bias toward clarity, reliability, and work people can actually use."
+          title="AI engineer building products and systems people can actually use."
+          description="I work across AI products, data systems, and software — the common thread is trying to make things clear enough that people trust them."
         />
 
         <section className="mt-14 grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)] lg:items-start">
@@ -35,9 +35,9 @@ export default function AboutPage() {
                   Opening
                 </h2>
                 <p className="mt-3">
-                  I’m Tim Finch. I build AI products and supporting systems with
-                  a strong bias toward things that are understandable, testable,
-                  and useful in practice.
+                  I’m Tim Finch. I build AI products and the systems behind
+                  them, and I try to keep things simple enough that I can
+                  actually test whether they work.
                 </p>
               </div>
 
@@ -46,9 +46,9 @@ export default function AboutPage() {
                   Current focus
                 </h2>
                 <p className="mt-3">
-                  Most of my current work sits across AI engineering, product
-                  development, and data infrastructure, especially where model
-                  output has to connect cleanly to a real workflow.
+                  Right now that’s a mix of AI engineering, product work, and
+                  data infrastructure — mostly figuring out how to get model
+                  output to hold up inside a real workflow, not just a demo.
                 </p>
               </div>
 
@@ -57,9 +57,9 @@ export default function AboutPage() {
                   Background
                 </h2>
                 <p className="mt-3">
-                  That usually means LLM applications, agents, APIs, automation
-                  services, and data pipelines built with clear contracts and
-                  behavior you can actually measure.
+                  In practice that’s LLM applications, agents, APIs, automation
+                  services, and data pipelines — built with contracts I can
+                  point to and behavior I can actually measure.
                 </p>
               </div>
 
@@ -68,10 +68,9 @@ export default function AboutPage() {
                   Working style
                 </h2>
                 <p className="mt-3">
-                  I care about how teams actually use AI in practice, and I
-                  prefer clear information models, smaller reliable interfaces,
-                  and systems that are easy to understand, operate, and trust.
-                  I like calm execution more than technical theatre.
+                  I’d rather ship a smaller, boring interface that I trust
+                  than a clever one I have to babysit. Most of my time goes
+                  into figuring out what to leave out.
                 </p>
               </div>
             </div>
@@ -133,8 +132,9 @@ export default function AboutPage() {
                 Working record
               </p>
               <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
-                I use writing to keep product decisions legible, especially when
-                the system is changing faster than the language around it.
+                I write about what I’m building as I go, mostly so I don’t
+                lose track of why I made a decision once the product’s
+                moved on from it.
               </p>
             </Surface>
           </div>
