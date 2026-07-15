@@ -1396,6 +1396,63 @@ export const archiveWritingEntries: WritingEntry[] = [
     ],
   },
   {
+    slug: "building-a-london-weekend-guide",
+    title: "Building a London Weekend Guide",
+    date: "July 15, 2026",
+    category: "Product Systems",
+    summary:
+      "A small editorial product for turning a current London weekend into a useful shortlist, with the publishing and newsletter loop kept deliberately simple.",
+    intro:
+      "London is full of things to do. That is not the same as making a good weekend plan. The problem I wanted to work on was narrower: how do you create a guide that feels considered, quick to use, and easy to update without building another noisy discovery platform?",
+    readingTime: "6 min read",
+    pullQuote: {
+      quote:
+        "The product is not a database of everything happening in London. It is a point of view about what is worth making time for this weekend.",
+    },
+    sections: [
+      section("Start With A Point Of View", [
+        paragraph(
+          "The first decision was to treat the guide as an editorial product rather than a search interface. A reader should be able to open the current edition, understand the shape of the weekend, and leave with three or four ideas that fit their time and mood. That makes the content model more important than a layer of filters."
+        ),
+        paragraph(
+          "Each issue has a date range, a short introduction, a featured shortlist, and ordered sections for exhibitions, food and drink, live music and comedy, markets, outdoors, and family-friendly plans. Travel context and weather guidance are written by the editor. They are useful precisely because they are judgement calls, not false precision from an API."
+        ),
+      ]),
+      section("Make The Weekly Update Boring", [
+        paragraph(
+          "The template is intentionally stable. A new weekend is a new typed content file, registered as the current issue. Event IDs give sections and featured picks stable references, while build-time validation catches duplicate IDs and broken references before anything ships."
+        ),
+        list([
+          "One content file per weekend issue.",
+          "One registry entry that selects the current issue.",
+          "No scraping or external API dependency for the public page.",
+          "A static build that produces the homepage and direct issue URLs.",
+        ]),
+      ]),
+      section("Add The Newsletter At The Boundary", [
+        paragraph(
+          "The newsletter is the first part that needs a server. I kept that boundary small: the static form sends a typed JSON request to an API route, the backend upserts the email into Postgres, and a scheduled route renders the current issue and sends it through a delivery provider. The content and digest renderer stay independent from the storage and provider details."
+        ),
+        diagram(
+          "Astro pages -> /api/subscribe -> Postgres\n      |\nweekly cron -> current issue -> digest renderer -> Resend",
+          "Signup and weekly delivery flow"
+        ),
+        paragraph(
+          "That is enough infrastructure for a real first loop without pretending the project needs a CMS, a recommendation engine, or a large application backend. The system can grow later, but the initial version has a clear operational shape and a small number of things that can fail."
+        ),
+      ]),
+      section("What I Want To Learn", [
+        paragraph(
+          "The useful test is whether a reader can use the guide quickly and whether the editor can keep it current without friction. The email adds a second test: does the shortlist earn a place in someone's week when it arrives in their inbox? Those are product questions, not infrastructure questions, which is why the implementation should stay modest until the behaviour is understood."
+        ),
+        links([
+          { label: "Open the guide on GitHub", href: "https://github.com/Peippo1/London-Weekend-Guide" },
+          { label: "Visit the live guide", href: "https://london-weekend-guide.vercel.app" },
+        ]),
+      ]),
+    ],
+  },
+  {
     slug: "building-with-clear-evaluation-loops",
     title: "Building With Clear Evaluation Loops",
     date: "March 27, 2026",

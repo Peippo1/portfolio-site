@@ -267,6 +267,31 @@ export const projects: Project[] = [
     ],
     status: "Maintained",
   },
+  {
+    slug: "london-weekend-guide",
+    title: "London Weekend Guide",
+    shortSummary:
+      "A manually curated weekend guide with a static editorial surface and a small newsletter backend.",
+    longSummary:
+      "London Weekend Guide is a focused editorial product for turning a current London weekend into a useful shortlist. The public site is static and fast, while a Vercel-compatible backend stores subscribers in Postgres and sends the weekly issue through Resend.",
+    category: "APIs & Services",
+    year: "2026",
+    stack: ["Astro", "TypeScript", "Zod", "Postgres", "Resend", "Vercel"],
+    featured: false,
+    githubUrl: "https://github.com/Peippo1/London-Weekend-Guide",
+    demoUrl: "https://london-weekend-guide.vercel.app",
+    problem:
+      "Weekend discovery is often scattered across event listings, social feeds, booking pages, and weather-dependent plans. The useful part is not more search; it is a trusted shortlist with enough context to act on.",
+    solution:
+      "The guide uses one stable editorial template with local typed content, then extends it with a small backend for email signups, Postgres storage, unsubscribe handling, and a protected weekly delivery job.",
+    highlights: [
+      "Kept weekly publishing data-only through a typed weekend content model.",
+      "Added build-time validation for event references, duplicate IDs, and current issue resolution.",
+      "Built a storage-ready signup endpoint with bot honeypot handling and idempotent upserts.",
+      "Separated digest rendering from Resend delivery so the provider can change later.",
+    ],
+    status: "Active prototype",
+  },
 ];
 
 export function getProjectBySlug(slug: string) {
