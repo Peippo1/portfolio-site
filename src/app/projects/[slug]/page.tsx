@@ -7,6 +7,7 @@ import {
   formatRepositoryDate,
   getProjectGitHubMetadata,
 } from "@/lib/github-metadata";
+import type { WritingSectionBlock } from "@/types/content";
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -40,6 +41,46 @@ function BulletList({ items }: { items: string[] }) {
         </li>
       ))}
     </ul>
+  );
+}
+
+function DetailBlock({ block }: { block: WritingSectionBlock }) {
+  if (block.type === "paragraph") return <p>{block.content}</p>;
+  if (block.type === "list") return <BulletList items={block.items} />;
+  if (block.type === "quote") {
+    return (
+      <figure className="border-l border-[var(--color-border)] pl-5">
+        <blockquote className="font-editorial text-[1.4rem] leading-[1.5] text-[var(--color-text)]">
+          {block.content}
+        </blockquote>
+        {block.attribution ? <figcaption className="mt-3 text-xs uppercase">{block.attribution}</figcaption> : null}
+      </figure>
+    );
+  }
+  if (block.type === "links") {
+    return (
+      <div className="flex flex-col gap-2.5 text-[var(--color-text)]">
+        {block.items.map((item) =>
+          isExternalUrl(item.href) ? (
+            <a key={item.href} href={item.href} target="_blank" rel="noreferrer noopener" className="w-fit hover:text-[var(--color-muted)] focus-visible:outline-none">
+              {item.label} <span aria-hidden="true">↗</span>
+            </a>
+          ) : (
+            <Link key={item.href} href={item.href} className="w-fit hover:text-[var(--color-muted)] focus-visible:outline-none">
+              {item.label} <span aria-hidden="true">→</span>
+            </Link>
+          )
+        )}
+      </div>
+    );
+  }
+  return (
+    <figure className="space-y-3">
+      <pre className="overflow-x-auto rounded-[1.125rem] border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-5 font-mono text-[0.84rem] leading-[1.75] text-[var(--color-text)] shadow-[var(--shadow-soft)]">
+        <code className="whitespace-pre-wrap break-words">{block.content}</code>
+      </pre>
+      {block.caption ? <figcaption className="text-xs tracking-[0.14em] uppercase">{block.caption}</figcaption> : null}
+    </figure>
   );
 }
 
@@ -129,6 +170,20 @@ export async function generateMetadata({
   return {
     title: project.title,
     description: project.shortSummary,
+    alternates: { canonical: `/projects/${project.slug}` },
+    openGraph: {
+      title: `${project.title} — Tim Finch`,
+      description: project.shortSummary,
+      url: `/projects/${project.slug}`,
+      type: "article",
+      images: [{ url: `/projects/${project.slug}/opengraph-image`, width: 1200, height: 630, alt: `${project.title} project case study` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} — Tim Finch`,
+      description: project.shortSummary,
+      images: [`/projects/${project.slug}/opengraph-image`],
+    },
   };
 }
 
@@ -258,6 +313,16 @@ export default async function ProjectDetailPage({
                 }
               />
             </Section>
+
+            {project.details?.map((detail) => (
+              <Section key={detail.title} title={detail.title}>
+                <div className="space-y-5">
+                  {detail.blocks.map((block, index) => (
+                    <DetailBlock key={`${detail.title}-${index}`} block={block} />
+                  ))}
+                </div>
+              </Section>
+            ))}
 
             {isCampaignForge ? (
               <Section title={sectionLabel("What I learned")}>

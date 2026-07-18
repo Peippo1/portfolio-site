@@ -5,6 +5,7 @@ import {
   getCreatorOSSeriesEntries,
   getEvalKitSeriesEntries,
   getHoxaSeriesEntries,
+  getNereidSeriesEntries,
   getOrderedWritingEntries as getBaseOrderedWritingEntries,
   getStandaloneArchiveEntries,
   getWritingEntryBySlug as getBaseWritingEntryBySlug,
@@ -187,5 +188,6 @@ export {
   getCreatorOSSeriesEntries,
   getEvalKitSeriesEntries,
   getHoxaSeriesEntries,
+  getNereidSeriesEntries,
   getStandaloneArchiveEntries,
 };

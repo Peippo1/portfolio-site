@@ -48,7 +48,8 @@ const stopWords = new Set([
 ]);
 
 const synonymMap: Record<string, string[]> = {
-  ai: ["llm", "models", "openai"],
+  ai: ["llm", "models", "openai", "agent", "codex"],
+  trust: ["evidence", "approval", "audit", "verification", "review"],
   api: ["fastapi", "service", "backend"],
   data: ["pipeline", "etl", "analytics"],
   frontend: ["ui", "react", "interface"],

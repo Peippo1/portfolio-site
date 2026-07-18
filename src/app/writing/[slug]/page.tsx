@@ -116,6 +116,20 @@ export async function generateMetadata({
   return {
     title: entry.title,
     description: entry.intro ?? entry.summary,
+    alternates: { canonical: `/writing/${entry.slug}` },
+    openGraph: {
+      title: entry.title,
+      description: entry.intro ?? entry.summary,
+      url: `/writing/${entry.slug}`,
+      type: "article",
+      images: [{ url: `/writing/${entry.slug}/opengraph-image`, width: 1200, height: 630, alt: entry.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: entry.title,
+      description: entry.intro ?? entry.summary,
+      images: [`/writing/${entry.slug}/opengraph-image`],
+    },
   };
 }
 

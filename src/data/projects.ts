@@ -2,6 +2,89 @@ import type { Project } from "@/types/content";
 
 export const projects: Project[] = [
   {
+    slug: "nereid",
+    title: "Nereid",
+    shortSummary:
+      "A delivery-control plane that turns coding-agent work into evidence a human can review before approving it.",
+    longSummary:
+      "Nereid is a hosted control plane with a customer-controlled runner. A reviewer starts with a GitHub issue; the runner works in an isolated Git worktree using the locally authenticated Codex CLI, records bounded lifecycle and verification evidence, pushes a branch, and opens a pull request. The control plane derives readiness from validated events rather than trusting an agent's completion claim.",
+    category: "AI Products",
+    year: "2026",
+    stack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Drizzle", "Zod", "Codex CLI"],
+    featured: true,
+    githubUrl: "https://github.com/Peippo1/Nereid",
+    problem:
+      "Coding agents can produce changes faster than a reviewer can reconstruct what happened. A plausible diff is not enough to answer whether the task was followed, checks passed, credentials stayed bounded, or unresolved risks were hidden.",
+    solution:
+      "Nereid separates coordination from execution. The hosted control plane stores validated lifecycle events and presents the evidence packet; the customer runner keeps source code, tools, Git credentials, and Codex authentication in the customer's environment. Only an authorized human can approve or reject, and Nereid never merges.",
+    highlights: [
+      "Defined a versioned Zod protocol with strict sequencing, idempotent duplicate delivery, and derived review readiness.",
+      "Built a Node 22 runner around disposable worktrees, ephemeral workspace-write Codex execution, bounded output, and secret-pattern redaction.",
+      "Added GitHub issue ingestion, one-use runner enrollment, branch push and PR creation without a merge command.",
+      "Covered prompt injection, event replay, failed verification, secret-like output, and approval bypass with deterministic tests and evals.",
+    ],
+    status: "Local technical preview",
+    details: [
+      {
+        title: "Architecture",
+        blocks: [
+          {
+            type: "diagram",
+            language: "text",
+            content:
+              "GitHub issue -> Nereid control plane -> enrolled customer runner\n                                      |\n                           disposable worktree + Codex CLI\n                                      |\n             branch + PR <- validated evidence events\n                                      |\n                    human approve / reject -> GitHub check",
+            caption: "Issue-to-evidence delivery path. Nereid records a decision but never merges.",
+          },
+          {
+            type: "paragraph",
+            content:
+              "The runner polls for a typed job and emits ordered lifecycle events. The control plane rejects out-of-order or mismatched events, treats identical retries as idempotent, and derives readiness only after a PR exists and every recorded verification passes.",
+          },
+        ],
+      },
+      {
+        title: "Evidence packet",
+        blocks: [
+          {
+            type: "list",
+            items: [
+              "The agent plan and completion summary.",
+              "Branch, commit, pull request, and changed-file references.",
+              "Exact verification commands, exit status, and bounded redacted output.",
+              "Risks, unresolved items, failures, and the immutable event sequence.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Security boundaries and non-goals",
+        blocks: [
+          {
+            type: "paragraph",
+            content:
+              "Repository contents and Codex credentials stay with the runner. Enrollment tokens are one-use, runner credentials are stored as hashes by the control plane, and reviewer access is allow-listed to a configured GitHub identity. Agent output cannot approve a run or weaken readiness rules.",
+          },
+          {
+            type: "list",
+            items: [
+              "Nereid is not an autonomous merge bot.",
+              "The current workspace-write sandbox and worktree boundary are not a hardened production container.",
+              "The local preview still uses an in-memory control-plane store while the Postgres schema is integrated into the hosted path.",
+              "A public live demo, fixture repository, and real GitHub App smoke test are not yet published.",
+            ],
+          },
+          {
+            type: "links",
+            items: [
+              { label: "Nereid repository", href: "https://github.com/Peippo1/Nereid" },
+              { label: "Read the first build note", href: "/writing/why-im-building-nereid" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
     slug: "hoxa",
     title: "Hoxa",
     shortSummary:
@@ -86,7 +169,6 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "OpenAI", "Zod", "Vitest"],
     featured: true,
     githubUrl: "https://github.com/Peippo1/CreatorOS",
-    demoUrl: "TODO: add live demo URL",
     problem:
       "Creators and internet brands spend too much time deciding what to make, how to adapt source material, and which content gaps are actually worth chasing.",
     solution:

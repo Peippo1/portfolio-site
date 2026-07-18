@@ -5,6 +5,7 @@ Editorial portfolio for Tim Finch. Built with Next.js 16, TypeScript, and Tailwi
 ## What It Includes
 
 - Editorial home page with featured projects and a lightweight space-data telemetry layer
+- Lead “Currently building” narrative for Nereid, with a case study and evidence-led build thread
 - Project archive with search and statically generated case studies
 - Writing archive with structured long-form entries and build threads
 - About page with a concise working profile, social links, and a public CV link
@@ -38,6 +39,8 @@ Content lives in local data files so the site stays easy to update and staticall
 - [`src/data/profile.ts`](src/data/profile.ts) for about/profile copy
 - [`src/data/telemetry.ts`](src/data/telemetry.ts) for telemetry copy and fallback mission content
 
+Nereid is the lead project. Its public writing follows completed milestones: kickoff and protocol evidence first, runner and hackathon posts only after those behaviors are publicly verifiable.
+
 ## Telemetry Data
 
 The home page telemetry panel uses a small server-side integration with the official JPL Horizons API when available. It requests heliocentric vector snapshots for Earth, Voyager 2, Mars Odyssey, Psyche, and Europa Clipper, then renders those positions in the minimalist SVG mission visual.
@@ -69,6 +72,8 @@ npm run dev
 ```
 
 Open `http://localhost:3000` in your browser.
+
+Set `NEXT_PUBLIC_SITE_URL` in production so canonical URLs and generated social cards resolve to the public portfolio domain.
 
 ## Useful Scripts
 

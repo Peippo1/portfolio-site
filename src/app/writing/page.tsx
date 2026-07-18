@@ -7,6 +7,7 @@ import {
   getCreatorOSSeriesEntries,
   getEvalKitSeriesEntries,
   getHoxaSeriesEntries,
+  getNereidSeriesEntries,
   getStandaloneArchiveEntries,
 } from "@/data/writing-release-readiness";
 import type { WritingEntry } from "@/types/content";
@@ -155,13 +156,22 @@ export default function WritingPage() {
   const hoxaSeriesEntries = getHoxaSeriesEntries();
   const creatorOSSeriesEntries = getCreatorOSSeriesEntries();
   const evalKitSeriesEntries = getEvalKitSeriesEntries();
+  const nereidSeriesEntries = getNereidSeriesEntries();
   const archiveEntries = [cutoutStudioLaunchEntry, ...getStandaloneArchiveEntries()];
   const campaignForgeSeries = campaignForgeSeriesEntries[0]?.series;
   const cityScoutSeries = cityScoutSeriesEntries[0]?.series;
   const hoxaSeries = hoxaSeriesEntries[0]?.series;
   const creatorOSSeries = creatorOSSeriesEntries[0]?.series;
   const evalKitSeries = evalKitSeriesEntries[0]?.series;
+  const nereidSeries = nereidSeriesEntries[0]?.series;
   const featuredSeries = [
+    nereidSeries
+      ? {
+          series: nereidSeries,
+          entries: nereidSeriesEntries,
+          summaryLine: "One post / Trust boundary, first protocol, and what remains unproven",
+        }
+      : null,
     campaignForgeSeries
       ? {
           series: campaignForgeSeries,
@@ -207,6 +217,7 @@ export default function WritingPage() {
         | typeof hoxaSeries
         | typeof creatorOSSeries
         | typeof evalKitSeries
+        | typeof nereidSeries
       >;
       entries: WritingEntry[];
       summaryLine: string;
@@ -219,6 +230,7 @@ export default function WritingPage() {
     hoxaSeriesEntries.length +
     creatorOSSeriesEntries.length +
     evalKitSeriesEntries.length +
+    nereidSeriesEntries.length +
     archiveEntries.length;
   const threadCount = featuredSeries.length;
   const productCount = featuredSeries.length;
