@@ -2,6 +2,14 @@
 
 All notable changes to this portfolio will be recorded here.
 
+## 2026-07-18
+
+- Made Nereid the lead portfolio project and added its evidence-led case study.
+- Published the first Nereid build-thread entry with explicit completed behavior and limitations.
+- Replaced unverified homepage usage metrics with the current Nereid milestone and test evidence.
+- Added Nereid repository metadata, portfolio-search vocabulary, canonical metadata, and generated text-led social cards.
+- Updated profile positioning around evidence-backed AI products and responsible agent operation.
+
 ## 2026-07-12
 
 - Added a public CV asset and linked it from the home page, About page, and site footer.

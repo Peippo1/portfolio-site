@@ -14,11 +14,17 @@ import {
 } from "@/data/writing";
 import { IconMark } from "@/components/ui/icon-mark";
 
-const featuredProjects = ["cutout-studio", "campaignforge-ai", "evalkit", "hoxa", "cityscout"]
+const featuredProjects = ["nereid", "cutout-studio", "campaignforge-ai", "evalkit", "hoxa", "cityscout"]
   .map((slug) => getProjectBySlug(slug))
   .filter((project) => project !== undefined);
 
 const activeBuildLinks = [
+  {
+    title: "Nereid",
+    oneLine:
+      "A trusted-delivery control plane for coding agents, built around evidence and human approval.",
+    href: "/projects/nereid",
+  },
   {
     title: "Cutout Studio",
     oneLine:
@@ -47,6 +53,7 @@ const cutoutStudioLaunchEntry = {
 };
 
 const featuredWriting = [
+  getWritingEntryBySlug("why-im-building-nereid"),
   cutoutStudioLaunchEntry,
   getWritingEntryBySlug("building-a-reusable-pr-to-paper-trail-workflow"),
   getWritingEntryBySlug("introducing-campaignforge-ai"),
@@ -70,13 +77,6 @@ const workflowLinks = [
   },
 ];
 
-const launchMetrics = [
-  { label: "API requests (24h)", value: "2.41M", delta: "+23%" },
-  { label: "Tasks completed", value: "18,732", delta: "+31%" },
-  { label: "Success rate", value: "98.7%", delta: "+1.2%" },
-  { label: "Users", value: "12,846", delta: "+17%" },
-];
-
 function ProductBoardPreview() {
   return (
     <Surface className="overflow-hidden rounded-[1.9rem] border-[var(--color-border-strong)] bg-[var(--color-surface-strong)] shadow-[var(--shadow-card)]">
@@ -86,10 +86,10 @@ function ProductBoardPreview() {
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--color-soft)]">
               <IconMark className="h-3.5 w-3.5" />
             </span>
-            <span className="text-sm font-semibold">EvalKit</span>
+            <span className="text-sm font-semibold">Nereid</span>
           </div>
           <div className="mt-5 space-y-2 text-sm text-[var(--color-muted)]">
-            {["Suites", "Cases", "Checks", "Runs", "Billing"].map((item, index) => (
+            {["Runs", "Evidence", "Runners", "Review", "Settings"].map((item, index) => (
               <div
                 key={item}
                 className={`rounded-xl px-3 py-2 ${index === 0 ? "bg-[var(--color-text)] text-white" : "bg-black/[0.02]"}`}
@@ -103,23 +103,22 @@ function ProductBoardPreview() {
           <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <p className="text-sm font-semibold text-[var(--color-text)]">
-                Deterministic eval pipeline
+                Evidence-backed delivery
               </p>
               <p className="mt-1 text-sm leading-6 text-[var(--color-muted)]">
-                Regression testing for structured AI outputs, safety checks, and
-                capability drift.
+                Validated agent events, verification records, and an explicit human gate.
               </p>
             </div>
             <span className="rounded-full border border-[var(--color-border)] bg-[var(--color-accent-soft)] px-3 py-1 text-xs tracking-[0.14em] text-[var(--color-accent)] uppercase">
-              Live prototype
+              Local preview
             </span>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3">
             {[
-              { label: "Suites", value: "128" },
-              { label: "Checks passed", value: "312" },
-              { label: "Avg. runtime", value: "2.3m" },
+              { label: "Test files", value: "10" },
+              { label: "Tests passing", value: "23" },
+              { label: "Adversarial", value: "4" },
             ].map((metric) => (
               <div
                 key={metric.label}
@@ -138,17 +137,17 @@ function ProductBoardPreview() {
           <div className="rounded-[1.35rem] border border-[var(--color-border)]">
             <div className="flex flex-col items-start gap-1 border-b border-[var(--color-border)] px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-xs tracking-[0.16em] text-[var(--color-muted)] uppercase">
-                Recent runs
+                Deterministic policy evals
               </p>
               <p className="text-xs tracking-[0.16em] text-[var(--color-accent)] uppercase">
-                All systems operational
+                Local suite passing
               </p>
             </div>
             <div className="divide-y divide-[var(--color-border)]">
               {[
-                ["Schema drift guard", "12 checks", "Passed"],
-                ["Unsafe claims filter", "8 checks", "Passed"],
-                ["Capability retention", "17 checks", "Review"],
+                ["Altered event replay", "Rejected", "Passed"],
+                ["Secret-like evidence", "Redacted", "Passed"],
+                ["Approval bypass", "Rejected", "Passed"],
               ].map(([title, count, status]) => (
                 <div key={title} className="grid gap-3 px-4 py-3 sm:grid-cols-[minmax(0,1fr)_auto_auto] sm:items-center">
                   <div>
@@ -157,12 +156,7 @@ function ProductBoardPreview() {
                       {count}
                     </p>
                   </div>
-                  <div className="h-7 w-full max-w-[7rem] overflow-hidden rounded-full bg-[linear-gradient(90deg,rgba(15,138,100,0.14),rgba(16,17,20,0.03))]">
-                    <div
-                      className="h-full rounded-full bg-[linear-gradient(90deg,var(--color-accent),rgba(15,138,100,0.45))]"
-                      style={{ width: title === "Capability retention" ? "61%" : "88%" }}
-                    />
-                  </div>
+                  <div className="h-px w-full max-w-[7rem] bg-[var(--color-border-strong)]" />
                   <span
                     className={`text-xs tracking-[0.14em] uppercase ${
                       status === "Passed" ? "text-[var(--color-accent)]" : "text-[var(--color-text)]"
@@ -182,6 +176,16 @@ function ProductBoardPreview() {
 
 function ProjectPreview({ slug }: { slug: string }) {
   const previewBySlug: Record<string, React.ReactNode> = {
+    nereid: (
+      <div className="relative h-full overflow-hidden rounded-[1.3rem] bg-[radial-gradient(circle_at_18%_18%,rgba(15,138,100,0.25),transparent_20%),linear-gradient(135deg,#101715,#263a33_58%,#edf4ef)]">
+        <div className="absolute inset-[8%] rounded-[1.15rem] border border-white/12 bg-black/10" />
+        <div className="absolute left-[12%] top-[15%] h-[64%] w-[24%] rounded-[1.3rem] border border-white/10 bg-white/[0.07]" />
+        <div className="absolute left-[42%] top-[18%] h-[16%] w-[44%] rounded-full bg-white/90" />
+        <div className="absolute left-[42%] top-[43%] h-[8px] w-[35%] rounded-full bg-[rgba(128,224,176,0.8)]" />
+        <div className="absolute left-[42%] top-[55%] h-[8px] w-[29%] rounded-full bg-white/25" />
+        <div className="absolute left-[42%] top-[67%] h-[8px] w-[38%] rounded-full bg-white/15" />
+      </div>
+    ),
     "cutout-studio": (
       <div className="relative h-full overflow-hidden rounded-[1.3rem] bg-[radial-gradient(circle_at_18%_18%,rgba(248,190,110,0.32),transparent_22%),radial-gradient(circle_at_78%_24%,rgba(54,123,94,0.22),transparent_20%),linear-gradient(135deg,#f8f4ea,#e9efe9_56%,#ffffff)]">
         <div className="absolute inset-[8%] rounded-[1.15rem] border border-black/8 bg-white/70" />
@@ -302,10 +306,8 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-6 max-w-lg text-[1.02rem] leading-8 text-[var(--color-muted)] sm:text-[1.08rem]">
-              I&apos;m {profile.name}, an AI engineer. I turn product ideas
-              into things people actually use — usually a mix of AI systems,
-              product decisions, and the unglamorous work of keeping software
-              running once real people touch it.
+              I&apos;m {profile.name}, an AI engineer building evidence-backed
+              products and the systems needed to operate them responsibly.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -370,7 +372,7 @@ export default function HomePage() {
 
           <div className="mt-10 flex snap-x gap-6 overflow-x-auto pb-2 lg:grid lg:grid-cols-2 lg:gap-7 lg:overflow-visible">
             {featuredProjects.map((project) => (
-              <article key={project.slug} className="group min-w-[20.5rem] snap-start lg:min-w-0">
+              <article key={project.slug} className={`group min-w-[20.5rem] snap-start lg:min-w-0 ${project.slug === "nereid" ? "lg:col-span-2" : ""}`}>
                 <Link
                   href={`/projects/${project.slug}`}
                   className="block overflow-hidden rounded-[1.8rem] border border-[var(--color-border)] bg-white shadow-[var(--shadow-soft)] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[var(--shadow-card)] focus-visible:outline-none"
@@ -403,54 +405,41 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="mt-20 rounded-[2rem] border border-[var(--color-border)] bg-white px-5 py-6 shadow-[var(--shadow-soft)] sm:mt-24 sm:px-6 sm:py-7">
+        <section className="mt-20 rounded-[2rem] border border-[var(--color-border-strong)] bg-[linear-gradient(135deg,rgba(15,138,100,0.07),rgba(255,255,255,0.96))] px-5 py-7 shadow-[var(--shadow-card)] sm:mt-24 sm:px-8 sm:py-9">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-xl">
               <p className="text-xs tracking-[0.18em] text-[var(--color-muted)] uppercase">
-                Systems in motion
+                Currently building
               </p>
               <h2 className="font-editorial mt-3 text-[2rem] leading-tight sm:text-[2.35rem]">
-                Live usage across products and agents.
+                Nereid — trusted delivery for coding agents.
               </h2>
               <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
-                Built for reliability, measured every day.
+                Coding agents can produce code faster than humans can reconstruct and safely approve it. Nereid turns a GitHub issue into a customer-run task and an evidence packet for human review.
               </p>
             </div>
             <Link
-              href="#live-telemetry"
+              href="/projects/nereid"
               className="inline-flex items-center gap-2 text-sm text-[var(--color-muted)] transition-colors duration-150 hover:text-[var(--color-text)]"
             >
-              See project telemetry <span aria-hidden="true">→</span>
+              Open the case study <span aria-hidden="true">→</span>
             </Link>
           </div>
-          <div className="mt-6 flex snap-x gap-4 overflow-x-auto pb-2 lg:grid lg:grid-cols-4 lg:overflow-visible">
-            {launchMetrics.map((metric) => (
-              <div
-                key={metric.label}
-                className="min-w-[15rem] snap-start rounded-[1.35rem] border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(16,17,20,0.018),rgba(16,17,20,0.008))] p-4 lg:min-w-0"
-              >
-                <p className="text-[11px] tracking-[0.14em] text-[var(--color-muted)] uppercase">
-                  {metric.label}
-                </p>
-                <div className="mt-3 flex items-end justify-between gap-3">
-                  <p className="text-[1.9rem] font-semibold tracking-[-0.04em] text-[var(--color-text)]">
-                    {metric.value}
-                  </p>
-                  <span className="text-[11px] tracking-[0.14em] text-[var(--color-accent)] uppercase">
-                    {metric.delta}
-                  </span>
-                </div>
-                <div className="mt-4 flex h-8 items-end gap-1.5">
-                  {[35, 44, 28, 52, 46, 61, 49, 67].map((value, index) => (
-                    <div
-                      key={index}
-                      className="w-full rounded-t-full bg-[linear-gradient(180deg,rgba(15,138,100,0.72),rgba(15,138,100,0.15))]"
-                      style={{ height: `${value}%` }}
-                    />
-                  ))}
-                </div>
+          <div className="mt-7 grid gap-3 sm:grid-cols-3">
+            {[
+              ["Milestone", "Protocol and local vertical slice"],
+              ["Evidence", "23 deterministic tests passing"],
+              ["Boundary", "Human approval; never merge"],
+            ].map(([label, value]) => (
+              <div key={label} className="rounded-[1.25rem] border border-[var(--color-border)] bg-white/80 p-4">
+                <p className="text-[11px] tracking-[0.14em] text-[var(--color-muted)] uppercase">{label}</p>
+                <p className="mt-2 text-sm leading-6 text-[var(--color-text)]">{value}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href="https://github.com/Peippo1/Nereid" className="rounded-full bg-[var(--color-text)] px-5 py-3 text-sm !text-white">View GitHub</a>
+            <Link href="/writing/why-im-building-nereid" className="rounded-full border border-[var(--color-border-strong)] bg-white px-5 py-3 text-sm">Read the build thread</Link>
           </div>
         </section>
 
@@ -468,8 +457,7 @@ export default function HomePage() {
               <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
                 Writing about what I&apos;m building, what is changing, and where
                 the thinking is still getting worked out, including Cutout
-                Studio, PR-to-Paper-Trail, and the CampaignForge AI product
-                work.
+                Nereid, Cutout Studio, PR-to-Paper Trail, and the systems behind them.
               </p>
             </div>
             <Link

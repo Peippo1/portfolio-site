@@ -13,6 +13,7 @@ export type Project = {
   solution: string;
   highlights: string[];
   status: string;
+  details?: WritingSection[];
 };
 
 export type ParagraphBlock = {
@@ -73,7 +74,8 @@ export type WritingSeriesSlug =
   | "cityscout-build-thread"
   | "creatoros-build-thread"
   | "evalkit-build-thread"
-  | "campaignforge-build-thread";
+  | "campaignforge-build-thread"
+  | "nereid-build-thread";
 
 export type WritingSeries = {
   slug: WritingSeriesSlug;

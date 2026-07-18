@@ -30,6 +30,10 @@ const campaignForgeSeriesSlug: WritingSeriesSlug = "campaignforge-build-thread";
 const campaignForgeSeriesName = "CampaignForge AI Build Thread";
 const campaignForgeSeriesDescription =
   "A build thread on turning CampaignForge AI from a rough prototype into a smaller product that could actually be sold.";
+const nereidSeriesSlug: WritingSeriesSlug = "nereid-build-thread";
+const nereidSeriesName = "Nereid Build Thread";
+const nereidSeriesDescription =
+  "An evidence-led record of building a delivery-control plane for coding agents.";
 
 export const cityScoutSummary = {
   oneLine:
@@ -1342,6 +1346,77 @@ export const campaignForgeSeriesEntries: WritingEntry[] =
     },
   }));
 
+export const nereidSeriesEntries: WritingEntry[] = [
+  {
+    slug: "why-im-building-nereid",
+    title: "Why I’m Building Nereid: Trust After the Agent Writes the Code",
+    date: "July 18, 2026",
+    category: "Build Log",
+    summary:
+      "Coding agents can produce changes faster than a reviewer can reconstruct them. Nereid is an attempt to make the delivery evidence explicit before a human approves.",
+    intro:
+      "The first Nereid milestone is deliberately narrow: define the delivery contract, make readiness deterministic, and prove that an agent cannot mark its own work ready for review. The live GitHub and customer-runner path is still a technical preview, not a production claim.",
+    readingTime: "7 min read",
+    pullQuote: {
+      quote:
+        "The useful unit is not an agent-generated diff. It is a diff plus enough evidence for a human to make a real decision.",
+    },
+    series: {
+      slug: nereidSeriesSlug,
+      name: nereidSeriesName,
+      description: nereidSeriesDescription,
+      order: 1,
+    },
+    sections: [
+      section("The trust gap", [
+        paragraph(
+          "Coding agents are making implementation faster. Review has not become proportionally easier. A pull request can look plausible while leaving basic questions unanswered: which instructions were followed, what ran, what failed, whether output was truncated, and what the agent still considers risky. Asking a reviewer to reconstruct all of that from the diff gives away much of the speed the agent created."
+        ),
+        paragraph(
+          "Nereid is for small engineering teams that want to use coding agents without turning approval into a ritual. The product starts from a GitHub issue and aims to produce one reviewable delivery packet: lifecycle, diff references, verification, risks, failures, and a human decision."
+        ),
+      ]),
+      section("The boundary", [
+        diagram(
+          "GitHub issue -> control plane -> customer runner -> branch + PR\n                         ^                 |\n                         +-- evidence -----+\n                                  |\n                           human decision",
+          "The control plane coordinates and records; execution and credentials stay with the customer runner."
+        ),
+        list([
+          "Source code, repository tools, Git authentication, and Codex authentication remain in the runner environment.",
+          "Runner events are versioned, schema-validated, ordered, and idempotent on identical retry.",
+          "Failed verification prevents review readiness.",
+          "Only an allow-listed human reviewer can approve or reject.",
+          "Nereid records a GitHub check but never merges.",
+        ]),
+      ]),
+      section("What exists after the first milestone", [
+        paragraph(
+          "The repository now has the pnpm/Turborepo shape, shared Zod protocol, Drizzle/Postgres schema, Next.js evidence surface, Node runner, one-use enrollment flow, GitHub issue ingestion, and deterministic policy tests. The runner uses a disposable worktree and an ephemeral workspace-write Codex execution, then records verification and attempts to push a branch and open a PR through the locally authenticated GitHub CLI."
+        ),
+        paragraph(
+          "The readiness state machine is the most important completed part. Duplicate delivery is safe when content is identical, altered replays are rejected, events cannot arrive out of sequence, failed checks remain visible, and a PR is required before the packet becomes ready. Adversarial fixtures cover prompt injection, secret-like output, event replay, and approval bypass."
+        ),
+      ]),
+      section("What remains unproven", [
+        list([
+          "A complete live run against a separate public fixture repository has not yet been published.",
+          "The hosted path still needs the Postgres schema wired in place of the local in-memory preview store.",
+          "The worktree and Codex sandbox are useful boundaries, but they are not a hardened container or enforced egress policy.",
+          "GitHub App credentials, installation permissions, and the real check lifecycle still need a public smoke test.",
+          "There are no performance, adoption, or security-review claims yet.",
+        ]),
+        paragraph(
+          "The hackathon goal is to close that gap with one honest vertical slice: issue in, agent run, tested branch, pull request, evidence packet, human decision. The next post will only describe the evidence protocol once the corresponding code and test output are publicly verifiable."
+        ),
+        links([
+          { label: "Nereid repository", href: "https://github.com/Peippo1/Nereid" },
+          { label: "Nereid case study", href: "/projects/nereid" },
+        ]),
+      ]),
+    ],
+  },
+];
+
 export const archiveWritingEntries: WritingEntry[] = [
   {
     slug: "building-a-reusable-pr-to-paper-trail-workflow",
@@ -1482,6 +1557,7 @@ export const archiveWritingEntries: WritingEntry[] = [
 ];
 
 export const writingEntries: WritingEntry[] = [
+  ...nereidSeriesEntries,
   ...campaignForgeSeriesEntries,
   ...cityScoutSeriesEntries,
   ...hoxaSeriesEntries,
@@ -1516,6 +1592,10 @@ export function getCreatorOSSeriesEntries() {
 
 export function getEvalKitSeriesEntries() {
   return evalKitSeriesEntries;
+}
+
+export function getNereidSeriesEntries() {
+  return nereidSeriesEntries;
 }
 
 export function getStandaloneArchiveEntries() {
