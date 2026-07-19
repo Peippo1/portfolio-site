@@ -154,7 +154,7 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "The emotional tone of a fitness app is not a branding layer added after the system works. It shapes whether the system can work at all. If the language feels macho, punishing, or relentlessly optimised, many users will edit themselves around the product instead of using it honestly. They will skip the app on tired weeks, overstate what they completed, or quietly disengage."
         ),
         paragraph(
-          "A calmer tone is not about being soft or vague. It is about creating a system that can absorb ordinary life. The product should be able to say: you slept badly, your week got messy, your legs are heavy today, and the plan can still make sense. That is a better promise than pretending consistency means perfect adherence."
+          "A more forgiving tone is not about being soft or vague. It is about creating a system that can absorb ordinary life. The product should be able to say: you slept badly, your week got messy, your legs are heavy today, and the plan can still make sense. That is a better promise than pretending consistency means perfect adherence."
         ),
       ]),
       section("What I Want Hoxa To Become", [
@@ -169,17 +169,17 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
   },
   {
     slug: "designing-a-calmer-fitness-app",
-    title: "Designing a Calmer Fitness App",
+    title: "Designing a Fitness App That Gets Out of the Way",
     date: "April 14, 2026",
     category: "Product Design",
     summary:
-      "The visual and interaction tone of Hoxa has to lower friction without flattening ambition. Calm should come from clear priorities, not from sanding the product down until it feels generic.",
+      "The visual and interaction design of Hoxa has to lower friction without flattening ambition. Clear priorities matter more than sanding the product down until it feels generic.",
     intro:
       "When people say they want a fitness app that feels motivating, they often mean they want one that keeps momentum without making them feel judged. That distinction matters. Hoxa should not look or behave like a digital coach yelling from the edge of the screen.",
     readingTime: "9 min read",
     pullQuote: {
       quote:
-        "A calmer interface does not remove ambition. It removes unnecessary noise around ambition.",
+        "A focused interface does not remove ambition. It removes the noise that gets in its way.",
     },
     sections: [
       section("Designing For Honesty", [
@@ -212,9 +212,9 @@ const hoxaEntriesWithoutSeries: Omit<WritingEntry, "series">[] = [
           "The design challenge is to preserve continuity between these modes. Strength days should still feel connected to running goals. Recovery should not feel like an interruption to the plan. Home sessions should not feel like a degraded fallback. The product has to present all of these as valid expressions of a coherent training system."
         ),
       ]),
-      section("Calm Requires Editorial Judgment", [
+      section("Good Design Requires Editorial Judgment", [
         paragraph(
-          "The easiest way to make software feel calm is to remove information. That is also how you make it less useful. The harder task is editorial: deciding what belongs at each moment, in what order, with what emphasis, and with what explanation. Calm design is usually a consequence of sharper judgement, not less content."
+          "The easiest way to make software feel simple is to remove information. That is also how you make it less useful. The harder task is editorial: deciding what belongs at each moment, in what order, with what emphasis, and with what explanation. A focused design is usually a consequence of sharper judgement, not less content."
         ),
         quote(
           "If the interface cannot explain the day clearly, the plan itself is probably still too vague.",
