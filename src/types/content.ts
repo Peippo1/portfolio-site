@@ -39,6 +39,15 @@ export type DiagramBlock = {
   caption?: string;
 };
 
+export type ImageBlock = {
+  type: "image";
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  caption?: string;
+};
+
 export type LinkItem = {
   label: string;
   href: string;
@@ -53,6 +62,7 @@ export type WritingParagraphBlock = ParagraphBlock;
 export type WritingListBlock = ListBlock;
 export type WritingQuoteBlock = QuoteBlock;
 export type WritingDiagramBlock = DiagramBlock;
+export type WritingImageBlock = ImageBlock;
 export type WritingLinkListBlock = LinkListBlock;
 
 export type WritingSectionBlock =
@@ -60,6 +70,7 @@ export type WritingSectionBlock =
   | ListBlock
   | QuoteBlock
   | DiagramBlock
+  | ImageBlock
   | LinkListBlock;
 
 export type WritingBlock = WritingSectionBlock;

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ContentImage } from "@/components/content/content-image";
 import { Container } from "@/components/ui/container";
 import {
   getOrderedWritingEntries,
@@ -72,6 +73,10 @@ function renderBlock(block: WritingBlock, key: string) {
         ))}
       </div>
     );
+  }
+
+  if (block.type === "image") {
+    return <ContentImage key={key} block={block} />;
   }
 
   return (

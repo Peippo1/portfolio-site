@@ -11,7 +11,7 @@ export interface GitHubMetadataProvider {
 const localGitHubMetadata: Record<string, GitHubRepositoryMetadata> = {
   nereid: {
     repoName: "Nereid",
-    lastUpdated: "2026-07-18",
+    lastUpdated: "2026-07-19",
     primaryLanguage: "TypeScript",
   },
   "campaignforge-ai": {

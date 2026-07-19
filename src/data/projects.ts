@@ -23,7 +23,8 @@ export const projects: Project[] = [
       "Added GitHub issue ingestion, one-use runner enrollment, branch push and PR creation without a merge command.",
       "Covered prompt injection, event replay, failed verification, secret-like output, and approval bypass with deterministic tests and evals.",
     ],
-    status: "Local technical preview",
+    status: "Hosted technical preview",
+    demoUrl: "https://nereid-production-ab40.up.railway.app",
     details: [
       {
         title: "Architecture",
@@ -45,6 +46,15 @@ export const projects: Project[] = [
       {
         title: "Evidence packet",
         blocks: [
+          {
+            type: "image",
+            src: "/images/nereid/evidence-packet.png",
+            alt: "Nereid evidence packet showing passing verification and a not-ready status caused by a missing pull request reference",
+            width: 1440,
+            height: 1100,
+            caption:
+              "A deterministic fixture demonstrating that passing checks alone cannot make a delivery review-ready.",
+          },
           {
             type: "list",
             items: [
@@ -69,9 +79,18 @@ export const projects: Project[] = [
             items: [
               "Nereid is not an autonomous merge bot.",
               "The current workspace-write sandbox and worktree boundary are not a hardened production container.",
-              "The local preview still uses an in-memory control-plane store while the Postgres schema is integrated into the hosted path.",
-              "A public live demo, fixture repository, and real GitHub App smoke test are not yet published.",
+              "The hosted preview still uses an in-memory control-plane store while the Postgres schema is integrated into the live path.",
+              "GitHub reviewer sign-in is live, but a complete runner-to-PR-to-check smoke test is not yet published.",
             ],
+          },
+          {
+            type: "image",
+            src: "/images/nereid/hosted-control-plane.png",
+            alt: "Hosted Nereid control plane with delivery signal and explicit human, runner, and GitHub boundaries",
+            width: 1440,
+            height: 1000,
+            caption:
+              "The Railway-hosted technical preview after the OpenAI hackathon.",
           },
           {
             type: "links",

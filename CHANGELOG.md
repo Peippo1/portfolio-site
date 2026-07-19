@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-07-19
+
+- Added verified Railway screenshots to the Nereid case study and build thread.
+- Updated Nereid from a local to a hosted technical preview with an explicit live-demo link.
+- Added a reusable accessible image block to structured project and writing content.
+- Kept the Postgres, runner, GitHub check, and security limitations explicit.
+
 All notable changes to this portfolio will be recorded here.
 
 ## 2026-07-18
