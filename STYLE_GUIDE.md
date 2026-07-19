@@ -1,6 +1,6 @@
 # Portfolio Style Guide
 
-This portfolio uses a calm editorial system: warm paper-like background, near-black text, muted supporting copy, thin borders, and very little decoration.
+This portfolio uses a restrained editorial system: warm paper-like background, near-black text, muted supporting copy, thin borders, and very little decoration.
 
 ## Visual Principles
 
@@ -56,7 +56,7 @@ This portfolio uses a calm editorial system: warm paper-like background, near-bl
 - Be concise, factual, and specific.
 - Avoid hype, marketing language, and filler.
 - Describe systems, workflows, and outcomes clearly.
-- Keep copy calm and consistent.
+- Keep copy direct and consistent.
 
 ## Reusable Prompt For Future Projects
 
@@ -64,7 +64,7 @@ Use this prompt when you want ChatGPT or Codex to create or refactor UI in the s
 
 ```text
 Apply the portfolio site visual system:
-- Calm editorial minimalism with a warm light background and near-black text
+- Restrained editorial minimalism with a warm light background and near-black text
 - Muted secondary copy, thin borders, and soft translucent surfaces
 - Serif display headings paired with a clean sans-serif body stack
 - Uppercase micro-labels with wide tracking for metadata and section titles

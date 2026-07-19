@@ -5,7 +5,7 @@ Thanks for helping improve the portfolio.
 ## Working Rules
 
 - Keep changes small and focused.
-- Preserve the calm editorial voice and visual system.
+- Preserve the direct editorial voice and visual system.
 - Treat the content files as the source of truth.
 - Avoid changing route behavior unless the content model requires it.
 - Do not overwrite unrelated worktree changes.
@@ -34,4 +34,3 @@ Keep slugs stable so existing routes continue to resolve.
 - Describe the user-facing change clearly.
 - Note any content or route impact.
 - Mention verification steps that were run.
-

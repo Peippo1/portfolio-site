@@ -237,7 +237,7 @@ export default async function ProjectDetailPage({
                 Quick read
               </p>
               <p className="mt-2 text-[1rem] leading-7 text-[var(--color-text)]">
-                A calmer breakdown of the product, the reasoning behind it, and
+                A clear breakdown of the product, the reasoning behind it, and
                 the implementation choices that matter.
               </p>
             </div>

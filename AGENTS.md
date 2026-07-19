@@ -6,7 +6,7 @@ This version has breaking changes. APIs, conventions, and file structure may dif
 
 # Portfolio Site Instructions
 
-This repository is a Next.js 16 App Router portfolio for Tim Finch. Treat the content files as the source of truth and keep the site calm, editorial, and minimal.
+This repository is a Next.js 16 App Router portfolio for Tim Finch. Treat the content files as the source of truth and keep the site restrained, editorial, and minimal.
 
 ## Project Map
 

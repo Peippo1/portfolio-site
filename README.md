@@ -14,7 +14,7 @@ Editorial portfolio for Tim Finch. Built with Next.js 16, TypeScript, and Tailwi
 
 ## Visual System
 
-The site uses a warm, low-contrast palette and a typographic hierarchy that keeps the experience calm and readable.
+The site uses a warm, low-contrast palette and a typographic hierarchy that keeps the experience focused and readable.
 
 - Warm paper background and near-black text
 - Muted supporting copy
