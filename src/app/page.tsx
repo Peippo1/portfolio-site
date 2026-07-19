@@ -427,7 +427,7 @@ export default function HomePage() {
           </div>
           <div className="mt-7 grid gap-3 sm:grid-cols-3">
             {[
-              ["Milestone", "Protocol and local vertical slice"],
+              ["Milestone", "Hosted preview and GitHub sign-in"],
               ["Evidence", "23 deterministic tests passing"],
               ["Boundary", "Human approval; never merge"],
             ].map(([label, value]) => (
@@ -439,6 +439,7 @@ export default function HomePage() {
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
             <a href="https://github.com/Peippo1/Nereid" className="rounded-full bg-[var(--color-text)] px-5 py-3 text-sm !text-white">View GitHub</a>
+            <a href="https://nereid-production-ab40.up.railway.app" className="rounded-full border border-[var(--color-border-strong)] bg-white px-5 py-3 text-sm">View hosted preview</a>
             <Link href="/writing/why-im-building-nereid" className="rounded-full border border-[var(--color-border-strong)] bg-white px-5 py-3 text-sm">Read the build thread</Link>
           </div>
         </section>

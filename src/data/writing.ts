@@ -1,5 +1,6 @@
 import type {
   DiagramBlock,
+  ImageBlock,
   LinkListBlock,
   ListBlock,
   ParagraphBlock,
@@ -94,6 +95,16 @@ function quote(content: string, attribution?: string): QuoteBlock {
 
 function diagram(content: string, caption?: string): DiagramBlock {
   return { type: "diagram", language: "text", content, caption };
+}
+
+function image(
+  src: string,
+  alt: string,
+  width: number,
+  height: number,
+  caption?: string
+): ImageBlock {
+  return { type: "image", src, alt, width, height, caption };
 }
 
 function links(items: LinkListBlock["items"]): LinkListBlock {
@@ -1350,13 +1361,13 @@ export const nereidSeriesEntries: WritingEntry[] = [
   {
     slug: "why-im-building-nereid",
     title: "Why I’m Building Nereid: Trust After the Agent Writes the Code",
-    date: "July 18, 2026",
+    date: "July 19, 2026",
     category: "Build Log",
     summary:
       "Coding agents can produce changes faster than a reviewer can reconstruct them. Nereid is an attempt to make the delivery evidence explicit before a human approves.",
     intro:
       "The first Nereid milestone is deliberately narrow: define the delivery contract, make readiness deterministic, and prove that an agent cannot mark its own work ready for review. The live GitHub and customer-runner path is still a technical preview, not a production claim.",
-    readingTime: "7 min read",
+    readingTime: "9 min read",
     pullQuote: {
       quote:
         "The useful unit is not an agent-generated diff. It is a diff plus enough evidence for a human to make a real decision.",
@@ -1397,16 +1408,38 @@ export const nereidSeriesEntries: WritingEntry[] = [
           "The readiness state machine is the most important completed part. Duplicate delivery is safe when content is identical, altered replays are rejected, events cannot arrive out of sequence, failed checks remain visible, and a PR is required before the packet becomes ready. Adversarial fixtures cover prompt injection, secret-like output, event replay, and approval bypass."
         ),
       ]),
+      section("Hackathon update — what the hosted preview proved", [
+        paragraph(
+          "By the end of the hackathon, Nereid had moved from a local interface to a hosted Railway deployment with a managed Postgres service, a private GitHub App installation, and working GitHub reviewer sign-in. The deployment exposes the control-plane and evidence-review surfaces while keeping access to starting and reviewing runs allow-listed to my GitHub identity."
+        ),
+        image(
+          "/images/nereid/hosted-control-plane.png",
+          "Nereid hosted control plane showing its delivery signal, human gate, customer runner, and GitHub-only merge boundary",
+          1440,
+          1000,
+          "The hosted technical preview on Railway. The visible delivery is a deterministic protocol fixture."
+        ),
+        paragraph(
+          "The most useful outcome was not a claim that the platform was finished. It was a clearer product boundary: an agent can submit structured evidence, but it cannot declare itself review-ready or approve its own work. The interface makes a missing pull request visible even when verification passes."
+        ),
+        image(
+          "/images/nereid/evidence-packet.png",
+          "Nereid delivery packet showing passing verification but a not-ready decision because the pull request reference is missing",
+          1440,
+          1100,
+          "The deterministic evidence fixture remains not ready because its pull request reference is missing."
+        ),
+      ]),
       section("What remains unproven", [
         list([
           "A complete live run against a separate public fixture repository has not yet been published.",
-          "The hosted path still needs the Postgres schema wired in place of the local in-memory preview store.",
+          "The hosted path still needs the Postgres schema wired in place of the in-memory preview store, so run state is not durable across deploys yet.",
           "The worktree and Codex sandbox are useful boundaries, but they are not a hardened container or enforced egress policy.",
-          "GitHub App credentials, installation permissions, and the real check lifecycle still need a public smoke test.",
+          "GitHub reviewer authentication works, but the real runner-to-PR-to-check lifecycle still needs a published smoke test.",
           "There are no performance, adoption, or security-review claims yet.",
         ]),
         paragraph(
-          "The hackathon goal is to close that gap with one honest vertical slice: issue in, agent run, tested branch, pull request, evidence packet, human decision. The next post will only describe the evidence protocol once the corresponding code and test output are publicly verifiable."
+          "The next milestone is one durable vertical slice: issue in, agent run, tested branch, pull request, persisted evidence packet, and human decision. That is the point at which Nereid can responsibly invite its first design partners."
         ),
         links([
           { label: "Nereid repository", href: "https://github.com/Peippo1/Nereid" },

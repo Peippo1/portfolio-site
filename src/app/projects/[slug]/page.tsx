@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ContentImage } from "@/components/content/content-image";
 import { Container } from "@/components/ui/container";
 import { getProjectBySlug, projects } from "@/data/projects";
 import {
@@ -74,6 +75,7 @@ function DetailBlock({ block }: { block: WritingSectionBlock }) {
       </div>
     );
   }
+  if (block.type === "image") return <ContentImage block={block} />;
   return (
     <figure className="space-y-3">
       <pre className="overflow-x-auto rounded-[1.125rem] border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-5 font-mono text-[0.84rem] leading-[1.75] text-[var(--color-text)] shadow-[var(--shadow-soft)]">

@@ -6,6 +6,7 @@ Editorial portfolio for Tim Finch. Built with Next.js 16, TypeScript, and Tailwi
 
 - Editorial home page with featured projects and a lightweight space-data telemetry layer
 - Lead “Currently building” narrative for Nereid, with a case study and evidence-led build thread
+- Reusable, captioned content-image blocks for real project screenshots
 - Project archive with search and statically generated case studies
 - Writing archive with structured long-form entries and build threads
 - About page with a concise working profile, social links, and a public CV link
