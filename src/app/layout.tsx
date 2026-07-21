@@ -5,15 +5,32 @@ import { SiteHeader } from "@/components/layout/site-header";
 import "./globals.css";
 import { getSiteUrl } from "@/lib/site-url";
 
+const siteDescription =
+  "Tim Finch builds evidence-backed AI products, coding-agent infrastructure, and durable software systems.";
+
 export const metadata: Metadata = {
   metadataBase: getSiteUrl(),
   title: {
     default: "Tim Finch",
     template: "%s | Tim Finch",
   },
-  description:
-    "Tim Finch builds evidence-backed AI products, coding-agent infrastructure, and durable software systems.",
+  description: siteDescription,
   keywords: ["AI engineering", "coding agents", "Nereid", "evaluation", "product engineering"],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Tim Finch",
+    description: siteDescription,
+    url: "/",
+    siteName: "Tim Finch",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tim Finch",
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({

@@ -74,7 +74,7 @@ npm run dev
 
 Open `http://localhost:3000` in your browser.
 
-Set `NEXT_PUBLIC_SITE_URL` in production so canonical URLs and generated social cards resolve to the public portfolio domain.
+Set `NEXT_PUBLIC_SITE_URL=https://tfinch.dev` in production so canonical URLs and generated social cards resolve to the public portfolio domain. The previous Vercel URL, `https://portfolio-site-gamma-ten-55.vercel.app`, can remain available as a legacy access path, but it should not be used as the canonical site URL.
 
 ## Useful Scripts
 
